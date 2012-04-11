@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   
-  belongs_to :admin_user
+  belongs_to :user
   # Named Scopes
   scope :available, lambda{ where("available_on < ?", Date.today) }
   scope :drafts, lambda{ where("available_on > ?", Date.today) }

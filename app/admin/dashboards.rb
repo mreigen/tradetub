@@ -10,7 +10,7 @@ ActiveAdmin::Dashboards.build do
 
   section "Recent Customers", :priority => 2 do
     table_for User.order('id desc').limit(10).each do |customer|
-      column(:email)    {|customer| link_to(customer.email, admin_customer_path(customer)) }
+      column(:email)    {|customer| link_to(customer.email, admin_user_path(customer)) }
     end
   end
 

@@ -1,11 +1,11 @@
 ActiveAdmin.register Product, :as => "Item" do
   
   after_build do |currm|
-    currm.author = current_admin_user
+    currm.author = current_user
   end
   
   scope :all, :default => true do |ps|
-    ps.where("author == ?", current_admin_user)
+    ps.where("author == ?", current_user)
   end
   scope :available do |products|
     products.where("available_on < ?", Date.today)
@@ -70,7 +70,7 @@ ActiveAdmin.register Product, :as => "Item" do
       f.input :image, :as => :file
       f.input :description
       f.input :price
-      f.input :author, :as => :hidden, :value => current_admin_user
+      f.input :author, :as => :hidden, :value => f.template.current_user
     end
     f.buttons
    end

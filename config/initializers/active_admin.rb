@@ -31,7 +31,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the controller.
-  config.authentication_method = :authenticate_admin_user! # Disabled for demo
+  config.authentication_method = :authenticate_user! # Disabled for demo
 
 
   # == Current User
@@ -41,7 +41,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # to return the currently logged in user.
-  config.current_user_method = :current_admin_user # Disabled for demo
+  config.current_user_method = :current_user # Disabled for demo
   
 
   # == Admin Notes
@@ -53,11 +53,46 @@ ActiveAdmin.setup do |config|
   #
   # config.admin_notes = true
 
+  # == Logging Out
+  #
+  # Active Admin displays a logout link on each screen. These
+  # settings configure the location and method used for the link.
+  #
+  # This setting changes the path where the link points to. If it's
+  # a string, the strings is used as the path. If it's a Symbol, we
+  # will call the method to return the path.
+  #
+  # Default:
+  config.logout_link_path = :destroy_user_session_path
+
+  # This setting changes the http method used when rendering the
+  # link. For example :get, :delete, :put, etc..
+  #
+  # Default:
+  # config.logout_link_method = :get
+
+
+  # == Admin Comments
+  #
+  # Admin comments allow you to add comments to any model for admin use.
+  # Admin comments are enabled by default.
+  #
+  # Default:
+  # config.allow_comments = true
+  #
+  # You can turn them on and off for any given namespace by using a
+  # namespace config block.
+  #
+  # Eg:
+  #   config.namespace :without_comments do |without_comments|
+  #     without_comments.allow_comments = false
+  #   end
+
 
   # == Controller Filters
   #
   # You can add before, after and around filters to all of your
-  # Active Admin resources from here. 
+  # Active Admin resources from here.
   #
   # config.before_filter :do_something_awesome
 
