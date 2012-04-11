@@ -33,7 +33,7 @@ ActiveadminDepot::Application.configure do
     :domain => "gmail.com",
     :authentication => :login,
     :user_name => "mreigen@gmail.com",
-    :password => "titou0710",
+    :password => "",
   }
 end
 
