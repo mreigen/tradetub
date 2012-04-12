@@ -70,7 +70,8 @@ ActiveAdmin.register Product, :as => "Item" do
       f.input :image, :as => :file
       f.input :description
       f.input :price
-      f.input :author, :as => :hidden, :value => f.template.current_user
+      f.input :cat_id
+      f.input :author, :value => f.template.current_user
     end
     f.buttons
    end

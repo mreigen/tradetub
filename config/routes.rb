@@ -1,5 +1,7 @@
 ActiveadminDepot::Application.routes.draw do
 
+  resources :categories
+
   ActiveAdmin.routes(self)
 
   get "cart" => "cart#show"

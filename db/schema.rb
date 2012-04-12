@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120411201420) do
+ActiveRecord::Schema.define(:version => 20120412003012) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(:version => 20120411201420) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "fullname"
+    t.string   "nickname"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "line_items", :force => true do |t|
     t.integer  "order_id"
@@ -54,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20120411201420) do
     t.string   "title"
     t.text     "description"
     t.string   "author"
-    t.decimal  "price",              :precision => 8, :scale => 2
+    t.decimal  "price"
     t.boolean  "featured"
     t.date     "available_on"
     t.datetime "created_at"
@@ -63,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20120411201420) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "cat_id"
   end
 
   add_index "products", ["available_on"], :name => "index_products_on_available_on"
