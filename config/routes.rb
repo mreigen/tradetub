@@ -1,5 +1,7 @@
 ActiveadminDepot::Application.routes.draw do
 
+  resources :image_uploads
+
   resources :categories
 
   ActiveAdmin.routes(self)

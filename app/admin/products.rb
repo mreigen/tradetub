@@ -43,6 +43,11 @@ ActiveAdmin.register Product, :as => "Item" do
     h3 p.title + " - " + number_to_currency(p.price)
     div p.description
     div image_tag(p.image.url(:medium))
+    
+    p.image_uploads.each do |iu|
+      span image_tag(iu.image.url(:medium))
+    end
+    
     div p.author
   end
   
@@ -63,7 +68,7 @@ ActiveAdmin.register Product, :as => "Item" do
     render('/admin/sidebar_links', :model => 'products')
   end
   
-  
+=begin
   form :html => { :enctype => "multipart/form-data" } do |f|
      f.inputs "Details" do
       f.input :title
@@ -75,5 +80,7 @@ ActiveAdmin.register Product, :as => "Item" do
     end
     f.buttons
    end
+=end
+   form :partial => "image_upload"
 
 end

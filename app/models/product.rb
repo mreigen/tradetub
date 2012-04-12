@@ -2,6 +2,8 @@ class Product < ActiveRecord::Base
   
   belongs_to :user
   has_many :categories
+  has_many :image_uploads
+  
   # Named Scopes
   scope :available, lambda{ where("available_on < ?", Date.today) }
   scope :drafts, lambda{ where("available_on > ?", Date.today) }

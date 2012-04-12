@@ -250,3 +250,35 @@ Maybe you forgot to wrap your route inside the scope block? For example:
 [04/11/12 17:03:18 -0700 Bruce-Wangs-MacBook-Pro.local (74268)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
 [04/11/12 17:03:18 -0700 Bruce-Wangs-MacBook-Pro.local (74268)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 74268
 [04/11/12 17:03:18 -0700 Bruce-Wangs-MacBook-Pro.local (74268)] INFO : Agent Log at /Users/brucewang/tradetub/log/newrelic_agent.log
+[04/11/12 22:13:00 -0700 Minh-T-Reigens-MacBook-Pro.local (3288)] INFO : Dispatcher: webrick
+[04/11/12 22:13:00 -0700 Minh-T-Reigens-MacBook-Pro.local (3288)] INFO : Application: Active Admin Demo
+[04/11/12 22:13:00 -0700 Minh-T-Reigens-MacBook-Pro.local (3288)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[04/11/12 22:13:00 -0700 Minh-T-Reigens-MacBook-Pro.local (3288)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 3288
+[04/11/12 22:13:00 -0700 Minh-T-Reigens-MacBook-Pro.local (3288)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[04/11/12 23:08:39 -0700 Minh-T-Reigens-MacBook-Pro.local (3603)] INFO : Dispatcher: webrick
+[04/11/12 23:08:39 -0700 Minh-T-Reigens-MacBook-Pro.local (3603)] INFO : Application: Active Admin Demo
+[04/11/12 23:08:39 -0700 Minh-T-Reigens-MacBook-Pro.local (3603)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[04/11/12 23:08:39 -0700 Minh-T-Reigens-MacBook-Pro.local (3603)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 3603
+[04/11/12 23:08:39 -0700 Minh-T-Reigens-MacBook-Pro.local (3603)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[04/11/12 23:12:53 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] INFO : Dispatcher: webrick
+[04/11/12 23:12:53 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] INFO : Application: Active Admin Demo
+[04/11/12 23:12:53 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[04/11/12 23:12:53 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 3630
+[04/11/12 23:12:53 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[04/12/12 00:07:23 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: undefined method `model_name' for NilClass:Class
+[04/12/12 00:10:48 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: undefined method `model_name' for NilClass:Class
+[04/12/12 00:11:19 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: nil
+[04/12/12 00:11:23 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: :product
+[04/12/12 00:11:26 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: undefined local variable or method `product' for #<#<Class:0x1046a2958>:0x10f408ca0>
+[04/12/12 00:12:41 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: compile error
+/Users/mreigen/rails_projects/tradetub/app/views/admin/items/_image_upload.html.erb:16: syntax error, unexpected kDO, expecting kEND
+..._form_for[:admin, @product] do |f| @output_buffer.safe_conca...
+                              ^
+/Users/mreigen/rails_projects/tradetub/app/views/admin/items/_image_upload.html.erb:164: syntax error, unexpected kENSURE, expecting $end
+[04/12/12 00:13:18 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: undefined local variable or method `product' for #<#<Class:0x10f22bd88>:0x10f291fc0>
+[04/12/12 00:13:23 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: undefined method `model_name' for NilClass:Class
+[04/12/12 00:13:36 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: undefined method `admin_product_path' for #<#<Class:0x10f22bd88>:0x10efe6668>
+[04/12/12 00:13:48 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: #<Product id: 1, title: "Oto fish", description: "I bought this fish at Petsmart in February 2012. He...", author: "5", price: #<BigDecimal:10f283308,'0.5E1',9(18)>, featured: false, available_on: nil, created_at: "2012-03-31 17:07:58", updated_at: "2012-04-08 07:49:15", image_file_name: "IMG_3018.JPG", image_content_type: "image/jpeg", image_file_size: 1999105, image_updated_at: "2012-04-08 07:47:56", cat_id: nil>
+[04/12/12 00:16:43 -0700 Minh-T-Reigens-MacBook-Pro.local (3630)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: compile error
+/Users/mreigen/rails_projects/tradetub/app/views/admin/items/_image_upload.html.erb:164: syntax error, unexpected kENSURE, expecting kEND
+/Users/mreigen/rails_projects/tradetub/app/views/admin/items/_image_upload.html.erb:166: syntax error, unexpected $end, expecting kEND
