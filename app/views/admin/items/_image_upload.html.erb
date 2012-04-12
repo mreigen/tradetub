@@ -12,7 +12,11 @@
 <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 	<div class="container">
-	<%= semantic_form_for([:admin, @item], :url => "/image_uploads?product_id=" + params[:id], :html => {:enctype => "multipart/form-data", :id => "fileupload", :method => "post"})  do |f| %>
+	<% post_url = "/image_uploads"
+	if params[:id] 
+		post_url << "?product_id=" + params[:id] 
+	end %>
+	<%= semantic_form_for([:admin, @item], :url => post_url, :html => {:enctype => "multipart/form-data", :id => "fileupload", :method => "post"})  do |f| %>
 		<%= f.inputs "Details" do %>
 			<%= f.input :title %>
 			<%= f.input :description %>
