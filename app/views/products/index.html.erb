@@ -1,7 +1,9 @@
 <% @products.each do |product| %>
   <div class="product">
+		<div class="product-price"><%= number_to_currency(product.price, :precision => 0) %></div>
     <%= link_to image_tag(product.image.url(:medium)), product_path(product) %>
-    <h2><%= link_to product.title, product_path(product) %></h2>
+    <div class="product-label"><%= link_to product.title, product_path(product) %></div>
+		<div class="product-desc"><%= product.description %></div>
   </div>
 <% end %>
 

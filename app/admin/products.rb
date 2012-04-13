@@ -68,7 +68,6 @@ ActiveAdmin.register Product, :as => "Item" do
     render('/admin/sidebar_links', :model => 'products')
   end
   
-=begin
   form :html => { :enctype => "multipart/form-data" } do |f|
      f.inputs "Details" do
       f.input :title
@@ -80,7 +79,9 @@ ActiveAdmin.register Product, :as => "Item" do
     end
     f.buttons
    end
-=end
-   form :partial => "image_upload"
+   
+   # this is for multiple image uploading
+   # need more work
+   #form :partial => "image_upload"
 
 end
