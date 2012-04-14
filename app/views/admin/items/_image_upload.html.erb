@@ -12,51 +12,55 @@
 <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 	<div class="container">
-	<% post_url = "/image_uploads"
-	if params[:id] 
-		post_url << "?product_id=" + params[:id] 
-	end %>
-	<%= semantic_form_for([:admin, @item], :url => post_url, :html => {:enctype => "multipart/form-data", :id => "fileupload", :method => "post"})  do |f| %>
+	<%= semantic_form_for([:admin, @item], :url => "/image_uploads?product_id=" + params[:id], :html => {:enctype => "multipart/form-data", :id => "fileupload", :method => "post"})  do |f| %>
 		<%= f.inputs "Details" do %>
 			<%= f.input :title %>
 			<%= f.input :description %>
       <%= f.input :price %>
       <%= f.input :cat_id %>
       <%= f.input :author, :value => f.template.current_user %>
-      
-		<% end %>
-        <div class="row fileupload-buttonbar">
-            <div class="span7">
-
-                <span class="btn btn-success fileinput-button">
-                    <i class="icon-plus icon-white"></i>
-                    <span>Add files...</span>
-                    <input type="file" name="image_upload[image]" multiple>					
-                </span>
-                <button type="submit" class="btn btn-primary start">
-                    <i class="icon-upload icon-white"></i>
-                    <span>Start upload</span>
-                </button>
-                <button type="reset" class="btn btn-warning cancel">
-                    <i class="icon-ban-circle icon-white"></i>
-                    <span>Cancel upload</span>
-                </button>
-                <button type="button" class="btn btn-danger delete">
-                    <i class="icon-trash icon-white"></i>
-                    <span>Delete</span>
-                </button>
-                <input type="checkbox" class="toggle"/>
-            </div>
-            <div class="span5">
-                <div class="progress progress-success progress-striped active fade">
-                    <div class="bar" style="width:0%;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="fileupload-loading"></div>
-        <br>
-        <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+		
+			<% @item.image_uploads.each do |iu| %>
+				<%= image_tag(iu.image.url(:medium)) %>
+				<input type="checkbox" class="select_delete"/>
 			<% end %>
+		      
+		<% end %>
+
+		<%= f.inputs "Upload more images" do %>
+	  <div class="row fileupload-buttonbar">
+	      <div class="span7">
+	
+	          <span class="btn btn-success fileinput-button">
+	              <i class="icon-plus icon-white"></i>
+	              <span>Add files...</span>
+	              <input type="file" name="image_upload[image]" multiple>					
+	          </span>
+	          <button type="submit" class="btn btn-primary start">
+	              <i class="icon-upload icon-white"></i>
+	              <span>Start upload</span>
+	          </button>
+	          <button type="reset" class="btn btn-warning cancel">
+	              <i class="icon-ban-circle icon-white"></i>
+	              <span>Cancel upload</span>
+	          </button>
+	          <button type="button" class="btn btn-danger delete">
+	              <i class="icon-trash icon-white"></i>
+	              <span>Delete</span>
+	          </button>
+	          <input type="checkbox" class="toggle"/>
+	      </div>
+	      <div class="span5">
+	          <div class="progress progress-success progress-striped active fade">
+	              <div class="bar" style="width:0%;"></div>
+	          </div>
+	      </div>
+	  </div>
+	  <div class="fileupload-loading"></div>
+	  <br>
+	  <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+	<% end %>
+	<% end %>
 </div>
 <!-- modal-gallery is the modal dialog used for the image gallery -->
 <div id="modal-gallery" class="modal modal-gallery hide fade">

@@ -288,3 +288,13 @@ Maybe you forgot to wrap your route inside the scope block? For example:
 [04/12/12 23:59:03 -0700 Minh-T-Reigens-MacBook-Pro.local (7561)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
 [04/12/12 23:59:03 -0700 Minh-T-Reigens-MacBook-Pro.local (7561)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 7561
 [04/12/12 23:59:03 -0700 Minh-T-Reigens-MacBook-Pro.local (7561)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[04/13/12 10:29:16 -0700 Bruce-Wangs-MacBook-Pro.local (9786)] INFO : Dispatcher: webrick
+[04/13/12 10:29:16 -0700 Bruce-Wangs-MacBook-Pro.local (9786)] INFO : Application: Active Admin Demo
+[04/13/12 10:29:16 -0700 Bruce-Wangs-MacBook-Pro.local (9786)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[04/13/12 10:29:16 -0700 Bruce-Wangs-MacBook-Pro.local (9786)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 9786
+[04/13/12 10:29:16 -0700 Bruce-Wangs-MacBook-Pro.local (9786)] INFO : Agent Log at /Users/brucewang/tradetub/log/newrelic_agent.log
+[04/13/12 11:40:50 -0700 Bruce-Wangs-MacBook-Pro.local (705)] INFO : Dispatcher: webrick
+[04/13/12 11:40:50 -0700 Bruce-Wangs-MacBook-Pro.local (705)] INFO : Application: Active Admin Demo
+[04/13/12 11:40:50 -0700 Bruce-Wangs-MacBook-Pro.local (705)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[04/13/12 11:40:50 -0700 Bruce-Wangs-MacBook-Pro.local (705)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 705
+[04/13/12 11:40:50 -0700 Bruce-Wangs-MacBook-Pro.local (705)] INFO : Agent Log at /Users/brucewang/tradetub/log/newrelic_agent.log
