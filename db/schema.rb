@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120412053255) do
+ActiveRecord::Schema.define(:version => 20120416074749) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -56,6 +56,19 @@ ActiveRecord::Schema.define(:version => 20120412053255) do
 
   add_index "line_items", ["order_id"], :name => "index_line_items_on_order_id"
   add_index "line_items", ["product_id"], :name => "index_line_items_on_product_id"
+
+  create_table "offer_items", :force => true do |t|
+    t.string "product_id"
+    t.string "product_wanted_id"
+    t.string "offer_id",          :default => "", :null => false
+  end
+
+  create_table "offers", :force => true do |t|
+    t.string   "sender_id",                  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user_id",    :default => "", :null => false
+  end
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
