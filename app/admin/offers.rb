@@ -1,16 +1,37 @@
 ActiveAdmin.register Offer do
-  
+    
   scope :all, :default => true do |offer|
     offer.where("user_id == ?", current_user)
   end
   
+  scope :rejected, :default => true do |offer|
+    offer.where("user_id == ? and response == ?", current_user, 2)
+  end
+  
+  scope :accepted, :default => true do |offer|
+    offer.where("user_id == ? and response == ?", current_user, 1)
+  end
+  
   index do
-    column "Sender" do |offer|
+    column "Status" do |offer|
+      case offer.response
+        when 0
+          "New"
+        when 1
+          "Accepted"
+        when 2
+          "Rejected"
+        when 3
+          "Counter-offered"
+      end
+    end
+    
+    column "Member" do |offer|
       username = User.find(offer.sender_id).username
       link_to username, admin_user_url(offer.sender_id)
     end
 
-    column "is offering you" do |offer|
+    column "Is offering you" do |offer|
       items = []
       OfferItem.find_all_by_offer_id(offer.id).each do |offer_item|
         items << link_to(image_tag((Product.find(offer_item.product_id).image.url(:thumb)) ), admin_item_url(offer_item.product_id))
@@ -18,7 +39,7 @@ ActiveAdmin.register Offer do
       items.join(" + ").html_safe
     end
 
-    column "for your item" do |offer|
+    column "For your item(s)" do |offer|
       items = []
       OfferItem.find_all_by_offer_id(offer.id).each do |offer_item|
         items << link_to(image_tag((Product.find(offer_item.product_wanted_id).image.url(:thumb)) ), admin_item_url(offer_item.product_wanted_id))
@@ -27,7 +48,26 @@ ActiveAdmin.register Offer do
       items.join(" + ").html_safe
     end
     
-    default_actions
+    column "Your response" do |offer|
+      links = []
+      unless offer.response == 1
+        links << link_to("Accept", admin_offer_path(offer.id) + "/respond/accept", :confirm => "Accept this offer?", :method => :put)
+      else
+        links << content_tag(:label, "Accepted", :class => "unclickable")
+      end
+      
+      unless offer.response == 2
+        links << link_to("Reject", admin_offer_path(offer.id) + "/respond/reject", :confirm => "Reject this offer?", :method => :put)
+      else
+        links << content_tag(:label, "Rejected", :class => "unclickable")
+      end
+      
+      links << link_to("Counter Offer", "#")
+      links << link_to("View", "#")
+      links.join(" | ").html_safe
+    end
+    
+    #default_actions
    end
    
    form do |f|
@@ -41,5 +81,48 @@ ActiveAdmin.register Offer do
 
    def password_required?
      new_record? ? false : super
+   end
+   
+   
+   # controllers stuff
+   controller do
+     helper :offers
+     
+     def respond
+       @offer = Offer.find(params[:id])
+       @respond = params[:respond]
+       @offer.update_attributes(:response => respond_to_num(@respond))
+       
+       flash_mess = ""
+       case @respond
+        when "accept"
+          flash_mess = "You have accepted the offer"
+        when "reject"
+          flash_mess = "You have rejected the offer"
+        when "counter-offer"
+          flash_mess = "You have counter-offered the offer"
+       end
+       
+       respond_to do |format|
+         flash[:success] = flash_mess
+         format.html { redirect_to request.referer }
+       end
+     end
+
+     private
+     
+     def respond_to_num(resp)
+      ret = 0
+      case resp
+       when "accept"
+         ret = 1
+       when "reject"
+         ret = 2
+       when "counter-offer"
+         ret = 3
+      end
+      ret
+     end
+     
    end
 end

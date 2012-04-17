@@ -1,0 +1,3 @@
+module OffersHelper
+
+end
