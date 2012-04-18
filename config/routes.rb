@@ -16,6 +16,7 @@ ActiveadminDepot::Application.routes.draw do
   #match 'admin/logout' => 'sessions#destroy', :as => :logout
   match 'admin/login' => 'sessions#new', :as => :login
   put 'admin/offers/:id/respond/:respond' => 'admin/offers#respond'
+  get 'admin/items/user/:user_id' => 'admin/items#index'
   
   resources :sessions
   resources :products

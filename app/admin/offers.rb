@@ -34,18 +34,27 @@ ActiveAdmin.register Offer do
     column "Is offering you" do |offer|
       items = []
       OfferItem.find_all_by_offer_id(offer.id).each do |offer_item|
-        items << link_to(image_tag((Product.find(offer_item.product_id).image.url(:thumb)) ), admin_item_url(offer_item.product_id))
+        items << link_to(image_tag((Product.find(offer_item.product_id).image.url(:thumb)), :class => "offer_thumb" ), admin_item_url(offer_item.product_id))
       end
-      items.join(" + ").html_safe
+      
+      if items.empty?
+        "nothing"
+      else
+        items.join(" + ").html_safe
+      end
     end
 
     column "For your item(s)" do |offer|
       items = []
-      OfferItem.find_all_by_offer_id(offer.id).each do |offer_item|
-        items << link_to(image_tag((Product.find(offer_item.product_wanted_id).image.url(:thumb)) ), admin_item_url(offer_item.product_wanted_id))
+      WantedItem.find_all_by_offer_id(offer.id).each do |wanted_item|
+        items << link_to(image_tag((Product.find(wanted_item.product_id).image.url(:thumb)), :class => "offer_thumb" ), admin_item_url(wanted_item.product_id))
       end
       items = items.uniq
       items.join(" + ").html_safe
+    end
+    
+    column "With cash value" do |offer|
+      number_to_currency(offer.cash_value)
     end
     
     column "Your response" do |offer|

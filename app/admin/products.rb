@@ -5,7 +5,9 @@ ActiveAdmin.register Product, :as => "Item" do
   end
   
   scope :all, :default => true do |ps|
-    ps.where("author == ?", current_user)
+    user_id = params[:user_id]
+    user_id ||= current_user
+    ps.where("author == ?", user_id)
   end
   scope :available do |products|
     products.where("available_on < ?", Date.today)
