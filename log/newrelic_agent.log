@@ -504,3 +504,23 @@ Maybe you forgot to wrap your route inside the scope block? For example:
 [04/17/12 21:52:35 -0700 Minh-T-Reigens-MacBook-Pro.local (14892)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
 [04/17/12 21:52:35 -0700 Minh-T-Reigens-MacBook-Pro.local (14892)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 14892
 [04/17/12 21:52:35 -0700 Minh-T-Reigens-MacBook-Pro.local (14892)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[04/18/12 22:56:21 -0700 Minh-T-Reigens-MacBook-Pro.local (15509)] INFO : Dispatcher: webrick
+[04/18/12 22:56:21 -0700 Minh-T-Reigens-MacBook-Pro.local (15509)] INFO : Application: Active Admin Demo
+[04/18/12 22:56:21 -0700 Minh-T-Reigens-MacBook-Pro.local (15509)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[04/18/12 22:56:21 -0700 Minh-T-Reigens-MacBook-Pro.local (15509)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 15509
+[04/18/12 22:56:21 -0700 Minh-T-Reigens-MacBook-Pro.local (15509)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[04/18/12 23:29:21 -0700 Minh-T-Reigens-MacBook-Pro.local (15646)] INFO : Dispatcher: webrick
+[04/18/12 23:29:21 -0700 Minh-T-Reigens-MacBook-Pro.local (15646)] INFO : Application: Active Admin Demo
+[04/18/12 23:29:21 -0700 Minh-T-Reigens-MacBook-Pro.local (15646)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[04/18/12 23:29:21 -0700 Minh-T-Reigens-MacBook-Pro.local (15646)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 15646
+[04/18/12 23:29:21 -0700 Minh-T-Reigens-MacBook-Pro.local (15646)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[04/18/12 23:34:15 -0700 Minh-T-Reigens-MacBook-Pro.local (15669)] INFO : Dispatcher: webrick
+[04/18/12 23:34:15 -0700 Minh-T-Reigens-MacBook-Pro.local (15669)] INFO : Application: Active Admin Demo
+[04/18/12 23:34:15 -0700 Minh-T-Reigens-MacBook-Pro.local (15669)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[04/18/12 23:34:15 -0700 Minh-T-Reigens-MacBook-Pro.local (15669)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 15669
+[04/18/12 23:34:15 -0700 Minh-T-Reigens-MacBook-Pro.local (15669)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[04/19/12 00:17:31 -0700 Minh-T-Reigens-MacBook-Pro.local (15794)] INFO : Dispatcher: webrick
+[04/19/12 00:17:31 -0700 Minh-T-Reigens-MacBook-Pro.local (15794)] INFO : Application: Active Admin Demo
+[04/19/12 00:17:31 -0700 Minh-T-Reigens-MacBook-Pro.local (15794)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[04/19/12 00:17:31 -0700 Minh-T-Reigens-MacBook-Pro.local (15794)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 15794
+[04/19/12 00:17:31 -0700 Minh-T-Reigens-MacBook-Pro.local (15794)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log

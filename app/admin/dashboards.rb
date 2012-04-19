@@ -1,16 +1,24 @@
 ActiveAdmin::Dashboards.build do
 
+   section "Recent Offers" do
+     content_tag :ul do
+       Offer.order("id desc").limit(10) do |offer|
+         content_tag(:li, link_to(offer.id, offer_path(offer)))
+       end.join.html_safe
+     end
+   end
+
   section "Recent Orders", :priority => 1 do
     table_for Order.complete.order('id desc').limit(10) do
       column("State")   {|order| status_tag(order.state)                                    } 
-      column("Customer"){|order| link_to(order.user.email, admin_customer_path(order.user)) } 
+      column("Customer"){|order| link_to(order.user.email, customer_path(order.user)) } 
       column("Total")   {|order| number_to_currency order.total_price                       } 
     end
   end
 
   section "Recent Customers", :priority => 2 do
     table_for User.order('id desc').limit(10).each do |customer|
-      column(:email)    {|customer| link_to(customer.email, admin_user_path(customer)) }
+      column(:email)    {|customer| link_to(customer.email, user_path(customer)) }
     end
   end
 
@@ -36,7 +44,7 @@ ActiveAdmin::Dashboards.build do
   #   section "Recent Posts" do
   #     content_tag :ul do
   #       Post.recent(5).collect do |post|
-  #         content_tag(:li, link_to(post.title, admin_post_path(post)))
+  #         content_tag(:li, link_to(post.title, post_path(post)))
   #       end.join.html_safe
   #     end
   #   end

@@ -9,7 +9,7 @@ ActiveAdmin.register Order, :as => "Transaction" do
   scope :complete
 
   index do
-    column("Order", :sortable => :id) {|order| link_to "##{order.id} ", admin_order_path(order) }
+    column("Order", :sortable => :id) {|order| link_to "##{order.id} ", order_path(order) }
     column("State")                   {|order| status_tag(order.state) }
     column("Date", :checked_out_at)
     column("Customer", :user, :sortable => :user_id)
@@ -28,7 +28,7 @@ ActiveAdmin.register Order, :as => "Transaction" do
       end
     end
 
-    active_admin_comments
+    active_comments
   end
 
   sidebar :customer_information, :only => :show do

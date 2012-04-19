@@ -28,13 +28,13 @@ ActiveAdmin.register Offer do
     
     column "Member" do |offer|
       username = User.find(offer.sender_id).username
-      link_to username, admin_user_url(offer.sender_id)
+      link_to username, user_url(offer.sender_id)
     end
 
     column "Is offering you" do |offer|
       items = []
       OfferItem.find_all_by_offer_id(offer.id).each do |offer_item|
-        items << link_to(image_tag((Product.find(offer_item.product_id).image.url(:thumb)), :class => "offer_thumb" ), admin_item_url(offer_item.product_id))
+        items << link_to(image_tag((Product.find(offer_item.product_id).image.url(:thumb)), :class => "offer_thumb" ), item_url(offer_item.product_id))
       end
       
       if items.empty?
@@ -47,7 +47,7 @@ ActiveAdmin.register Offer do
     column "For your item(s)" do |offer|
       items = []
       WantedItem.find_all_by_offer_id(offer.id).each do |wanted_item|
-        items << link_to(image_tag((Product.find(wanted_item.product_id).image.url(:thumb)), :class => "offer_thumb" ), admin_item_url(wanted_item.product_id))
+        items << link_to(image_tag((Product.find(wanted_item.product_id).image.url(:thumb)), :class => "offer_thumb" ), item_url(wanted_item.product_id))
       end
       items = items.uniq
       items.join(" + ").html_safe
@@ -60,13 +60,13 @@ ActiveAdmin.register Offer do
     column "Your response" do |offer|
       links = []
       unless offer.response == 1
-        links << link_to("Accept", admin_offer_path(offer.id) + "/respond/accept", :confirm => "Accept this offer?", :method => :put)
+        links << link_to("Accept", offer_path(offer.id) + "/respond/accept", :confirm => "Accept this offer?", :method => :put)
       else
         links << content_tag(:label, "Accepted", :class => "unclickable")
       end
       
       unless offer.response == 2
-        links << link_to("Reject", admin_offer_path(offer.id) + "/respond/reject", :confirm => "Reject this offer?", :method => :put)
+        links << link_to("Reject", offer_path(offer.id) + "/respond/reject", :confirm => "Reject this offer?", :method => :put)
       else
         links << content_tag(:label, "Rejected", :class => "unclickable")
       end

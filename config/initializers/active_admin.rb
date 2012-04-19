@@ -5,7 +5,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Trade Tub"
+  config.site_title = "Barzit"
 
   # == Default Namespace
   #
@@ -20,7 +20,7 @@ ActiveAdmin.setup do |config|
   #
   # To set no namespace by default, use:
   # config.default_namespace = false
-  config.default_namespace = :admin
+  config.default_namespace = false
 
 
   # == User Authentication

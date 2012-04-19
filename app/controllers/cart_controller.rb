@@ -1,16 +1,21 @@
 class CartController < ApplicationController
 
-  before_filter :login_required
+  #before_filter :login_required
   before_filter :find_cart
 
   def add
     @cart.save if @cart.new_record?
     session[:cart_id] = @cart.id
     product = Product.find(params[:id])
-    LineItem.create! :order => @cart, :product => product, :price => product.price
-    @cart.recalculate_price!
-    flash[:notice] = "Item added to cart!"
-    redirect_to '/cart'
+    unless LineItem.find_by_product_id(product)
+      LineItem.create! :order => @cart, :product => product, :price => product.price
+      @cart.recalculate_price!
+      flash[:notice] = "Item added to cart!"
+      redirect_to '/cart'
+    else
+      flash[:notice] = "Item is already in your cart"
+      redirect_to request.referer
+    end
   end
 
   def remove

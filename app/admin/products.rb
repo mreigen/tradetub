@@ -1,5 +1,5 @@
 ActiveAdmin.register Product, :as => "Item" do
-  
+
   after_build do |currm|
     currm.author = current_user
   end
@@ -21,12 +21,12 @@ ActiveAdmin.register Product, :as => "Item" do
 
   index do
     column "Title", :sortable => :title do |product|
-       a truncate(product.title), :href => admin_item_path(product)
+       a truncate(product.title), :href => item_path(product)
     end
     
     column "Image", :sortable => :title do |product|
       div do
-        a :href => admin_item_path(product) do
+        a :href => item_path(product) do
           image_tag(product.image.url(:thumb))
         end
       end
@@ -51,6 +51,8 @@ ActiveAdmin.register Product, :as => "Item" do
     end
     
     div p.author
+    
+    div link_to "Pick this", add_to_cart_path(p.id)
   end
   
   sidebar :product_stats, :only => :show do
