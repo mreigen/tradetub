@@ -6,4 +6,7 @@ $(function(){
     window.location.search = "";
     return false;
   });
+  
+  $("#title_bar").hide();
 });
+

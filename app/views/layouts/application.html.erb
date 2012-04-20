@@ -15,7 +15,17 @@
         Go <a href='/admin'>try out the Administration interface</a>!
       </div>
 -->
-      
+      <link href="/stylesheets/active_admin.css?1334730858" media="all" rel="stylesheet" type="text/css">
+			<link href="/stylesheets/admin.css?1334207530" media="screen" rel="stylesheet" type="text/css">
+			<div id="header"><h1 id="site_title">Barzit</h1><ul class="header-item" id="tabs">
+			  <li id="items"><a href="/items">Items</a></li>
+			  <li class="current" id="offers"><a href="/offers">Offers</a></li>
+			  <li id="transactions"><a href="/transactions">Transactions</a></li>
+			  <li id="users"><a href="/users">Users</a></li>
+			</ul>
+			<p class="header-item" id="utility_nav"><span class="current_user">mreigen</span><a href="/logout" data-method="get">Logout</a></p></div>
+			
+			
       <h1><a href="/">Mole's Bazaar</a></h1>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>

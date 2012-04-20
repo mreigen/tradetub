@@ -1,6 +1,6 @@
 ActiveadminDepot::Application.routes.draw do
 
-  #ActiveAdmin.routes(self)
+  ActiveAdmin.routes(self)
 
   get "cart" => "cart#show"
   get "cart/add/:id" => "cart#add", :as => :add_to_cart
@@ -17,9 +17,7 @@ ActiveadminDepot::Application.routes.draw do
   match 'admin/login' => 'sessions#new', :as => :login
   put 'admin/offers/:id/respond/:respond' => 'admin/offers#respond'
   get 'admin/items/user/:user_id' => 'admin/items#index'
-  
-  get '/dashboard' => 'dashboard#index'
-  
+    
   resources :sessions
   resources :products
   resources :image_uploads
