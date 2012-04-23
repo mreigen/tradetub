@@ -1,0 +1,100 @@
+
+	<script src="/javascripts/jquery/jquery.ui.widget.js"></script>
+	<script src="/javascripts/jquery/jquery.ui.draggable.js"></script>
+	<script src="/javascripts/jquery/jquery.ui.droppable.js"></script>
+	
+<div id="offer-details">
+	<div id="offering-items">
+		<div id="offering-items-available">
+			<h2>Their available items</h2>
+			<ul>
+			<% offerer.products.each do |item| %>
+				<% unless offer.offer_items.include?(OfferItem.find_by_product_id(item.id))%>
+				<li>
+					<div><%=  item.title %></div>
+					<div><img src="<%= item.image.url(:thumb) %>" /><div>
+				</li>
+				<% end %>
+			<% end %>
+			</ul>
+		</div>
+	
+		<div id="offering-items-offered">
+			<h2>Items they offer</h2>
+			<ul>
+			<% offer.offer_items.each do |offer_item| %>
+				<li>
+					<% @product = offer_item.product %>
+					<div><%=  @product.title %></div>
+					<div><img src="<%= @product.image.url(:thumb) %>" /><div>
+				</li>
+			<% end %>
+			</ul>
+		</div>
+	</div>
+
+		
+	<div id="cash-compensate">
+		<h2>Cash offered</h2>
+		<%= number_to_currency(offer.cash_value) %>
+	</div>
+
+	
+	<div id="wanted-items">
+		<div id="wanted-items-offered">
+			<h2>Items they want from you</h2>
+			<ul>
+			<% offer.wanted_items.each do |wanted_item| %>
+				<li>
+					<% @product = wanted_item.product %>
+					<div><%=  @product.title %></div>
+					<div><img src="<%= @product.image.url(:thumb) %>" /><div>
+				</li>
+			<% end %>
+			</ul>
+		</div>
+		<div id="wanted-items-available">
+			<h2>Your available items</h2>
+			<ul>
+			<% user.products.each do |item| %>
+			<% unless offer.wanted_items.include?(WantedItem.find_by_product_id(item.id))%>
+				<li>
+					<div><%=  item.title %></div>
+					<div><img src="<%= item.image.url(:thumb) %>" /><div>
+				</li>
+				<% end %>
+			<% end %>
+			</ul>
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+	crossSelect("offering-items-available", "offering-items-offered");
+	crossSelect("wanted-items-available", "wanted-items-offered");
+	
+	function crossSelect(div1, div2) {
+	
+		$("#" + div1 + " ul li").draggable({stack: "li"});
+		$("#" + div2).droppable({
+			drop: function(event, ui) {
+				$("<li></li>").html(ui.draggable.html()).appendTo($(this).find("ul"));
+				ui.draggable.remove();
+				crossSelect(div1, div2);
+			},
+			accept: "#" + div1 + " ul li"
+		});
+	
+		$("#" + div2 + " ul li").draggable({stack: "li"});
+		$("#" + div1).droppable({
+			drop: function(event, ui) {
+				$("<li></li>").html(ui.draggable.html()).appendTo($(this).find("ul"));
+				ui.draggable.remove();
+				crossSelect(div1, div2);
+			},
+			accept: "#" + div2 + " ul li"
+		});
+		
+	}
+</script>
