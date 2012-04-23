@@ -1,5 +1,6 @@
 ActiveAdmin.register Product, :as => "Item" do
-
+  config.clear_sidebar_sections!
+  
   after_build do |currm|
     currm.author = current_user
   end
@@ -42,6 +43,8 @@ ActiveAdmin.register Product, :as => "Item" do
   end
 
   show do |p|
+    return unless p.available
+      
     h3 p.title + " - " + number_to_currency(p.price)
     div p.description
     div image_tag(p.image.url(:medium))
@@ -50,28 +53,26 @@ ActiveAdmin.register Product, :as => "Item" do
       span image_tag(iu.image.url(:medium))
     end
     
-    div p.author
+    # category name
     
-    div link_to "Pick this", add_to_cart_path(p.id)
-  end
-  
-  sidebar :product_stats, :only => :show do
-    attributes_table_for resource do
-      row("Total Sold")  { Order.find_with_product(resource).count }
-      row("Dollar Value"){ number_to_currency LineItem.where(:product_id => resource.id).sum(:price) }
+    case p.trade_type
+      when 0
+        div "both cash & trade"
+      when 1
+        div "cash only"
+      when 2
+        div "trade only"
     end
+        
+    div link_to "Pick this", add_to_cart_path(p.id), :class => "button"
   end
 
-  sidebar :recent_orders, :only => :show do
-    Order.find_with_product(resource).limit(5).collect do |order|
-      auto_link(order)
-    end.join(content_tag("br")).html_safe
+  sidebar "Provider", :only => :show do
+    @product = Product.find(params[:id]) unless params[:id].blank?
+    @user = User.find(@product.author) unless @product.blank?
+    render('/admin/sidebar_links', :user => @user)
   end
 
-  sidebar "Active Admin Demo" do
-    render('/admin/sidebar_links', :model => 'products')
-  end
-  
   form :html => { :enctype => "multipart/form-data" } do |f|
      f.inputs "Details" do
       f.input :title
@@ -88,4 +89,7 @@ ActiveAdmin.register Product, :as => "Item" do
    # need more work
    #form :partial => "image_upload"
 
+   controller do
+     helper :all
+   end
 end

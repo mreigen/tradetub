@@ -1,14 +1,15 @@
 ActiveAdmin.register Offer do
-    
+  config.clear_sidebar_sections!
+
   scope :all, :default => true do |offer|
     offer.where("user_id == ?", current_user)
   end
   
-  scope :rejected, :default => true do |offer|
+  scope :rejected do |offer|
     offer.where("user_id == ? and response == ?", current_user, 2)
   end
   
-  scope :accepted, :default => true do |offer|
+  scope :accepted do |offer|
     offer.where("user_id == ? and response == ?", current_user, 1)
   end
   
@@ -33,7 +34,7 @@ ActiveAdmin.register Offer do
 
     column "Is offering you" do |offer|
       items = []
-      OfferItem.find_all_by_offer_id(offer.id).each do |offer_item|
+      offer.offer_items.each do |offer_item|
         items << link_to(image_tag((Product.find(offer_item.product_id).image.url(:thumb)), :class => "offer_thumb" ), item_url(offer_item.product_id))
       end
       
@@ -46,7 +47,7 @@ ActiveAdmin.register Offer do
 
     column "For your item(s)" do |offer|
       items = []
-      WantedItem.find_all_by_offer_id(offer.id).each do |wanted_item|
+      offer.wanted_items.each do |wanted_item|
         items << link_to(image_tag((Product.find(wanted_item.product_id).image.url(:thumb)), :class => "offer_thumb" ), item_url(wanted_item.product_id))
       end
       items = items.uniq
@@ -64,19 +65,26 @@ ActiveAdmin.register Offer do
       else
         links << content_tag(:label, "Accepted", :class => "unclickable")
       end
-      
+=begin No Reject option for now
       unless offer.response == 2
         links << link_to("Reject", offer_path(offer.id) + "/respond/reject", :confirm => "Reject this offer?", :method => :put)
       else
         links << content_tag(:label, "Rejected", :class => "unclickable")
       end
+=end      
+      unless offer.response == 1
+        links << link_to("Counter Offer", "#")
+      else
+        links << content_tag(:label, "Counter Offer", :class => "unclickable")
+      end
       
-      links << link_to("Counter Offer", "#")
-      links << link_to("View", "#")
+      links << link_to("View", offer_path(offer.id))
       links.join(" | ").html_safe
     end
-    
-    #default_actions
+   end
+   
+   show do |offer|
+     render :partial => "offer_details", :locals => {:offer => offer, :user => current_user, :offerer => User.find(offer.sender_id) }
    end
    
    form do |f|

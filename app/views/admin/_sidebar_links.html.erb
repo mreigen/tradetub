@@ -1,5 +1,8 @@
-This is the demo app for <%= link_to "Active Admin", "http://activeadmin.info" %>.
-Don't hesitate to check out the
-<%= link_to("source code for this page", "https://github.com/gregbell/demo.activeadmin.info/blob/master/app/admin/#{model}.rb") %>,
-the <%= link_to("Documentation", "http://activeadmin.info/documentation.html") %>
-and the <%= link_to("Github Repo", "https://github.com/gregbell/active_admin") %>.
+<%
+return if user.blank?
+avg_rating = get_average_ratings_from_user(user)
+%>
+Username: <%= link_to user.username, "/users/#{user.id}" %>
+<br/>
+Ratings: <%= avg_rating.to_s + "/5" %>
+<br/>

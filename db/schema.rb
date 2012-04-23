@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418041839) do
+ActiveRecord::Schema.define(:version => 201204230143021) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20120418041839) do
   create_table "products", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "author"
+    t.string   "user_id"
     t.decimal  "price"
     t.boolean  "featured"
     t.date     "available_on"
@@ -97,10 +97,18 @@ ActiveRecord::Schema.define(:version => 20120418041839) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "cat_id"
+    t.integer  "trade_type",         :default => 0
+    t.boolean  "available",          :default => true
   end
 
   add_index "products", ["available_on"], :name => "index_products_on_available_on"
   add_index "products", ["featured"], :name => "index_products_on_featured"
+
+  create_table "ratings", :force => true do |t|
+    t.string  "offer_id"
+    t.integer "score"
+    t.string  "comment"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :products
   has_many :orders
+  has_many :ratings
+  has_many :offers
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
