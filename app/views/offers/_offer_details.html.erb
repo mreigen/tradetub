@@ -1,18 +1,22 @@
+<script src="/javascripts/jquery/jquery.ui.widget.js"></script>
+<script src="/javascripts/jquery/jquery.ui.draggable.js"></script>
+<script src="/javascripts/jquery/jquery.ui.droppable.js"></script>
 
-	<script src="/javascripts/jquery/jquery.ui.widget.js"></script>
-	<script src="/javascripts/jquery/jquery.ui.draggable.js"></script>
-	<script src="/javascripts/jquery/jquery.ui.droppable.js"></script>
+<div id="suggested-value-wrapper">
+	<div id="suggested-value"></div>
+</div>
 	
 <div id="offer-details">
 	<div id="offering-items">
 		<div id="offering-items-available">
-			<h2>Their available items</h2>
+			<h3>Their available items</h3>
 			<ul>
 			<% offerer.products.each do |item| %>
 				<% unless offer.offer_items.include?(OfferItem.find_by_product_id(item.id))%>
 				<li>
-					<div><%=  item.title %></div>
-					<div><img src="<%= item.image.url(:thumb) %>" /><div>
+					<div><%= item.title %></div>
+					<div><img src="<%= item.image.url(:thumb) %>" /></div>
+					<%= hidden_field_tag 'offering' + item.id.to_s + '[price]', item.price %>
 				</li>
 				<% end %>
 			<% end %>
@@ -20,59 +24,87 @@
 		</div>
 	
 		<div id="offering-items-offered">
-			<h2>Items they offer</h2>
+			<h3>Items they offer</h3>
 			<ul>
 			<% offer.offer_items.each do |offer_item| %>
 				<li>
 					<% @product = offer_item.product %>
 					<div><%=  @product.title %></div>
-					<div><img src="<%= @product.image.url(:thumb) %>" /><div>
+					<div><img src="<%= @product.image.url(:thumb) %>" /></div>
+					<%= hidden_field_tag 'offering' + @product.id.to_s + '[price]', @product.price %>
 				</li>
 			<% end %>
 			</ul>
 		</div>
 	</div>
 
-		
-	<div id="cash-compensate">
-		<h2>Cash offered</h2>
-		<%= number_to_currency(offer.cash_value) %>
-	</div>
-
-	
-	<div id="wanted-items">
-		<div id="wanted-items-offered">
-			<h2>Items they want from you</h2>
-			<ul>
-			<% offer.wanted_items.each do |wanted_item| %>
+	<div id="available-services">
+		<h3>Their available services</h3>
+		<ul>
+		<% offerer.services.each do |service| %>
+			<% unless offer.offer_services.include?(OfferService.find_by_service_id(service.id)) %>
 				<li>
-					<% @product = wanted_item.product %>
-					<div><%=  @product.title %></div>
-					<div><img src="<%= @product.image.url(:thumb) %>" /><div>
+					<%= service.name %>
 				</li>
 			<% end %>
-			</ul>
-		</div>
+		<% end%>
+		</ul>
+	</div>
+	<div id="offering-services">
+		<h3>Service offered</h3>
+		<ul>
+		<% offer.offer_services.each do |offer_service| %>
+			<li><%= offer_service.service.name %></li>
+		<% end %>
+		</ul>
+	</div>
+		
+	<div id="wanted-items">
+
 		<div id="wanted-items-available">
-			<h2>Your available items</h2>
+			<h3>Your available items</h3>
 			<ul>
 			<% user.products.each do |item| %>
 			<% unless offer.wanted_items.include?(WantedItem.find_by_product_id(item.id))%>
 				<li>
 					<div><%=  item.title %></div>
-					<div><img src="<%= item.image.url(:thumb) %>" /><div>
+					<div><img src="<%= item.image.url(:thumb) %>" /></div>
+					<%= hidden_field_tag 'wanted' + item.id.to_s + '[price]', item.price %>
 				</li>
 				<% end %>
 			<% end %>
 			</ul>
 		</div>
-
+		<div id="wanted-items-offered">
+			<h3>Items they want from you</h3>
+			<ul>
+			<% offer.wanted_items.each do |wanted_item| %>
+				<li>
+					<% @product = wanted_item.product %>
+					<div><%=  @product.title %></div>
+					<div><img src="<%= @product.image.url(:thumb) %>" /></div>
+					<%= hidden_field_tag 'wanted' + @product.id.to_s + '[price]', @product.price %>
+				</li>
+			<% end %>
+			</ul>
+		</div>
+		
 	</div>
+
+		
+	<div id="cash-compensate">
+		<h3>Their cash offered</h3>
+		<%= text_field(:offer, :cash_value, :value => number_to_currency(offer.cash_value), :size => 10, :onchange => "updateOfferCashHiddenField(this.value);") %>
+		<%= hidden_field_tag 'offer_cash_value_hidden', offer.cash_value %>
+	</div>
+
+
 </div>
 
 <script type="text/javascript">
 	crossSelect("offering-items-available", "offering-items-offered");
 	crossSelect("wanted-items-available", "wanted-items-offered");
+	crossSelect("offering-services", "available-services");
 	
 	function crossSelect(div1, div2) {
 	
@@ -82,6 +114,7 @@
 				$("<li></li>").html(ui.draggable.html()).appendTo($(this).find("ul"));
 				ui.draggable.remove();
 				crossSelect(div1, div2);
+				updateSuggestedValue();
 			},
 			accept: "#" + div1 + " ul li"
 		});
@@ -92,9 +125,42 @@
 				$("<li></li>").html(ui.draggable.html()).appendTo($(this).find("ul"));
 				ui.draggable.remove();
 				crossSelect(div1, div2);
+				updateSuggestedValue();
 			},
 			accept: "#" + div2 + " ul li"
 		});
-		
 	}
+	
+	function updateSuggestedValue(div_id) {
+		if (typeof div_id === "undefined") div_id = "#suggested-value";
+		var offering_value = 0;
+		$("#offering-items-offered input:hidden[name*='offering']").each(function() {
+			offering_value += parseFloat(this.value);
+		});
+		var wanted_value = 0;
+		$("#wanted-items-offered input:hidden[name*='wanted']").each(function() {
+			wanted_value += parseFloat(this.value);
+		});
+		var cash_offered = $("#offer_cash_value_hidden").val();
+		var suggested_value = Math.round(wanted_value - offering_value - cash_offered).toFixed(2);
+		var instruction = "";
+		if (suggested_value < 0) {
+			instruction = "You would need to pay them $";
+			suggested_value = (-1) * suggested_value;
+			$(div_id).parent().css("backgroundColor","red");
+		}
+		else {
+			instruction = "They would need to pay you $";
+			$(div_id).parent().css("backgroundColor","royalBlue");
+		}
+		$(div_id).html(instruction + suggested_value);
+	}
+	
+	function updateOfferCashHiddenField(v) {
+		$('#offer_cash_value_hidden').val(v.replace('$',''));	
+		updateSuggestedValue();
+	}
+	
+	// initial update
+	updateSuggestedValue();
 </script>

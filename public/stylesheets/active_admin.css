@@ -6,9 +6,8 @@
 	width: 46px;
 }
 
-
 #offering-items-available, #offering-items-offered, 
-#wanted-items-available, #wanted-items-offered, #cash-compensate {
+#wanted-items-available, #wanted-items-offered, #cash-compensate, #offering-services, #available-services {
 	position: relative;
 	float: left;
 	background-color: #EEE;
@@ -16,21 +15,57 @@
 	width: 114px;
 }
 
+#available-services li, #offering-services li {
+	background-color: black;
+	color: white;
+	margin: 2px 0 2px 0;
+	padding: 2px;
+	font-size: 0.6em;
+}
+
+#offering-items-available h3, #offering-items-offered h3, 
+#wanted-items-available h3, #wanted-items-offered h3, #cash-compensate h3, #offering-services h3, #available-services h3 {
+	height: 50px;
+	background-color: #CCC;
+	padding: 9px;
+}
+
+#offering-items-available li, #offering-items-offered li, 
+#wanted-items-available li, #wanted-items-offered li, #cash-compensate li, #offering-services li, #available-services li {
+}
+
 #wanted-items {
 }
 
 #offering-items-available, #offering-items-offered, #wanted-items-available, #wanted-items-offered {
-	width: 200px;
-	height: 300px;
+	width: 100px;
+}
+
+#offering-items-offered, #wanted-items-offered, #cash-compensate, #offering-services {
+	background-color: #ddd;
 }
 
 #offer-details ul {
 	list-style-type: none;
 }
 
-#offer-details {
-
+#offer-details img {
+	width: 50px;
 }
+
+#suggested-value-wrapper {
+	height: 41px;
+	width: 100%;
+	background-color: royalBlue;
+	margin: 5px 0 5px;
+	text-align: center;
+	color: darkGray;
+	font-size: 30px;
+	padding-top: 21px;
+	text-shadow: #449 1px 1px 1px;
+	box-shadow: #888 0 0 2px;
+}
+
 /* =============== */
 span.icon {
   vertical-align: middle;
@@ -115,7 +150,7 @@ h2 {
   margin-bottom: 0.75em; }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.2em;
   line-height: 1;
   margin-bottom: 1em; }
 

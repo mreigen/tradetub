@@ -63,6 +63,11 @@ ActiveRecord::Schema.define(:version => 201204230143021) do
     t.decimal "adjusted_price", :precision => 8, :scale => 2
   end
 
+  create_table "offer_services", :force => true do |t|
+    t.string "service_id"
+    t.string "offer_id"
+  end
+
   create_table "offers", :force => true do |t|
     t.string   "sender_id",                                                 :null => false
     t.datetime "created_at"
@@ -110,6 +115,12 @@ ActiveRecord::Schema.define(:version => 201204230143021) do
     t.string  "comment"
   end
 
+  create_table "services", :force => true do |t|
+    t.string "name"
+    t.string "service_type"
+    t.string "user_id"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
@@ -132,6 +143,11 @@ ActiveRecord::Schema.define(:version => 201204230143021) do
     t.string  "product_id"
     t.string  "offer_id"
     t.decimal "adjusted_price", :precision => 8, :scale => 2
+  end
+
+  create_table "wanted_services", :force => true do |t|
+    t.string "service_id"
+    t.string "offer_id"
   end
 
 end
