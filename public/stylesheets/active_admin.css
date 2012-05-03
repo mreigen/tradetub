@@ -16,7 +16,7 @@
 .item-title {
 	position: absolute;
 	float: left;
-	color: white;
+	color: black;
 	left: 54px;
 	top: 0px;
 	width: 82px;
@@ -25,9 +25,21 @@
 .item-price {
 	position: absolute;
 	float: right;
-	color: lightgray;
+	color: #333;
 	right: 3px;
 	top: 0px;
+}
+
+.cash-compensate {
+	text-align: center;
+}
+
+.cash-compensate input {
+	border: none;
+	padding: 6px;
+	font-family: helvetica;
+	font-size: 14px;
+	color: #333;
 }
 
 #their-items, #my-items {
@@ -37,7 +49,7 @@
 }
 
 #offering-items-available, #offering-items-offered, 
-#wanted-items-available, #wanted-items-offered, #cash-compensate {
+#wanted-items-available, #wanted-items-offered, .cash-compensate {
 	position: relative;
 	float: left;
 	background-color: #EEE;
@@ -49,6 +61,7 @@
 	position: relative;
 	float: left;
 	width: 944px;
+	margin-top: 50px;
 }
 
 #offering-services, #available-services {
@@ -67,7 +80,7 @@
 }
 
 #offering-items-available h3, #offering-items-offered h3, 
-#wanted-items-available h3, #wanted-items-offered h3, #cash-compensate h3, #offering-services h3, #available-services h3 {
+#wanted-items-available h3, #wanted-items-offered h3, .cash-compensate h3, #offering-services h3, #available-services h3 {
 	height: 15px;
 	background-color: #CCC;
 	padding: 9px;
@@ -75,9 +88,10 @@
 
 #offering-items-available li, #offering-items-offered li, 
 #wanted-items-available li, #wanted-items-offered li, #cash-compensate li, #offering-services li, #available-services li {
-	background-color: black;
-	width: 194px;
+	background-color: #EEE;
+	width: 192px;
 	position: relative;
+	border: #CCC 1px dashed;
 }
 
 #wanted-items {
@@ -125,31 +139,33 @@
 #their-value {
 	height: 29px;
 	width: 118px;
-	background-color: #eee;
-	margin: -33px 0 5px;
+	background-color: #EEE;
 	text-align: center;
 	color: darkGray;
 	font-size: 20px;
 	padding-top: 12px;
 	text-shadow: #449 1px 1px 1px;
 	box-shadow: #888 0 0 2px;
-	position: fixed;
-	right: 0;
+	position: absolute;
+	z-index: 999;
+	top: 361px;
+	left: 426px;
 }
 
 #my-value {
 	height: 29px;
 	width: 118px;
-	background-color: #eee;
-	margin: 11px 0 5px;
+	background-color: #EEE;
 	text-align: center;
 	color: darkGray;
 	font-size: 20px;
 	padding-top: 12px;
 	text-shadow: #449 1px 1px 1px;
 	box-shadow: #888 0 0 2px;
-	position: fixed;
-	right: 0;
+	position: absolute;
+	z-index: 999;
+	top: 361px;
+	right: 435px;
 }
 
 /* =============== */

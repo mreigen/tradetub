@@ -11,10 +11,10 @@
 <div id="offer-wrapper">
 	<div id="offer-details">
 			<div id="their-items">
-				<div id="cash-compensate">
+				<div class="cash-compensate">
 					<h3>Their cash offered</h3>
-					<%= text_field(:offer, :cash_value, :value => number_to_currency(offer.cash_value), :size => 10, :onchange => "updateOfferCashHiddenField(this.value);") %>
-					<%= hidden_field_tag 'offer_cash_value_hidden', offer.cash_value %>
+					<%= text_field(:offer, :cash_value, :value => ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency(0)), :size => 10, :onchange => "updateOfferCashHiddenField(this.value, false);") %>
+					<%= hidden_field_tag 'their_offer_cash_value_hidden', ((offer.cash_value > 0 )? offer.cash_value : 0) %>
 				</div>
 				<div id="offering-items">
 					<div id="offering-items-available">
@@ -51,10 +51,10 @@
 			</div>
 			
 			<div id="my-items">
-				<div id="cash-compensate">
+				<div class="cash-compensate">
 					<h3>My cash offered</h3>
-					<%= text_field(:offer, :cash_value, :value => number_to_currency(offer.cash_value), :size => 10, :onchange => "updateOfferCashHiddenField(this.value);") %>
-					<%= hidden_field_tag 'offer_cash_value_hidden', offer.cash_value %>
+					<%= text_field(:offer, :cash_value, :value =>  ((offer.cash_value > 0 )? number_to_currency(0) : number_to_currency(offer.cash_value)), :size => 10, :onchange => "updateOfferCashHiddenField(this.value, true);") %>
+					<%= hidden_field_tag 'my_offer_cash_value_hidden', ((offer.cash_value > 0 )? 0 : offer.cash_value) %>
 				</div>
 				<div id="wanted-items">
 					<div id="wanted-items-offered">
@@ -126,6 +126,7 @@
 			drop: function(event, ui) {
 				$("<li></li>").html(ui.draggable.html()).appendTo($(this).find("ul"));
 				ui.draggable.remove();
+				ui.helper.remove();
 				crossSelect(div1, div2);
 				updateSuggestedValue();
 			},
@@ -137,7 +138,8 @@
 			drop: function(event, ui) {
 				$("<li></li>").html(ui.draggable.html()).appendTo($(this).find("ul"));
 				ui.draggable.remove();
-				crossSelect(div1, div2);
+				ui.helper.remove();
+				crossSelect(div2, div1);
 				updateSuggestedValue();
 			},
 			accept: "#" + div2 + " ul li"
@@ -145,23 +147,33 @@
 	}
 	
 	function updateSuggestedValue(div_id) {
+		console.log("update value");
 		if (typeof div_id === "undefined") div_id = "#suggested-value";
 		
-		var offering_value = 0;
+		// their total item value
+		var their_value = 0;
 		$("#offering-items-offered input:hidden[name*='offering']").each(function() {
-			offering_value += parseFloat(this.value);
-			$("#their-value").html("$" + offering_value);
+			their_value += parseFloat(this.value);
 		});
 		
-		var wanted_value = 0;
+		// my total item value
+		var my_value = 0;
 		$("#wanted-items-offered input:hidden[name*='wanted']").each(function() {
-			wanted_value += parseFloat(this.value);
-			$("#my-value").html("$" + wanted_value);
+			my_value += parseFloat(this.value);
 		});
 		
-		var cash_offered = $("#offer_cash_value_hidden").val();
-		var suggested_value = Math.round(wanted_value - offering_value - cash_offered).toFixed(2);
+					
+		// their cash
+		var their_cash_offered = parseFloat($("#their_offer_cash_value_hidden").val());
+		// my cash
+		var my_cash_offered = parseFloat($("#my_offer_cash_value_hidden").val());
 		
+		$("#their-value").html("$" + (their_value + their_cash_offered));
+		
+		$("#my-value").html("$" + (my_value + my_cash_offered));
+		
+		var suggested_value = Math.round(parseFloat(my_value) + parseFloat(my_cash_offered) - parseFloat(their_value) - parseFloat(their_cash_offered)).toFixed(2);
+				
 		var instruction = "";
 		
 		if (suggested_value < 0) {
@@ -182,8 +194,13 @@
 		}
 	}
 	
-	function updateOfferCashHiddenField(v) {
-		$('#offer_cash_value_hidden').val(v.replace('$',''));	
+	function updateOfferCashHiddenField(v, isMine) {
+		if (isMine) {
+			$('#my_offer_cash_value_hidden').val(v.replace('$',''));	
+		}
+		else {
+			$('#their_offer_cash_value_hidden').val(v.replace('$',''));
+		}
 		updateSuggestedValue();
 	}
 	
