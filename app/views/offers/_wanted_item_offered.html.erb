@@ -1,0 +1,12 @@
+<h3>Items I offer</h3>
+<ul>
+<% offer.wanted_items.each do |wanted_item| %>
+	<li>
+		<% @product = wanted_item.product %>
+		<div class="item-image-list"><img src="<%= @product.image.url(:thumb) %>" /></div>									
+		<div class="item-title"><%=  @product.title %></div>
+		<div class="item-price"><%= number_to_currency(@product.price) %></div>
+		<%= hidden_field_tag 'wanted' + @product.id.to_s + '[price]', @product.price %>
+	</li>
+<% end %>
+</ul>

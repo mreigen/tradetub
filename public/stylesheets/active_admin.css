@@ -1,3 +1,10 @@
+#offer-wrapper h3 {
+	font-size: 1.4em;
+	line-height: 1;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
 .unclickable {
 	color: gray;
 }
@@ -19,7 +26,16 @@
 	color: black;
 	left: 54px;
 	top: 0px;
-	width: 82px;
+	width: 121px;
+}
+
+.item-description {
+	position: absolute;
+	float: left;
+	color: #888;
+	width: 196px;
+	left: 179px;
+	top: 0px;
 }
 
 .item-price {
@@ -42,14 +58,35 @@
 	color: #333;
 }
 
+#offer-wrapper {
+	margin-top: -42px;
+}
+
+#offering-items, #wanted-items {
+	position: relative;
+	top: 34px;
+}
+
 #their-items, #my-items {
-	width: 50%;
+	width: 101%;
 	position: relative;
 	float: left;
 }
 
+#my-items {
+	margin-top: -1px;
+}
+
+#up-down-image {
+	position: relative;
+	right: 204px;
+	width: 40px;
+	float: right;
+	top: 36px;
+}
+
 #offering-items-available, #offering-items-offered, 
-#wanted-items-available, #wanted-items-offered, .cash-compensate {
+#wanted-items-available, #wanted-items-offered {
 	position: relative;
 	float: left;
 	background-color: #EEE;
@@ -60,8 +97,8 @@
 #service-trading {
 	position: relative;
 	float: left;
-	width: 944px;
-	margin-top: 50px;
+	width: 470px;
+	margin-top: 69px;
 }
 
 #offering-services, #available-services {
@@ -69,6 +106,7 @@
 	float: left;
 	width: 50%;	
 	background-color: #EEE;
+	height: 193px;
 }
 
 #available-services li, #offering-services li {
@@ -92,40 +130,53 @@
 	width: 192px;
 	position: relative;
 	border: #CCC 1px dashed;
+	color: black;
+	font-size: 12px;
+	list-style: none;
+	cursor: pointer;
 }
 
 #wanted-items {
 }
 
 #offering-items-available, #offering-items-offered, #wanted-items-available, #wanted-items-offered {
-	width: 229px;
+	width: 49%;
+}
+
+#offer-details ul {
+	list-style-type: none;
+	overflow-y: auto;
+	height: 175px;
+	float: left;
+	margin: -8px 0 0 -13px;
+	width: 98%;
 }
 
 #offering-items-available li , #offering-items-offered li, #wanted-items-available li, #wanted-items-offered li {
 	margin-top: 2px;
+	width: 99%;
+	overflow: hidden;
 }
 
 #offering-items-offered, #wanted-items-offered, #cash-compensate, #offering-services {
 	background-color: #ddd;
 }
 
-#offer-details ul {
-	list-style-type: none;
-	overflow-y: auto;
-	height: 150px;
-	width: 210px;
-	float: left;
-}
-
 #offer-details img {
 	width: 50px;
+}
+
+#suggested-value-outer {
+	position: fixed;
+	right: 1px;
+	text-align: center;
+	width: 116px;
 }
 
 #suggested-value {
 	height: 29px;
 	width: 118px;
 	background-color: royalBlue;
-	margin: 55px 0 5px;
 	text-align: center;
 	color: darkGray;
 	font-size: 20px;
@@ -136,36 +187,87 @@
 	right: 0;
 }
 
+#suggested-value-wrapper {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 9px;
+}
+
+#cash-value-wrapper, #my-value-wrapper {
+	position: absolute;
+	padding: 11px 0 0 50px;
+	width: 100%;
+}
+
+#cash-value-wrapper .cash-suggested {
+	position: absolute;
+	width: 36px;
+	float: left;
+	left: 8px;	
+}
+
+#cash-value-wrapper .cash-direction {
+	position: fixed;
+	float: right;
+	right: 0px;
+	width: 123px;
+	top: 183px;
+}
+
+#my-value-wrapper .cash-suggested {
+	position: absolute;
+	width: 36px;
+	float: left;
+	right: 92px;
+}
+
+#cash-value-wrapper .cash-compensate {
+	text-align: center;
+	width: 110px;
+	top: 262px;
+	position: fixed;
+	float: right;
+	right: 3px;
+	border: #888 solid 1px;
+}
+
+#my-value-wrapper .cash-compensate {
+	text-align: center;
+	width: 10%;
+	right: 142px;
+	position: absolute;
+	top: 2px;
+}
+
 #their-value {
 	height: 29px;
-	width: 118px;
-	background-color: #EEE;
-	text-align: center;
-	color: darkGray;
-	font-size: 20px;
-	padding-top: 12px;
-	text-shadow: #449 1px 1px 1px;
-	box-shadow: #888 0 0 2px;
+	width: 143px;
+	text-align: right;
+	color: white;
+	font-size: 15px;
+	text-shadow: #888 1px 1px 1px;
 	position: absolute;
 	z-index: 999;
-	top: 361px;
-	left: 426px;
+	top: 63px;
+	right: 16px;
+	float: right;
+	margin-top: 0px;
 }
 
 #my-value {
 	height: 29px;
-	width: 118px;
-	background-color: #EEE;
-	text-align: center;
-	color: darkGray;
-	font-size: 20px;
-	padding-top: 12px;
-	text-shadow: #449 1px 1px 1px;
-	box-shadow: #888 0 0 2px;
+	width: 143px;
+	text-align: right;
+	color: white;
+	font-size: 15px;
+	text-shadow: #888 1px 1px 1px;
 	position: absolute;
 	z-index: 999;
-	top: 361px;
-	right: 435px;
+	top: 340px;
+	right: 16px;
+	float: right;
+	margin-top: 0px;
 }
 
 /* =============== */

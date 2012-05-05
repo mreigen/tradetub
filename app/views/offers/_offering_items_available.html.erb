@@ -1,0 +1,14 @@
+<h3>Their available items</h3>
+<ul>
+<% offerer.products.each do |item| %>
+	<% unless offer.offer_items.include?(OfferItem.find_by_product_id(item.id))%>
+	<li>
+		<div class="item-image-list"><img src="<%= item.image.url(:thumb) %>" /></div>
+		<div class="item-title"><%= item.title %></div>
+		<div class="item-description"><%= item.description %></div>
+		<div class="item-price"><%= number_to_currency(item.price) %></div>
+		<%= hidden_field_tag 'offering' + item.id.to_s + '[price]', item.price %>
+	</li>
+	<% end %>
+<% end %>
+</ul>

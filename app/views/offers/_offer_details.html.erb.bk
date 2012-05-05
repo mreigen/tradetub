@@ -1,0 +1,201 @@
+<script src="/javascripts/jquery/jquery.ui.widget.js"></script>
+<script src="/javascripts/jquery/jquery.ui.draggable.js"></script>
+<script src="/javascripts/jquery/jquery.ui.droppable.js"></script>
+
+<div id="suggested-value-wrapper">
+	
+	<div id="cash-value-wrapper">
+		<div class="cash-direction">
+			<h1>Cash</h1>
+			<select onchange="updateCashDirection(this.value);">
+				<option value="they-pay" selected>They will pay me</option>
+				<option value="i-pay">I will pay them</option>
+			</select>
+		</div>
+		<div class="cash-compensate">
+			<%= text_field(:offer, :cash_value, :value => ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency(0)), :size => 10, :onchange => "updateOfferCashHiddenField(this.value);") %>
+			<%= hidden_field_tag 'offer_cash_value_hidden', ((offer.cash_value > 0 )? offer.cash_value : 0) %>
+		</div>
+	</div>
+	
+	<div id="their-value"></div>
+	<div id="my-value"></div>
+	<div id="suggested-value-outer">
+		<div id="suggested-text"></div>
+		<div id="suggested-value"></div>
+	</div>
+	
+</div>
+
+<h1>Items</h1>
+
+<div id="offer-wrapper">
+	<div id="offer-details">
+		
+			<div id="their-items">
+				<div id="offering-items">
+					<div id="offering-items-available">
+						<%= render "offering_items_available", :offerer => offerer, :offer => offer %>
+					</div>
+
+					<div id="offering-items-offered">
+						<%= render "offering_items_offered", :offer => offer %>
+					</div>
+				</div>
+			</div>
+			
+			<div id="up-down-image">
+				<img src="http://aux4.iconpedia.net/uploads/74429410244335194.png">
+			</div>
+			
+			<div id="my-items">
+				<div id="wanted-items">
+					<div id="wanted-items-available">
+						<%= render "wanted_items_available", :offer => offer, :user => user %>
+					</div>
+					<div id="wanted-items-offered">
+						<%= render "wanted_items_offered", :offer => offer %>
+					</div>
+				</div>
+			</div>
+			
+	</div> <!-- end of offer-details -->
+	
+	<div id="service-trading">
+		<h1>Services</h1>
+		<div id="available-services">
+			<h3>Their available services</h3>
+			<ul>
+			<% offerer.services.each do |service| %>
+				<% unless offer.offer_services.include?(OfferService.find_by_service_id(service.id)) %>
+					<li>
+						<%= service.name %>
+					</li>
+				<% end %>
+			<% end%>
+			</ul>
+		</div>
+		<div id="offering-services">
+			<h3>Service offered</h3>
+			<ul>
+			<% offer.offer_services.each do |offer_service| %>
+				<li><%= offer_service.service.name %></li>
+			<% end %>
+			</ul>
+		</div>
+	</div> <!-- end of service-trading -->
+</div>
+
+<script type="text/javascript">
+	crossSelect("offering-items-available", "offering-items-offered");
+	crossSelect("wanted-items-available", "wanted-items-offered");
+	crossSelect("offering-services", "available-services");
+	
+	function crossSelect(div1, div2) {
+	
+		$("#" + div1 + " ul li").draggable({stack: "li", revert: "invalid", helper: "clone"});
+		$("#" + div2).droppable({
+			drop: function(event, ui) {
+				$("<li></li>").html(ui.draggable.html()).appendTo($(this).find("ul"));
+				ui.draggable.remove();
+				ui.helper.remove();
+				crossSelect(div1, div2);
+				updateSuggestedValue();
+			},
+			accept: "#" + div1 + " ul li"
+		});
+	
+		$("#" + div2 + " ul li").draggable({stack: "li", revert: "invalid", helper: "clone"});
+		$("#" + div1).droppable({
+			drop: function(event, ui) {
+				$("<li></li>").html(ui.draggable.html()).appendTo($(this).find("ul"));
+				ui.draggable.remove();
+				ui.helper.remove();
+				crossSelect(div2, div1);
+				updateSuggestedValue();
+			},
+			accept: "#" + div2 + " ul li"
+		});
+	}
+	
+	function updateSuggestedValue(div_id) {
+		console.log("update value");
+		if (typeof div_id === "undefined") div_id = "#suggested-value";
+		
+		// their total item value
+		var their_value = 0;
+		$("#offering-items-offered input:hidden[name*='offering']").each(function() {
+			their_value += parseFloat(this.value);
+		});
+		
+		// my total item value
+		var my_value = 0;
+		$("#wanted-items-offered input:hidden[name*='wanted']").each(function() {
+			my_value += parseFloat(this.value);
+		});
+		
+					
+		// cash
+		var cash_offered = parseFloat($("#offer_cash_value_hidden").val());
+		// their items worth
+		$("#their-value").html("total value: $" + their_value.toFixed(2));
+		// my items worth
+		$("#my-value").html("total value: $" + my_value.toFixed(2));
+		
+		var suggested_value = Math.round(parseFloat(my_value) - parseFloat(their_value) - parseFloat(cash_offered)).toFixed(2);
+				
+		var instruction = "";
+		
+		if (suggested_value < 0) {
+			instruction = "$";
+			suggested_value = (-1) * suggested_value;
+			$(div_id).css("backgroundColor","royalBlue");
+			$(div_id).html(instruction + suggested_value);
+			$("#suggested-text").html("You would gain");
+						
+			$("#cash-value-wrapper .cash-suggested").html(0);
+			$("#my-value-wrapper .cash-suggested").html(suggested_value);
+		}
+		else if (suggested_value > 0){
+			instruction = "$";
+			$(div_id).css("backgroundColor","darkred");
+			$(div_id).html(instruction + suggested_value);
+			$("#suggested-text").html("You would lose");
+		}
+		else {
+			instruction = "Fair deal! Let's trade now.";
+			$(div_id).css("backgroundColor","orange");
+			$(div_id).html(instruction);
+		}
+	}
+	
+	function updateOfferCashHiddenField(v) {
+		v = (((typeof v == "string") && (v.indexOf('$') != -1)) ? v.replace('$','') : v);
+		dir = $(".cash-direction option:selected").val();
+		v = getCashValueWithCashDirection(dir, v);
+		console.log(v);
+		$('#offer_cash_value_hidden').val(v);
+		updateSuggestedValue();
+	}
+	
+	function updateCashDirection(dir) {
+		v = $("#offer_cash_value").val();
+		v = ((v.indexOf('$') != -1) ? v.replace('$','') : v);
+		console.log(dir + ", " + v);
+		v = getCashValueWithCashDirection(dir, v);
+		updateOfferCashHiddenField(v);
+	}
+	
+	function getCashValueWithCashDirection(dir, v) {
+		console.log("dir = " + dir);
+		if (dir == "i-pay") {
+			v = (-1) * parseFloat(v);
+		}
+		else if (dir == "they-pay") {
+			v = parseFloat(v);
+		}
+		return v;
+	}
+	// initial update
+	updateSuggestedValue();
+</script>

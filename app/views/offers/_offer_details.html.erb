@@ -3,94 +3,66 @@
 <script src="/javascripts/jquery/jquery.ui.droppable.js"></script>
 
 <div id="suggested-value-wrapper">
+	
+	<div id="cash-value-wrapper">
+		<div class="cash-direction">
+			<h1>Cash</h1>
+			<select onchange="updateCashDirection(this.value);">
+				<option value="they-pay" selected>They will pay me</option>
+				<option value="i-pay">I will pay them</option>
+			</select>
+		</div>
+		<div class="cash-compensate">
+			<%= text_field(:offer, :cash_value, :value => ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency(0)), :size => 10, :onchange => "updateOfferCashHiddenField(this.value);") %>
+			<%= hidden_field_tag 'offer_cash_value_hidden', ((offer.cash_value > 0 )? offer.cash_value : 0) %>
+		</div>
+	</div>
+	
 	<div id="their-value"></div>
 	<div id="my-value"></div>
-	<div id="suggested-value"></div>
+	<div id="suggested-value-outer">
+		<div id="suggested-text"></div>
+		<div id="suggested-value"></div>
+	</div>
+	
 </div>
+
+<h1>Items</h1>
 
 <div id="offer-wrapper">
 	<div id="offer-details">
+		
 			<div id="their-items">
-				<div class="cash-compensate">
-					<h3>Their cash offered</h3>
-					<%= text_field(:offer, :cash_value, :value => ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency(0)), :size => 10, :onchange => "updateOfferCashHiddenField(this.value, false);") %>
-					<%= hidden_field_tag 'their_offer_cash_value_hidden', ((offer.cash_value > 0 )? offer.cash_value : 0) %>
-				</div>
 				<div id="offering-items">
 					<div id="offering-items-available">
-						<h3>Their available items</h3>
-						<ul>
-						<% offerer.products.each do |item| %>
-							<% unless offer.offer_items.include?(OfferItem.find_by_product_id(item.id))%>
-							<li>
-								<div class="item-image-list"><img src="<%= item.image.url(:thumb) %>" /></div>
-								<div class="item-title"><%= item.title %></div>
-								<div class="item-price"><%= number_to_currency(item.price) %></div>
-								<%= hidden_field_tag 'offering' + item.id.to_s + '[price]', item.price %>
-							</li>
-							<% end %>
-						<% end %>
-						</ul>
+						<%= render "offering_items_available", :offerer => offerer, :offer => offer %>
 					</div>
 
 					<div id="offering-items-offered">
-						<h3>Items they offer</h3>
-						<ul>
-						<% offer.offer_items.each do |offer_item| %>
-							<li>
-								<% @product = offer_item.product %>
-								<div class="item-image-list"><img src="<%= @product.image.url(:thumb) %>" /></div>								
-								<div class="item-title"><%=  @product.title %></div>
-								<div class="item-price"><%= number_to_currency(@product.price) %></div>
-								<%= hidden_field_tag 'offering' + @product.id.to_s + '[price]', @product.price %>
-							</li>
-						<% end %>
-						</ul>
+						<%= render "offering_items_offered", :offer => offer %>
 					</div>
 				</div>
 			</div>
 			
+			<div id="up-down-image">
+				<img src="http://aux4.iconpedia.net/uploads/74429410244335194.png">
+			</div>
+			
 			<div id="my-items">
-				<div class="cash-compensate">
-					<h3>My cash offered</h3>
-					<%= text_field(:offer, :cash_value, :value =>  ((offer.cash_value > 0 )? number_to_currency(0) : number_to_currency(offer.cash_value)), :size => 10, :onchange => "updateOfferCashHiddenField(this.value, true);") %>
-					<%= hidden_field_tag 'my_offer_cash_value_hidden', ((offer.cash_value > 0 )? 0 : offer.cash_value) %>
-				</div>
 				<div id="wanted-items">
-					<div id="wanted-items-offered">
-							<h3>Items I offer</h3>
-							<ul>
-							<% offer.wanted_items.each do |wanted_item| %>
-								<li>
-									<% @product = wanted_item.product %>
-									<div class="item-image-list"><img src="<%= @product.image.url(:thumb) %>" /></div>									
-									<div class="item-title"><%=  @product.title %></div>
-									<div class="item-price"><%= number_to_currency(@product.price) %></div>
-									<%= hidden_field_tag 'wanted' + @product.id.to_s + '[price]', @product.price %>
-								</li>
-							<% end %>
-							</ul>
-						</div>
 					<div id="wanted-items-available">
-						<h3>My available items</h3>
-						<ul>
-						<% user.products.each do |item| %>
-						<% unless offer.wanted_items.include?(WantedItem.find_by_product_id(item.id))%>
-							<li>
-								<div class="item-image-list"><img src="<%= item.image.url(:thumb) %>" /></div>
-								<div class="item-title"><%=  item.title %></div>
-								<div class="item-price"><%= number_to_currency(item.price) %></div>
-								<%= hidden_field_tag 'wanted' + item.id.to_s + '[price]', item.price %>
-							</li>
-							<% end %>
-						<% end %>
-						</ul>
+						<%= render "wanted_items_available", :offer => offer, :user => user %>
+					</div>
+					<div id="wanted-items-offered">
+						<%= render "wanted_items_offered", :offer => offer %>
 					</div>
 				</div>
 			</div>
 			
 	</div> <!-- end of offer-details -->
+	
 	<div id="service-trading">
+		<h1>Services</h1>
 		<div id="available-services">
 			<h3>Their available services</h3>
 			<ul>
@@ -163,16 +135,14 @@
 		});
 		
 					
-		// their cash
-		var their_cash_offered = parseFloat($("#their_offer_cash_value_hidden").val());
-		// my cash
-		var my_cash_offered = parseFloat($("#my_offer_cash_value_hidden").val());
+		// cash
+		var cash_offered = parseFloat($("#offer_cash_value_hidden").val());
+		// their items worth
+		$("#their-value").html("total value: $" + their_value.toFixed(2));
+		// my items worth
+		$("#my-value").html("total value: $" + my_value.toFixed(2));
 		
-		$("#their-value").html("$" + (their_value + their_cash_offered));
-		
-		$("#my-value").html("$" + (my_value + my_cash_offered));
-		
-		var suggested_value = Math.round(parseFloat(my_value) + parseFloat(my_cash_offered) - parseFloat(their_value) - parseFloat(their_cash_offered)).toFixed(2);
+		var suggested_value = Math.round(parseFloat(my_value) - parseFloat(their_value) - parseFloat(cash_offered)).toFixed(2);
 				
 		var instruction = "";
 		
@@ -181,11 +151,16 @@
 			suggested_value = (-1) * suggested_value;
 			$(div_id).css("backgroundColor","royalBlue");
 			$(div_id).html(instruction + suggested_value);
+			$("#suggested-text").html("You would gain");
+						
+			$("#cash-value-wrapper .cash-suggested").html(0);
+			$("#my-value-wrapper .cash-suggested").html(suggested_value);
 		}
 		else if (suggested_value > 0){
 			instruction = "$";
 			$(div_id).css("backgroundColor","darkred");
 			$(div_id).html(instruction + suggested_value);
+			$("#suggested-text").html("You would lose");
 		}
 		else {
 			instruction = "Fair deal! Let's trade now.";
@@ -194,16 +169,33 @@
 		}
 	}
 	
-	function updateOfferCashHiddenField(v, isMine) {
-		if (isMine) {
-			$('#my_offer_cash_value_hidden').val(v.replace('$',''));	
-		}
-		else {
-			$('#their_offer_cash_value_hidden').val(v.replace('$',''));
-		}
+	function updateOfferCashHiddenField(v) {
+		v = (((typeof v == "string") && (v.indexOf('$') != -1)) ? v.replace('$','') : v);
+		dir = $(".cash-direction option:selected").val();
+		v = getCashValueWithCashDirection(dir, v);
+		console.log(v);
+		$('#offer_cash_value_hidden').val(v);
 		updateSuggestedValue();
 	}
 	
+	function updateCashDirection(dir) {
+		v = $("#offer_cash_value").val();
+		v = ((v.indexOf('$') != -1) ? v.replace('$','') : v);
+		console.log(dir + ", " + v);
+		v = getCashValueWithCashDirection(dir, v);
+		updateOfferCashHiddenField(v);
+	}
+	
+	function getCashValueWithCashDirection(dir, v) {
+		console.log("dir = " + dir);
+		if (dir == "i-pay") {
+			v = (-1) * parseFloat(v);
+		}
+		else if (dir == "they-pay") {
+			v = parseFloat(v);
+		}
+		return v;
+	}
 	// initial update
 	updateSuggestedValue();
 </script>

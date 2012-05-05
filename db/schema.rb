@@ -116,9 +116,13 @@ ActiveRecord::Schema.define(:version => 201204230143021) do
   end
 
   create_table "services", :force => true do |t|
-    t.string "name"
-    t.string "service_type"
-    t.string "user_id"
+    t.string  "name"
+    t.string  "service_type"
+    t.string  "user_id"
+    t.string  "description"
+    t.decimal "price",        :precision => 8, :scale => 2
+    t.integer "trade_type",                                 :default => 0
+    t.boolean "available",                                  :default => true
   end
 
   create_table "users", :force => true do |t|
