@@ -16,34 +16,45 @@
 .item-image-list {
 	text-align: left; 
 	padding: 0;
-	height: 35px;
+	height: 94px;
 	overflow: hidden;
+}
+
+#offer-details img {
+	width: 100%;
+}
+
+#offer-details .close-icon {
+	position: absolute;
+	width: 45px;
+	right: 6px;
+	top: 6px;
 }
 
 .item-title {
 	position: absolute;
 	float: left;
-	color: black;
-	left: 54px;
-	top: 0px;
-	width: 121px;
+	color: #555;
+	top: 115px;
+	width: 93%;
 }
 
 .item-description {
+	display: none; /* hide this for now */
 	position: absolute;
 	float: left;
 	color: #888;
-	width: 196px;
-	left: 179px;
-	top: 0px;
+	width: 174px;
+	left: 118px;
+	top: 14px;
 }
 
 .item-price {
 	position: absolute;
 	float: right;
 	color: #333;
-	right: 3px;
-	top: 0px;
+	top: 101px;
+	font-weight: bold;
 }
 
 .cash-compensate {
@@ -67,6 +78,10 @@
 	top: 34px;
 }
 
+#available-service-list {
+	display: none;
+}
+
 #their-items, #my-items {
 	width: 101%;
 	position: relative;
@@ -77,12 +92,14 @@
 	margin-top: -1px;
 }
 
-#up-down-image {
-	position: relative;
-	right: 204px;
-	width: 40px;
-	float: right;
-	top: 36px;
+#dropbox {
+	position: absolute;
+	left: 502px;
+	top: 0px;
+	height: 375px;
+	width: 200px;
+	background-color: yellowGreen;
+	text-align: center;
 }
 
 #offering-items-available, #offering-items-offered, 
@@ -127,48 +144,65 @@
 #offering-items-available li, #offering-items-offered li, 
 #wanted-items-available li, #wanted-items-offered li, #cash-compensate li, #offering-services li, #available-services li {
 	background-color: #EEE;
-	width: 192px;
-	position: relative;
-	border: #CCC 1px dashed;
+	border: #CCC 1px solid;
 	color: black;
 	font-size: 12px;
 	list-style: none;
 	cursor: pointer;
+	box-shadow: #ccc 1px 1px 5px;
+	width: 130px;
+	height: 140px;
+	position: relative;
+	float: left;
+	padding: 5px;
+	margin: 5px;
+	overflow: hidden;
+	
+	background: white;
+	background: -moz-linear-gradient(top, white 0%, #E5E5E5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,white), color-stop(100%,#E5E5E5));
+	background: -webkit-linear-gradient(top, white 0%,#E5E5E5 100%);
+	background: -o-linear-gradient(top, white 0%,#E5E5E5 100%);
+	background: -ms-linear-gradient(top, white 0%,#E5E5E5 100%);
+	background: linear-gradient(top, white 0%,#E5E5E5 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
 }
 
 #wanted-items {
 }
 
+#offering-items-available, #offering-items-offered {
+	float: left;
+	left: 0px;
+}
+
+#wanted-items-available, #wanted-items-offered {
+ float: right;
+	right: 0px;	
+}
+
 #offering-items-available, #offering-items-offered, #wanted-items-available, #wanted-items-offered {
-	width: 49%;
+	width: 40%;
 }
 
 #offer-details ul {
 	list-style-type: none;
 	overflow-y: auto;
-	height: 175px;
+	height: 327px;
 	float: left;
 	margin: -8px 0 0 -13px;
 	width: 98%;
 }
 
 #offering-items-available li , #offering-items-offered li, #wanted-items-available li, #wanted-items-offered li {
-	margin-top: 2px;
-	width: 99%;
-	overflow: hidden;
+
 }
 
 #offering-items-offered, #wanted-items-offered, #cash-compensate, #offering-services {
 	background-color: #ddd;
 }
 
-#offer-details img {
-	width: 50px;
-}
-
 #suggested-value-outer {
-	position: fixed;
-	right: 1px;
 	text-align: center;
 	width: 116px;
 }
@@ -176,15 +210,15 @@
 #suggested-value {
 	height: 29px;
 	width: 118px;
-	background-color: royalBlue;
 	text-align: center;
 	color: darkGray;
 	font-size: 20px;
 	padding-top: 12px;
 	text-shadow: #449 1px 1px 1px;
 	box-shadow: #888 0 0 2px;
-	position: fixed;
-	right: 0;
+	position: absolute;
+	left: 537px;
+	top: 500px;
 }
 
 #suggested-value-wrapper {
@@ -2123,7 +2157,7 @@ body.logged_out {
 
 #wrapper {
   display: table;
-  width: 978px; 
+  width: 100%; 
 	margin: 0 auto;
 	background: white;
 	color: #222;

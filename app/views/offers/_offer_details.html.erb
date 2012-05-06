@@ -5,6 +5,7 @@
 <div id="suggested-value-wrapper">
 	
 	<div id="cash-value-wrapper">
+		<!--
 		<div class="cash-direction">
 			<h1>Cash</h1>
 			<select onchange="updateCashDirection(this.value);">
@@ -12,6 +13,7 @@
 				<option value="i-pay">I will pay them</option>
 			</select>
 		</div>
+		-->
 		<div class="cash-compensate">
 			<%= text_field(:offer, :cash_value, :value => ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency(0)), :size => 10, :onchange => "updateOfferCashHiddenField(this.value);") %>
 			<%= hidden_field_tag 'offer_cash_value_hidden', ((offer.cash_value > 0 )? offer.cash_value : 0) %>
@@ -37,24 +39,23 @@
 					<div id="offering-items-available">
 						<%= render "offering_items_available", :offerer => offerer, :offer => offer %>
 					</div>
-
-					<div id="offering-items-offered">
-						<%= render "offering_items_offered", :offer => offer %>
+					<div id="dropbox">
+						DROP STUFF HERE
 					</div>
-				</div>
-			</div>
-			
-			<div id="up-down-image">
-				<img src="http://aux4.iconpedia.net/uploads/74429410244335194.png">
-			</div>
-			
-			<div id="my-items">
-				<div id="wanted-items">
 					<div id="wanted-items-available">
 						<%= render "wanted_items_available", :offer => offer, :user => user %>
 					</div>
+				</div>
+			</div>
+
+			<div id="my-items">
+				<div id="wanted-items">
 					<div id="wanted-items-offered">
 						<%= render "wanted_items_offered", :offer => offer %>
+					</div>
+					
+					<div id="offering-items-offered">
+						<%= render "offering_items_offered", :offer => offer %>
 					</div>
 				</div>
 			</div>
@@ -87,36 +88,9 @@
 </div>
 
 <script type="text/javascript">
-	crossSelect("offering-items-available", "offering-items-offered");
-	crossSelect("wanted-items-available", "wanted-items-offered");
-	crossSelect("offering-services", "available-services");
-	
-	function crossSelect(div1, div2) {
-	
-		$("#" + div1 + " ul li").draggable({stack: "li", revert: "invalid", helper: "clone"});
-		$("#" + div2).droppable({
-			drop: function(event, ui) {
-				$("<li></li>").html(ui.draggable.html()).appendTo($(this).find("ul"));
-				ui.draggable.remove();
-				ui.helper.remove();
-				crossSelect(div1, div2);
-				updateSuggestedValue();
-			},
-			accept: "#" + div1 + " ul li"
-		});
-	
-		$("#" + div2 + " ul li").draggable({stack: "li", revert: "invalid", helper: "clone"});
-		$("#" + div1).droppable({
-			drop: function(event, ui) {
-				$("<li></li>").html(ui.draggable.html()).appendTo($(this).find("ul"));
-				ui.draggable.remove();
-				ui.helper.remove();
-				crossSelect(div2, div1);
-				updateSuggestedValue();
-			},
-			accept: "#" + div2 + " ul li"
-		});
-	}
+	makeDraggable("available-item-list");
+	makeDraggable("wanted-items-available");
+	makeDraggable("available-service-list");
 	
 	function updateSuggestedValue(div_id) {
 		console.log("update value");

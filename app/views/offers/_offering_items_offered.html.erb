@@ -1,13 +1,35 @@
 <h3>Items they offer</h3>
 <ul>
 <% offer.offer_items.each do |offer_item| %>
-	<li>
+	<li class="item-list">
 		<% @product = offer_item.product %>
 		<div class="item-image-list"><img src="<%= @product.image.url(:thumb) %>" /></div>								
 		<div class="item-title"><%=  @product.title %></div>
 		<div class="item-description"><%= @product.description %></div>
 		<div class="item-price"><%= number_to_currency(@product.price) %></div>
 		<%= hidden_field_tag 'offering' + @product.id.to_s + '[price]', @product.price %>
+		<img class="close-icon" src="http://icons.iconarchive.com/icons/visualpharm/must-have/256/Remove-icon.png"/>
 	</li>
 <% end %>
 </ul>
+
+<script language="javascript">
+	$(".close-icon").click(function() {
+		// add back to the available list
+		var item = $(this).parent();//li
+		console.log(item.attr("class"));
+		// add it back to the right place
+		var itemClass = item.attr("class");
+		var availableUl = "";
+		if (itemClass.indexOf("item-li") != -1) {
+			availableUl = "available-item-list"; //ul
+		}
+		else if (itemClass.indexOf("service-li") != -1) {
+			availableUl = "available-service-list"; //ul
+		}
+		item.appendTo($("#" + availableUl));
+		makeDraggable(availableUl);
+		// remove close icon
+		$(this).remove();
+	});
+</script>
