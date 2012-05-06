@@ -1,8 +1,8 @@
 <h3>My available items</h3>
-<ul>
+<ul id="my-available-item-list">
 <% user.products.each do |item| %>
 <% unless offer.wanted_items.include?(WantedItem.find_by_product_id(item.id))%>
-	<li>
+	<li class="my-item-li">
 		<div class="item-image-list"><img src="<%= item.image.url(:thumb) %>" /></div>
 		<div class="item-title"><%=  item.title %></div>
 		<div class="item-description"><%= item.description %></div>

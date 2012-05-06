@@ -8,10 +8,10 @@ function makeDraggable(ul1) {
 		drop: function(event, ui) {
 			// deliver the dropped item at the right box
 			var draggableParentId = ui.draggable.parent().attr("id");
-			if ((draggableParentId == "available-item-list") || (draggableParentId == "available-service-list")) {
+			if ((draggableParentId == "their-available-item-list") || (draggableParentId == "their-available-service-list")) {
 				dest = "#offering-items-offered ul";
 			}
-			else if (false)  {
+			else if ((draggableParentId == "my-available-item-list") || (draggableParentId == "my-available-service-list"))  {
 				dest = "#wanted-items-offered ul";
 			}
 			
@@ -39,12 +39,19 @@ function putBack(t) {
 	// add it back to the right place
 	var itemClass = item.attr("class");
 	var availableUl = "";
-	if (itemClass.indexOf("item-li") != -1) {
-		availableUl = "available-item-list"; //ul
+	if (itemClass.indexOf("their-item-li") != -1) {
+		availableUl = "their-available-item-list"; //ul
 	}
-	else if (itemClass.indexOf("service-li") != -1) {
-		availableUl = "available-service-list"; //ul
+	else if (itemClass.indexOf("their-service-li") != -1) {
+		availableUl = "their-available-service-list"; //ul
 	}
+	else if (itemClass.indexOf("my-item-li") != -1) {
+		availableUl = "my-available-item-list"; //ul
+	}
+	else if (itemClass.indexOf("my-service-li") != -1) {
+		availableUl = "my-available-service-list"; //ul
+	}
+	
 	item.appendTo($("#" + availableUl));
 	makeDraggable(availableUl);
 	// remove close icon

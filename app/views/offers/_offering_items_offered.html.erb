@@ -1,7 +1,7 @@
 <h3>Items they offer</h3>
 <ul>
 <% offer.offer_items.each do |offer_item| %>
-	<li class="item-list">
+	<li class="their-item-list">
 		<% @product = offer_item.product %>
 		<div class="item-image-list"><img src="<%= @product.image.url(:thumb) %>" /></div>								
 		<div class="item-title"><%=  @product.title %></div>
