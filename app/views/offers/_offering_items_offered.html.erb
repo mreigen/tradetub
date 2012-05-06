@@ -15,21 +15,6 @@
 
 <script language="javascript">
 	$(".close-icon").click(function() {
-		// add back to the available list
-		var item = $(this).parent();//li
-		console.log(item.attr("class"));
-		// add it back to the right place
-		var itemClass = item.attr("class");
-		var availableUl = "";
-		if (itemClass.indexOf("item-li") != -1) {
-			availableUl = "available-item-list"; //ul
-		}
-		else if (itemClass.indexOf("service-li") != -1) {
-			availableUl = "available-service-list"; //ul
-		}
-		item.appendTo($("#" + availableUl));
-		makeDraggable(availableUl);
-		// remove close icon
-		$(this).remove();
+		putBack(this);
 	});
 </script>
