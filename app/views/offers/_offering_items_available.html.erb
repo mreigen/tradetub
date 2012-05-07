@@ -1,4 +1,5 @@
-<h3>Their available <a href="javascript:setCurrent('items')">items</a> | <a href="javascript:setCurrent('services')">services</a></h3>
+<div class="big-title"><%= offerer.username %>'s Bazaar</div>
+<h3>Available <a href="javascript:setCurrent('items')">items</a> | <a href="javascript:setCurrent('services')">services</a></h3>
 <ul id="their-available-item-list">
 <% offerer.products.each do |item| %>
 	<% unless offer.offer_items.include?(OfferItem.find_by_product_id(item.id))%>

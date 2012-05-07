@@ -1,8 +1,24 @@
+.page-break {
+	width: 97%;
+	height: 4px;
+	border-top: #AAA solid 4px;
+	top: 0px;
+	position: relative;
+	margin-left: 15px;
+	clear: both;
+}
+
 #offer-wrapper h3 {
-	font-size: 1.4em;
-	line-height: 1;
-	margin-bottom: 1em;
 	text-align: center;
+}
+
+.big-title {
+	font-size: 28px;
+	color: #AAA;
+	text-align: center;
+	border-bottom: #CCC solid 4px;
+	padding-bottom: 12px;
+	margin-bottom: 10px;
 }
 
 .unclickable {
@@ -14,10 +30,11 @@
 }
 
 .item-image-list {
-	text-align: left; 
+	text-align: left;
 	padding: 0;
-	height: 94px;
+	height: 126px;
 	overflow: hidden;
+	background-color: black;
 }
 
 #offer-details img {
@@ -26,17 +43,19 @@
 
 #offer-details .close-icon {
 	position: absolute;
-	width: 45px;
-	right: 6px;
-	top: 6px;
+	width: 24px;
+	right: -7px;
+	top: -7px;
 }
 
 .item-title {
 	position: absolute;
 	float: left;
 	color: #555;
-	top: 115px;
+	top: 146px;
 	width: 93%;
+	height: 22px;
+	overflow: hidden;
 }
 
 .item-description {
@@ -53,62 +72,66 @@
 	position: absolute;
 	float: right;
 	color: #333;
-	top: 101px;
+	top: 132px;
 	font-weight: bold;
-}
-
-.cash-compensate {
-	text-align: center;
 }
 
 .cash-compensate input {
 	border: none;
 	padding: 6px;
 	font-family: helvetica;
-	font-size: 14px;
-	color: #333;
+	font-size: 18px;
+	color: #888;
+	width: 88%;
+	text-align: right;
+	z-index: 1000;
+	position: absolute;
+	margin-left: -24px;
+	top: 0px;
+	right: 0px;
 }
 
-#offer-wrapper {
-	margin-top: -42px;
+.cash-compensate label {
+	left: -83px;
+	position: relative;
+	float: left;
+	color: #DDD;
+	font-size: 18px;
+	margin-top: 5px;
 }
 
 #offering-items, #wanted-items {
 	position: relative;
-	top: 34px;
 }
 
 #their-available-service-list {
 	display: none;
 }
 
-#their-items, #my-items {
+#available-items, #offering-items {
 	width: 101%;
 	position: relative;
 	float: left;
 }
 
-#my-items {
-	margin-top: -1px;
-}
-
 #dropbox {
-	position: absolute;
-	left: 502px;
+	position: relative;
 	top: 0px;
 	height: 375px;
 	width: 200px;
-	background-color: yellowGreen;
 	text-align: center;
+	margin: 17px 0;
+	float: left;
+	padding: 0 12px 0 12px;
+	font-size: 32px;
+	line-height: 36px;
+	color: #EFEFEF;
 }
 
 #offering-items-available, #offering-items-offered, 
 #wanted-items-available, #wanted-items-offered {
 	position: relative;
-	float: left;
-	background-color: #EEE;
 	padding: 3px;
-	width: 98%;
 }
 
 #service-trading {
@@ -137,8 +160,6 @@
 #offering-items-available h3, #offering-items-offered h3, 
 #wanted-items-available h3, #wanted-items-offered h3, .cash-compensate h3, #offering-services h3, #available-services h3 {
 	height: 15px;
-	background-color: #CCC;
-	padding: 9px;
 }
 
 #offering-items-available li, #offering-items-offered li, 
@@ -151,12 +172,11 @@
 	cursor: pointer;
 	box-shadow: #ccc 1px 1px 5px;
 	width: 130px;
-	height: 140px;
+	height: 160px;
 	position: relative;
 	float: left;
 	padding: 5px;
 	margin: 5px;
-	overflow: hidden;
 	
 	background: white;
 	background: -moz-linear-gradient(top, white 0%, #E5E5E5 100%);
@@ -168,16 +188,13 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
 }
 
-#wanted-items {
-}
-
 #offering-items-available, #offering-items-offered {
 	float: left;
 	left: 0px;
 }
 
 #wanted-items-available, #wanted-items-offered {
- float: right;
+	float: right;
 	right: 0px;	
 }
 
@@ -185,40 +202,82 @@
 	width: 40%;
 }
 
-#offer-details ul {
+#available-items ul {
 	list-style-type: none;
 	overflow-y: auto;
-	height: 327px;
+	height: 365px;
 	float: left;
 	margin: -8px 0 0 -13px;
 	width: 98%;
 }
 
-#offering-items-available li , #offering-items-offered li, #wanted-items-available li, #wanted-items-offered li {
-
+#offering-items ul {
+	min-height: 145px;
+	height: 145px;
+	margin-top: 37px;
 }
 
-#offering-items-offered, #wanted-items-offered, #cash-compensate, #offering-services {
-	background-color: #ddd;
+#offering-items .my-item-list, #offering-items .dropped {
+	height: 108px;
+	width: 75px;
+	margin-right: 47px;
+}
+
+#offering-items .item-image-list {
+	height: 76px;
+}
+
+#offering-items .item-title {
+	top: 96px;
+	height: 20px;
+}
+
+#offering-items .item-price {
+	top: 83px;
+	font-size: 9px;
+}
+
+#offering-items .plus-sign {
+	position: absolute;
+	left: -39px;
+	top: 46px;
+	font-size: 39px;
+	color: #EFEFEF;
+}
+
+#offering-items .down-arrow {
+	width: 40px;
+	margin: 0 auto;
+	background: url('http://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Circled_gray_arrow_pointing_down.svg/120px-Circled_gray_arrow_pointing_down.svg.png');
+	height: 40px;
+	background-size: 40px 40px;
 }
 
 #suggested-value-outer {
+	position: absolute;
 	text-align: center;
-	width: 116px;
+	width: 224px;
+	left: 471px;
+	top: 524px;
 }
 
 #suggested-value {
 	height: 29px;
-	width: 118px;
-	text-align: center;
+	width: 111px;
+	text-align: left;
 	color: darkGray;
-	font-size: 20px;
-	padding-top: 12px;
-	text-shadow: #449 1px 1px 1px;
-	box-shadow: #888 0 0 2px;
-	position: absolute;
-	left: 537px;
-	top: 500px;
+	font-size: 27px;
+	padding: 12px 0 0 4px;
+	position: relative;
+	float: right;
+}
+
+#suggested-text {
+	position: relative;
+	float: left;
+	font-size: 21px;
+	color: #DDD;
+	margin-top: 10px;
 }
 
 #suggested-value-wrapper {
@@ -259,11 +318,13 @@
 #cash-value-wrapper .cash-compensate {
 	text-align: center;
 	width: 110px;
-	top: 262px;
-	position: fixed;
-	float: right;
-	right: 3px;
+	margin-top: 578px;
+	position: absolute;
 	border: #888 solid 1px;
+	margin-left: 579px;
+	padding: 2px;
+	height: 37px;
+	left: -28px;
 }
 
 #my-value-wrapper .cash-compensate {

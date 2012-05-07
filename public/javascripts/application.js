@@ -18,6 +18,10 @@ function makeDraggable(ul1) {
 			// add a 'delete' image
 			$li = $("<li></li>").html(ui.draggable.html()).appendTo($(dest));
 			$li.addClass(ui.draggable.attr("class")); //.item-li
+			$li.addClass("dropped");
+			
+			$plus = $("<div></div>").addClass("plus-sign").html("+").appendTo($li);
+			
 			$closeIcon = $("<img class='close-icon'/>");
 			$closeIcon.attr("src","http://icons.iconarchive.com/icons/visualpharm/must-have/256/Remove-icon.png").appendTo($li);
 			
@@ -35,7 +39,10 @@ function makeDraggable(ul1) {
 function putBack(t) {
 	// add back to the available list
 	var item = $(t).parent();//li
-	console.log(item.attr("class"));
+	item.removeClass("dropped");
+	// remove the plus sign
+	item.children(".plus-sign").remove();
+	
 	// add it back to the right place
 	var itemClass = item.attr("class");
 	var availableUl = "";
@@ -90,18 +97,17 @@ function updateSuggestedValue(div_id) {
 	if (suggested_value < 0) {
 		instruction = "$";
 		suggested_value = (-1) * suggested_value;
-		$(div_id).css("backgroundColor","royalBlue");
 		$(div_id).html(instruction + suggested_value);
-		$("#suggested-text").html("You would gain");
+		$("#suggested-text").html("They pay: ");
 					
 		$("#cash-value-wrapper .cash-suggested").html(0);
 		$("#my-value-wrapper .cash-suggested").html(suggested_value);
 	}
 	else if (suggested_value > 0){
 		instruction = "$";
-		$(div_id).css("backgroundColor","darkred");
+		//$(div_id).css("backgroundColor","darkred");
 		$(div_id).html(instruction + suggested_value);
-		$("#suggested-text").html("You would lose");
+		$("#suggested-text").html("You pay: ");
 	}
 	else {
 		instruction = "Fair deal! Let's trade now.";

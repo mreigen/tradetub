@@ -15,6 +15,7 @@
 		</div>
 		-->
 		<div class="cash-compensate">
+			<label>Bargain: </label>
 			<%= text_field(:offer, :cash_value, :value => ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency(0)), :size => 10, :onchange => "updateOfferCashHiddenField(this.value);") %>
 			<%= hidden_field_tag 'offer_cash_value_hidden', ((offer.cash_value > 0 )? offer.cash_value : 0) %>
 		</div>
@@ -29,62 +30,38 @@
 	
 </div>
 
-<h1>Items</h1>
-
 <div id="offer-wrapper">
 	<div id="offer-details">
 		
-			<div id="their-items">
-				<div id="offering-items">
-					<div id="offering-items-available">
-						<%= render "offering_items_available", :offerer => offerer, :offer => offer %>
-					</div>
-					<div id="dropbox">
-						DROP STUFF HERE
-					</div>
-					<div id="wanted-items-available">
-						<%= render "wanted_items_available", :offer => offer, :user => user %>
-					</div>
+			<div id="available-items">
+				<div id="offering-items-available">
+					<%= render "offering_items_available", :offerer => offerer, :offer => offer %>
+				</div>
+				<div id="dropbox">
+					DROP STUFF HERE TO START TRADING
+					<img src="http://icons.iconarchive.com/icons/raindropmemory/in-spirited-we-love/256/Dropbox-icon.png" />
+				</div>
+				<div id="wanted-items-available">
+					<%= render "wanted_items_available", :offer => offer, :user => user %>
 				</div>
 			</div>
 
-			<div id="my-items">
-				<div id="wanted-items">
-					<div id="wanted-items-offered">
-						<%= render "wanted_items_offered", :offer => offer %>
-					</div>
-					
-					<div id="offering-items-offered">
-						<%= render "offering_items_offered", :offer => offer %>
-					</div>
+			<div id="offering-items">
+				<div class="page-break" style="top: 54px"></div>
+				
+				<div id="wanted-items-offered">
+					<%= render "wanted_items_offered", :offer => offer %>
 				</div>
+				
+				<div id="offering-items-offered">
+					<%= render "offering_items_offered", :offer => offer %>
+				</div>
+				
+				<div class="page-break"></div>
 			</div>
 			
 	</div> <!-- end of offer-details -->
-	
-	<div id="service-trading">
-		<h1>Services</h1>
-		<div id="available-services">
-			<h3>Their available services</h3>
-			<ul>
-			<% offerer.services.each do |service| %>
-				<% unless offer.offer_services.include?(OfferService.find_by_service_id(service.id)) %>
-					<li>
-						<%= service.name %>
-					</li>
-				<% end %>
-			<% end%>
-			</ul>
-		</div>
-		<div id="offering-services">
-			<h3>Service offered</h3>
-			<ul>
-			<% offer.offer_services.each do |offer_service| %>
-				<li><%= offer_service.service.name %></li>
-			<% end %>
-			</ul>
-		</div>
-	</div> <!-- end of service-trading -->
+
 </div>
 
 <script type="text/javascript">
