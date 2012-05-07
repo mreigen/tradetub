@@ -217,7 +217,7 @@
 	margin-top: 37px;
 }
 
-#offering-items .my-item-list, #offering-items .dropped {
+#offering-items .my-item-list, #offering-items .their-item-list, #offering-items .dropped {
 	height: 108px;
 	width: 75px;
 	margin-right: 47px;
