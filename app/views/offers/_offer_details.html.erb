@@ -14,20 +14,24 @@
 			</select>
 		</div>
 		-->
+		
+	</div>
+	
+	<div id="value-calc">
+		<div id="their-value"></div>
+		<div id="my-value"></div>
+		<div id="diff"></div>
 		<div class="cash-compensate">
-			<label>Bargain: </label>
+			<label>They pay</label>
 			<%= text_field(:offer, :cash_value, :value => ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency(0)), :size => 10, :onchange => "updateOfferCashHiddenField(this.value);") %>
 			<%= hidden_field_tag 'offer_cash_value_hidden', ((offer.cash_value > 0 )? offer.cash_value : 0) %>
 		</div>
+		
+		<div id="suggested-value-outer">
+	<!--		<div id="suggested-text"></div> 
+			<div id="suggested-value"></div> -->
+		</div>
 	</div>
-	
-	<div id="their-value"></div>
-	<div id="my-value"></div>
-	<div id="suggested-value-outer">
-		<div id="suggested-text"></div>
-		<div id="suggested-value"></div>
-	</div>
-	
 </div>
 
 <div id="offer-wrapper">
@@ -47,7 +51,7 @@
 			</div>
 
 			<div id="offering-items">
-				<div class="page-break" style="top: 54px"></div>
+				<div class="page-break" style="top: 20px"></div>
 				
 				<div id="wanted-items-offered">
 					<%= render "wanted_items_offered", :offer => offer %>
@@ -57,7 +61,7 @@
 					<%= render "offering_items_offered", :offer => offer %>
 				</div>
 				
-				<div class="page-break"></div>
+				<div class="page-break" style="top: 10px;"></div>
 			</div>
 			
 	</div> <!-- end of offer-details -->

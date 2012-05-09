@@ -61,6 +61,8 @@ function putBack(t) {
 	
 	item.appendTo($("#" + availableUl));
 	makeDraggable(availableUl);
+	updateSuggestedValue();
+	
 	// remove close icon
 	$(t).remove();
 }
@@ -86,19 +88,33 @@ function updateSuggestedValue(div_id) {
 	// cash
 	var cash_offered = parseFloat($("#offer_cash_value_hidden").val());
 	// their items worth
-	$("#their-value").html("total value: $" + their_value.toFixed(2));
+	$("#their-value").html("$" + their_value.toFixed(2));
 	// my items worth
-	$("#my-value").html("total value: $" + my_value.toFixed(2));
+	$("#my-value").html("$" + my_value.toFixed(2));
+	// diff
+	var diff = their_value.toFixed(2) - my_value.toFixed(2);
+	var diff_sign = (diff<0)?"-":"+";
+	diff = Math.abs(diff).toFixed(2);
+	$("#diff").html(diff_sign + " $" + diff);
 	
-	var suggested_value = Math.round(parseFloat(my_value) - parseFloat(their_value) - parseFloat(cash_offered)).toFixed(2);
-			
+	//var suggested_value = Math.round(parseFloat(my_value) - parseFloat(their_value) - parseFloat(cash_offered)).toFixed(2);
+	// SET theypay ipay value
+	var suggested_value = diff;	
+	if (diff_sign == "-") {
+		$(".cash-compensate label").html("They pay");
+	} else {
+		$(".cash-compensate label").html("I pay");
+	}
+	$("#offer_cash_value").val(diff);
+	
+	//
 	var instruction = "";
 	
 	if (suggested_value < 0) {
 		instruction = "$";
 		suggested_value = (-1) * suggested_value;
 		$(div_id).html(instruction + suggested_value);
-		$("#suggested-text").html("They pay: ");
+		$("#suggested-text").html("You pay: ");
 					
 		$("#cash-value-wrapper .cash-suggested").html(0);
 		$("#my-value-wrapper .cash-suggested").html(suggested_value);
@@ -107,7 +123,7 @@ function updateSuggestedValue(div_id) {
 		instruction = "$";
 		//$(div_id).css("backgroundColor","darkred");
 		$(div_id).html(instruction + suggested_value);
-		$("#suggested-text").html("You pay: ");
+		$("#suggested-text").html("They pay: ");
 	}
 	else {
 		instruction = "Fair deal! Let's trade now.";

@@ -80,24 +80,22 @@
 	border: none;
 	padding: 6px;
 	font-family: helvetica;
-	font-size: 18px;
+	font-size: 22px;
 	color: #888;
 	width: 88%;
 	text-align: right;
 	z-index: 1000;
 	position: absolute;
-	margin-left: -24px;
-	top: 0px;
-	right: 0px;
+	left: 0px;
 }
 
 .cash-compensate label {
-	left: -83px;
 	position: relative;
 	float: left;
 	color: #DDD;
-	font-size: 18px;
-	margin-top: 5px;
+	font-size: 22px;
+	margin-top: 8px;
+	left: -100px;
 }
 
 #offering-items, #wanted-items {
@@ -116,16 +114,21 @@
 
 #dropbox {
 	position: relative;
-	top: 0px;
+	top: 17px;
 	height: 375px;
-	width: 200px;
+	width: 142px;
 	text-align: center;
 	margin: 17px 0;
 	float: left;
 	padding: 0 12px 0 12px;
 	font-size: 32px;
-	line-height: 36px;
+	line-height: 51px;
 	color: #EFEFEF;
+}
+
+#dropbox img {
+	margin-top: 37px;
+	display: none;
 }
 
 #offering-items-available, #offering-items-offered, 
@@ -164,7 +167,7 @@
 
 #offering-items-available li, #offering-items-offered li, 
 #wanted-items-available li, #wanted-items-offered li, #cash-compensate li, #offering-services li, #available-services li {
-	background-color: #EEE;
+	background: linear-gradient(top, white 0%,#E5E5E5 100%);
 	border: #CCC 1px solid;
 	color: black;
 	font-size: 12px;
@@ -175,8 +178,8 @@
 	height: 160px;
 	position: relative;
 	float: left;
-	padding: 5px;
-	margin: 5px;
+	padding: 4px;
+	margin: 6px 4px;
 	
 	background: white;
 	background: -moz-linear-gradient(top, white 0%, #E5E5E5 100%);
@@ -198,8 +201,12 @@
 	right: 0px;	
 }
 
+#wanted-items-offered {
+	margin-right: -20px;
+}
+
 #offering-items-available, #offering-items-offered, #wanted-items-available, #wanted-items-offered {
-	width: 40%;
+	width: 42%;
 }
 
 #available-items ul {
@@ -251,6 +258,8 @@
 	background: url('http://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Circled_gray_arrow_pointing_down.svg/120px-Circled_gray_arrow_pointing_down.svg.png');
 	height: 40px;
 	background-size: 40px 40px;
+	opacity: 0.2;
+	display: none;
 }
 
 #suggested-value-outer {
@@ -315,54 +324,58 @@
 	right: 92px;
 }
 
-#cash-value-wrapper .cash-compensate {
-	text-align: center;
-	width: 110px;
-	margin-top: 578px;
-	position: absolute;
+.cash-compensate {
+	width: 143px;
+	margin: 0 auto;
+	position: relative;
 	border: #888 solid 1px;
-	margin-left: 579px;
-	padding: 2px;
-	height: 37px;
-	left: -28px;
-}
-
-#my-value-wrapper .cash-compensate {
-	text-align: center;
-	width: 10%;
-	right: 142px;
-	position: absolute;
-	top: 2px;
+	height: 40px;
+	border-radius: 6px;
+	top: 549px;
 }
 
 #their-value {
 	height: 29px;
 	width: 143px;
 	text-align: right;
-	color: white;
-	font-size: 15px;
-	text-shadow: #888 1px 1px 1px;
-	position: absolute;
+	color: #888;
+	font-size: 22px;
+	position: relative;
 	z-index: 999;
-	top: 63px;
-	right: 16px;
-	float: right;
-	margin-top: 0px;
+	top: 537px;
+	margin: 0 auto;
 }
 
 #my-value {
 	height: 29px;
 	width: 143px;
 	text-align: right;
-	color: white;
-	font-size: 15px;
-	text-shadow: #888 1px 1px 1px;
-	position: absolute;
+	color: #888;
+	font-size: 22px;
+	position: relative;
 	z-index: 999;
-	top: 340px;
-	right: 16px;
-	float: right;
-	margin-top: 0px;
+	top: 536px;
+	margin: 0 auto;
+	border-bottom: #AAA solid 1px;
+	padding-bottom: 3px;
+}
+
+#diff {
+	height: 29px;
+	width: 143px;
+	text-align: right;
+	color: darkorange;
+	font-size: 22px;
+	position: relative;
+	z-index: 999;
+	top: 546px;
+	margin: 0 auto;
+}
+
+#value-calc {
+	position: relative;
+	margin: 0 auto;
+	top: -54px;
 }
 
 /* =============== */
@@ -2218,7 +2231,7 @@ body.logged_out {
 
 #wrapper {
   display: table;
-  width: 100%; 
+  width: 94%; 
 	margin: 0 auto;
 	background: white;
 	color: #222;
