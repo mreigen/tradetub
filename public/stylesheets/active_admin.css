@@ -378,6 +378,13 @@
 	top: -54px;
 }
 
+#send-button {
+	position: relative;
+	margin: 0 auto;
+	text-align: center;
+	top: 558px;
+}
+
 /* =============== */
 span.icon {
   vertical-align: middle;
