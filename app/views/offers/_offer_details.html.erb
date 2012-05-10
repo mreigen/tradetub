@@ -20,7 +20,9 @@
 	<div id="value-calc">
 		<div id="their-value"></div>
 		<div id="my-value"></div>
+		<!--
 		<div id="cash-extra" class="cash-request"><%= ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency((-1) * offer.cash_value)) %></div>
+		-->
 		<div id="diff"></div>
 		<div class="cash-compensate">
 			<label>They pay</label>
@@ -78,7 +80,7 @@
 	
 	// initial update
 	updateSuggestedValue();
-	
+	/*
 	// initialize values
 	var cashExtra = parseFloat($("#offer_cash_value_hidden").val());
 	if (cashExtra == 0) {
@@ -89,4 +91,5 @@
 			$("#cash-extra").removeClass("cash-request").addClass("cash-offer");
 		}
 	}
+	*/
 </script>
