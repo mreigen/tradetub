@@ -20,11 +20,12 @@
 	<div id="value-calc">
 		<div id="their-value"></div>
 		<div id="my-value"></div>
+		<div id="cash-extra" class="cash-request"><%= ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency((-1) * offer.cash_value)) %></div>
 		<div id="diff"></div>
 		<div class="cash-compensate">
 			<label>They pay</label>
-			<%= text_field(:offer, :cash_value, :value => ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency(0)), :size => 10, :onchange => "updateOfferCashHiddenField(this.value);") %>
-			<%= hidden_field_tag 'offer_cash_value_hidden', ((offer.cash_value > 0 )? offer.cash_value : 0) %>
+			<%= text_field(:offer, :cash_value, :value => 0, :size => 10) %>
+			<%= hidden_field_tag 'offer_cash_value_hidden', offer.cash_value %>
 		</div>
 		<div id="send-button">
 			<button>SEND</button>
@@ -77,4 +78,15 @@
 	
 	// initial update
 	updateSuggestedValue();
+	
+	// initialize values
+	var cashExtra = parseFloat($("#offer_cash_value_hidden").val());
+	if (cashExtra == 0) {
+		$("#cash-extra").css("display", "none");
+	} else {
+		$("#my-value").css("border-bottom", "none");
+		if (cashExtra < 0) { // they asked me to pay extra cash
+			$("#cash-extra").removeClass("cash-request").addClass("cash-offer");
+		}
+	}
 </script>

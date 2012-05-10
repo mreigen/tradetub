@@ -92,7 +92,7 @@ function updateSuggestedValue(div_id) {
 	// my items worth
 	$("#my-value").html("$" + my_value.toFixed(2));
 	// diff
-	var diff = their_value.toFixed(2) - my_value.toFixed(2);
+	var diff = my_value.toFixed(2) - their_value.toFixed(2) - cash_offered;
 	var diff_sign = (diff<0)?"-":"+";
 	diff = Math.abs(diff).toFixed(2);
 	$("#diff").html(diff_sign + " $" + diff);
@@ -100,10 +100,10 @@ function updateSuggestedValue(div_id) {
 	//var suggested_value = Math.round(parseFloat(my_value) - parseFloat(their_value) - parseFloat(cash_offered)).toFixed(2);
 	// SET theypay ipay value
 	var suggested_value = diff;	
-	if (diff_sign == "-") {
+	if (diff_sign == "+") {
 		$(".cash-compensate label").html("They pay");
 	} else {
-		$(".cash-compensate label").html("I pay");
+		$(".cash-compensate label").html("Bargain");
 	}
 	$("#offer_cash_value").val(diff);
 	

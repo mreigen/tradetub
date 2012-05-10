@@ -1,7 +1,19 @@
+.item-custom-list {
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+.item-custom-list a {
+	background-color: orange;
+	padding: 3px 8px 3px 8px;
+	color: white !important;
+	text-decoration: none !important;
+}
+
 .page-break {
 	width: 97%;
 	height: 4px;
-	border-top: #AAA solid 4px;
+	border-top: #CCC solid 4px;
 	top: 0px;
 	position: relative;
 	margin-left: 15px;
@@ -81,7 +93,7 @@
 	padding: 6px;
 	font-family: helvetica;
 	font-size: 22px;
-	color: #888;
+	color: #9B9;
 	width: 88%;
 	text-align: right;
 	z-index: 1000;
@@ -328,7 +340,7 @@
 	width: 143px;
 	margin: 0 auto;
 	position: relative;
-	border: #888 solid 1px;
+	border: #9B9 solid 1px;
 	height: 40px;
 	border-radius: 6px;
 	top: 549px;
@@ -338,7 +350,7 @@
 	height: 29px;
 	width: 143px;
 	text-align: right;
-	color: #888;
+	color: #9B9;
 	font-size: 22px;
 	position: relative;
 	z-index: 999;
@@ -358,6 +370,34 @@
 	margin: 0 auto;
 	border-bottom: #AAA solid 1px;
 	padding-bottom: 3px;
+}
+
+.cash-request {
+	height: 29px;
+	width: 143px;
+	text-align: right;
+	color: #9B9;
+	font-size: 22px;
+	position: relative;
+	z-index: 999;
+	top: 534px;
+	margin: 0 auto;
+	border-bottom: #AAA solid 1px;
+	padding-bottom: 3px;	
+}
+
+.cash-offer {
+	height: 29px;
+	width: 143px;
+	text-align: right;
+	color: #888;
+	font-size: 22px;
+	position: relative;
+	z-index: 999;
+	top: 534px;
+	margin: 0 auto;
+	border-bottom: #AAA solid 1px;
+	padding-bottom: 3px;	
 }
 
 #diff {

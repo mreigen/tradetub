@@ -8,6 +8,7 @@
 		<div class="item-description"><%= @product.description %></div>
 		<div class="item-price"><%= number_to_currency(@product.price) %></div>
 		<%= hidden_field_tag 'wanted' + @product.id.to_s + '[price]', @product.price %>
+		<div class="plus-sign">+</div>
 		<img class="close-icon" src="http://icons.iconarchive.com/icons/visualpharm/must-have/256/Remove-icon.png"/>
 	</li>
 <% end %>

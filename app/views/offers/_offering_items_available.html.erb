@@ -1,5 +1,6 @@
 <div class="big-title"><%= offerer.username %>'s Bazaar</div>
-<h3>Available <a href="javascript:setCurrent('items')">items</a> | <a href="javascript:setCurrent('services')">services</a></h3>
+<!-- <h3>Available <a href="javascript:setCurrent('items')">items</a> | <a href="javascript:setCurrent('services')">services</a></h3> -->
+<div class="item-custom-list"><a href="#">List A</a> | <a href="#">List B</a> | <a href="#">List C</a> | <a href="#">Hobby stuff</a> | <a href="#">My Electro</a></div>
 <ul id="their-available-item-list">
 <% offerer.products.each do |item| %>
 	<% unless offer.offer_items.include?(OfferItem.find_by_product_id(item.id))%>
@@ -13,6 +14,7 @@
 	<% end %>
 <% end %>
 </ul>
+<!--
 <ul id="their-available-service-list">
 <% offerer.services.each do |service| %>
 	<% unless offer.offer_services.include?(OfferService.find_by_service_id(service.id)) %>
@@ -22,7 +24,7 @@
 	<% end %>
 <% end%>
 </ul>
-
+-->
 <script language="javascript">
 function setCurrent(type) {
 	if (type == "items") {
