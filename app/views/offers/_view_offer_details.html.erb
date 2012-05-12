@@ -1,0 +1,58 @@
+<script src="/javascripts/jquery/jquery.ui.widget.js"></script>
+<script src="/javascripts/jquery/jquery.ui.draggable.js"></script>
+<script src="/javascripts/jquery/jquery.ui.droppable.js"></script>
+
+<div id="suggested-value-wrapper-view-offer">
+	<h1>View Offer</h1>
+	<%= hidden_field_tag 'offer_cash_value_hidden', offer.cash_value %>
+	<div id="value-calc">
+		<div id="their-value"><div class="side-note-tag">Their items' value</div><div class="cash-value"></div></div>
+		<div id="my-value"><div class="side-note-tag">My items' value</div><div class="cash-value"></div></div>
+		<div id="cash-extra" class="cash-request">
+			<div class="side-note-tag"><%= ((offer.cash_value > 0 )? "Cash offered" : "Cash requested") %></div>	
+			<%= ((offer.cash_value > 0 )? number_to_currency(offer.cash_value) : number_to_currency((-1) * offer.cash_value)) %>
+		</div>
+		<div id="diff"><div class="side-note-tag diff">Diff</div><div class="cash-value"></div></div>
+		<div id="send-button">
+			<button>Accept</button>
+			<button>Counter Offer</button>
+		</div>
+	</div>
+</div>
+
+<div id="offer-wrapper">
+	<div id="offer-details">
+
+			<div id="offering-items">
+				<div class="page-break" style="top: 20px"></div>
+				
+				<div id="wanted-items-offered">
+					<%= render "wanted_items_offered", :offer => offer, :show_remove_icon => false %>
+				</div>
+				
+				<div id="offering-items-offered">
+					<%= render "offering_items_offered", :offer => offer, :show_remove_icon => false %>
+				</div>
+				
+				<div class="page-break" style="top: 20px;"></div>
+			</div>
+			
+	</div> <!-- end of offer-details -->
+
+</div>
+
+<script type="text/javascript">
+	// initial update
+	updateSuggestedValue();
+	// initialize values
+	var cashExtra = parseFloat($("#offer_cash_value_hidden").val());
+	if (cashExtra == 0) {
+		$("#cash-extra").css("display", "none");
+	} else {
+		$("#my-value").css("border-bottom", "none");
+		if (cashExtra > 0) { // they asked me to pay extra cash
+			$("#cash-extra").removeClass("cash-request").addClass("cash-offer");
+		}
+	}
+	
+</script>

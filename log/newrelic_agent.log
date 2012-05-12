@@ -634,3 +634,18 @@ The error occurred while evaluating nil.first
 [05/06/12 12:15:42 -0700 Minh-T-Reigens-MacBook-Pro.local (1765)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
 [05/06/12 12:15:42 -0700 Minh-T-Reigens-MacBook-Pro.local (1765)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 1765
 [05/06/12 12:15:42 -0700 Minh-T-Reigens-MacBook-Pro.local (1765)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[05/12/12 00:55:08 -0700 Minh-T-Reigens-MacBook-Pro.local (6592)] INFO : Dispatcher: webrick
+[05/12/12 00:55:08 -0700 Minh-T-Reigens-MacBook-Pro.local (6592)] INFO : Application: Active Admin Demo
+[05/12/12 00:55:08 -0700 Minh-T-Reigens-MacBook-Pro.local (6592)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[05/12/12 00:55:08 -0700 Minh-T-Reigens-MacBook-Pro.local (6592)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 6592
+[05/12/12 00:55:08 -0700 Minh-T-Reigens-MacBook-Pro.local (6592)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[05/12/12 00:56:34 -0700 Minh-T-Reigens-MacBook-Pro.local (6598)] INFO : Dispatcher: webrick
+[05/12/12 00:56:34 -0700 Minh-T-Reigens-MacBook-Pro.local (6598)] INFO : Application: Active Admin Demo
+[05/12/12 00:56:34 -0700 Minh-T-Reigens-MacBook-Pro.local (6598)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[05/12/12 00:56:34 -0700 Minh-T-Reigens-MacBook-Pro.local (6598)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 6598
+[05/12/12 00:56:34 -0700 Minh-T-Reigens-MacBook-Pro.local (6598)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[05/12/12 01:01:19 -0700 Minh-T-Reigens-MacBook-Pro.local (6625)] INFO : Dispatcher: webrick
+[05/12/12 01:01:19 -0700 Minh-T-Reigens-MacBook-Pro.local (6625)] INFO : Application: Active Admin Demo
+[05/12/12 01:01:19 -0700 Minh-T-Reigens-MacBook-Pro.local (6625)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[05/12/12 01:01:19 -0700 Minh-T-Reigens-MacBook-Pro.local (6625)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 6625
+[05/12/12 01:01:19 -0700 Minh-T-Reigens-MacBook-Pro.local (6625)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log

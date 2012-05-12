@@ -116,3 +116,11 @@ module ActiveAdmin
     end 
   end 
 end
+
+ActiveAdmin::Views::Pages::Base.class_eval do 
+  private 
+  def build_footer 
+    div :id => "footer" do 
+    end 
+  end 
+end

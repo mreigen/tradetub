@@ -1,17 +1,25 @@
 <div class="down-arrow"></div>
 <ul>
-<% offer.wanted_items.each do |wanted_item| %>
-	<li class="my-item-list">
-		<% @product = wanted_item.product %>
-		<div class="item-image-list"><img src="<%= @product.image.url(:thumb) %>" /></div>									
-		<div class="item-title"><%=  @product.title %></div>
-		<div class="item-description"><%= @product.description %></div>
-		<div class="item-price"><%= number_to_currency(@product.price) %></div>
-		<%= hidden_field_tag 'wanted' + @product.id.to_s + '[price]', @product.price %>
-		<div class="plus-sign">+</div>
-		<img class="close-icon" src="http://icons.iconarchive.com/icons/visualpharm/must-have/256/Remove-icon.png"/>
-	</li>
-<% end %>
+<% if offer.wanted_items.empty? %>
+	<div class="no-item">No item</div>
+<% else %>
+	<% offer.wanted_items.each_with_index do |wanted_item, i| %>
+		<li class="my-item-list">
+			<% @product = wanted_item.product %>
+			<div class="item-image-list"><img src="<%= @product.image.url(:thumb) %>" /></div>									
+			<div class="item-title"><%=  @product.title %></div>
+			<div class="item-description"><%= @product.description %></div>
+			<div class="item-price"><%= number_to_currency(@product.price) %></div>
+			<%= hidden_field_tag 'wanted' + @product.id.to_s + '[price]', @product.price %>
+			<% if i % 3 != 0 %>
+				<div class="plus-sign">+</div>
+			<% end %>
+			<% if show_remove_icon %>
+				<img class="close-icon" src="http://icons.iconarchive.com/icons/visualpharm/must-have/256/Remove-icon.png"/>
+			<% end %>
+		</li>
+	<% end #end of each %>
+<% end #end of if %>
 </ul>
 
 <script language="javascript">
