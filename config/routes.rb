@@ -15,9 +15,11 @@ ActiveadminDepot::Application.routes.draw do
   end
   #match 'admin/logout' => 'sessions#destroy', :as => :logout
   match '/login' => 'sessions#new', :as => :login
-  put '/offers/:id/respond/:respond' => 'offers#respond'
-  get '/items/user/:user_id' => 'items#index'
-    
+  #put '/offers/:id/respond/:respond' => 'offers#respond'
+  #get '/items/user/:user_id' => 'items#index'
+
+  match 'offer/:id/counter_offer', :to => 'offers#view_offer', :as => :view_offer
+  
   resources :sessions
   resources :products
   resources :image_uploads

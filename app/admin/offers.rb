@@ -105,6 +105,14 @@ ActiveAdmin.register Offer do
    controller do
      helper :offers
      
+     def view_offer
+       if params[:accept]
+         redirect_to "http://google.com"
+       elsif params[:counter_offer]
+         redirect_to "yahoo"
+       end
+     end
+     
      def respond
        @offer = Offer.find(params[:id])
        @respond = params[:respond]
