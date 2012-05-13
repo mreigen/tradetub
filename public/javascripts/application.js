@@ -88,14 +88,14 @@ function updateSuggestedValue(div_id) {
 	// cash
 	var cash_offered = parseFloat($("#offer_cash_value_hidden").val());
 	// their items worth
-	$("#their-value").html("$" + their_value.toFixed(2));
+	$("#their-value .cash-value").html("$" + their_value.toFixed(2));
 	// my items worth
-	$("#my-value").html("$" + my_value.toFixed(2));
+	$("#my-value .cash-value").html("$" + my_value.toFixed(2));
 	// diff
-	var diff = my_value.toFixed(2) - their_value.toFixed(2) - cash_offered;
+	var diff = my_value.toFixed(2) - their_value.toFixed(2);// - cash_offered;
 	var diff_sign = (diff<0)?"-":"+";
 	diff = Math.abs(diff).toFixed(2);
-	$("#diff").html(diff_sign + " $" + diff);
+	$("#diff .cash-value").html(diff_sign + " $" + diff);
 	
 	//var suggested_value = Math.round(parseFloat(my_value) - parseFloat(their_value) - parseFloat(cash_offered)).toFixed(2);
 	// SET theypay ipay value
