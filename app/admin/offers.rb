@@ -83,7 +83,6 @@ ActiveAdmin.register Offer do
     end
    end
    
-   
    show do |offer|
      render :partial => "view_offer_details", :locals => {:offer => offer, :user => current_user, :offerer => User.find(offer.sender_id) }
    end
