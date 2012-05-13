@@ -345,6 +345,7 @@
 	height: 40px;
 	border-radius: 6px;
 	top: 549px;
+	left: 37px;
 }
 
 #suggested-value-wrapper-view-offer #value-calc {	
@@ -358,7 +359,8 @@
 #value-calc {
 	position: relative;
 	margin: 0 auto;
-	top: -54px;
+	top: -14px;
+	width: 208px;
 }
 
 #their-value {
@@ -453,7 +455,7 @@
 	position: relative;
 	margin: 0 auto;
 	text-align: center;
-	top: 0px;
+	top: 558px;
 }
 
 /* =============== */

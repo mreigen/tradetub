@@ -1,3 +1,7 @@
+<%
+	show_remove_icon = defined?(show_remove_icon) ? show_remove_icon : true
+	show_remove_icon ||= true	
+%>
 <div class="down-arrow"></div>
 <ul>
 <% if offer.wanted_items.empty? %>
@@ -14,7 +18,7 @@
 			<% if i % 3 != 0 %>
 				<div class="plus-sign">+</div>
 			<% end %>
-			<% if defined?(show_remove_icon) && show_remove_icon %>
+			<% if show_remove_icon %>
 				<img class="close-icon" src="http://icons.iconarchive.com/icons/visualpharm/must-have/256/Remove-icon.png"/>
 			<% end %>
 		</li>

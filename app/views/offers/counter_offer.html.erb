@@ -3,24 +3,10 @@
 <script src="/javascripts/jquery/jquery.ui.droppable.js"></script>
 
 <div id="suggested-value-wrapper">
-	
-	<div id="cash-value-wrapper">
-		<!--
-		<div class="cash-direction">
-			<h1>Cash</h1>
-			<select onchange="updateCashDirection(this.value);">
-				<option value="they-pay" selected>They will pay me</option>
-				<option value="i-pay">I will pay them</option>
-			</select>
-		</div>
-		-->
-		
-	</div>
-	
 	<div id="value-calc">
-		<div id="their-value"></div>
-		<div id="my-value"></div>
-		<div id="diff"></div>
+		<div id="their-value"><div class="side-note-tag">Their items' value</div><div class="cash-value"></div></div>
+		<div id="my-value"><div class="side-note-tag">My items' value</div><div class="cash-value"></div></div>
+		<div id="diff"><div class="side-note-tag diff">Diff</div><div class="cash-value"></div></div>
 		<div class="cash-compensate">
 			<label>They pay</label>
 			<%= text_field(:offer, :cash_value, :value => 0, :size => 10) %>
@@ -63,7 +49,7 @@
 					<%= render "offering_items_offered", :offer => @offer %>
 				</div>
 				
-				<div class="page-break" style="top: 10px;"></div>
+				<div class="page-break" style="top: 30px;"></div>
 			</div>
 			
 	</div> <!-- end of offer-details -->

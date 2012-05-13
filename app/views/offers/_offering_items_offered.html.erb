@@ -1,3 +1,7 @@
+<%
+	show_remove_icon = defined?(show_remove_icon) ? show_remove_icon : true
+	show_remove_icon ||= true	
+%>
 <div class="down-arrow"></div>
 <ul>
 <% if offer.offer_items.empty? %>
