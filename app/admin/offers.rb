@@ -85,7 +85,7 @@ ActiveAdmin.register Offer do
    
    
    show do |offer|
-     render :partial => "view_offer_details", :locals => {:offer => offer, :user => current_user, :offerer => User.find(offer.sender_id) }
+     render :partial => "view_offer_details", :locals => {:offer => offer, :user => current_user, :sender => User.find(offer.sender_id) }
    end
    
    form do |f|
@@ -106,11 +106,14 @@ ActiveAdmin.register Offer do
    controller do
      helper :offers
      
-     def view_offer
+     def counter_offer
        if params[:accept]
          redirect_to "http://google.com"
        elsif params[:counter_offer]
-         redirect_to "yahoo"
+         @offer = Offer.find(params[:id])
+         @sender = @offer.sender
+         @user = @offer.user
+#         redirect_to counter_offer_path
        end
      end
      

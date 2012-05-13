@@ -2,7 +2,7 @@
 <script src="/javascripts/jquery/jquery.ui.draggable.js"></script>
 <script src="/javascripts/jquery/jquery.ui.droppable.js"></script>
 
-<% form_for :offer, :url => view_offer_path(offer.id) do |f| %>
+<% form_for :offer, :url => counter_offer_path(offer) do |f| %>
 <div id="suggested-value-wrapper-view-offer">
 	<h1>View Offer</h1>
 	<%= hidden_field_tag 'offer_cash_value_hidden', offer.cash_value %>
@@ -39,7 +39,6 @@
 	<div id="send-button">
 		<%= submit_tag "Accept", :name => 'accept' %>
 		<%= submit_tag "Counter Offer", :name => 'counter_offer' %>
-		<input type="button" onclick="javascript:window.location.href='offer/2/counter-offer'" value="Counter Offer"></input>
 	</div>
 	
 </div>

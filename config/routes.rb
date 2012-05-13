@@ -18,7 +18,7 @@ ActiveadminDepot::Application.routes.draw do
   #put '/offers/:id/respond/:respond' => 'offers#respond'
   #get '/items/user/:user_id' => 'items#index'
 
-  match 'offer/:id/counter_offer', :to => 'offers#view_offer', :as => :view_offer
+  match 'offer/:id/counter_offer', :to => 'offers#counter_offer', :as => :counter_offer
   
   resources :sessions
   resources :products

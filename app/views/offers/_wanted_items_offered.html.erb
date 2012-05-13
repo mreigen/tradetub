@@ -14,7 +14,7 @@
 			<% if i % 3 != 0 %>
 				<div class="plus-sign">+</div>
 			<% end %>
-			<% if !show_remove_icon.blank? && show_remove_icon %>
+			<% if defined?(show_remove_icon) && show_remove_icon %>
 				<img class="close-icon" src="http://icons.iconarchive.com/icons/visualpharm/must-have/256/Remove-icon.png"/>
 			<% end %>
 		</li>
