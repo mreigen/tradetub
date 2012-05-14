@@ -15,12 +15,26 @@ function makeDraggable(ul1) {
 				dest = "#wanted-items-offered ul";
 			}
 			
+			console.log(dest);
+			// remove no-item div if exists
+			if (dest == "#offering-items-offered ul") {
+				$("#no-item-offered").remove();
+			}
+			else if (dest == "#wanted-items-offered ul") {
+				$("#no-item-wanted").remove();
+			}
+			
 			// add a 'delete' image
 			$li = $("<li></li>").html(ui.draggable.html()).appendTo($(dest));
 			$li.addClass(ui.draggable.attr("class")); //.item-li
 			$li.addClass("dropped");
 			
-			$plus = $("<div></div>").addClass("plus-sign").html("+").appendTo($li);
+			$plus = $("<div></div>");
+			// decides whether or not to add a plus sign to the dropped item
+			if ($(dest).children().length > 1) {
+				$plus.addClass("plus-sign").html("+")
+			}
+			$plus.appendTo($li);
 			
 			$closeIcon = $("<img class='close-icon'/>");
 			$closeIcon.attr("src","http://icons.iconarchive.com/icons/visualpharm/must-have/256/Remove-icon.png").appendTo($li);
@@ -139,23 +153,4 @@ function updateOfferCashHiddenField(v) {
 	console.log(v);
 	$('#offer_cash_value_hidden').val(v);
 	updateSuggestedValue();
-}
-
-function updateCashDirection(dir) {
-	v = $("#offer_cash_value").val();
-	v = ((v.indexOf('$') != -1) ? v.replace('$','') : v);
-	console.log(dir + ", " + v);
-	v = getCashValueWithCashDirection(dir, v);
-	updateOfferCashHiddenField(v);
-}
-
-function getCashValueWithCashDirection(dir, v) {
-	console.log("dir = " + dir);
-	if (dir == "i-pay") {
-		v = (-1) * parseFloat(v);
-	}
-	else if (dir == "they-pay") {
-		v = parseFloat(v);
-	}
-	return v;
 }

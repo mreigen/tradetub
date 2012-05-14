@@ -1,10 +1,11 @@
 <%
 	show_remove_icon = defined?(show_remove_icon) ? show_remove_icon : false
+	show_remove_icon = true if show_remove_icon.nil?
 %>
 <div class="down-arrow"></div>
 <ul>
 <% if offer.offer_items.empty? %>
-	<div class="no-item">No item</div>
+	<div id="no-item-offered" class="no-item">No item</div>
 <% else %>
 	<% offer.offer_items.each_with_index do |offer_item, i| %>
 		<li class="their-item-list">
