@@ -10,7 +10,7 @@
 		<div class="cash-compensate">
 			<label>They pay</label>
 			<%= text_field(:offer, :cash_value, :value => 0, :size => 10) %>
-			<%= hidden_field_tag 'offer_cash_value_hidden', @offer.cash_value %>
+			<%= hidden_field_tag 'offer_cash_value_hidden', 0 %>
 		</div>
 		<div id="send-button">
 			<button>SEND</button>

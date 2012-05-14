@@ -455,6 +455,13 @@
 	position: relative;
 	margin: 0 auto;
 	text-align: center;
+}
+
+#view-offer-wrapper #send-button {
+	top: 7px;
+}
+
+#suggested-value-wrapper #send-button {
 	top: 558px;
 }
 
