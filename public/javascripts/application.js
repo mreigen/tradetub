@@ -91,6 +91,9 @@ function putBack(t) {
 	if (($my_ul.children("li").length == 0) && ($my_ul.children(".no-item").length == 0)) {
 		addNoItemDiv($my_ul);		
 	}
+	// removes the plus sign of the first li
+	$their_ul.find("li").first().find(".plus-sign").remove();
+	$my_ul.find("li").first().find(".plus-sign").remove();
 }
 
 function addNoItemDiv(ul) {
