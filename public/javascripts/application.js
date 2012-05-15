@@ -15,7 +15,6 @@ function makeDraggable(ul1) {
 				dest = "#wanted-items-offered ul";
 			}
 			
-			console.log(dest);
 			// remove no-item div if exists
 			if (dest == "#offering-items-offered ul") {
 				$("#no-item-offered").remove();
@@ -57,30 +56,50 @@ function putBack(t) {
 	// remove the plus sign
 	item.children(".plus-sign").remove();
 	
-	// add it back to the right place
-	var itemClass = item.attr("class");
-	var availableUl = "";
-	if (itemClass.indexOf("their-item-li") != -1) {
-		availableUl = "their-available-item-list"; //ul
+	if (item.length != 0) {
+		// add it back to the right place
+		var itemClass = item.attr("class");
+		var availableUl = "";
+		if (itemClass.indexOf("their-item-li") != -1) {
+			availableUl = "their-available-item-list"; //ul
+		}
+		else if (itemClass.indexOf("their-service-li") != -1) {
+			availableUl = "their-available-service-list"; //ul
+		}
+		else if (itemClass.indexOf("my-item-li") != -1) {
+			availableUl = "my-available-item-list"; //ul
+		}
+		else if (itemClass.indexOf("my-service-li") != -1) {
+			availableUl = "my-available-service-list"; //ul
+		}
+		item.appendTo($("#" + availableUl));
+		makeDraggable(availableUl);
 	}
-	else if (itemClass.indexOf("their-service-li") != -1) {
-		availableUl = "their-available-service-list"; //ul
-	}
-	else if (itemClass.indexOf("my-item-li") != -1) {
-		availableUl = "my-available-item-list"; //ul
-	}
-	else if (itemClass.indexOf("my-service-li") != -1) {
-		availableUl = "my-available-service-list"; //ul
-	}
-	
-	item.appendTo($("#" + availableUl));
-	makeDraggable(availableUl);
 	updateSuggestedValue();
 	
 	// remove close icon
 	$(t).remove();
+	
+	// add the no-item back in place
+	// if there is no item
+	$their_ul = $("#offering-items-offered ul");
+	$my_ul = $("#wanted-items-offered ul");
+	// if there is no li in ul and no-item div hasn't been added yet
+	if (($their_ul.children("li").length == 0) && ($their_ul.children(".no-item").length == 0)) {
+		addNoItemDiv($their_ul);
+	} 
+	if (($my_ul.children("li").length == 0) && ($my_ul.children(".no-item").length == 0)) {
+		addNoItemDiv($my_ul);		
+	}
 }
 
+function addNoItemDiv(ul) {
+	$div = $("<div></div>");
+	$div.attr("id","no-item-" + ((ul.parent().attr("id").indexOf("wanted-items-offered") != -1) ? "wanted" : "offered"));
+	$div.attr("class","no-item");
+	$div.html("No item");
+	$div.appendTo($(ul));
+}
 
 function updateSuggestedValue(div_id) {
 	console.log("update value");
