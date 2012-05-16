@@ -14,7 +14,7 @@
 			<div class="item-title"><%=  @product.title %></div>
 			<div class="item-description"><%= @product.description %></div>
 			<div class="item-price"><%= number_to_currency(@product.price) %></div>
-			<%= hidden_field_tag 'offering' + @product.id.to_s + '[price]', @product.price %>
+			<%= hidden_field_tag 'offering[' + @product.id.to_s + '][price]', @product.price %>
 			<% if i % 3 != 0 %>
 				<div class="plus-sign">+</div>
 			<% end %>

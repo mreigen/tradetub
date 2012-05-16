@@ -129,7 +129,7 @@ function updateSuggestedValue(div_id) {
 	$("#my-value .cash-value").html("$" + my_value.toFixed(2));
 	// diff
 	var diff = my_value.toFixed(2) - their_value.toFixed(2) - cash_offered;
-	var diff_sign = (diff<0)?"-":"+";
+	var diff_sign = (diff<0)?"+":"-";
 	diff = Math.abs(diff).toFixed(2);
 	$("#diff .cash-value").html(diff_sign + " $" + diff);
 	

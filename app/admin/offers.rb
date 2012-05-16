@@ -108,7 +108,11 @@ ActiveAdmin.register Offer do
      
      def counter_offer
        if params[:accept]
-         redirect_to "http://google.com"
+         #raise params.inspect
+         @offer = Offer.find(params[:id])
+         @offer.update_attribute(:response, "1")
+         @offer.save!
+         redirect_to offers_path
        elsif params[:counter_offer]
          @offer = Offer.find(params[:id])
          @sender = @offer.sender
