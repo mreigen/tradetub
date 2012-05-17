@@ -124,7 +124,10 @@ ActiveAdmin.register Offer do
      
      def send_counter_offer
         # FOR OFFERING ITEMS
-        offering_item_ids = params[:offering].keys
+        offering_items = params[:offering]
+        offering_item_ids = offering_items.keys unless offering_items.blank?
+        offering_items_ids ||= []
+        
         offer_id = params[:id]
         @offer = Offer.find(offer_id)
         # deletes all old records
@@ -138,7 +141,10 @@ ActiveAdmin.register Offer do
         end
 
         # FOR OFFERING ITEMS
-        wanted_item_ids = params[:wanted].keys
+        wanted_items = params[:wanted]
+        wanted_item_ids = wanted_items.keys unless wanted_items.blank?
+        wanted_item_ids ||= []
+        
         wanted_id = params[:id]
         @offer = Offer.find(wanted_id)
         # deletes all old records
