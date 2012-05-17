@@ -101,8 +101,9 @@ ActiveAdmin.register Offer do
      new_record? ? false : super
    end
    
-   
+   # ===================================================================
    # controllers stuff
+   # ===================================================================
    controller do
      helper :offers
      
@@ -121,25 +122,44 @@ ActiveAdmin.register Offer do
        end
      end
      
-     def respond
-       @offer = Offer.find(params[:id])
-       @respond = params[:respond]
-       @offer.update_attributes(:response => respond_to_num(@respond))
-       
-       flash_mess = ""
-       case @respond
-        when "accept"
-          flash_mess = "You have accepted the offer"
-        when "reject"
-          flash_mess = "You have rejected the offer"
-        when "counter-offer"
-          flash_mess = "You have counter-offered the offer"
-       end
-       
-       respond_to do |format|
+     def send_counter_offer
+        # FOR OFFERING ITEMS
+        offering_item_ids = params[:offering].keys
+        offer_id = params[:id]
+        @offer = Offer.find(offer_id)
+        # deletes all old records
+        old_offer_items = OfferItem.find_all_by_offer_id(offer_id)
+        # TODO CHECK IF NOTHING CHANGED THEN SKIP THE FOLLOWING STEPS
+        old_offer_items.each { |item| item.destroy }
+        # adds new records
+        offering_item_ids.each do |product_id|
+          offer_item = OfferItem.new :offer_id => params[:id], :product_id => product_id
+          offer_item.save!
+        end
+
+        # FOR OFFERING ITEMS
+        wanted_item_ids = params[:wanted].keys
+        wanted_id = params[:id]
+        @offer = Offer.find(wanted_id)
+        # deletes all old records
+        old_wanted_items = WantedItem.find_all_by_offer_id(wanted_id)
+        # TODO CHECK IF NOTHING CHANGED THEN SKIP THE FOLLOWING STEPS        
+        old_wanted_items.each { |item| item.destroy }
+        # adds new records
+        wanted_item_ids.each do |product_id|
+          wanted_item = WantedItem.new :offer_id => params[:id], :product_id => product_id
+          wanted_item.save!
+        end
+        
+        flash_mess = "You have sent the offer"
+        respond_to do |format|
          flash[:success] = flash_mess
-         format.html { redirect_to request.referer }
-       end
+         format.html { redirect_to offers_path }
+        end
+     end
+     
+     def respond
+
      end
 
      private

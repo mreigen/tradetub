@@ -2,8 +2,9 @@
 <script src="/javascripts/jquery/jquery.ui.draggable.js"></script>
 <script src="/javascripts/jquery/jquery.ui.droppable.js"></script>
 
+<% form_for :offer, :url => send_counter_offer_path(@offer) do |f| %>
 <div id="suggested-value-wrapper">
-	<h2>Make an offer</h2>
+	<h2>Make a counter offer</h2>
 	<div id="value-calc">
 		<div id="their-value"><div class="side-note-tag">Their items' value</div><div class="cash-value"></div></div>
 		<div id="my-value"><div class="side-note-tag">My items' value</div><div class="cash-value"></div></div>
@@ -14,7 +15,7 @@
 			<%= hidden_field_tag 'offer_cash_value_hidden', 0 %>
 		</div>
 		<div id="send-button">
-			<button>SEND</button>
+			<%= submit_tag "Send offer", :name => "send_offer" %>
 		</div>
 		<div id="suggested-value-outer">
 	<!--		<div id="suggested-text"></div> 
@@ -56,6 +57,7 @@
 	</div> <!-- end of offer-details -->
 
 </div>
+<% end #end form%>
 
 <script type="text/javascript">
 	makeDraggable("their-available-item-list");

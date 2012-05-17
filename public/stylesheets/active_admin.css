@@ -1,3 +1,7 @@
+.item-id {
+	display: none;
+}
+
 .item-custom-list {
 	margin-bottom: 1em;
 	text-align: center;

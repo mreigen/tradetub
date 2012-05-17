@@ -42,6 +42,19 @@ function makeDraggable(ul1) {
 				putBack(this);
 			});
 			
+			// add a hidden input
+			$hidden_input = $("<input>");
+			item_id = $li.children(".item-id").html();
+			item_price = parseInt($li.children(".item-price").html().replace("$",""));
+			if (dest == "#offering-items-offered ul") {
+				$hidden_input.attr("name","offering[" + item_id + "][price]");
+			}
+			else if (dest == "#wanted-items-offered ul") {
+				$hidden_input.attr("name","wanted[" + item_id + "][price]");
+			}
+			$hidden_input.val(item_price);
+			$hidden_input.attr("type","hidden").appendTo($li);
+					
 			ui.draggable.remove();
 			ui.helper.remove();
 			updateSuggestedValue();
@@ -55,6 +68,8 @@ function putBack(t) {
 	item.removeClass("dropped");
 	// remove the plus sign
 	item.children(".plus-sign").remove();
+	// remove the hidden input
+	item.children("input").remove();
 	
 	if (item.length != 0) {
 		// add it back to the right place

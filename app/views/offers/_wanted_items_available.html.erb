@@ -8,7 +8,7 @@
 		<div class="item-title"><%=  item.title %></div>
 		<div class="item-description"><%= item.description %></div>
 		<div class="item-price"><%= number_to_currency(item.price) %></div>
-		<%= hidden_field_tag 'wanted' + item.id.to_s + '[price]', item.price %>
+		<div class="item-id"><%= item.id %></div>
 	</li>
 	<% end %>
 <% end %>

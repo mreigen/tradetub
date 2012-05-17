@@ -9,7 +9,7 @@ class Offer < ActiveRecord::Base
   has_many :wanted_services
   
   scope :accepted, where(:response => 1)
-  
+    
   def sender
     User.find(self.sender_id)
   end
