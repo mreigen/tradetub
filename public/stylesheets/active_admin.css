@@ -353,11 +353,8 @@
 }
 
 #suggested-value-wrapper-view-offer #value-calc {	
-	width: 200px;
 	position: relative;
 	margin: 0 auto;
-	top: -500px;
-	left: -22px;
 }
 
 #value-calc {
@@ -455,13 +452,20 @@
 	text-align: center;
 }
 
+#view-offer-wrapper {
+	float: left;
+	width: 100%;	
+}
+
 #view-offer-wrapper #send-button {
-	top: 7px;
+	top: 40px;
 }
 
 #suggested-value-wrapper #send-button {
+	margin: 15px 10px;
 }
 
+/* ORIGINAL ACTIVE ADMIN CSS FROM HERE DOWN */
 /* =============== */
 span.icon {
   vertical-align: middle;
