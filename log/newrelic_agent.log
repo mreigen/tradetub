@@ -687,3 +687,8 @@ The error occurred while evaluating nil.each
 [05/17/12 00:54:01 -0700 Minh-T-Reigens-MacBook-Pro.local (15764)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: You have a nil object when you didn't expect it!
 You might have expected an instance of Array.
 The error occurred while evaluating nil.each
+[05/18/12 00:11:02 -0700 Minh-T-Reigens-MacBook-Pro.local (18355)] INFO : Dispatcher: webrick
+[05/18/12 00:11:02 -0700 Minh-T-Reigens-MacBook-Pro.local (18355)] INFO : Application: Active Admin Demo
+[05/18/12 00:11:02 -0700 Minh-T-Reigens-MacBook-Pro.local (18355)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[05/18/12 00:11:02 -0700 Minh-T-Reigens-MacBook-Pro.local (18355)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 18355
+[05/18/12 00:11:02 -0700 Minh-T-Reigens-MacBook-Pro.local (18355)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log

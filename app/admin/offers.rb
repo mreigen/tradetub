@@ -1,16 +1,20 @@
 ActiveAdmin.register Offer do
   config.clear_sidebar_sections!
 
-  scope :all, :default => true do |offer|
+  scope :all do |offer|
     offer.where("user_id == ?", current_user)
   end
   
-  scope :rejected do |offer|
-    offer.where("user_id == ? and response == ?", current_user, 2)
+  scope :pending, :default => true do |offer|
+    offer.where("user_id == ? and response == ?", current_user, 0)
   end
   
   scope :accepted do |offer|
     offer.where("user_id == ? and response == ?", current_user, 1)
+  end
+  
+  scope :sent do |offer|
+    offer.where("sender_id == ? and response == ?", current_user, 0)
   end
   
   index do
@@ -124,7 +128,7 @@ ActiveAdmin.register Offer do
      
      def send_counter_offer
         # FOR OFFERING ITEMS
-        offering_items = params[:offering]
+        offering_items = params[:wanted]
         offering_item_ids = offering_items.keys unless offering_items.blank?
         offering_items_ids ||= []
         
@@ -140,8 +144,8 @@ ActiveAdmin.register Offer do
           offer_item.save!
         end
 
-        # FOR OFFERING ITEMS
-        wanted_items = params[:wanted]
+        # FOR WANTED ITEMS
+        wanted_items = params[:offering]
         wanted_item_ids = wanted_items.keys unless wanted_items.blank?
         wanted_item_ids ||= []
         
@@ -156,6 +160,13 @@ ActiveAdmin.register Offer do
           wanted_item = WantedItem.new :offer_id => params[:id], :product_id => product_id
           wanted_item.save!
         end
+        
+        # SWAP SENDER AND USER
+        user_id = @offer.user_id
+        sender_id = @offer.sender_id
+        @offer.user_id = sender_id
+        @offer.sender_id = user_id
+        @offer.save!
         
         flash_mess = "You have sent the offer"
         respond_to do |format|
