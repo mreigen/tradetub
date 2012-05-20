@@ -45,7 +45,7 @@ function makeDraggable(ul1) {
 			// add a hidden input
 			$hidden_input = $("<input>");
 			item_id = $li.children(".item-id").html();
-			item_price = parseInt($li.children(".item-price").html().replace("$",""));
+			item_price = parseFloat($li.children(".item-price").html().replace("$","").replace(",",""));
 			if (dest == "#offering-items-offered ul") {
 				$hidden_input.attr("name","offering[" + item_id + "][price]");
 			}
@@ -143,7 +143,8 @@ function updateSuggestedValue(div_id) {
 	// my items worth
 	$("#my-value .cash-value").html("$" + my_value.toFixed(2));
 	// diff
-	var diff = my_value.toFixed(2) - their_value.toFixed(2) - cash_offered;
+	console.log(my_value.toFixed(2) + ", " + their_value.toFixed(2) + ", " + cash_offered);
+	var diff = my_value.toFixed(2) - their_value.toFixed(2);// - cash_offered;
 	var diff_sign = (diff<0)?"+":"-";
 	diff = Math.abs(diff).toFixed(2);
 	$("#diff .cash-value").html(diff_sign + " $" + diff);
@@ -151,13 +152,18 @@ function updateSuggestedValue(div_id) {
 	//var suggested_value = Math.round(parseFloat(my_value) - parseFloat(their_value) - parseFloat(cash_offered)).toFixed(2);
 	// SET theypay ipay value
 	var suggested_value = diff;	
-	if (diff_sign == "+") {
+	if (diff_sign == "-") {
 		$(".cash-compensate label").html("They pay");
 	} else {
 		$(".cash-compensate label").html("Bargain");
 	}
-	$("#offer_cash_value").val(diff);
-	
+	// set hidden field
+	$("#offer_cash_value_hidden").val(diff_sign + diff);
+	// if text box changed, update hidden field
+	$("#offer_cash_value").val(diff).change(function() {
+		$("#offer_cash_value_hidden").val(diff_sign + $(this).val());
+	});
+
 	//
 	var instruction = "";
 	

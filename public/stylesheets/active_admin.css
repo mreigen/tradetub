@@ -126,6 +126,7 @@
 	width: 101%;
 	position: relative;
 	float: left;
+	margin-top: 36px;
 }
 
 #dropbox {
@@ -229,6 +230,10 @@
 	width: 42%;
 }
 
+#view-offer-wrapper #offering-items-offered, #view-offer-wrapper #wanted-items-offered {
+	left: 20px;
+}
+
 #available-items ul {
 	list-style-type: none;
 	overflow-y: auto;
@@ -312,7 +317,6 @@
 	position: relative;
 	float: left;
 	height: 9px;
-	margin-top: 40px;
 }
 
 #cash-value-wrapper, #my-value-wrapper {
@@ -353,13 +357,13 @@
 }
 
 #suggested-value-wrapper-view-offer #value-calc {	
-	position: relative;
-	margin: 0 auto;
+	left: 450px;
+	margin-top: 85px;
 }
 
 #value-calc {
 	position: relative;
-	margin: 0 auto;
+	margin: 50px auto;
 	width: 208px;
 	left: -10px;
 }

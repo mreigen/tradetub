@@ -31,12 +31,12 @@ ActiveAdmin.register Offer do
       end
     end
     
-    column "Member" do |offer|
+    column "Sender" do |offer|
       username = User.find(offer.sender_id).username
       link_to username, user_url(offer.sender_id)
     end
 
-    column "Is offering you" do |offer|
+    column "Offer" do |offer|
       items = []
       offer.offer_items.each do |offer_item|
         items << link_to(image_tag((Product.find(offer_item.product_id).image.url(:thumb)), :class => "offer_thumb" ), item_url(offer_item.product_id))
@@ -49,7 +49,7 @@ ActiveAdmin.register Offer do
       end
     end
 
-    column "For your item(s)" do |offer|
+    column "Wanted" do |offer|
       items = []
       offer.wanted_items.each do |wanted_item|
         items << link_to(image_tag((Product.find(wanted_item.product_id).image.url(:thumb)), :class => "offer_thumb" ), item_url(wanted_item.product_id))
@@ -58,17 +58,18 @@ ActiveAdmin.register Offer do
       items.join(" + ").html_safe
     end
     
-    column "With cash value" do |offer|
+    column "Cash" do |offer|
       number_to_currency(offer.cash_value)
     end
     
-    column "Your response" do |offer|
-      links = []
-      unless offer.response == 1
-        links << link_to("Accept", offer_path(offer.id) + "/respond/accept", :confirm => "Accept this offer?", :method => :put)
-      else
-        links << content_tag(:label, "Accepted", :class => "unclickable")
-      end
+    if params[:scope] != "sent"
+      column "Response?" do |offer|
+        links = []
+        unless offer.response == 1
+          links << link_to("Accept", offer_path(offer.id) + "/respond/accept", :confirm => "Accept this offer?", :method => :put)
+        else
+          links << content_tag(:label, "Accepted", :class => "unclickable")
+        end
 =begin No Reject option for now
       unless offer.response == 2
         links << link_to("Reject", offer_path(offer.id) + "/respond/reject", :confirm => "Reject this offer?", :method => :put)
@@ -76,15 +77,17 @@ ActiveAdmin.register Offer do
         links << content_tag(:label, "Rejected", :class => "unclickable")
       end
 =end      
-      unless offer.response == 1
-        links << link_to("Counter Offer", "#")
-      else
-        links << content_tag(:label, "Counter Offer", :class => "unclickable")
-      end
+        unless offer.response == 1
+          links << link_to("Counter Offer", "#")
+        else
+          links << content_tag(:label, "Counter Offer", :class => "unclickable")
+        end
       
-      links << link_to("View", offer_path(offer.id))
-      links.join(" | ").html_safe
+        links << link_to("View", offer_path(offer.id))
+        links.join(" | ").html_safe
+      end
     end
+  
    end
    
    
@@ -127,39 +130,47 @@ ActiveAdmin.register Offer do
      end
      
      def send_counter_offer
+       offer_id = params[:id]
+       @offer = Offer.find(offer_id)
+       
         # FOR OFFERING ITEMS
         offering_items = params[:wanted]
         offering_item_ids = offering_items.keys unless offering_items.blank?
         offering_items_ids ||= []
         
-        offer_id = params[:id]
-        @offer = Offer.find(offer_id)
         # deletes all old records
         old_offer_items = OfferItem.find_all_by_offer_id(offer_id)
         # TODO CHECK IF NOTHING CHANGED THEN SKIP THE FOLLOWING STEPS
         old_offer_items.each { |item| item.destroy }
         # adds new records
-        offering_item_ids.each do |product_id|
-          offer_item = OfferItem.new :offer_id => params[:id], :product_id => product_id
-          offer_item.save!
+        if !offering_item_ids.blank?
+          offering_item_ids.each do |product_id|
+            offer_item = OfferItem.new :offer_id => params[:id], :product_id => product_id
+            offer_item.save!
+          end
         end
-
+        
         # FOR WANTED ITEMS
         wanted_items = params[:offering]
         wanted_item_ids = wanted_items.keys unless wanted_items.blank?
         wanted_item_ids ||= []
         
         wanted_id = params[:id]
-        @offer = Offer.find(wanted_id)
         # deletes all old records
         old_wanted_items = WantedItem.find_all_by_offer_id(wanted_id)
         # TODO CHECK IF NOTHING CHANGED THEN SKIP THE FOLLOWING STEPS        
         old_wanted_items.each { |item| item.destroy }
         # adds new records
-        wanted_item_ids.each do |product_id|
-          wanted_item = WantedItem.new :offer_id => params[:id], :product_id => product_id
-          wanted_item.save!
+        if !wanted_item_ids.blank?
+          wanted_item_ids.each do |product_id|
+            wanted_item = WantedItem.new :offer_id => params[:id], :product_id => product_id
+            wanted_item.save!
+          end
         end
+        
+        # BARGAIN CASH
+        offer_cash_value_hidden = params[:offer_cash_value_hidden]
+        @offer.cash_value = offer_cash_value_hidden
         
         # SWAP SENDER AND USER
         user_id = @offer.user_id
