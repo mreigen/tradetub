@@ -8,6 +8,7 @@ gem "faker"
 gem 'newrelic_rpm', '3.1.1'
 gem 'hoptoad_notifier', '2.4.11'
 gem "paperclip", :git => "git@github.com:thoughtbot/paperclip.git"
+gem "omniauth-facebook"
 
 group :development do
   gem 'mechanize'
