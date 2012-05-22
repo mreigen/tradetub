@@ -19,4 +19,14 @@ ActiveAdmin.register User do
    def password_required?
      new_record? ? false : super
    end
+   
+   # ===================================================================
+   # controllers stuff
+   # ===================================================================
+   controller do
+          
+     def register_edit_info
+     
+     end
+   end
 end

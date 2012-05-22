@@ -1,0 +1,7 @@
+<div class="wrapper">
+	<h2>Edit personal info</h2>
+	<% form_for :user do %>
+		<label>Location</label>
+		<%= text_field :user, :location, :value => "US"%>
+	<% end %>
+</div>

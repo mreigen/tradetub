@@ -8,6 +8,8 @@ ActiveadminDepot::Application.routes.draw do
   post "cart/checkout" => "cart#checkout", :as => :checkout
   
   match 'signup' => 'users#new', :as => :signup
+  match 'user/:id/register_edit_info' => 'users#register_edit_info', :as => :register_edit_info
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   
   devise_for :users, :controllers => {:sessions => 'devise/sessions'}, :skip => [:sessions] do 
