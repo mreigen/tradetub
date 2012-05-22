@@ -3,5 +3,11 @@
 	<% form_for :user do %>
 		<label>Location</label>
 		<%= text_field :user, :location, :value => "US"%>
+		<br/>
+		<label>Email</label>
+		<%= text_field :user, :email, :value => @user.email%>
+		<br/>
+		<label>Name</label>
+		<%= text_field :user, :name, :value => @user.username%>
 	<% end %>
 </div>

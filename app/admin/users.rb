@@ -26,7 +26,7 @@ ActiveAdmin.register User do
    controller do
           
      def register_edit_info
-     
+      @user = User.find(params[:id])
      end
    end
 end
