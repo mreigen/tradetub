@@ -138,6 +138,16 @@ ActiveRecord::Schema.define(:version => 201204230143021) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username",                            :default => "", :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.integer  "location"
+    t.string   "gender"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "facebook_avatar"
   end
 
   add_index "users", ["email"], :name => "index_admin_users_on_email", :unique => true

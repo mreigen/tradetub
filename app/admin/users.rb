@@ -27,6 +27,13 @@ ActiveAdmin.register User do
           
      def register_edit_info
       @user = User.find(params[:id])
+      
+      # save the info stuff
+      if !params[:save].blank?
+        @user.update_attributes(:location => params[:user][:location])
+      end
+      
      end
+
    end
 end

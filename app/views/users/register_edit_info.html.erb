@@ -1,13 +1,20 @@
 <div class="wrapper">
 	<h2>Edit personal info</h2>
 	<% form_for :user do %>
-		<label>Location</label>
-		<%= text_field :user, :location, :value => "US"%>
+		<%= image_tag @user.get_image %>
+		<br/>
+		<label>Name</label>
+		<%= text_field :user, :name, :value => @user.name %>
 		<br/>
 		<label>Email</label>
 		<%= text_field :user, :email, :value => @user.email%>
 		<br/>
-		<label>Name</label>
-		<%= text_field :user, :name, :value => @user.username%>
+		<label>Zip code</label>
+		<%= text_field :user, :location, :value => @user.location %>
+		<br/>
+		<label>Gender</label>
+		<%= text_field :user, :gender%>
+		<br/>
+		<%= submit_tag "Save", :name => "save" %>
 	<% end %>
 </div>
