@@ -1,19 +1,27 @@
-<div class="wrapper">
+<div id="register_wrapper">
 	<h2>Edit personal info</h2>
-	<% form_for :user do %>
+	<% form_for :user do |f|%>
 		<%= image_tag @user.get_image %>
 		<br/>
+		<h3>Personal info</h3>
 		<label>Name</label>
+		<br/>
 		<%= text_field :user, :name, :value => @user.name %>
 		<br/>
 		<label>Email</label>
+		<br/>
 		<%= text_field :user, :email, :value => @user.email%>
 		<br/>
 		<label>Zip code</label>
+		<br/>
 		<%= text_field :user, :location, :value => @user.location %>
 		<br/>
-		<label>Gender</label>
-		<%= text_field :user, :gender%>
+		<h3>Change password</h3>
+	  <div><%= f.label :password %><br />
+	  <%= f.password_field :password %></div>
+
+	  <div><%= f.label :password_confirmation %><br />
+	  <%= f.password_field :password_confirmation %></div>
 		<br/>
 		<%= submit_tag "Save", :name => "save" %>
 	<% end %>

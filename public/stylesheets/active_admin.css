@@ -1,3 +1,20 @@
+@font-face {
+  font-family: Comfortaa;
+  src: 	url(/stylesheets/fonts/Walkway_Bold-webfont.woff) format("woff"),
+				url(/stylesheets/fonts/Walkway_Bold-webfont.ttf) format("truetype");
+}
+
+#register_wrapper, #login_wrapper {
+	width: 60%;
+	margin: 16px auto;
+	box-shadow: 0px 0px 18px #ccc;
+	padding: 26px 0 30px 86px;
+}
+
+#register_wrapper img{
+	padding-bottom: 25px;
+}
+
 .item-id {
 	display: none;
 }
@@ -703,18 +720,25 @@ th, td, caption {
   padding-bottom: 0; }
 
 #header {
-
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
-  background-color: black;
-  height: 20px;
-  overflow: visible;
-  position: relative;
-  padding: 9px 30px;
-  position: relative;
-  z-index: 900; }
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+	height: 20px;
+	overflow: visible;
+	position: relative;
+	padding: 9px 30px;
+	position: relative;
+	z-index: 900;
+	background: #EEE;
+	background: -moz-linear-gradient(top, #EEE 0%, #CCC 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EEE), color-stop(100%,#CCC));
+	background: -webkit-linear-gradient(top, #EEE 0%,#CCC 100%);
+	background: -o-linear-gradient(top, #EEE 0%,#CCC 100%);
+	background: -ms-linear-gradient(top, #EEE 0%,#CCC 100%);
+	background: linear-gradient(top, #EEE 0%,#CCC 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );
+	}
   #header h1 {
     display: inline-block;
-    color: #cdcdcd;
+    color: #000;
     float: left;
     margin-right: 20px;
     margin-bottom: 0px;
@@ -729,7 +753,7 @@ th, td, caption {
       position: relative;
       top: -2px; }
   #header a, #header a:link {
-    color: #cdcdcd; }
+    color: #000; }
   #header .header-item {
     float: left;
     top: 2px;
@@ -748,11 +772,12 @@ th, td, caption {
       /* Hover on li, display the ul */
       /* Drop down menus */ }
       #header ul#tabs > li a {
-        text-decoration: none;
-        padding: 13px 10px 11px 10px;
-        position: relative;}
+				text-decoration: none;
+				padding: 15px 10px 13px 10px;
+				position: relative;
+			}
       #header ul#tabs > li.current > a {
-        color: black;
+        color: darkolivegreen;
         background: #E6F0A3;
         background: -moz-linear-gradient(top, #E6F0A3 0%, #D2E638 50%, #C3D825 51%, #DBF043 100%);
         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#E6F0A3), color-stop(50%,#D2E638), color-stop(51%,#C3D825), color-stop(100%,#DBF043));
@@ -935,7 +960,8 @@ form {
     font-size: 0.95em;
     font-family: Helvetica, Arial, sans-serif;
     outline: none;
-    padding: 8px 10px 7px; }
+    padding: 8px 10px 7px; 
+		margin: 5px 0px 14px; }
     form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input[type=tel]:focus, form textarea:focus {
       border: 1px solid #99a2aa;
       box-shadow: 0 0 4px #99a2aa;
@@ -2322,9 +2348,9 @@ body.logged_out {
   clear: both; }
 
 #wrapper {
-  display: table;
-  width: 94%; 
-	margin: 0 auto;
+	display: table;
+	width: 94%;
+	margin: 20px auto 20px;
 	background: white;
 	color: #222;
 	box-shadow: #ccc 0 0 12px;
