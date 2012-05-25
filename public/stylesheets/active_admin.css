@@ -10,6 +10,7 @@
 	box-shadow: 0px 0px 18px #ccc;
 	padding: 26px 0 30px 86px;
 	border-radius: 5px;
+	background-color: white;
 }
 
 #register_wrapper img{
@@ -1713,7 +1714,7 @@ a.button, a:link.button, a:visited.button, input[type=submit] {
   font-size: 1.0em;
   font-family: Helvetica, Arial, sans-serif;
   line-height: 12px;
-  margin-right: 3px;
+  margin: 0px 3px 10px;
   padding: 7px 16px 6px;
   text-decoration: none;
   -webkit-font-smoothing: antialiased; }
@@ -2552,7 +2553,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   line-height: 150%;
   font-size: 72%;
-  background: #fff;
+  background: #FAFAFA;
   margin: 0;
   padding: 0;
   color: #eee; 

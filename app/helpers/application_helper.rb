@@ -6,6 +6,7 @@ module ApplicationHelper
     offers_by_user.each do |offer|
     	avg_rating += offer.rating.score unless offer.rating.nil?
     end
-    avg_rating = avg_rating / offers_by_user.count
+    avg_rating = avg_rating / offers_by_user.count if offers_by_user.count != 0
+    0
   end
 end

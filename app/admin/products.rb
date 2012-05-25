@@ -2,13 +2,13 @@ ActiveAdmin.register Product, :as => "Item" do
   config.clear_sidebar_sections!
   
   after_build do |currm|
-    currm.author = current_user
+    currm.user_id = current_user
   end
   
   scope :all, :default => true do |ps|
     user_id = params[:user_id]
     user_id ||= current_user
-    ps.where("author == ?", user_id)
+    ps.where("user_id == ?", user_id)
   end
   scope :available do |products|
     products.where("available_on < ?", Date.today)
@@ -40,6 +40,9 @@ ActiveAdmin.register Product, :as => "Item" do
     column "Description" do |product|
       div do product.description end
     end
+    
+    input :value => "List new item", :type => :submit, :onclick => "javascript: document.location.href = '" + new_item_path + "'"
+    
   end
 
   show do |p|
@@ -67,12 +70,12 @@ ActiveAdmin.register Product, :as => "Item" do
     div link_to "Pick this", add_to_cart_path(p.id), :class => "button"
   end
 
-  sidebar "Provider", :only => :show do
+  sidebar "Trader", :only => :show do
     @product = Product.find(params[:id]) unless params[:id].blank?
-    @user = User.find(@product.author) unless @product.blank?
+    @user = User.find(@product.user_id) unless @product.blank?
     render('/admin/sidebar_links', :user => @user)
   end
-
+    
   form :html => { :enctype => "multipart/form-data" } do |f|
      f.inputs "Details" do
       f.input :title
@@ -80,7 +83,7 @@ ActiveAdmin.register Product, :as => "Item" do
       f.input :description
       f.input :price
       f.input :cat_id
-      f.input :author, :value => f.template.current_user
+      f.input :user_id, :value => f.template.current_user.name, :type => :hidden
     end
     f.buttons
    end
