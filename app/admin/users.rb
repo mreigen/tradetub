@@ -35,11 +35,22 @@ ActiveAdmin.register User do
         if !pw.blank? && !pwcf.blank? && (pw != pwcf)
           flash[:error] = "passwords don't match"
           redirect_to :back
+        else
+          @user.update_attributes(params[:user])
+          @user.update_with_password(params[:user])
+          @user.just_created = false
+          
+          respond_to do |format|
+            if @user.save
+              # have to signin again here because Devise will automatically sign you out 
+              # after you changed the password. Note: bypass => true
+              sign_in @user, :bypass => true
+              format.html { redirect_to(offers_path, :notice => 'Your personal info has been successfully updated.') }
+              format.xml  { render :xml => @user, :status => :created, :location => @user }
+            end
+          end
+          
         end
-        @user.update_attributes(params[:user])
-        @user.update_with_password(params[:user])
-        @user.just_created = false
-        @user.save!
       end
 
     end
