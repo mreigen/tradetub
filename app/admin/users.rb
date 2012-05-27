@@ -38,6 +38,8 @@ ActiveAdmin.register User do
         end
         @user.update_attributes(params[:user])
         @user.update_with_password(params[:user])
+        @user.just_created = false
+        @user.save!
       end
 
     end

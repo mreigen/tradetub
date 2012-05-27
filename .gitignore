@@ -22,10 +22,10 @@
 
 # Logs and databases #
 ######################
-/log/*.log
+log/*.log
 *.sql
-/db/*.sqlite3
-/tmp/pids/*.pid
+db/*.sqlite3
+tmp/pids/*.pid
 
 # OS generated files #
 ######################

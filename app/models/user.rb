@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :services
   
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  
+    
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :facebook_avatar, :username, :last_name, :first_name, :gender, :location
 
+  def just_created?
+    just_created
+  end
+  
   def get_image
     if !image_file_name.blank? # if there is image uploaded with paperclip
       image.url
@@ -37,7 +41,7 @@ class User < ActiveRecord::Base
       #user.facebook_avatar = access_token.info.image
       user
     else # Create a user with a stub password. 
-      self.create(:email => data.email, :password => Devise.friendly_token[0,20], :facebook_avatar => access_token.info.image, :first_name => data.first_name, :last_name => data.last_name, :username => data.username, :gender => data.gender) 
+      self.create(:just_created => true, :email => data.email, :password => Devise.friendly_token[0,20], :facebook_avatar => access_token.info.image, :first_name => data.first_name, :last_name => data.last_name, :username => data.username, :gender => data.gender) 
     end
   end
   
