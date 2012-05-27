@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
-  has_many :products
+  has_many :products, :dependent => :destroy
   has_many :orders
-  has_many :ratings
+  has_many :ratings, :dependent => :destroy
   has_many :offers
-  has_many :services
+  has_many :services, :dependent => :destroy
   
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
     
@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
       user
     else # Create a user with a stub password. 
       self.create(:just_created => true, :email => data.email, :password => Devise.friendly_token[0,20], :facebook_avatar => access_token.info.image, :first_name => data.first_name, :last_name => data.last_name, :username => data.username, :gender => data.gender) 
+      
     end
   end
   
