@@ -25,6 +25,7 @@
 /log/*.log
 *.sql
 /db/*.sqlite3
+/tmp/pids/*.pid
 
 # OS generated files #
 ######################
