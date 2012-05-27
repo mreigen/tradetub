@@ -45,7 +45,7 @@ ActiveAdmin.register User do
               # have to signin again here because Devise will automatically sign you out 
               # after you changed the password. Note: bypass => true
               sign_in @user, :bypass => true
-              format.html { redirect_to(offers_path, :notice => 'Your personal info has been successfully updated.') }
+              format.html { redirect_to(items_path, :notice => 'Your personal info has been successfully updated.') }
               format.xml  { render :xml => @user, :status => :created, :location => @user }
             end
           end
