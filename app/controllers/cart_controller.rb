@@ -27,10 +27,11 @@ class CartController < ApplicationController
   end
 
   def checkout
-    @cart.checkout!
-    session.delete(:cart_id)
+    #@cart.checkout!
+    #session.delete(:cart_id)
     flash[:notice] = "Thank you for your purchase! We will ship it shortly!"
-    redirect_to new_offer_path
+    receiver_id = Product.find(@cart.line_items.first().product_id).user_id
+    redirect_to make_offer_path :receiver_id => receiver_id, :name => "new_offer", :cart => @cart
   end
 
   protected

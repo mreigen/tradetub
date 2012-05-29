@@ -2,7 +2,7 @@
 <script src="/javascripts/jquery/jquery.ui.draggable.js"></script>
 <script src="/javascripts/jquery/jquery.ui.droppable.js"></script>
 
-<h2>Make a counter offer</h2>
+<h2>Build your offer</h2>
 
 <% form_for :offer, :url => send_counter_offer_path(@offer) do |f| %>
 
@@ -11,23 +11,23 @@
 		
 			<div id="available-items">
 				
-				<div id="wanted-items-available">
-					<%= render "wanted_items_available", :offer => @offer, :user => @user %>
+				<div id="offering-items-available">
+					<%= render "offering_items_available", :offer => @offer, :user => @user %>
 				</div>
 				<div id="dropbox">
 					DROP STUFF HERE TO START TRADING
 					<img src="http://icons.iconarchive.com/icons/raindropmemory/in-spirited-we-love/256/Dropbox-icon.png" />
 				</div>
-				<div id="offering-items-available">
-					<%= render "offering_items_available", :sender => @sender, :offer => @offer %>
+				<div id="wanted-items-available">
+					<%= render "wanted_items_available", :sender => @sender, :offer => @offer %>
 				</div>
 			</div>
 
 			<div id="offering-items">
 				<div class="page-break" style="top: 20px"></div>
 				
-				<div id="wanted-items-offered">
-					<%= render "wanted_items_offered", :offer => @offer %>
+				<div id="offering-items-offered">
+					<%= render "offering_items_offered", :offer => @offer %>
 				</div>
 				
 				<div id="suggested-value-wrapper">
@@ -50,8 +50,8 @@
 					</div>
 				</div>
 				
-				<div id="offering-items-offered">
-					<%= render "offering_items_offered", :offer => @offer %>
+				<div id="wanted-items-offered">
+					<%= render "wanted_items_offered", :offer => @offer %>
 				</div>
 				
 				<div class="page-break" style="top: 50px;"></div>

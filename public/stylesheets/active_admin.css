@@ -229,16 +229,16 @@
 }
 
 #offering-items-available, #offering-items-offered {
-	float: right;
+	float: left;
 	left: 0px;
 }
 
 #offering-items-offered {
-	float: right;
 	width: 38% !important;
 }
+
 #wanted-items-available, #wanted-items-offered {
-	float: left;
+	float: right;
 	right: 0px;	
 }
 

@@ -1,7 +1,7 @@
-<div class="big-title">My Bazaar</div>
+<div class="big-title"><%= @user.username %>'s Bazaar</div>
 <div class="item-custom-list"><a href="#">Musical</a> | <a href="#">Households</a> | <a href="#">Hobbies</a> | <a href="#">R/C Airplanes</a> | <a href="#">Furnitures</a></div>
 <ul id="my-available-item-list">
-<% user.products.each do |item| %>
+<% @user.products.each do |item| %>
 <% unless offer.wanted_items.include?(WantedItem.find_by_product_id(item.id))%>
 	<li class="my-item-li">
 		<div class="item-image-list"><img src="<%= item.image.url(:thumb) %>" /></div>

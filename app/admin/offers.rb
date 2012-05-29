@@ -70,13 +70,13 @@ ActiveAdmin.register Offer do
         else
           links << content_tag(:label, "Accepted", :class => "unclickable")
         end
-    =begin No Reject option for now
+=begin No Reject option for now
       unless offer.response == 2
         links << link_to("Reject", offer_path(offer.id) + "/respond/reject", :confirm => "Reject this offer?", :method => :put)
       else
         links << content_tag(:label, "Rejected", :class => "unclickable")
       end
-    =end      
+=end      
         unless offer.response == 1
           links << link_to("Counter Offer", "#")
         else
@@ -114,19 +114,25 @@ ActiveAdmin.register Offer do
   controller do
     helper :offers
 
-    def counter_offer
-     if params[:accept]
-       #raise params.inspect
-       @offer = Offer.find(params[:id])
-       @offer.update_attribute(:response, "1")
-       @offer.save!
-       redirect_to offers_path
-     elsif params[:counter_offer]
-       @offer = Offer.find(params[:id])
-       @sender = @offer.sender
-       @user = @offer.user
-    #         redirect_to counter_offer_path
-     end
+    def make_offer      
+      if params[:id]
+        @offer = Offer.find(params[:id])
+      else
+        @offer = Offer.create :sender_id => current_user.id
+      end
+      
+      if params[:accept]
+        @offer.update_attribute(:response, "1")
+        @offer.save!
+        redirect_to offers_path
+      elsif params[:name] == "counter_offer"
+        @sender = @offer.sender
+        @user = @offer.user
+      elsif params[:name] == "new_offer"
+        @sender = current_user
+        @user = User.find(params[:receiver_id])
+        @cart = Order.find(params[:cart])
+      end
     end
      
     def send_counter_offer

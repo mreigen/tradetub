@@ -4,12 +4,14 @@
 %>
 <div class="down-arrow"></div>
 <ul>
-<% if offer.wanted_items.empty? %>
+<% if offer.wanted_items.empty? && cart.line_items.empty? %>
 	<div id="no-item-wanted" class="no-item">No item</div>
 <% else %>
-	<% offer.wanted_items.each_with_index do |wanted_item, i| %>
+	<% wanted_items = cart.line_items.empty? ? offer.wanted_items : cart.line_items %>
+	<% wanted_items.each_with_index do |wanted_item, i| %>
 		<li class="my-item-list">
 			<% @product = wanted_item.product %>
+			<div class="item-id"><%= @product.id %></div>
 			<div class="item-image-list"><img src="<%= @product.image.url(:thumb) %>" /></div>									
 			<div class="item-title"><%=  @product.title %></div>
 			<div class="item-description"><%= @product.description %></div>
