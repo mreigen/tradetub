@@ -69,6 +69,9 @@ ActiveAdmin.register Product, :as => "Item" do
     end
         
     div link_to "Pick this", add_to_cart_path(p.id), :class => "button"
+    
+    active_admin_comments
+    
   end
 
   sidebar "Trader", :only => :show do

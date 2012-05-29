@@ -38,7 +38,9 @@ class User < ActiveRecord::Base
     data = access_token.extra.raw_info
     if user = self.find_by_email(data.email)
       #user.username = data.username
-      #user.facebook_avatar = access_token.info.image
+      user.update_attributes(data)
+      user.facebook_avatar = access_token.info.image
+      user.save!
       user
     else # Create a user with a stub password. 
       self.create(:just_created => true, :email => data.email, :password => Devise.friendly_token[0,20], :facebook_avatar => access_token.info.image, :first_name => data.first_name, :last_name => data.last_name, :username => data.username, :gender => data.gender) 
