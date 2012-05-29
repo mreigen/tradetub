@@ -28,7 +28,7 @@ class CartController < ApplicationController
 
   def checkout
     @cart.checkout!
-    #session.delete(:cart_id)
+    session.delete(:cart_id)
     flash[:notice] = "Thank you for your purchase! We will ship it shortly!"
     redirect_to new_offer_path
   end
