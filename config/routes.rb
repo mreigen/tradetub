@@ -23,7 +23,8 @@ ActiveadminDepot::Application.routes.draw do
   get '/user/:user_id/items' => 'items#index'
   get '/user/:user_id/item/:id' => 'items#show'
   
-  match 'offer/:id/counter_offer', :to => 'offers#counter_offer', :as => :counter_offer
+  match 'offer/:id/counter_offer', :to => 'offers#make_offer', :as => :counter_offer
+  match 'offer/new_offer/receiver/:receiver_id' => 'offers#make_offer', :as => :make_offer
   match 'offer/:id/send_counter_offer' => 'offers#send_counter_offer', :as => :send_counter_offer
 
   resources :sessions

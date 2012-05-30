@@ -4,13 +4,14 @@
 				url(/stylesheets/fonts/Walkway_Bold-webfont.ttf) format("truetype");
 }
 
-#register_wrapper, #login_wrapper {
+#register_wrapper, #login_wrapper, #checkout_wrapper {
 	width: 60%;
 	margin: 16px auto;
 	box-shadow: 0px 0px 18px #ccc;
 	padding: 26px 0 30px 86px;
 	border-radius: 5px;
 	background-color: white;
+	color: #555;
 }
 
 #register_wrapper img{
@@ -228,16 +229,16 @@
 }
 
 #offering-items-available, #offering-items-offered {
-	float: right;
+	float: left;
 	left: 0px;
 }
 
 #offering-items-offered {
-	float: right;
 	width: 38% !important;
 }
+
 #wanted-items-available, #wanted-items-offered {
-	float: left;
+	float: right;
 	right: 0px;	
 }
 

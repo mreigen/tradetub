@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
-  has_many :products
+  has_many :products, :dependent => :destroy
   has_many :orders
-  has_many :ratings
+  has_many :ratings, :through => :offers, :dependent => :destroy
   has_many :offers
-  has_many :services
+  has_many :services, :dependent => :destroy
   
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  
+    
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :facebook_avatar, :username, :last_name, :first_name, :gender, :location
 
+  def just_created?
+    just_created
+  end
+  
   def get_image
     if !image_file_name.blank? # if there is image uploaded with paperclip
       image.url
@@ -34,10 +38,12 @@ class User < ActiveRecord::Base
     data = access_token.extra.raw_info
     if user = self.find_by_email(data.email)
       #user.username = data.username
-      #user.facebook_avatar = access_token.info.image
+      user.update_attributes(data)
+      user.facebook_avatar = access_token.info.image
+      user.save!
       user
     else # Create a user with a stub password. 
-      self.create(:email => data.email, :password => Devise.friendly_token[0,20], :facebook_avatar => access_token.info.image, :first_name => data.first_name, :last_name => data.last_name, :username => data.username, :gender => data.gender) 
+      self.create(:just_created => true, :email => data.email, :password => Devise.friendly_token[0,20], :facebook_avatar => access_token.info.image, :first_name => data.first_name, :last_name => data.last_name, :username => data.username, :gender => data.gender) 
     end
   end
   
