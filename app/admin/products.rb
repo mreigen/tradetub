@@ -47,6 +47,8 @@ ActiveAdmin.register Product, :as => "Item" do
   end
 
   show do |p|
+    render :partial => "show_item", :locals => {:item => p, :user => current_user}
+=begin
     return unless p.available
       
     h3 p.title + " - " + number_to_currency(p.price)
@@ -71,7 +73,7 @@ ActiveAdmin.register Product, :as => "Item" do
     div link_to "Pick this", add_to_cart_path(p.id), :class => "button"
     
     active_admin_comments
-    
+=end
   end
 
   sidebar "Trader", :only => :show do
