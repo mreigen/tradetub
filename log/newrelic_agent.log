@@ -835,3 +835,28 @@ The error occurred while evaluating nil.each
 [05/26/12 13:51:54 -0700 macintosh5-2.local (558)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 558
 [05/26/12 13:51:54 -0700 macintosh5-2.local (558)] INFO : Agent Log at /Users/satonobuhiro/Desktop/BARZiT/tradetub/log/newrelic_agent.log
 >>>>>>> from nobu
+[05/26/12 13:59:23 -0700 macintosh5-2.local (1973)] INFO : Dispatcher: webrick
+[05/26/12 13:59:23 -0700 macintosh5-2.local (1973)] INFO : Application: Active Admin Demo
+[05/26/12 13:59:23 -0700 macintosh5-2.local (1973)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[05/26/12 13:59:23 -0700 macintosh5-2.local (1973)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 1973
+[05/26/12 13:59:23 -0700 macintosh5-2.local (1973)] INFO : Agent Log at /Users/satonobuhiro/Desktop/BARZiT/tradetub/log/newrelic_agent.log
+[05/29/12 22:58:55 -0700 macintosh5-2.local (498)] INFO : Dispatcher: webrick
+[05/29/12 22:58:55 -0700 macintosh5-2.local (498)] INFO : Application: Active Admin Demo
+[05/29/12 22:58:55 -0700 macintosh5-2.local (498)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[05/29/12 22:58:55 -0700 macintosh5-2.local (498)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 498
+[05/29/12 22:58:55 -0700 macintosh5-2.local (498)] INFO : Agent Log at /Users/satonobuhiro/Desktop/BARZiT/tradetub/log/newrelic_agent.log
+[05/29/12 23:22:33 -0700 macintosh5-2.local (858)] INFO : Dispatcher: webrick
+[05/29/12 23:22:33 -0700 macintosh5-2.local (858)] INFO : Application: Active Admin Demo
+[05/29/12 23:22:33 -0700 macintosh5-2.local (858)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[05/29/12 23:22:33 -0700 macintosh5-2.local (858)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 858
+[05/29/12 23:22:33 -0700 macintosh5-2.local (858)] INFO : Agent Log at /Users/satonobuhiro/Desktop/BARZiT/tradetub/log/newrelic_agent.log
+[05/30/12 00:02:34 -0700 macintosh5-2.local (28213)] INFO : Dispatcher: webrick
+[05/30/12 00:02:34 -0700 macintosh5-2.local (28213)] INFO : Application: Active Admin Demo
+[05/30/12 00:02:34 -0700 macintosh5-2.local (28213)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[05/30/12 00:02:34 -0700 macintosh5-2.local (28213)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 28213
+[05/30/12 00:02:34 -0700 macintosh5-2.local (28213)] INFO : Agent Log at /Users/satonobuhiro/Desktop/BARZiT/tradetub/log/newrelic_agent.log
+[05/30/12 00:05:38 -0700 macintosh5-2.local (69011)] INFO : Dispatcher: webrick
+[05/30/12 00:05:38 -0700 macintosh5-2.local (69011)] INFO : Application: Active Admin Demo
+[05/30/12 00:05:38 -0700 macintosh5-2.local (69011)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[05/30/12 00:05:38 -0700 macintosh5-2.local (69011)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 69011
+[05/30/12 00:05:38 -0700 macintosh5-2.local (69011)] INFO : Agent Log at /Users/satonobuhiro/Desktop/BARZiT/tradetub/log/newrelic_agent.log
