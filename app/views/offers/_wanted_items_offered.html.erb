@@ -4,10 +4,10 @@
 %>
 <div class="down-arrow"></div>
 <ul>
-<% if offer.wanted_items.empty? && cart.line_items.empty? %>
+<% if offer.wanted_items.empty? && @cart.line_items.empty? %>
 	<div id="no-item-wanted" class="no-item">No item</div>
 <% else %>
-	<% wanted_items = cart.line_items.empty? ? offer.wanted_items : cart.line_items %>
+	<% wanted_items = @cart.line_items.empty? ? offer.wanted_items : @cart.line_items %>
 	<% wanted_items.each_with_index do |wanted_item, i| %>
 		<li class="my-item-list">
 			<% @product = wanted_item.product %>
@@ -29,7 +29,9 @@
 </ul>
 
 <script language="javascript">
-	$(".close-icon").click(function() {
-		putBack(this);
+	$("document").ready(function() {
+		$(".close-icon").click(function() {
+			putBack(this);
+		});		
 	});
 </script>

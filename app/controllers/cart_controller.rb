@@ -29,8 +29,9 @@ class CartController < ApplicationController
   def checkout
     #@cart.checkout!
     #session.delete(:cart_id)
-    flash[:notice] = "Thank you for your purchase! We will ship it shortly!"
+    flash[:notice] = "Your item(s) have been added to the offer page! Please make an offer to start trading!!"
     receiver_id = Product.find(@cart.line_items.first().product_id).user_id
+    # TO DO: multiple receivers
     redirect_to make_offer_path :receiver_id => receiver_id, :name => "new_offer", :cart => @cart
   end
 

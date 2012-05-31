@@ -47,7 +47,7 @@ ActiveAdmin.register Product, :as => "Item" do
   end
 
   show do |p|
-    render :partial => "show_item", :locals => {:item => p, :user => current_user}
+    div {render :partial => "show_item", :locals => {:item => p, :user => current_user} }
 =begin
     return unless p.available
       
@@ -70,10 +70,9 @@ ActiveAdmin.register Product, :as => "Item" do
         div "trade only"
     end
         
-    div link_to "Pick this", add_to_cart_path(p.id), :class => "button"
-    
-    active_admin_comments
+    div link_to "Pick this", add_to_cart_path(p.id), :class => "button"    
 =end
+    active_admin_comments
   end
 
   sidebar "Trader", :only => :show do

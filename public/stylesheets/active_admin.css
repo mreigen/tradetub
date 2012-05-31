@@ -1332,10 +1332,12 @@ form.filter_form a.clear_filters_btn {
       box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset; }
 
 .comments .active_admin_comment {
-  clear: both;
-  margin-top: 10px;
-  margin-bottom: 40px;
-  max-width: 700px; }
+	clear: both;
+	margin-top: 10px;
+	max-width: 700px;
+	background-color: #FDFDFD;
+	padding: 12px;
+	border-radius: 5px; }
   .comments .active_admin_comment .active_admin_comment_meta {
     width: 130px;
     float: left;
