@@ -2,7 +2,7 @@
 return if user.blank?
 avg_rating = get_average_ratings_from_user(user)
 %>
-Username: <%= link_to user.username, "/users/#{user.id}" %>
+<div id="sidebar-username"><%= link_to user.username, "/users/#{user.id}" %></div>
 <br/>
-Ratings: <%= avg_rating.to_s + "/5" %>
+<div id="sidebar-ratings"><%= avg_rating.to_s + "/5" %></div>
 <br/>

@@ -2065,24 +2065,31 @@ a:hover {
     border: none;
     border-bottom: 1px solid #E8E8E8; }
 
+
+/**================
+*			SIDE BAR
+** ================ */
+
+#sidebar-username, #sidebar-ratings {
+	font-size: 21px;
+	padding: 10px 0 10px 0;
+	font-family: georgia;
+}
+
+#sidebar-username a {
+	text-decoration: none;
+}
+
 .sidebar_section {
-  background: #f4f4f4;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  background: whitesmoke;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
   box-shadow: inset 0 1px 4px #dddddd;
   -moz-box-shadow: inset 0 1px 4px #dddddd;
   -webkit-box-shadow: inset 0 1px 4px #dddddd;
   margin-bottom: 20px; }
   .sidebar_section h3 {
-		background: #BFD255;
-		background: -moz-linear-gradient(top, #BFD255 0%, #8EB92A 50%, #72AA00 51%, #9ECB2D 100%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#BFD255), color-stop(50%,#8EB92A), color-stop(51%,#72AA00), color-stop(100%,#9ECB2D));
-		background: -webkit-linear-gradient(top, #BFD255 0%,#8EB92A 50%,#72AA00 51%,#9ECB2D 100%);
-		background: -o-linear-gradient(top, #BFD255 0%,#8EB92A 50%,#72AA00 51%,#9ECB2D 100%);
-		background: -ms-linear-gradient(top, #BFD255 0%,#8EB92A 50%,#72AA00 51%,#9ECB2D 100%);
-		background: linear-gradient(top, #BFD255 0%,#8EB92A 50%,#72AA00 51%,#9ECB2D 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 );
     }
     .sidebar_section h3 span.icon svg path, .sidebar_section h3 span.icon svg polygon, .sidebar_section h3 span.icon svg rect, .sidebar_section h3 span.icon svg circle {
       fill: #5e6469 !important; }
@@ -2097,6 +2104,10 @@ a:hover {
   .sidebar_section hr {
     border: none;
     border-bottom: 1px solid #E8E8E8; }
+
+/**================
+*		end SIDE BAR
+** ================ */
 
 .scopes li .count {
   color: #8e979e;
@@ -2456,8 +2467,8 @@ body.logged_out {
     margin-right: 0; }
   #active_admin_content #sidebar {
     float: left;
-    width: 270px;
-    margin-left: -270px; }
+		width: 337px;
+		margin: 40px 0 0 -363px; }
 
 #title_bar {
   background: #efefef;
