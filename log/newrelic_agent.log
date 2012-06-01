@@ -870,3 +870,8 @@ The error occurred while evaluating nil.each
 [05/30/12 12:11:38 -0700 macintosh5-2.local (684)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
 [05/30/12 12:11:38 -0700 macintosh5-2.local (684)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 684
 [05/30/12 12:11:38 -0700 macintosh5-2.local (684)] INFO : Agent Log at /Users/satonobuhiro/Desktop/BARZiT/tradetub/log/newrelic_agent.log
+[06/01/12 08:07:49 -0700 macintosh5-2.local (3067)] INFO : Dispatcher: webrick
+[06/01/12 08:07:49 -0700 macintosh5-2.local (3067)] INFO : Application: Active Admin Demo
+[06/01/12 08:07:49 -0700 macintosh5-2.local (3067)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[06/01/12 08:07:49 -0700 macintosh5-2.local (3067)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 3067
+[06/01/12 08:07:49 -0700 macintosh5-2.local (3067)] INFO : Agent Log at /Users/satonobuhiro/Desktop/BARZiT/tradetub/log/newrelic_agent.log
