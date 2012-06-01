@@ -69,10 +69,11 @@ ActiveAdmin.register Product, :as => "Item" do
       when 2
         div "trade only"
     end
-        
+    
+    active_admin_comments
+            
     div link_to "Pick this", add_to_cart_path(p.id), :class => "button"    
 =end
-    active_admin_comments
   end
 
   sidebar "Trader", :only => :show do
