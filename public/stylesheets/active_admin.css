@@ -4,10 +4,84 @@
 				url(/stylesheets/fonts/Walkway_Bold-webfont.ttf) format("truetype");
 }
 
+@font-face {
+    font-family: 'FuturaBdCnBTBold';
+    src: url('fonts/futura_bdcn_bt_bold-webfont.eot');
+    src: url('fonts/futura_bdcn_bt_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/futura_bdcn_bt_bold-webfont.woff') format('woff'),
+         url('fonts/futura_bdcn_bt_bold-webfont.ttf') format('truetype'),
+         url('fonts/futura_bdcn_bt_bold-webfont.svg#') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'FuturaMdBTMediumItalic';
+    src: url('fonts/futura_md_bt_medium_italic-webfont.eot');
+    src: url('fonts/futura_md_bt_medium_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/futura_md_bt_medium_italic-webfont.woff') format('woff'),
+         url('fonts/futura_md_bt_medium_italic-webfont.ttf') format('truetype'),
+         url('fonts/futura_md_bt_medium_italic-webfont.svg#FuturaMdBTMediumItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'FuturaBdCnBTBoldItalic';
+    src: url('fonts/futura_bdcn_bt_bold_italic-webfont.eot');
+    src: url('fonts/futura_bdcn_bt_bold_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/futura_bdcn_bt_bold_italic-webfont.woff') format('woff'),
+         url('fonts/futura_bdcn_bt_bold_italic-webfont.ttf') format('truetype'),
+         url('fonts/futura_bdcn_bt_bold_italic-webfont.svg#FuturaBdCnBTBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'FuturaMdBTMedium';
+    src: url('fonts/futura_md_bt_medium-webfont.eot');
+    src: url('fonts/futura_md_bt_medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/futura_md_bt_medium-webfont.woff') format('woff'),
+         url('fonts/futura_md_bt_medium-webfont.ttf') format('truetype'),
+         url('fonts/futura_md_bt_medium-webfont.svg#FuturaMdBTMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'FuturaMdBTBold';
+    src: url('fonts/futura_bold_bt-webfont.eot');
+    src: url('fonts/futura_bold_bt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/futura_bold_bt-webfont.woff') format('woff'),
+         url('fonts/futura_bold_bt-webfont.ttf') format('truetype'),
+         url('fonts/futura_bold_bt-webfont.svg#FuturaMdBTBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'FuturaLTCondensed';
+    src: url('fonts/futuralt-condensed-webfont.eot');
+    src: url('fonts/futuralt-condensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/futuralt-condensed-webfont.woff') format('woff'),
+         url('fonts/futuralt-condensed-webfont.ttf') format('truetype'),
+         url('fonts/futuralt-condensed-webfont.svg#FuturaLTCondensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 /**=================
 * 		ITEM PAGE
 ** ================= */ 
 #item_content_wrapper {
+	font-family: 'FuturaMdBTMediumItalic';
+	font-size: 14px;
 	float: left;
 	width: 600px;
 	margin: 40px 0 0 60px;
@@ -50,14 +124,16 @@
 }
 
 #item_content_wrapper #title {
-	font-size: 30px;
-	font-family: georgia;
+	font-size: 24px;
+		font-family: 'FuturaMdBTMedium';
 }
 
 #item_content_wrapper #price {
-	font-size: 40px;
+	font-size: 30px;
 	padding: 28px 0 18px;
 	color: #8CC;
+	font-family: 'FuturaMdBTMedium';
+	font-style: light;
 }
 
 #item_content_wrapper #break {
