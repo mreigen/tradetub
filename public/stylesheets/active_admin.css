@@ -82,6 +82,11 @@
 	top: 63px;
 }
 
+#item_content_wrapper #days-ago {
+	font-style: italic;
+	color: #888;
+}
+
 /**=================
 * 		end ITEM PAGE
 ** ================= */
