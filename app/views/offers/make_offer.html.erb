@@ -63,23 +63,25 @@
 <% end #end form%>
 
 <script type="text/javascript">
-	makeDraggable("their-available-item-list");
-	makeDraggable("my-available-item-list");
-	makeDraggable("their-available-service-list");
-	
-	// initial update
-	updateSuggestedValue();
-	/*
-	// initialize values
-	var cashExtra = parseFloat($("#offer_cash_value_hidden").val());
-	if (cashExtra == 0) {
-		$("#cash-extra").css("display", "none");
-	} else {
-		$("#my-value").css("border-bottom", "none");
-		if (cashExtra < 0) { // they asked me to pay extra cash
-			$("#cash-extra").removeClass("cash-request").addClass("cash-offer");
-		}
-	}
-	*/
-	
+	$("document").ready(function() {
+		makeDraggable("their-available-item-list");
+		makeDraggable("my-available-item-list");
+		makeDraggable("their-available-service-list");
+		
+		// initial update
+		updateSuggestedValue();
+		
+		var wanted_item_ids = [];
+		// look at wanted items, get all item ids
+		$("#wanted-items-offered").find(".item-id").each(function() {
+			wanted_item_ids.push($(this).html());
+		});
+		console.log("value = " + wanted_item_ids);
+		// now we have a list of item ids, look at available item list and remove items associate to them.
+		$("#wanted-items-available").find(".item-li").each(function() {
+			// if wanted_item_ids array contains the found item id, then remove it
+			if ($.inArray($(this).children(".item-id").html(), wanted_item_ids) != -1)
+				$(this).remove()
+		});
+	});
 </script>

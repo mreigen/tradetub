@@ -8,7 +8,7 @@
 	<div id="no-item-offered" class="no-item">No item</div>
 <% else %>
 	<% offer.offer_items.each_with_index do |offer_item, i| %>
-		<li class="their-item-list">
+		<li class="my-item-list">
 			<% @product = offer_item.product %>
 			<div class="item-image-list"><img src="<%= @product.image.url(:thumb) %>" /></div>								
 			<div class="item-title"><%=  @product.title %></div>

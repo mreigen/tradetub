@@ -9,7 +9,7 @@
 <% else %>
 	<% wanted_items = @cart.line_items.empty? ? offer.wanted_items : @cart.line_items %>
 	<% wanted_items.each_with_index do |wanted_item, i| %>
-		<li class="my-item-list">
+		<li class="their-item-list">
 			<% @product = wanted_item.product %>
 			<div class="item-id"><%= @product.id %></div>
 			<div class="item-image-list"><img src="<%= @product.image.url(:thumb) %>" /></div>									

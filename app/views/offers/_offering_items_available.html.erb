@@ -1,9 +1,9 @@
 <div class="big-title">My Bazaar</div>
 <div class="item-custom-list"><a href="#">List A</a> | <a href="#">List B</a> | <a href="#">List C</a> | <a href="#">Hobby stuff</a> | <a href="#">My Electro</a></div>
-<ul id="their-available-item-list">
+<ul id="my-available-item-list">
 <% @sender.products.each do |item| %>
 	<% unless offer.offer_items.include?(OfferItem.find_by_product_id(item.id))%>
-	<li class="their-item-li">
+	<li class="item-li">
 		<div class="item-image-list"><img src="<%= item.image.url(:thumb) %>" /></div>
 		<div class="item-title"><%= item.title %></div>
 		<div class="item-description"><%= item.description %></div>
@@ -27,12 +27,12 @@
 <script language="javascript">
 function setCurrent(type) {
 	if (type == "items") {
-		$("#their-available-item-list").show();
-		$("#their-available-service-list").hide();
+		$("#my-available-item-list").show();
+		$("#my-available-service-list").hide();
 	}
 	else if (type == "services") {
-		$("#their-available-item-list").hide();
-		$("#their-available-service-list").show();
+		$("#my-available-item-list").hide();
+		$("#my-available-service-list").show();
 	}
 }
 </script>

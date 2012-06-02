@@ -8,10 +8,10 @@ function makeDraggable(ul1) {
 		drop: function(event, ui) {
 			// deliver the dropped item at the right box
 			var draggableParentId = ui.draggable.parent().attr("id");
-			if ((draggableParentId == "their-available-item-list") || (draggableParentId == "their-available-service-list")) {
+			if ((draggableParentId == "my-available-item-list") || (draggableParentId == "my-available-service-list")) {
 				dest = "#offering-items-offered ul";
 			}
-			else if ((draggableParentId == "my-available-item-list") || (draggableParentId == "my-available-service-list"))  {
+			else if ((draggableParentId == "their-available-item-list") || (draggableParentId == "their-available-service-list"))  {
 				dest = "#wanted-items-offered ul";
 			}
 			
@@ -124,15 +124,15 @@ function updateSuggestedValue(div_id) {
 	if (typeof div_id === "undefined") div_id = "#suggested-value";
 	
 	// their total item value
-	var their_value = 0;
+	var my_value = 0;
 	$("#offering-items-offered input:hidden[name*='offering']").each(function() {
-		their_value += parseFloat(this.value);
+		my_value += parseFloat(this.value);
 	});
 	
 	// my total item value
-	var my_value = 0;
+	var their_value = 0;
 	$("#wanted-items-offered input:hidden[name*='wanted']").each(function() {
-		my_value += parseFloat(this.value);
+		their_value += parseFloat(this.value);
 	});
 	
 				
