@@ -9,14 +9,23 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	-->
-
-	<div id="title"><%= item.title %></div>
-	<div id="price"><%= number_to_currency(item.price.to_s) %></div>
-	<div id="days-ago">Posted <%= (Time.now.to_i - Time.at(item.created_at.to_i).to_i)  / (60*60*24) %> days ago</div>
-	<div id="button"><%= link_to "Pick this", add_to_cart_path(item), :class => "button" %></div>
+	<div id="item-info">
+		<div id="title"><%= item.title %></div>
+		<div id="price"><%= number_to_currency(item.price.to_s) %></div>
+		<div id="days-ago">Posted <%= (Time.now.to_i - Time.at(item.created_at.to_i).to_i)  / (60*60*24) %> days ago</div>
+		<div id="trade-type">Trade type: <%= item.trade_type %></div>
+	</div>
+	<div id="user-info">
+		<div id="user-name">Minh Reigen</div>
+		<div id="user-ratings">5/5</div>
+	</div>
+	<div id="buttons">
+		<%= link_to "Offer", add_to_cart_path(item), :class => "button" %>
+		<%= link_to "Basket", add_to_cart_path(item), :class => "button" %>
+		<%= link_to "Wish list", add_to_cart_path(item), :class => "button" %>
+	</div>
 	<div id="break"></div>
 	<div id="image"><img alt="Img_3345" src="<%= item.image.url(:original) %>"></div>
-	<div id="trade-type">Trade type: <%= item.trade_type %></div>
 	<div id="description"><%= item.description %></div>
 	<div id="disqus_thread"></div>
 	<script type="text/javascript">

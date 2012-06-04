@@ -123,6 +123,18 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#f4f4f4',GradientType=0 );
 }
 
+#item_content_wrapper #item-info {
+	width: 400px;
+	height: 85px;
+	float: left;
+}
+
+#item_content_wrapper #user-info {
+	width: 200px;
+	height: 85px;
+	float: right;
+}
+
 #item_content_wrapper #title {
 	font-size: 24px;
 		font-family: 'FuturaMdBTMedium';
@@ -152,10 +164,8 @@
 	
 }
 
-#item_content_wrapper #button a {
-	position: absolute;
-	right: 33px;
-	top: 63px;
+#item_content_wrapper #buttons {
+	text-align: right;
 }
 
 #item_content_wrapper #days-ago {
