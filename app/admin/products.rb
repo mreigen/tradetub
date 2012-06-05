@@ -76,12 +76,14 @@ ActiveAdmin.register Product, :as => "Item" do
 =end
   end
 
+=begin
   sidebar "Trader", :only => :show do
     @product = Product.find(params[:id]) unless params[:id].blank?
     @user = User.find(@product.user_id) unless @product.blank?
     render('/admin/sidebar_links', :user => @user)
   end
-    
+=end
+ 
   form :html => { :enctype => "multipart/form-data" } do |f|
      f.inputs "Details" do
       f.input :title

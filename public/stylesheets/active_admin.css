@@ -83,7 +83,7 @@
 	font-family: 'FuturaMdBTMediumItalic';
 	font-size: 14px;
 	float: left;
-	width: 600px;
+	width: 850px;
 	margin: 40px 0 0 60px;
 	color: #666;
 	position: relative;
@@ -123,6 +123,35 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#f4f4f4',GradientType=0 );
 }
 
+#item_user_wrapper {
+	width: 600px;
+	position: relative;
+	float: left;
+}
+
+#item_offer_wrapper {
+	width: 200px;
+	position: relative;
+	float: right;
+	margin-top: 160px;
+}
+
+#item_offer_wrapper #offer_history .offer_item {
+	
+}
+
+#item_content_wrapper #item-info {
+	width: 400px;
+	height: 85px;
+	float: left;
+}
+
+#item_content_wrapper #user-info {
+	width: 200px;
+	height: 85px;
+	float: right;
+}
+
 #item_content_wrapper #title {
 	font-size: 24px;
 		font-family: 'FuturaMdBTMedium';
@@ -152,10 +181,8 @@
 	
 }
 
-#item_content_wrapper #button a {
-	position: absolute;
-	right: 33px;
-	top: 63px;
+#item_content_wrapper #buttons {
+	text-align: right;
 }
 
 #item_content_wrapper #days-ago {
@@ -728,9 +755,10 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0; }
 
 h1 {
-  font-size: 3em;
-  line-height: 1;
-  margin-bottom: 0.5em; }
+  font-family: futura;
+    font-size: 34px;
+    line-height: auto;
+	 }
 
 h2 {
   font-size: 2em;
@@ -886,22 +914,16 @@ th, td, caption {
   padding-bottom: 0; }
 
 #header {
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
-	height: 20px;
-	overflow: visible;
-	position: relative;
-	padding: 9px 30px;
-	position: relative;
-	z-index: 900;
-	background: #EEE;
-	background: -moz-linear-gradient(top, #EEE 0%, #CCC 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EEE), color-stop(100%,#CCC));
-	background: -webkit-linear-gradient(top, #EEE 0%,#CCC 100%);
-	background: -o-linear-gradient(top, #EEE 0%,#CCC 100%);
-	background: -ms-linear-gradient(top, #EEE 0%,#CCC 100%);
-	background: linear-gradient(top, #EEE 0%,#CCC 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );
-	}
+    background: none repeat scroll 0 0 transparent;
+    box-shadow: none;
+    height: 20px;
+    margin: 15px auto;
+    overflow: visible;
+    padding: 30px;
+    position: relative;
+    z-index: 900;
+}
+
   #header h1 {
     display: inline-block;
     color: #000;
@@ -909,7 +931,7 @@ th, td, caption {
     margin-right: 20px;
     margin-bottom: 0px;
     padding-top: 3px;
-    font-size: 1.3em;
+    font-size: 34px;
     font-weight: normal; }
     #header h1 a {
       text-decoration: none; }
@@ -924,7 +946,11 @@ th, td, caption {
     float: left;
     top: 2px;
     position: relative;
-    height: 20px; }
+    height: 20px; 
+	font-size:18px;
+	font-family:futura;
+	}
+	
   #header ul#tabs {
     display: inline-block;
     height: 100%;
@@ -2533,7 +2559,7 @@ body.logged_out {
 	margin: 20px auto 20px;
 	background: white;
 	color: #222;
-	box-shadow: #ccc 0 0 12px;
+	box-shadow: none;
 }
 
 #active_admin_content {
