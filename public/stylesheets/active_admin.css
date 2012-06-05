@@ -83,7 +83,7 @@
 	font-family: 'FuturaMdBTMediumItalic';
 	font-size: 14px;
 	float: left;
-	width: 600px;
+	width: 850px;
 	margin: 40px 0 0 60px;
 	color: #666;
 	position: relative;
@@ -121,6 +121,23 @@
 	rgba(246, 246, 246, 1) 19%,
 	rgba(244, 244, 244, 1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#f4f4f4',GradientType=0 );
+}
+
+#item_user_wrapper {
+	width: 600px;
+	position: relative;
+	float: left;
+}
+
+#item_offer_wrapper {
+	width: 200px;
+	position: relative;
+	float: right;
+	margin-top: 160px;
+}
+
+#item_offer_wrapper #offer_history .offer_item {
+	
 }
 
 #item_content_wrapper #item-info {
