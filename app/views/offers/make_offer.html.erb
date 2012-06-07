@@ -4,7 +4,7 @@
 
 <h2>Build your offer</h2>
 
-<% form_for :offer, :url => send_counter_offer_path(@offer) do |f| %>
+<% form_for :offer, :url => send_counter_offer_path(@offer, {:name => "new_offer"}) do |f| %>
 
 <div id="offer-wrapper">
 	<div id="offer-details">
@@ -41,7 +41,7 @@
 							<%= hidden_field_tag 'offer_cash_value_hidden', 0 %>
 						</div>
 						<div id="send-button">
-							<%= submit_tag "Send offer", :name => "send_offer" %>
+							<%= submit_tag "Send offer" %>
 						</div>
 						<div id="suggested-value-outer">
 					<!--		<div id="suggested-text"></div> 

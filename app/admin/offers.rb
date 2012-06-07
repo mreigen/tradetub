@@ -132,13 +132,19 @@ ActiveAdmin.register Offer do
         @sender = current_user
         @user = User.find(params[:receiver_id])
         @cart = Order.find(params[:cart])
+        @offer.user_id = params[:receiver_id]
+        @offer.save!
       end
     end
      
     def send_counter_offer
-      offer_id = params[:id]
-      @offer = Offer.find(offer_id)
-
+      if params[:name] == "new_offer"
+        offer_id = params[:id]
+        @offer = Offer.find(offer_id)
+      else
+        @offer = Offer.find_by_user_id(current_user.id)
+      end
+      
       # FOR OFFERING ITEMS
       offering_items = params[:wanted]
       offering_item_ids = offering_items.keys unless offering_items.blank?
@@ -180,9 +186,13 @@ ActiveAdmin.register Offer do
 
       # SWAP SENDER AND USER
       user_id = @offer.user_id
-      sender_id = @offer.sender_id
-      @offer.user_id = sender_id
-      @offer.sender_id = user_id
+      if params[:name] == "new_offer"
+        sender_id = current_user.id
+      else
+        sender_id = @offer.sender_id
+        @offer.user_id = sender_id
+        @offer.sender_id = user_id
+      end
       @offer.save!
 
       flash_mess = "You have sent the offer"
