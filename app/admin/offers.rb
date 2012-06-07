@@ -146,7 +146,7 @@ ActiveAdmin.register Offer do
       end
       
       # FOR OFFERING ITEMS
-      offering_items = params[:wanted]
+      offering_items = params[:offering]
       offering_item_ids = offering_items.keys unless offering_items.blank?
       offering_items_ids ||= []
 
@@ -163,7 +163,7 @@ ActiveAdmin.register Offer do
       end
 
       # FOR WANTED ITEMS
-      wanted_items = params[:offering]
+      wanted_items = params[:wanted]
       wanted_item_ids = wanted_items.keys unless wanted_items.blank?
       wanted_item_ids ||= []
 
