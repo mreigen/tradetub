@@ -889,3 +889,13 @@ The error occurred while evaluating nil.each
 [06/06/12 20:08:13 -0700 Minh-T-Reigens-MacBook-Pro.local (663)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: {"name"=>"new_offer", "cart"=>"5", "receiver_id"=>"1", "action"=>"make_offer", "controller"=>"offers"}
 [06/06/12 20:08:25 -0700 Minh-T-Reigens-MacBook-Pro.local (663)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: 13
 [06/06/12 20:09:18 -0700 Minh-T-Reigens-MacBook-Pro.local (663)] WARN : The error reporting queue has reached 20. The error detail for this and subsequent errors will not be transmitted to New Relic until the queued errors have been sent: {"name"=>"new_offer", "commit"=>"Send offer", "offer_cash_value_hidden"=>"+15.00", "authenticity_token"=>"dUdO4FyG7d8uZam668RgGaR6d0mQUoieSV0cu4y5O/M=", "utf8"=>"✓", "action"=>"send_counter_offer", "id"=>"52", "wanted"=>{"1"=>{"price"=>"15.0"}}, "offer"=>{"cash_value"=>"15.00"}, "controller"=>"offers"}
+[06/06/12 22:27:41 -0700 Minh-T-Reigens-MacBook-Pro.local (1299)] INFO : Dispatcher: webrick
+[06/06/12 22:27:41 -0700 Minh-T-Reigens-MacBook-Pro.local (1299)] INFO : Application: Active Admin Demo
+[06/06/12 22:27:41 -0700 Minh-T-Reigens-MacBook-Pro.local (1299)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[06/06/12 22:27:41 -0700 Minh-T-Reigens-MacBook-Pro.local (1299)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 1299
+[06/06/12 22:27:41 -0700 Minh-T-Reigens-MacBook-Pro.local (1299)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
+[06/06/12 22:28:19 -0700 Minh-T-Reigens-MacBook-Pro.local (1306)] INFO : Dispatcher: webrick
+[06/06/12 22:28:19 -0700 Minh-T-Reigens-MacBook-Pro.local (1306)] INFO : Application: Active Admin Demo
+[06/06/12 22:28:19 -0700 Minh-T-Reigens-MacBook-Pro.local (1306)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[06/06/12 22:28:19 -0700 Minh-T-Reigens-MacBook-Pro.local (1306)] INFO : New Relic Ruby Agent 3.1.1 Initialized: pid = 1306
+[06/06/12 22:28:19 -0700 Minh-T-Reigens-MacBook-Pro.local (1306)] INFO : Agent Log at /Users/mreigen/rails_projects/tradetub/log/newrelic_agent.log
