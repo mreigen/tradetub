@@ -16,4 +16,15 @@ class Product < ActiveRecord::Base
   
   has_attached_file :image, :styles => { :medium => "238x238>", :thumb => "100x100>" }
 
+  # return trade type in string
+  def get_trade_type
+    case trade_type
+      when 0
+        "accept trade and cash"
+      when 1
+        "cash only"
+      when 2
+        "trade only"
+    end
+  end
 end

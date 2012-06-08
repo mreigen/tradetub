@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+  
   has_many :products, :dependent => :destroy
   has_many :orders
   has_many :ratings, :through => :offers, :dependent => :destroy
@@ -32,6 +34,10 @@ class User < ActiveRecord::Base
   
   def name
     first_name + " " + last_name
+  end
+  
+  def link_to_user_page
+    ActionController::Base.helpers.link_to name, user_path(id)
   end
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
