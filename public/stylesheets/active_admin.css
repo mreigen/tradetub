@@ -79,7 +79,7 @@
 /**=================
 * 		ITEM PAGE
 ** ================= */ 
-#item_content_wrapper {
+#item_content_wrapper, #user_content_wrapper {
 	font-family: 'FuturaMdBTMediumItalic';
 	font-size: 14px;
 	float: left;
@@ -192,6 +192,25 @@
 
 /**=================
 * 		end ITEM PAGE
+** ================= */
+
+/**=================
+* 		USER PAGE
+** ================= */
+
+#user_wrapper #avatar {
+	width: 200px;
+	position: relative;
+	float: left;
+}
+
+#user_wrapper #name {
+	font-size: 33px;
+	padding: 10px 0 12px 0;
+}
+
+/**=================
+* 		end USER PAGE
 ** ================= */
 
 #register_wrapper, #login_wrapper, #checkout_wrapper {

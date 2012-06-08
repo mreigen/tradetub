@@ -1,6 +1,5 @@
 <%
  	user = User.find(item.user_id)
-	avg_rating = get_average_ratings_from_user(user) 
 %>
 <div id="item_content_wrapper">
 	<div id="item_user_wrapper">
@@ -21,8 +20,8 @@
 		<div id="trade-type">Trade type: <%= item.get_trade_type %></div>
 	</div>
 	<div id="user-info">
-		<div id="user-name"><%= user.link_to_user_page %></div>
-		<div id="user-ratings"><%= avg_rating.to_s + "/5" %></div>
+		<div id="user-name"><%= user.get_link_to_user_page %></div>
+		<div id="user-ratings"><%= user.get_avg_ratings %></div>
 	</div>
 	<div id="buttons">
 		<%= link_to "Offer", add_to_cart_path(item), :class => "button" %>
@@ -60,7 +59,7 @@
 					sender = User.find(offer.sender_id)
 					offer_item_count = OfferItem.find_all_by_offer_id(offer.id).count
 			%>
-			<div class="offer_item"><%= sender.link_to_user_page + " offered " + offer_item_count.to_s + (offer_item_count > 1 ? " items" : " item") + " and " + number_to_currency(offer.cash_value) %></div>
+			<div class="offer_item"><%= sender.get_link_to_user_page + " offered " + offer_item_count.to_s + (offer_item_count > 1 ? " items" : " item") + " and " + number_to_currency(offer.cash_value) %></div>
 			<% end %>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  include RatingHelper
   
   has_many :products, :dependent => :destroy
   has_many :orders
@@ -26,7 +27,7 @@ class User < ActiveRecord::Base
     if !image_file_name.blank? # if there is image uploaded with paperclip
       image.url
     elsif !facebook_avatar.blank?
-      facebook_avatar
+      facebook_avatar.gsub("square", "large")
     else
       "images/no-avatar.png"
     end
@@ -36,8 +37,12 @@ class User < ActiveRecord::Base
     first_name + " " + last_name
   end
   
-  def link_to_user_page
+  def get_link_to_user_page
     ActionController::Base.helpers.link_to name, user_path(id)
+  end
+  
+  def get_avg_ratings
+    get_average_ratings_from_user(self).to_s + "/5"
   end
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
