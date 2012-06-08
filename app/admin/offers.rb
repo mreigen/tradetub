@@ -2,7 +2,7 @@ ActiveAdmin.register Offer do
   config.clear_sidebar_sections!
 
   scope :all do |offer|
-    offer.where("user_id == ?", current_user)
+    offer.where("user_id == ? OR sender_id == ?", current_user, current_user)
   end
 
   scope :pending, :default => true do |offer|
@@ -32,7 +32,7 @@ ActiveAdmin.register Offer do
     end
     
     column "Sender" do |offer|
-      username = User.find(offer.sender_id).username
+      username = User.find(offer.sender_id).name
       link_to username, user_url(offer.sender_id)
     end
 
