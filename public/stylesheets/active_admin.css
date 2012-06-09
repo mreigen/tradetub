@@ -83,14 +83,14 @@
 	font-family: 'FuturaMdBTMediumItalic';
 	font-size: 14px;
 	float: left;
-	width: 850px;
+	width: 1024px;
 	margin: 40px 0 0 60px;
 	color: #666;
 	position: relative;
 	background-color:	#F9F9F9;
 	padding: 21px;
 	border-radius: 6px;
-	box-shadow: 0px 0px 10px #BBB;
+	box-shadow: none;
 	/* gradient */
 	background: linear-gradient(top, 
 	rgba(252, 252, 252, 1) 0%,
@@ -137,7 +137,10 @@
 }
 
 #item_offer_wrapper #offer_history .offer_item {
-	
+	width: 360px;
+	float:right;
+	font-size: 18px;
+	margin: 5px;
 }
 
 #item_content_wrapper #item-info {
@@ -189,6 +192,48 @@
 	font-style: italic;
 	color: #888;
 }
+
+
+#related {
+	position:relative;
+	width: 360px;
+	height: 320px;
+	float: right;
+	margin: 15px 0px 15px 0px;
+	padding: 0 0 0 15px;
+}
+
+#related img {
+	margin: 7px 0px 0px 7px;
+}
+
+#more {
+	position:relative;
+	width: 360px;
+	height: 320px;
+	float: right;
+	margin: 15px 0px 15px 0px;
+	padding: 0 0 0 15px;
+}
+
+#more img {
+	margin: 7px 0px 0px 7px;
+}
+
+#related #more, .item_title {
+	font-size: 18px;
+	border-bottom: solid 1px #666;
+	width:325px;
+	height:25px;
+	padding:0 0 0 15px;
+	margin: 50px 0px 15px 0px;
+	float:left;
+}
+
+
+
+
+
 
 /**=================
 * 		end ITEM PAGE
@@ -954,7 +999,7 @@ th, td, caption {
     #header h1 a {
       text-decoration: none; }
       #header h1 a:hover {
-        color: #fff; }
+        color: #000; }
     #header h1 img {
       position: relative;
       top: -2px; }
@@ -1044,7 +1089,7 @@ th, td, caption {
             background: none;
             display: block; }
             #header ul#tabs > li ul li a:hover {
-              color: #fff;
+              color: #000;
               background: none; }
           #header ul#tabs > li ul li.current a {
             -webkit-border-radius: 0;
@@ -1061,7 +1106,7 @@ th, td, caption {
     #header #utility_nav a {
       text-decoration: none; }
     #header #utility_nav a:hover {
-      color: #fff; }
+      color: #000; }
 
 form {
   /* Reset margins & Padding */
