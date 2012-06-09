@@ -14,6 +14,10 @@ ActiveAdmin.register User do
     f.buttons
   end
 
+  show do |u|
+    render :partial => "show_user", :locals => { :user => u }
+  end
+  
   after_create { |admin| admin.send_reset_password_instructions }
 
   def password_required?

@@ -2,7 +2,7 @@ ActiveAdmin.register Offer do
   config.clear_sidebar_sections!
 
   scope :all do |offer|
-    offer.where("user_id == ?", current_user)
+    offer.where("user_id == ? OR sender_id == ?", current_user, current_user)
   end
 
   scope :pending, :default => true do |offer|
@@ -32,7 +32,7 @@ ActiveAdmin.register Offer do
     end
     
     column "Sender" do |offer|
-      username = User.find(offer.sender_id).username
+      username = User.find(offer.sender_id).name
       link_to username, user_url(offer.sender_id)
     end
 
@@ -132,15 +132,21 @@ ActiveAdmin.register Offer do
         @sender = current_user
         @user = User.find(params[:receiver_id])
         @cart = Order.find(params[:cart])
+        @offer.user_id = params[:receiver_id]
+        @offer.save!
       end
     end
      
     def send_counter_offer
-      offer_id = params[:id]
-      @offer = Offer.find(offer_id)
-
+      if params[:name] == "new_offer"
+        offer_id = params[:id]
+        @offer = Offer.find(offer_id)
+      else
+        @offer = Offer.find_by_user_id(current_user.id)
+      end
+      
       # FOR OFFERING ITEMS
-      offering_items = params[:wanted]
+      offering_items = params[:offering]
       offering_item_ids = offering_items.keys unless offering_items.blank?
       offering_items_ids ||= []
 
@@ -157,7 +163,7 @@ ActiveAdmin.register Offer do
       end
 
       # FOR WANTED ITEMS
-      wanted_items = params[:offering]
+      wanted_items = params[:wanted]
       wanted_item_ids = wanted_items.keys unless wanted_items.blank?
       wanted_item_ids ||= []
 
@@ -180,9 +186,13 @@ ActiveAdmin.register Offer do
 
       # SWAP SENDER AND USER
       user_id = @offer.user_id
-      sender_id = @offer.sender_id
-      @offer.user_id = sender_id
-      @offer.sender_id = user_id
+      if params[:name] == "new_offer"
+        sender_id = current_user.id
+      else
+        sender_id = @offer.sender_id
+        @offer.user_id = sender_id
+        @offer.sender_id = user_id
+      end
       @offer.save!
 
       flash_mess = "You have sent the offer"
@@ -210,6 +220,20 @@ ActiveAdmin.register Offer do
     end
     ret
     end
-     
+    
+    module ActiveAdmin
+      module Views
+        class HeaderRenderer
+          def to_html
+            title + global_navigation + profile_link + utility_navigation
+          end
+
+          def profile_link
+            text_field_tag "search"
+          end
+        end
+      end
+    end
+    
   end
 end

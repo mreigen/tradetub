@@ -1,3 +1,6 @@
+<%
+ 	user = User.find(item.user_id)
+%>
 <div id="item_content_wrapper">
 	<div id="item_user_wrapper">
 	<!--
@@ -14,11 +17,11 @@
 		<div id="title"><%= item.title %></div>
 		<div id="price"><%= number_to_currency(item.price.to_s) %></div>
 		<div id="days-ago">Posted <%= (Time.now.to_i - Time.at(item.created_at.to_i).to_i)  / (60*60*24) %> days ago</div>
-		<div id="trade-type">Trade type: <%= item.trade_type %></div>
+		<div id="trade-type">Trade type: <%= item.get_trade_type %></div>
 	</div>
 	<div id="user-info">
-		<div id="user-name">Minh Reigen</div>
-		<div id="user-ratings">5/5</div>
+		<div id="user-name"><%= user.get_link_to_user_page %></div>
+		<div id="user-ratings"><%= user.get_avg_ratings %></div>
 	</div>
 	<div id="buttons">
 		<%= link_to "Offer", add_to_cart_path(item), :class => "button" %>
@@ -50,10 +53,14 @@
 	</div>
 	<div id="item_offer_wrapper">
 		<div id="offer_history">
-			<div class="offer_item">Nobu offered 3 items and $40</div>
-			<div class="offer_item">Yu offered 2 items and $140</div>
-			<div class="offer_item">Hien offered 5 items and $0</div>
-			<div class="offer_item">Maki offered 0 item and $440</div>
+			<%
+				WantedItem.find_all_by_product_id(item.id).each do |wanted_item|
+					offer = Offer.find(wanted_item.offer_id)
+					sender = User.find(offer.sender_id)
+					offer_item_count = OfferItem.find_all_by_offer_id(offer.id).count
+			%>
+			<div class="offer_item"><%= sender.get_link_to_user_page + " offered " + offer_item_count.to_s + (offer_item_count > 1 ? " items" : " item") + " and " + number_to_currency(offer.cash_value) %></div>
+			<% end %>
 		</div>
 	</div>
 </div>

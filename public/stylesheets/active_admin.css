@@ -79,7 +79,7 @@
 /**=================
 * 		ITEM PAGE
 ** ================= */ 
-#item_content_wrapper {
+#item_content_wrapper, #user_content_wrapper {
 	font-family: 'FuturaMdBTMediumItalic';
 	font-size: 14px;
 	float: left;
@@ -130,7 +130,7 @@
 }
 
 #item_offer_wrapper {
-	width: 200px;
+	width: 235px;
 	position: relative;
 	float: right;
 	margin-top: 160px;
@@ -192,6 +192,25 @@
 
 /**=================
 * 		end ITEM PAGE
+** ================= */
+
+/**=================
+* 		USER PAGE
+** ================= */
+
+#user_wrapper #avatar {
+	width: 200px;
+	position: relative;
+	float: left;
+}
+
+#user_wrapper #name {
+	font-size: 33px;
+	padding: 10px 0 12px 0;
+}
+
+/**=================
+* 		end USER PAGE
 ** ================= */
 
 #register_wrapper, #login_wrapper, #checkout_wrapper {
@@ -914,6 +933,7 @@ th, td, caption {
   padding-bottom: 0; }
 
 #header {
+<<<<<<< HEAD
     background: none repeat scroll 0 0 transparent;
     box-shadow: none;
     height: 20px;
@@ -924,6 +944,17 @@ th, td, caption {
     z-index: 900;
 }
 
+=======
+	height: 20px;
+	overflow: visible;
+	position: relative;
+	padding: 9px 30px;
+	position: relative;
+	z-index: 900;
+	font-family: georgia;
+	font-size: 18px;
+	}
+>>>>>>> a8b852195c99cd4856764111a9b12802a3789c76
   #header h1 {
     display: inline-block;
     color: #000;
@@ -954,7 +985,7 @@ th, td, caption {
   #header ul#tabs {
     display: inline-block;
     height: 100%;
-    margin: 0;
+		margin: 3px 0 0 0;
     padding: 0; }
     #header ul#tabs > li {
       display: inline-block;
