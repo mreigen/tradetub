@@ -220,21 +220,6 @@ ActiveAdmin.register Offer do
     end
     ret
     end
-    
-    module ActiveAdmin
-      module Views
-        class HeaderRenderer
-          def to_html
-            #title + global_navigation + profile_link + utility_navigation
-            render :partial => "/layouts/main_menu"
-          end
 
-          def profile_link
-            text_field_tag "search"
-          end
-        end
-      end
-    end
-    
   end
 end
