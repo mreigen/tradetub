@@ -978,14 +978,15 @@ th, td, caption {
   padding-bottom: 0; }
 
 #header {
-    background: none repeat scroll 0 0 transparent;
-    box-shadow: none;
-    height: 20px;
-    margin: 15px auto;
-    overflow: visible;
-    padding: 30px;
-    position: relative;
-    z-index: 900;
+	background: none repeat scroll 0 0 
+	transparent;
+	box-shadow: none;
+	height: 20px;
+	margin: 0px auto;
+	overflow: visible;
+	padding: 0px 30px;
+	position: relative;
+	z-index: 900;
 }
   #header h1 {
     display: inline-block;

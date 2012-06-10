@@ -225,7 +225,8 @@ ActiveAdmin.register Offer do
       module Views
         class HeaderRenderer
           def to_html
-            title + global_navigation + profile_link + utility_navigation
+            #title + global_navigation + profile_link + utility_navigation
+            render :partial => "/layouts/main_menu"
           end
 
           def profile_link
