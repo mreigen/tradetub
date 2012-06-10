@@ -90,7 +90,7 @@ ActiveAdmin.register Product, :as => "Item" do
       f.input :image, :as => :file
       f.input :description
       f.input :price
-      f.input :cat_id
+      f.input :cat_id, :as => :select, :collection => Hash[Category.all.map{|c| [c.fullname, c.id]}]
       f.input :user_id, :value => f.template.current_user.name, :type => :hidden
     end
     f.buttons
