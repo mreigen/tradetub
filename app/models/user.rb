@@ -34,8 +34,11 @@ class User < ActiveRecord::Base
   end
   
   def name
-    first_name + " " + last_name if !first_name.blank? && !last_name.blank?
-    "Unnamed User"
+    if !first_name.blank? && !last_name.blank?
+      first_name + " " + last_name
+    else
+      "Unnamed User"
+    end
   end
   
   def get_link_to_user_page
