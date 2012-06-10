@@ -1643,7 +1643,9 @@ body.logged_in .flash {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dce9dd, endColorstr=#ccdfcd);
     -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dce9dd, endColorstr=#ccdfcd);
     border-bottom: 1px solid #adcbaf;
-    color: #416347; }
+    color: #416347;
+		position: relative;
+		margin-top: 100px; }
   body.logged_in .flash.flash_error {
     background: #f5e4e4;
     background: -webkit-gradient(linear, left top, left bottom, from(#f5e4e4), to(#f1dcdc));
