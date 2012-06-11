@@ -9,6 +9,7 @@ gem 'newrelic_rpm', '3.1.1'
 gem 'hoptoad_notifier', '2.4.11'
 gem "paperclip", :git => "git@github.com:thoughtbot/paperclip.git"
 gem "omniauth-facebook"
+gem 'seed-fu', '~> 2.0.0'
 
 group :development do
   gem 'mechanize'
