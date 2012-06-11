@@ -10,6 +10,7 @@ gem 'hoptoad_notifier', '2.4.11'
 gem "paperclip", :git => "git@github.com:thoughtbot/paperclip.git"
 gem "omniauth-facebook"
 gem 'seed-fu', '~> 2.0.0'
+gem 'rmagick'
 
 group :development do
   gem 'mechanize'
