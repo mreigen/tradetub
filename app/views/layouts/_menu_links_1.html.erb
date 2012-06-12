@@ -1,0 +1,26 @@
+<ul class="dropdown">
+	<li>
+	<span class="current_user"><%= current_user.get_link_to_user_page %></span>
+	</li>
+	<li><a href="/items">Your Bazaar</a>
+		<ul class="sub_menu">
+		<li id="items"><a href="/items">Items</a></li>
+		<li id="offers"><a href="/offers">Offers</a></li>
+		<li id="transactions"><a href="/transactions">Transactions</a></li>
+		<li id="users"><a href="/users">Users</a></li>
+		</ul>
+	</li>
+	<li>
+	 <a href="/account">Account</a>
+	</li>
+	<li>
+		<a href="/cart">Basket</a>
+	</li>
+	<li>
+	<a href="/logout" data-method="get">Logout</a>
+	</li>
+</ul>
+
+<p class="header-item" id="utility_nav">
+
+</p>

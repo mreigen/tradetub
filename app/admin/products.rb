@@ -90,8 +90,8 @@ ActiveAdmin.register Product, :as => "Item" do
       f.input :image, :as => :file
       f.input :description
       f.input :price
-      f.input :cat_id
-      f.input :user_id, :value => f.template.current_user.name, :type => :hidden
+      f.input :cat_id, :as => :select, :collection => Category.asc.map{|c| [c.fullname, c.nickname]}, :prompt => "Please select..."
+      f.input :user_id, :input_html => { :value => f.template.current_user.id }, :as => :hidden
     end
     f.buttons
    end

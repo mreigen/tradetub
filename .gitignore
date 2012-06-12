@@ -33,3 +33,4 @@ tmp/pids/*.pid
 ehthumbs.db
 Icon?
 Thumbs.db
+Gemfile.lock

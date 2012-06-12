@@ -248,11 +248,54 @@
 	position: relative;
 	float: left;
 }
+#user_wrapper #info {
+	
+	width: 1024px;
+}
+
+#user_wrapper #one {
+	vertical-align: bottom;
+	height:50px;
+	width:auto;
+}
 
 #user_wrapper #name {
-	font-size: 33px;
-	padding: 10px 0 12px 0;
+	font-size: 26px;
+	padding: 10px 0 0 0;
+	float:left;
 }
+
+#user_wrapper .area {
+	font-size:20px;
+	float:right;
+	padding: 0 0 0 10px;
+}
+
+#user_wrapper #ratings {
+	padding: 0 0 0 30px;
+	float: left;
+	height:auto;
+	vertical-align:text-bottom;
+}
+#user_wrapper #num-of-reviews {
+	float: left;
+	padding: 0 0 0 15px;
+}
+
+#user_wrapper #description {
+	margin: 20px 0 0 0;
+	width: 760px;
+	float: left;
+	
+}
+
+#user_wrapper #fav_category {
+	font-size:20px;
+	margin: 20px 0 0 0;
+	width: 760px;
+	float: left;
+}
+
 
 /**=================
 * 		end USER PAGE
@@ -978,14 +1021,15 @@ th, td, caption {
   padding-bottom: 0; }
 
 #header {
-    background: none repeat scroll 0 0 transparent;
-    box-shadow: none;
-    height: 20px;
-    margin: 15px auto;
-    overflow: visible;
-    padding: 30px;
-    position: relative;
-    z-index: 900;
+	background: none repeat scroll 0 0 
+	transparent;
+	box-shadow: none;
+	height: 20px;
+	margin: 0px auto;
+	overflow: visible;
+	padding: 0px 30px;
+	position: relative;
+	z-index: 900;
 }
   #header h1 {
     display: inline-block;
@@ -1642,7 +1686,9 @@ body.logged_in .flash {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dce9dd, endColorstr=#ccdfcd);
     -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dce9dd, endColorstr=#ccdfcd);
     border-bottom: 1px solid #adcbaf;
-    color: #416347; }
+    color: #416347;
+		position: relative;
+		margin-top: 100px; }
   body.logged_in .flash.flash_error {
     background: #f5e4e4;
     background: -webkit-gradient(linear, left top, left bottom, from(#f5e4e4), to(#f1dcdc));
@@ -2431,9 +2477,9 @@ a.table_tools_button {
   a.table_tools_button.dropdown_button {
     padding-right: 20px; }
     a.table_tools_button.dropdown_button .arrow {
-      border-color: #777 transparent transparent;
-      border-style: solid;
-      border-width: 3px 3px 0;
+      border-color: #FFF transparent transparent;
+      border-style: none;
+      border-width: none;
       height: 0;
       position: absolute;
       top: 8px;
@@ -2627,7 +2673,7 @@ body.logged_out {
 
 #active_admin_content {
   margin: 0;
-  padding: 15px;}
+  padding: 5px;}
   #active_admin_content #main_content_wrapper {
     float: left;
     width: 100%; }
@@ -2636,9 +2682,9 @@ body.logged_out {
   #active_admin_content.without_sidebar #main_content_wrapper #main_content {
     margin-right: 0; }
   #active_admin_content #sidebar {
-    float: left;
-		width: 337px;
-		margin: 40px 0 0 -363px; }
+    float: right;
+		width: auto;
+		}
 
 #title_bar {
   background: #efefef;
@@ -2682,6 +2728,7 @@ body.logged_out {
   margin-bottom: 15px;
   padding: 10px 30px;
   z-index: 800; }
+
   #title_bar span.icon svg path, #title_bar span.icon svg polygon, #title_bar span.icon svg rect, #title_bar span.icon svg circle {
     fill: #5e6469 !important; }
   #title_bar span.icon {
@@ -2697,7 +2744,7 @@ body.logged_out {
     clear: both;
     height: 0; }
   #title_bar #titlebar_left, #title_bar #titlebar_right {
-    height: 50px;
+    height: auto;
     vertical-align: middle;
     display: table-cell; }
   #title_bar #titlebar_right {

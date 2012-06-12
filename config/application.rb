@@ -42,3 +42,18 @@ module ActiveadminDepot
     config.autoload_paths += Dir["#{Rails.root}/lib"]
   end
 end
+
+module ActiveAdmin
+  module Views
+    class HeaderRenderer
+      def to_html
+        #title + global_navigation + profile_link + utility_navigation
+        render :partial => "/layouts/main_menu"
+      end
+
+      def profile_link
+        text_field_tag "search"
+      end
+    end
+  end
+end

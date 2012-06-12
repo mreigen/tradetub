@@ -12,10 +12,11 @@ class Product < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :price
   #validates_presence_of :image_file_name
-
   
-  has_attached_file :image, :styles => { :medium => "238x238>", :thumb => "100x100>" }
-
+  has_attached_file :image, 
+                    :styles => { :original=> "", :medium => "238x238>", :thumb => "100x100>" },
+                    :processors => [:auto_orient, :thumbnail]
+                    
   # return trade type in string
   def get_trade_type
     case trade_type
