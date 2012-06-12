@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
   scope :available, lambda{ where("available_on < ?", Date.today) }
   scope :drafts, lambda{ where("available_on > ?", Date.today) }
   scope :related, lambda { |c| where("cat_id = ?", c) }
+  scope :other_items_by_user, lambda {|u| where("user_id = ?", u)}
 
   # Validations
   validates_presence_of :title

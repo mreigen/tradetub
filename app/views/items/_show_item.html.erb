@@ -71,15 +71,9 @@
 		</div>
 	<div id="more">	
 		<div class="item_title">More Items From User</div>
-		<img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
+		<% Product.other_items_by_user(user.id).each do |i| %>
+			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.image.url(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
+		<% end %>
 		</div>
 		
 </div>
