@@ -2687,6 +2687,7 @@ body.logged_out {
 		}
 
 #title_bar {
+	display: none !important;
   background: #efefef;
   background: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#dfe1e2));
   background: -moz-linear-gradient(-90deg, #efefef, #dfe1e2);
