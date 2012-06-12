@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
   #validates_presence_of :image_file_name
   
   has_attached_file :image, 
-                    :styles => { :original=> "", :medium => "238x238>", :thumb => "100x100>" },
+                    :styles => { :original=> "", :medium => "238x238#", :thumb => "100x100#" },
                     :processors => [:auto_orient, :thumbnail]
                     
   # return trade type in string
