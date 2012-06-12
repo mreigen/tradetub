@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
   # Named Scopes
   scope :available, lambda{ where("available_on < ?", Date.today) }
   scope :drafts, lambda{ where("available_on > ?", Date.today) }
+  scope :related, lambda { |c| where("cat_id = ?", c) }
 
   # Validations
   validates_presence_of :title
