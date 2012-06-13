@@ -1,7 +1,9 @@
 <ul class="dropdown">
+	<% if !current_user.blank? %>
 	<li>
 	<span class="current_user"><%= current_user.get_link_to_user_page %></span>
 	</li>
+	<% end %>
 	<li><a href="/items">Your Bazaar</a>
 		<ul class="sub_menu">
 		<li id="items"><a href="/items">Items</a></li>

@@ -24,6 +24,7 @@
 		<div id="user-ratings"><%= user.get_avg_ratings %></div>
 	</div>
 	<div id="buttons">
+		<% if !current_user.blank? %>
 		<% if item.user_id == current_user.id.to_s %>
 		<div>(This is your item)</div>
 		<%= link_to "Delete", delete_item_path(item), :class => "red-button" %>
@@ -32,6 +33,7 @@
 		<%= link_to "Offer", add_to_cart_path(item), :class => "button" %>
 		<%= link_to "Basket", add_to_cart_path(item), :class => "button" %>
 		<%= link_to "Wish list", add_to_cart_path(item), :class => "button" %>
+		<% end %>
 		<% end %>
 	</div>
 	<div id="break"></div>
