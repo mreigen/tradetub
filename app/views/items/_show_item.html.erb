@@ -24,9 +24,15 @@
 		<div id="user-ratings"><%= user.get_avg_ratings %></div>
 	</div>
 	<div id="buttons">
+		<% if item.user_id == current_user.id.to_s %>
+		<div>(This is your item)</div>
+		<%= link_to "Delete", delete_item_path(item), :class => "red-button" %>
+		<%= link_to "Take this off", set_visibility_path(:id => item, :value => 'false'), :class => "red-button" %>
+		<% else %>
 		<%= link_to "Offer", add_to_cart_path(item), :class => "button" %>
 		<%= link_to "Basket", add_to_cart_path(item), :class => "button" %>
 		<%= link_to "Wish list", add_to_cart_path(item), :class => "button" %>
+		<% end %>
 	</div>
 	<div id="break"></div>
 	<div id="image"><img alt="Img_3345" src="<%= item.image.url(:original) %>"></div>

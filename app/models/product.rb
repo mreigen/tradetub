@@ -5,10 +5,10 @@ class Product < ActiveRecord::Base
   has_many :image_uploads
   
   # Named Scopes
-  scope :available, lambda{ where("available_on < ?", Date.today) }
-  scope :drafts, lambda{ where("available_on > ?", Date.today) }
-  scope :related, lambda { |c| where("cat_id = ?", c) }
-  scope :other_items_by_user, lambda {|u| where("user_id = ?", u)}
+  scope :available, lambda{ where("available_on < ? AND deleted = 'f'", Date.today) }
+  scope :drafts, lambda{ where("available_on > ? AND deleted = 'f'", Date.today) }
+  scope :related, lambda { |c| where("cat_id = ? AND deleted = 'f'", c) }
+  scope :other_items_by_user, lambda {|u| where("user_id = ? AND deleted = 'f'", u)}
 
   # Validations
   validates_presence_of :title

@@ -102,5 +102,18 @@ ActiveAdmin.register Product, :as => "Item" do
 
    controller do
      helper :all
+     
+     def set_visibility
+       # check if user is logged in
+       # check if the item belongs to current user
+       # set visibility
+       raise params.inspect
+     end
+     
+     def delete
+        # check if user is logged in
+        # check if item belongs to current user
+        # set deleted to true
+     end
    end
 end
