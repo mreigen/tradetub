@@ -1,6 +1,12 @@
 <ul class="dropdown">
 	<li>
-	<span class="current_user"><%= current_user.get_link_to_user_page %></span>
+	<a href="/logout" data-method="get">Logout</a>
+	</li>
+	<li>
+		<a href="/cart">Basket</a>
+	</li>
+	<li>
+	 <a href="/account">Account</a>
 	</li>
 	<li><a href="/items">Your Bazaar</a>
 		<ul class="sub_menu">
@@ -11,13 +17,7 @@
 		</ul>
 	</li>
 	<li>
-	 <a href="/account">Account</a>
-	</li>
-	<li>
-		<a href="/cart">Basket</a>
-	</li>
-	<li>
-	<a href="/logout" data-method="get">Logout</a>
+	<span class="current_user"><%= current_user.get_link_to_user_page %></span>
 	</li>
 </ul>
 
