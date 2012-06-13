@@ -11,8 +11,8 @@ class Product < ActiveRecord::Base
   scope :other_items_by_user, lambda {|u| where("user_id = ? AND deleted = 'f'", u)}
 
   # Validations
-  validates_presence_of :title
-  validates_presence_of :price
+  #validates_presence_of :title
+  #validates_presence_of :price
   #validates_presence_of :image_file_name
   
   has_attached_file :image, 
