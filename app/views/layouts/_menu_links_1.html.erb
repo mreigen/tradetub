@@ -19,7 +19,11 @@
 		<a href="/cart">Basket</a>
 	</li>
 	<li>
-	<a href="/logout" data-method="get">Logout</a>
+		<% if !current_user.blank? %>
+		<a href="/logout" data-method="get">Logout</a>
+		<% else %>
+		<a href="/login" data-method="get">Login</a>
+		<% end %>
 	</li>
 </ul>
 
