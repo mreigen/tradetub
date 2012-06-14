@@ -126,7 +126,7 @@ ActiveAdmin.register Product, :as => "Item" do
         flash[:error] = "Sorry but you can't just delete someone else's item!!"
       else
         # set deleted to true
-        product.toggle!(:deleted)
+        product.deleted = true
         if product.save!
          flash[:notice] = "Your item has been deleted! We have informed your trading partner(s) who were interested in this item."
         else

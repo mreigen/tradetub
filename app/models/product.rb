@@ -4,6 +4,8 @@ class Product < ActiveRecord::Base
   has_many :categories
   has_many :image_uploads
   
+  attr_accessible :deleted, :available
+  
   # Named Scopes
   scope :available, lambda{ where("available_on < ? AND deleted = 'f'", Date.today) }
   scope :drafts, lambda{ where("available_on > ? AND deleted = 'f'", Date.today) }
@@ -11,8 +13,8 @@ class Product < ActiveRecord::Base
   scope :other_items_by_user, lambda {|u| where("user_id = ? AND deleted = 'f'", u)}
 
   # Validations
-  #validates_presence_of :title
-  #validates_presence_of :price
+  validates_presence_of :title
+  validates_presence_of :price
   #validates_presence_of :image_file_name
   
   has_attached_file :image, 
