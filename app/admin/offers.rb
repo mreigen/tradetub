@@ -112,6 +112,7 @@ ActiveAdmin.register Offer do
   # controllers stuff
   # ===================================================================
   controller do
+    before_filter :authenticate_user!
     helper :offers
 
     def make_offer      

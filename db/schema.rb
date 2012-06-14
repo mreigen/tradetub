@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(:version => 201204230143021) do
     t.string   "cat_id"
     t.integer  "trade_type",         :default => 0
     t.boolean  "available",          :default => true
+    t.boolean  "deleted",            :default => false
   end
 
   add_index "products", ["available_on"], :name => "index_products_on_available_on"

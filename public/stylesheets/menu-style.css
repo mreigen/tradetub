@@ -10,15 +10,21 @@ ul {
 
 ul.dropdown { 
 	position: relative;
+<<<<<<< HEAD
 	width: 100%;
 	height: 70px;
 	float:right;
 	padding: 0 0 0 0;
 	margin: 0 90px 0 0;
+=======
+	width: 600px;
+	float: left;
+	left: 514px;
+>>>>>>> 420522afede62035a09b1afd216c10b2d6583a83
 }
 
 ul.dropdown li { 
-	float: right;
+	float: left;
 	width: auto;
 	position: relative;
 	font-family: 'FuturaMdBTMedium';

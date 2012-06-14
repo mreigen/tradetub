@@ -22,6 +22,8 @@ ActiveadminDepot::Application.routes.draw do
   #put '/offers/:id/respond/:respond' => 'offers#respond'
   get '/user/:user_id/items' => 'items#index'
   get '/user/:user_id/item/:id' => 'items#show'
+  get "item/:id/delete" => "items#delete", :as => :delete_item
+  get "item/:id/set_visibility" => "items#set_visibility", :as => :set_visibility
   
   match 'offer/:id/counter_offer', :to => 'offers#make_offer', :as => :counter_offer
   match 'offer/new_offer/receiver/:receiver_id' => 'offers#make_offer', :as => :make_offer

@@ -41,7 +41,7 @@ ActiveAdmin.register Product, :as => "Item" do
       div do product.description end
     end
     
-    if current_user.id.to_s == params[:user_id] || ( !params[:user_id] && current_user)
+    if item.belongs_to?(current_user)
       input :value => "List new item", :type => :submit, :onclick => "javascript: document.location.href = '" + new_item_path + "'"
     end
   end
@@ -101,6 +101,40 @@ ActiveAdmin.register Product, :as => "Item" do
    #form :partial => "image_upload"
 
    controller do
+     before_filter :authenticate_user!, :except => [:show]
      helper :all
+     
+     def set_visibility
+       # check if user is logged in
+       # check if the item belongs to current user and if the value is not blank
+       product = Product.find(params[:id])
+       if product.user_id == current_user.id || params[:value].blank?
+         flash[:error] = "Sorry but you can't just put someone else's item off shelf, go but it!!"
+       else
+         # set visibility
+         product.toggle!(:available)
+         product.save
+         flash[:notice] = "Your item has been taken off shelf"
+        end
+        redirect_to :back
+     end
+     
+     def delete
+      # check if user is logged in
+      # check if the item belongs to current user and if the value is not blank
+      product = Product.find(params[:id])
+      if product.user_id == current_user.id
+        flash[:error] = "Sorry but you can't just delete someone else's item!!"
+      else
+        # set deleted to true
+        product.deleted = true
+        if product.save
+         flash[:notice] = "Your item has been deleted! We have informed your trading partner(s) who were interested in this item."
+        else
+         flash[:error] = "Ooops, something went wrong, your item hasn't been changed"
+        end
+      end
+      redirect_to :back      
+     end
    end
 end
