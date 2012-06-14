@@ -147,6 +147,7 @@
 	width: 400px;
 	height: 85px;
 	float: left;
+	line-height: 20px;
 }
 
 #item_content_wrapper #user-info {
@@ -155,14 +156,27 @@
 	float: right;
 }
 
+#item_content_wrapper #available {
+	position: relative;
+	float: left;
+}
+
+#item_content_wrapper #your-item {
+	position: relative;
+	float: left;
+	width: 100%;
+	padding-bottom: 10px;
+}
+
 #item_content_wrapper #title {
 	font-size: 24px;
-		font-family: 'FuturaMdBTMedium';
+	font-family: 'FuturaMdBTMedium';
+	width: 100%;
 }
 
 #item_content_wrapper #price {
 	font-size: 30px;
-	padding: 28px 0 18px;
+	padding: 20px 0 18px;
 	color: #8CC;
 	font-family: 'FuturaMdBTMedium';
 	font-style: light;
@@ -172,8 +186,8 @@
 	border-bottom: solid 
 	#EEE 1px;
 	width: 640px;
-	margin: 0 0 25px -20px;
-	padding-bottom: 8px;
+	padding: 48px 0 8px 0;
+	margin-bottom: 17px;
 }
 
 #item_content_wrapper #image img {
@@ -181,7 +195,6 @@
 }
 
 #item_content_wrapper #trade-type {
-	
 }
 
 #item_content_wrapper #buttons {

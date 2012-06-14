@@ -112,7 +112,7 @@ ActiveAdmin.register Product, :as => "Item" do
        else
          # set visibility
          product.toggle!(:available)
-         product.save!
+         product.save
          flash[:notice] = "Your item has been taken off shelf"
         end
         redirect_to :back
@@ -127,7 +127,7 @@ ActiveAdmin.register Product, :as => "Item" do
       else
         # set deleted to true
         product.deleted = true
-        if product.save!
+        if product.save
          flash[:notice] = "Your item has been deleted! We have informed your trading partner(s) who were interested in this item."
         else
          flash[:error] = "Ooops, something went wrong, your item hasn't been changed"

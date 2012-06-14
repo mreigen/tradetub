@@ -32,4 +32,9 @@ class Product < ActiveRecord::Base
         "trade only"
     end
   end
+  
+  def belongs_to?(user)
+    false if user.blank?
+    self.user_id == user.id.to_s
+  end
 end
