@@ -1,5 +1,5 @@
 class CartController < ApplicationController
-
+  before_filter :authenticate_user!
   #before_filter :login_required
   before_filter :find_cart
 
