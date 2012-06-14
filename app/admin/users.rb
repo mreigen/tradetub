@@ -28,7 +28,8 @@ ActiveAdmin.register User do
   # controllers stuff
   # ===================================================================
   controller do
-  
+    before_filter :authenticate_user!  
+    
     def register_edit_info
       @user = User.find(params[:id])
       

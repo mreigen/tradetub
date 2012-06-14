@@ -101,6 +101,7 @@ ActiveAdmin.register Product, :as => "Item" do
    #form :partial => "image_upload"
 
    controller do
+     before_filter :authenticate_user!
      helper :all
      
      def set_visibility
