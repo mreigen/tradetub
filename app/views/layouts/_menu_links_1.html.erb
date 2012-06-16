@@ -1,16 +1,10 @@
 <div id="menu-links-1">
 <ul class="dropdown">
+	<li>
 	<% if !current_user.blank? %>
-	<li>
-	<a href="/logout" data-method="get">Logout</a>
-	</li>
-	<li>
-		<a href="/cart">Basket</a>
-	</li>
-	<li>
-	 <a href="/account">Account</a>
-	</li>
+		<span class="current_user"><%= current_user.get_link_to_user_page %></span>
 	<% end %>
+	</li>
 	<li>
 	<span class="current_user"><%= link_to "List new item", new_item_path() %></span>
 	</li>
@@ -25,8 +19,6 @@
 	</li>
 	<% end %>
 	<li>
-	<span class="current_user"><%= current_user.get_link_to_user_page %></span>
-
 	 <a href="/account">Account</a>
 	</li>
 	<li>

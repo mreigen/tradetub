@@ -78,29 +78,6 @@
 	</div>
 	<div id="related">
 		<div class="item_title">Related Items</div>
-<<<<<<< HEAD
-	<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>" title="item title 1 / $4000">
-	<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>" title="item title 2 / $550">
-	<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>" title="item title 3 / $6800">
-	<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>" title="item title 4">
-	<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>" title="item title 5">
-	<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>" title="item title 6">
-	<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>" title="item title 7">
-	<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>" title="item title 8">
-	<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>" title="item title 9">
-		</div>
-	<div id="more">	
-		<div class="item_title">More Items From User</div>
-		<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-		<a href="http://www.localhost:3000"><img alt="Img_3345" src="<%= item.image.url(:thumb) %>">
-=======
 		<% Product.related(item.cat_id).limit(9).each do |i| %>
 			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.image.url(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
 		<% end %>
@@ -110,7 +87,6 @@
 		<% Product.other_items_by_user(user.id).limit(9).each do |i| %>
 			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.image.url(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
 		<% end %>
->>>>>>> 420522afede62035a09b1afd216c10b2d6583a83
 		</div>
 		
 </div>
