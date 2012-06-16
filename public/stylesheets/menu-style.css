@@ -5,6 +5,12 @@ ul {
 /* 
 	LEVEL ONE
 */
+#menu-links-1 {
+	position: relative;
+	float: left;
+	width: 100%;
+}
+
 ul.dropdown { 
 	position: relative;
 	width: 600px;
@@ -16,18 +22,19 @@ ul.dropdown li {
 	float: left;
 	width: auto;
 	position: relative;
-	font-family: futura;
+	font-family: 'FuturaMdBTMedium';
 	font-size: 16px;
+	padding:0px 10px 0px 0;
 }
 
 ul.dropdown a:hover {
-	color: #000;
+	color: #666;
 }
 
 ul.dropdown li a { 
 	display: block;
-	padding: 20px 8px;
-	color: #222;
+	padding: 5px 8px;
+	color: none;
 	position: relative;
 	z-index: 2000;
 	text-decoration: none;
@@ -35,7 +42,7 @@ ul.dropdown li a {
 
 ul.dropdown li a:hover,
 ul.dropdown li a.hover {
-	background: none;
+	background: #FFF;
 	position: relative;
 }
 
@@ -46,6 +53,7 @@ ul.dropdown li a.hover {
 	position: relative;
 	float: left;
 	padding-bottom: 24px;
+	width: 100%;
 }
 
 ul.dropdown ul { 
@@ -59,8 +67,9 @@ ul.dropdown ul {
 
 ul.dropdown ul li {
 	font-weight: normal;
-	background: none;
+	background: #fff;
 	color: #000;
+	width: 120px;
 }
 
 ul.dropdown ul li a {
@@ -70,5 +79,5 @@ ul.dropdown ul li a {
  
 ul.dropdown ul li a:hover {
 	display: block;
-	background: #F3D673 !important;
+	background: #99CC33 !important;
 }

@@ -262,14 +262,14 @@
 	float: left;
 }
 #user_wrapper #info {
-	
-	width: 1024px;
+	width: 980px;
 }
 
 #user_wrapper #one {
 	vertical-align: bottom;
-	height:50px;
+	height:40px;
 	width:auto;
+	position: relative;
 }
 
 #user_wrapper #name {
@@ -288,7 +288,6 @@
 	padding: 0 0 0 30px;
 	float: left;
 	height:auto;
-	vertical-align:text-bottom;
 }
 #user_wrapper #num-of-reviews {
 	float: left;
@@ -296,8 +295,8 @@
 }
 
 #user_wrapper #description {
-	margin: 20px 0 0 0;
-	width: 760px;
+	margin: 15px 0 0 0;
+	width: 720px;
 	float: left;
 	
 }
@@ -308,6 +307,31 @@
 	width: 760px;
 	float: left;
 }
+
+#bazaar_wrapper #inBazaar {
+	width: 940px;
+	height: auto;
+	position:relative;
+	float: left;
+	margin: 50px auto 0px auto;
+	border-top: solid 1px #666;
+	border-bottom: solid 1px #666;
+	padding: 20px 0 50px 0;
+}
+
+#bazaar_wrapper #inBazaar img {
+	margin: 5px 5px 25px 5px;
+	text-align: center;
+}
+
+#bazaar_wrapper .subtitle_bazaar {
+	font-size: 30px;
+	text-align: center;
+	width: 940px;
+	margin: 30px auto 30px auto;
+	position:relative;
+}
+
 
 
 /**=================
@@ -876,7 +900,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-family: futura;
-    font-size: 34px;
+    font-size: 28px;
     line-height: auto;
 	 }
 
