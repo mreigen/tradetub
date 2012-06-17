@@ -37,4 +37,8 @@ class Product < ActiveRecord::Base
     false if user.blank?
     self.user_id == user.id.to_s
   end
+  
+  def in_trade?
+    !WantedItem.find_by_product_id(self.id).nil? || !OfferItem.find_by_product_id(self.id).nil?
+  end
 end

@@ -23,6 +23,7 @@ ActiveadminDepot::Application.routes.draw do
   get '/user/:user_id/items' => 'items#index'
   get '/user/:user_id/item/:id' => 'items#show'
   get "item/:id/delete" => "items#delete", :as => :delete_item
+  get "item/:id/perm_delete" => "items#perm_delete", :as => :perm_delete_item
   get "item/:id/set_visibility" => "items#set_visibility", :as => :set_visibility
   
   match 'offer/:id/counter_offer', :to => 'offers#make_offer', :as => :counter_offer

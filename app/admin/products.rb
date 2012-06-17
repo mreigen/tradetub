@@ -134,5 +134,21 @@ ActiveAdmin.register Product, :as => "Item" do
       end
       redirect_to :back      
      end
+     
+     def perm_delete
+       # check if user is logged in
+       # check if the item belongs to current user and if the value is not blank
+       product = Product.find(params[:id])
+       if product.user_id == current_user.id
+         flash[:error] = "Sorry but you can't just delete someone else's item!!"
+       else
+         if product.destroy
+          flash[:notice] = "Your item has been permanently deleted!"
+         else
+          flash[:error] = "Ooops, something went wrong, nothing hasn't been changed"
+         end
+       end
+       redirect_to items_path
+     end
    end
 end
