@@ -28,8 +28,8 @@
 		<% end %>
 	</div>
 	<div id="user-info">
-		<div id="user-name"><%= user.get_link_to_user_page %></div>
-		<div id="user-ratings"><%= user.get_avg_ratings %></div>
+		<div id="user-name"><%= user.get_link_to_user_page %><div id="user-ratings"><%= user.get_avg_ratings %></div></div>
+		
 	</div>
 	<div id="buttons" style="">
 		<% if !current_user.blank? && item.belongs_to?(current_user) %>

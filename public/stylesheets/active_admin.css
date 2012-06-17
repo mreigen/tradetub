@@ -152,15 +152,22 @@
 
 #item_content_wrapper #item-info {
 	width: 400px;
-	height: 85px;
+	height: auto;
 	float: left;
 	line-height: 20px;
 }
 
 #item_content_wrapper #user-info {
 	width: 200px;
-	height: 85px;
+	height: 20px;
+	margin: 0 0 65px 0;
 	float: right;
+	position: relative;
+	text-align: right;
+}
+
+#item_contenct_wrapper #user-ratings {
+	float:right;
 }
 
 #item_content_wrapper #available {
@@ -177,16 +184,22 @@
 
 #item_content_wrapper #title {
 	font-size: 24px;
+	line-height: 28px;
 	font-family: 'FuturaMdBTMedium';
-	width: 540px;
+	width: 600px;
+	height:auto;
+	float:left;
+	padding: 10px 0 15px 0;
+	position: relative;
 }
 
 #item_content_wrapper #price {
 	font-size: 30px;
-	padding: 20px 0 18px;
+	margin: 25px 0 18px 0;
 	color: #8CC;
 	font-family: 'FuturaMdBTMedium';
 	font-style: light;
+	position:relative;
 }
 
 #item_content_wrapper #break {
@@ -199,6 +212,12 @@
 
 #item_content_wrapper #image img {
 	width: 100%;
+	position:relative;
+	margin:10px 0 20px 0;
+}
+
+#item_content_wrapper #description {
+	margin:5px 5px 25px 5px;
 }
 
 #item_content_wrapper #trade-type {
