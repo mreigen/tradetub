@@ -1,10 +1,10 @@
 ActiveAdmin.register Product, :as => "Item" do
   config.clear_sidebar_sections!
-  
+
   after_build do |currm|
     currm.user_id = current_user
   end
-  
+
   scope :all, :default => true do |ps|
     user_id = params[:user_id]
     user_id ||= current_user
@@ -81,74 +81,68 @@ ActiveAdmin.register Product, :as => "Item" do
     render('/admin/sidebar_links', :user => @user)
   end
 =end
- 
-  form :html => { :enctype => "multipart/form-data" } do |f|
-     f.inputs "Details" do
-      f.input :title
-      f.input :image, :as => :file
-      f.input :description
-      f.input :price
-      f.input :cat_id, :as => :select, :collection => Category.asc.map{|c| [c.fullname, c.nickname]}, :prompt => "Please select..."
-      f.input :user_id, :input_html => { :value => f.template.current_user.id }, :as => :hidden
-    end
-    f.buttons
-   end
-   
-   # this is for multiple image uploading
-   # need more work
-   #form :partial => "image_upload"
 
-   controller do
-     before_filter :authenticate_user!, :except => [:show]
-     helper :all
-     
-     def set_visibility
-       # check if user is logged in
-       # check if the item belongs to current user and if the value is not blank
-       product = Product.find(params[:id])
-       if product.user_id == current_user.id || params[:value].blank?
-         flash[:error] = "Sorry but you can't just put someone else's item off shelf, go but it!!"
-       else
-         # set visibility
-         product.toggle!(:available)
-         product.save
-         flash[:notice] = "Your item has been taken off shelf"
-        end
-        redirect_to :back
-     end
-     
-     def delete
+  form :html => { :enctype => "multipart/form-data" } do |f|
+   f.inputs "Details" do
+    f.input :title
+    f.input :image, :as => :file
+    f.input :description
+    f.input :price
+    f.input :cat_id, :as => :select, :collection => Category.asc.map{|c| [c.fullname, c.nickname]}, :prompt => "Please select..."
+    f.input :user_id, :input_html => { :value => f.template.current_user.id }, :as => :hidden
+  end
+  f.buttons
+  end
+
+  # this is for multiple image uploading
+  # need more work
+  #form :partial => "image_upload"
+
+  controller do
+    before_filter :authenticate_user!, :except => [:show]
+    helper :all
+
+    def set_visibility
+      # check if user is logged in
+      # check if the item belongs to current user and if the value is not blank
+      product = Product.find(params[:id])
+      if product.user_id == current_user.id || params[:value].blank?
+        flash[:error] = "Sorry but you can't just put someone else's item off shelf, go but it!!"
+      else
+        # set visibility
+        product.toggle!(:available)
+        product.save
+        flash[:notice] = "Your item has been taken off shelf"
+      end
+      redirect_to :back
+    end
+ 
+    def delete
       # check if user is logged in
       # check if the item belongs to current user and if the value is not blank
       product = Product.find(params[:id])
       if product.user_id == current_user.id
         flash[:error] = "Sorry but you can't just delete someone else's item!!"
       else
-        # set deleted to true
-        product.deleted = true
-        if product.save
-         flash[:notice] = "Your item has been deleted! We have informed your trading partner(s) who were interested in this item."
+        if product.in_trade?
+          # set deleted to true
+          product.deleted = true
+          product.save
+          flash[:notice] = "Your item has been deleted! We have informed your trading partner(s) who were interested in this item."
+          redirect_to :back
         else
+          product.destroy
+          flash[:notice] = "Your item has been permanently deleted!"
+          redirect_to items_path
+        end
+        unless product.errors.blank?
          flash[:error] = "Ooops, something went wrong, your item hasn't been changed"
         end
       end
-      redirect_to :back      
-     end
-     
-     def perm_delete
-       # check if user is logged in
-       # check if the item belongs to current user and if the value is not blank
-       product = Product.find(params[:id])
-       if product.user_id == current_user.id
-         flash[:error] = "Sorry but you can't just delete someone else's item!!"
-       else
-         if product.destroy
-          flash[:notice] = "Your item has been permanently deleted!"
-         else
-          flash[:error] = "Ooops, something went wrong, nothing hasn't been changed"
-         end
-       end
-       redirect_to items_path
-     end
-   end
+      redirect_to :back
+      rescue AbstractController::DoubleRenderError
+        Rails.logger.info ""
+    end
+  end
+
 end
