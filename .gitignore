@@ -25,7 +25,6 @@
 log/*.log
 *.sql
 db/*.sqlite3
-db/
 tmp/pids/*.pid
 tmp/.*
 tmp/
@@ -41,3 +40,5 @@ Gemfile.lock
 public/system/products/
 
 db/schema.rb
+
+.DS_Store
