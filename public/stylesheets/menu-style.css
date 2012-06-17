@@ -11,11 +11,15 @@ ul {
 	width: 100%;
 }
 
+#menu-links-1 a:link {
+		font-size: 16px;
+}
+
 ul.dropdown { 
 	position: relative;
-	width: 600px;
+	width: 100%;
 	float: left;
-	left: 514px;
+	left: 340px;
 }
 
 ul.dropdown li { 
@@ -23,7 +27,7 @@ ul.dropdown li {
 	width: auto;
 	position: relative;
 	font-family: 'FuturaMdBTMedium';
-	font-size: 16px;
+	font-size: 14px;
 	padding:0px 10px 0px 0;
 }
 
@@ -31,7 +35,8 @@ ul.dropdown a:hover {
 	color: #666;
 }
 
-ul.dropdown li a { 
+ul.dropdown li a {
+	font-size: 14px; 
 	display: block;
 	padding: 5px 8px;
 	color: none;
@@ -52,8 +57,12 @@ ul.dropdown li a.hover {
 #menu-links-2 {
 	position: relative;
 	float: left;
-	padding-bottom: 24px;
+	padding: 25px 0 25px 0;
 	width: 100%;
+}
+
+#menu-links-2 #site_title a:link {
+	font-size:34px;
 }
 
 ul.dropdown ul { 
@@ -68,16 +77,23 @@ ul.dropdown ul {
 ul.dropdown ul li {
 	font-weight: normal;
 	background: #fff;
-	color: #000;
+	color: #333;
 	width: 120px;
 }
 
 ul.dropdown ul li a {
 	display: block;
-	background: none !important;
+	background: none;
 }
  
 ul.dropdown ul li a:hover {
 	display: block;
-	background: #99CC33 !important;
+	background:#99CC33;
+}
+
+#search {
+	width: 280px;
+	height: 25px;
+	line-height: 25px;
+	margin: 0 0 0 25px;
 }

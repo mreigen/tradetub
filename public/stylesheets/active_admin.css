@@ -1,3 +1,10 @@
+
+/**=================
+* 		font-face
+** ================= */
+
+
+
 @font-face {
   font-family: Comfortaa;
   src: 	url(/stylesheets/fonts/Walkway_Bold-webfont.woff) format("woff"),
@@ -273,25 +280,31 @@
 }
 
 #user_wrapper #name {
+	height:35px;
 	font-size: 26px;
 	padding: 10px 0 0 0;
 	float:left;
+
 }
 
 #user_wrapper .area {
+	height: 35px;
 	font-size:20px;
 	float:right;
-	padding: 0 0 0 10px;
+	padding: 2px 0 0 10px;
 }
 
 #user_wrapper #ratings {
-	padding: 0 0 0 30px;
+	height:35px;
+	padding: 13px 0 0 30px;
 	float: left;
-	height:auto;
 }
+
+
 #user_wrapper #num-of-reviews {
+	height:35px;
 	float: left;
-	padding: 0 0 0 15px;
+	padding: 13px 0 0 15px;
 }
 
 #user_wrapper #description {
@@ -341,7 +354,7 @@
 #register_wrapper, #login_wrapper, #checkout_wrapper {
 	width: 60%;
 	margin: 16px auto;
-	box-shadow: 0px 0px 18px #ccc;
+	box-shadow: none;
 	padding: 26px 0 30px 86px;
 	border-radius: 5px;
 	background-color: white;
@@ -351,6 +364,28 @@
 #register_wrapper img{
 	padding-bottom: 25px;
 }
+
+
+
+
+
+.logo {
+	width:200px;
+	height:25px;
+	background:#003366;
+	display:block;
+	position: relative;
+	border-radius: 8px 8px 8px 8px;
+	color:#fff;
+	text-align:center;
+	font-size:14px;
+	font-family: 'FuturaMdBTMedium';
+	text-decoration:none;
+	padding: 8px 0 0 0;
+}
+
+
+
 
 .item-id {
 	display: none;
@@ -1204,13 +1239,13 @@ form {
     padding: 10px 0;
     margin-bottom: 20px; }
     form fieldset.inputs {
-      background: #f4f4f4;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      box-shadow: inset 0 1px 4px #dddddd;
-      -moz-box-shadow: inset 0 1px 4px #dddddd;
-      -webkit-box-shadow: inset 0 1px 4px #dddddd; }
+    background: #f4f4f4;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 4px #dddddd;
+    -moz-box-shadow: inset 0 1px 4px #dddddd;
+    -webkit-box-shadow: inset 0 1px 4px #dddddd; }
     form fieldset legend {
       width: 100%; }
       form fieldset legend span {
@@ -2142,11 +2177,15 @@ table.index_grid td {
     float: left; }
 
 a, a:link, a:visited {
-  color: #38678b;
-  text-decoration: underline; }
+  color: #666;
+  font-size:14px;
+  text-decoration: none;
+  font-family: 'FuturaMdBTMedium';
+}
 
 a:hover {
-  text-decoration: none; }
+  text-decoration: none; 
+  color: #33CC00;}
 
 .paginated_collection_contents {
   clear: both; }
