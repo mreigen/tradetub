@@ -7,10 +7,10 @@ class Product < ActiveRecord::Base
   attr_accessible :deleted, :available, :price, :title, :cat_id, :user_id, :description, :image
   
   # Named Scopes
-  scope :available, lambda{ where("available_on < ? AND deleted = 'f'", Date.today) }
-  scope :drafts, lambda{ where("available_on > ? AND deleted = 'f'", Date.today) }
-  scope :related, lambda { |c| where("cat_id = ? AND deleted = 'f'", c) }
-  scope :other_items_by_user, lambda {|u| where("user_id = ? AND deleted = 'f'", u)}
+  scope :available, lambda{ where("available_on < ? AND deleted = 'f' AND available = 't'", Date.today) }
+  scope :drafts, lambda{ where("available_on > ? AND deleted = 'f' AND available = 't'", Date.today) }
+  scope :related, lambda { |c, i| where("cat_id = ? AND deleted = 'f' AND available = 't' AND id <> ?", c, i) }
+  scope :other_items_by_user, lambda {|u, i| where("user_id = ? AND deleted = 'f' AND available = 't' AND id <> ?", u, i)}
 
   # Validations
   validates_presence_of :title
