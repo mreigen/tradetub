@@ -41,9 +41,7 @@ ActiveAdmin.register Product, :as => "Item" do
       div do product.description end
     end
     
-    if item.belongs_to?(current_user)
-      input :value => "List new item", :type => :submit, :onclick => "javascript: document.location.href = '" + new_item_path + "'"
-    end
+    input :value => "List new item", :type => :submit, :onclick => "javascript: document.location.href = '" + new_item_path + "'"
   end
 
   show do |p|
