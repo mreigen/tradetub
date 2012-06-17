@@ -178,7 +178,7 @@
 #item_content_wrapper #title {
 	font-size: 24px;
 	font-family: 'FuturaMdBTMedium';
-	width: 100%;
+	width: 540px;
 }
 
 #item_content_wrapper #price {
@@ -468,7 +468,7 @@
 	position: absolute;
 	float: left;
 	color: #888;
-	width: 174px;
+	width: 170px;
 	left: 118px;
 	top: 14px;
 }
