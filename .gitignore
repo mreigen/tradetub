@@ -25,8 +25,10 @@
 log/*.log
 *.sql
 db/*.sqlite3
+db/
 tmp/pids/*.pid
 tmp/.*
+tmp/
 
 # OS generated files #
 ######################
@@ -36,4 +38,4 @@ Icon?
 Thumbs.db
 Gemfile.lock
 
-db/development.sqlite3
+
