@@ -15,7 +15,7 @@ ActiveAdmin.register User do
   end
 
   show do |u|
-    render :partial => "show_user", :locals => { :user => u }
+    render :partial => "show_user", :locals => { :user => u, :user_items => User.find(u).products }
   end
   
   after_create { |admin| admin.send_reset_password_instructions }
