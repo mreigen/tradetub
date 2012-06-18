@@ -42,3 +42,5 @@ public/system/products/
 db/schema.rb
 
 .DS_Store
+
+db/development.sqlite3-journal
