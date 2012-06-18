@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   has_many :categories
   has_many :image_uploads
   
-  attr_accessible :deleted, :available, :price, :title, :cat_id, :user_id, :description, :image
+  attr_accessible :deleted, :available, :price, :title, :cat_id, :user_id, :description, :image, :trade_type
   
   # Named Scopes
   scope :available, lambda{ where("available_on < ? AND deleted = 'f' AND available = 't'", Date.today) }
