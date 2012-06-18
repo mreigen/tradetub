@@ -1,7 +1,7 @@
 <div id="login_wrapper">
 	<h2>Sign in</h2>
 
-	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	<%= form_for(:user, :url => user_session_path) do |f| %>
 	  <div><%= f.label :email %><br />
 	  <%= f.email_field :email %></div>
 
