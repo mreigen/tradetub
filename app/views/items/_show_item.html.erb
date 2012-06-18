@@ -28,9 +28,10 @@
 		<% end %>
 	</div>
 	<div id="user-info">
-		<div id="user-name"><%= user.get_link_to_user_page %><div id="user-ratings"><%= user.get_avg_ratings %></div></div>
-		
+		<div id="user-ratings">RATE:<%= user.get_avg_ratings %></div>
+		<div id="user-name"><%= user.get_link_to_user_page %></div>
 	</div>
+	
 	<div id="buttons" style="">
 		<% if !current_user.blank? && item.belongs_to?(current_user) %>
 				<%= link_to "Delete", delete_item_path(item), :class => "red-button", :confirm => (item.in_trade? ? "This item is being offered or wanted by others. Deleting this will affect those offers." : "The item will be permanently deleted.") + " This action is not undo-able. Are you sure?" %>

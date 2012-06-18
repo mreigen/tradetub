@@ -160,13 +160,18 @@
 #item_content_wrapper #user-info {
 	width: 200px;
 	height: 20px;
-	margin: 0 0 65px 0;
+	margin: 0 0 60px 0;
 	float: right;
 	position: relative;
-	text-align: right;
 }
 
-#item_contenct_wrapper #user-ratings {
+#user-info #user-name {
+	margin:0 10px 0 0;
+	float:right;
+}
+
+
+#user-info #user-ratings {
 	float:right;
 }
 
@@ -193,19 +198,19 @@
 	position: relative;
 }
 
-#item_content_wrapper #price {
+#item_content_wrapper #item-info #price {
+	width:auto;
+	height:auto;
 	font-size: 30px;
 	margin: 25px 0 18px 0;
 	color: #8CC;
 	font-family: 'FuturaMdBTMedium';
-	font-style: light;
 	position:relative;
 }
 
 #item_content_wrapper #break {
-
 	width: 640px;
-	padding: 48px 0 8px 0;
+	padding: 20px 0 8px 0;
 	margin-bottom: 17px;
 }
 
@@ -229,6 +234,7 @@
 
 #item_content_wrapper #buttons {
 	text-align: right;
+	position: relative;
 }
 
 #item_content_wrapper #days-ago {
@@ -2815,11 +2821,13 @@ body.logged_out {
 
 #wrapper {
 	display: table;
-	width: 94%;
-	margin: 20px auto 20px;
+	width: 100%;
+	margin: 0px auto 20px;
+	padding: 20px 20px 0 20px;
 	background: white;
 	color: #222;
 	box-shadow: none;
+	border-top: solid 8px #6CC;
 }
 
 #active_admin_content {
