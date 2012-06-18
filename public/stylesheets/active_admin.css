@@ -374,7 +374,18 @@
 	position:relative;
 }
 
+#bazaar_wrapper .img_wrapper {
+	position: relative;
+	float: left;
+	width: 220px;
+	height: 220px;
+	overflow: hidden;
+}
 
+#bazaar_wrapper .item_wrapper {
+	position: relative;
+	float: left;
+}
 
 /**=================
 * 		end USER PAGE

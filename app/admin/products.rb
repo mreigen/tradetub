@@ -89,6 +89,8 @@ ActiveAdmin.register Product, :as => "Item" do
     f.input :description
     f.input :price
     f.input :cat_id, :as => :select, :collection => Category.asc.map{|c| [c.fullname, c.nickname]}, :prompt => "Please select..."
+    f.input :available, :label => "Available to be offered?"
+    f.input :trade_type, :as => :select, :collection => {"Accept both trades and cash" => 0, "Trades only" => 2, "Cash only" => 1}, :prompt => "Please choose trade type..."
     f.input :user_id, :input_html => { :value => f.template.current_user.id }, :as => :hidden
   end
   f.buttons
