@@ -17,8 +17,7 @@ ActiveadminDepot::Application.routes.draw do
       post 'login' => 'devise/sessions#create', :as => :user_session 
       get 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session 
   end
-  #match 'admin/logout' => 'sessions#destroy', :as => :logout
-  #match '/login' => 'sessions#new', :as => :login
+  
   #put '/offers/:id/respond/:respond' => 'offers#respond'
   get '/user/:user_id/items' => 'items#index'
   get '/user/:user_id/item/:id' => 'items#show'
@@ -29,7 +28,7 @@ ActiveadminDepot::Application.routes.draw do
   match 'offer/new_offer/receiver/:receiver_id' => 'offers#make_offer', :as => :make_offer
   match 'offer/:id/send_counter_offer' => 'offers#send_counter_offer', :as => :send_counter_offer
 
-  resources :sessions
+  #resources :sessions
   resources :products
   resources :image_uploads
   resources :categories
@@ -38,7 +37,7 @@ ActiveadminDepot::Application.routes.draw do
   resources :items
   resources :users
   resources :comments
-  resources :transactions
+  #resources :transactions
   
   root :to => "products#index"
 end
