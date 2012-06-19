@@ -1,9 +1,6 @@
-
 /**=================
 * 		font-face
 ** ================= */
-
-
 
 @font-face {
   font-family: Comfortaa;
@@ -122,8 +119,6 @@
 	margin: 5px;
 }
 
-
-
 #item_content_wrapper #user-info {
 	width: 580px;
 	height: auto;
@@ -154,8 +149,6 @@
 	position: relative;
 	font-size: 18px;
 }
-
-
 
 #item_content_wrapper #title {
 	font-size: 24px;
@@ -203,8 +196,6 @@
 	padding: 0 0 5px 0;
 }
 
-
-
 #item_content_wrapper #buttons {
 	float: right;
 	position: relative;
@@ -220,7 +211,6 @@
 	width:580px;
 }
 
-
 #item_content_wrapper #image img {
 	width: 580px;
 	margin:20px 0 20px 0;
@@ -231,7 +221,6 @@
 	margin: 0 10px 0 10px;
 	width: 570px;
 }
-
 
 #related {
 	position:relative;
@@ -268,12 +257,6 @@
 	margin: 20px 0px 15px 0px;
 	float:left;
 }
-
-
-
-
-
-
 /**=================
 * 		end ITEM PAGE
 ** ================= */
@@ -318,7 +301,6 @@
 	padding: 13px 0 0 30px;
 	float: left;
 }
-
 
 #user_wrapper #num-of-reviews {
 	height:35px;
@@ -395,10 +377,6 @@
 	padding-bottom: 25px;
 }
 
-
-
-
-
 .logo {
 	width:200px;
 	height:25px;
@@ -413,9 +391,6 @@
 	text-decoration:none;
 	padding: 8px 0 0 0;
 }
-
-
-
 
 .item-id {
 	display: none;
