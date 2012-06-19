@@ -91,7 +91,7 @@
 	font-size: 14px;
 	float: left;
 	width: 1024px;
-	margin: 40px 0 0 60px;
+	margin: 40px 0 0 35px;
 	color: #666;
 	position: relative;
 	background-color:	#F9F9F9;
@@ -2833,7 +2833,7 @@ body.logged_out {
 #wrapper {
 	display: table;
 	width: 100%;
-	margin: 0px auto 20px;
+	margin: 0px auto 20px auto;
 	padding: 20px 20px 0 20px;
 	background: white;
 	color: #222;
@@ -2848,9 +2848,9 @@ body.logged_out {
     float: left;
     width: 100%; }
     #active_admin_content #main_content_wrapper #main_content {
-      margin-right: 300px; }
+      margin-right: 0px; }
   #active_admin_content.without_sidebar #main_content_wrapper #main_content {
-    margin-right: 0; }
+    margin-right: 0px; }
   #active_admin_content #sidebar {
     float: right;
 		width: auto;

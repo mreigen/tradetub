@@ -17,18 +17,20 @@ ul {
 
 ul.dropdown { 
 	position: relative;
-	width: 100%;
-	float: left;
-	left: 340px;
+	width: auto;
+	height: 50px;
+	float:right;
 }
 
 ul.dropdown li { 
-	float: left;
 	width: auto;
+	height: auto;
 	position: relative;
 	font-family: 'FuturaMdBTMedium';
 	font-size: 14px;
-	padding:0px 10px 0px 0;
+	padding:0px 10px 0px 10px;
+	border-right: solid 1px #666;
+	float:left;
 }
 
 ul.dropdown a:hover {
@@ -71,6 +73,7 @@ ul.dropdown ul {
 	top: 0;
 	left: -24px;
 	width: auto;
+	border-right:solid 0px #FFF;
 	z-index: 1000;
 }
 
