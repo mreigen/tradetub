@@ -86,9 +86,9 @@
 #item_content_wrapper, #user_content_wrapper {
 	font-family: 'FuturaMdBTMediumItalic';
 	font-size: 14px;
-	float: left;
+
 	width: 1024px;
-	margin: 40px 0 0 0px;
+	margin: 40px auto 0 auto;
 	color: #666;
 	position: relative;
 }
