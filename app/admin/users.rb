@@ -9,7 +9,10 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Admin Details" do
+      f.input :username, :input_html => {:disabled => true}
+      f.input :name, :input_html => {:disabled => true}
       f.input :email
+      f.input :password
     end
     f.buttons
   end
