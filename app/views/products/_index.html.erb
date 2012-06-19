@@ -1,7 +1,7 @@
 <div class="sub_title">Featured Local Bazaar</div>
 <% products.each do |product| %>
   <div class="product">
-    <%= link_to image_tag(product.image.url(:medium), :onerror => "this.src = '/images/no-image-100px.gif'; return false;"), item_path(product) %>
+    <%= link_to image_tag(product.image.url(:medium)), item_path(product) %>
 		<div class="product-label"><%= link_to product.title, product_path(product) %></div>
 		<div class="product-price"><%= number_to_currency(product.price, :precision => 0) %></div>
 		<div class="product-desc"><%= truncate(product.description, :length => 42) %></div>
