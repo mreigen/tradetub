@@ -21,21 +21,20 @@
 			</div>
 		<% end %>
 	</div>
-		<div id="title"><%= item.title %></div>
-		<div id="price"><%= number_to_currency(item.price.to_s) %></div>
+	<div id="title"><%= item.title %></div>
+	<div id="price"><%= number_to_currency(item.price.to_s) %></div>
 	<div id="item-info">
 		<div id="days-ago">Posted <%= (Time.now.to_i - Time.at(item.created_at.to_i).to_i)  / (60*60*24) %> days ago</div>
 		<div id="trade-type">Trade type: <%= item.get_trade_type %></div>
 		<% if !current_user.blank? && item.belongs_to?(current_user) %>
-		<div id="available">
-			This item is currently <%= item.available ? "in bazaar" : "not in bazaar" %>
+		<div id="available">This item is currently <%= item.available ? "in bazaar" : "not in bazaar" %></div>
 		<% end %>
-		</div>
+		
 	  <div id="buttons" style="">
 		<% if !current_user.blank? && item.belongs_to?(current_user) %>
 			<%= link_to (item.available) ? "Take this off the shelf" : "Start selling this", set_visibility_path(:id => item, :value => 'false'), :class => "red-button" %>
-			<%= link_to "Delete", delete_item_path(item), :class => "red-button", :confirm => (item.in_trade? ? "This item is being offered or wanted by others. Deleting this will affect those offers." : "The item will be permanently deleted.") + " This action is not undo-able. Are you sure?" %>
 			<%= link_to "Edit", edit_item_path(item), :class => "red-button" %>
+			<%= link_to "Delete", delete_item_path(item), :class => "red-button", :confirm => (item.in_trade? ? "This item is being offered or wanted by others. Deleting this will affect those offers." : "The item will be permanently deleted.") + " This action is not undo-able. Are you sure?" %>
 		<% else %>
 			<%= link_to "Offer", add_to_cart_path(item), :class => "button" %>
 			<%= link_to "Basket", add_to_cart_path(item), :class => "button" %>

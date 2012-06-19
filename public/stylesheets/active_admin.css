@@ -250,18 +250,19 @@
 #item_content_wrapper #image {
 	margin: 10px 0 10px 0;
 	position:relative;
+	width:580px;
 }
 
 
 #item_content_wrapper #image img {
-	width: auto;
+	width: 580px;
 	margin:20px 0 20px 0;
 }
 
 #item_content_wrapper #description {
 	margin:5px 0px 25px 0px;
 	margin: 0 10px 0 10px;
-	width: auto;
+	width: 570px;
 }
 
 
