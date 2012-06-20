@@ -14,12 +14,13 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	-->
 	<div id="user-info">
-		<% if !current_user.blank? && item.belongs_to?(current_user) %>
-			<div id="your-item">(This is your item)
+		<div id="your-item">
+			<% if !current_user.blank? && item.belongs_to?(current_user) %>
+			(This is your item)
+			<% end %>
 			<div id="user-ratings">RATE:<%= user.get_avg_ratings %></div>
 			<div id="user-name"><%= user.get_link_to_user_page %></div>
-			</div>
-		<% end %>
+		</div>
 	</div>
 	<div id="title"><%= item.title %></div>
 	<div id="price"><%= number_to_currency(item.price.to_s) %></div>
