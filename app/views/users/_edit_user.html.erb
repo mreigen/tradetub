@@ -1,0 +1,12 @@
+<script src="/javascripts/jquery/jquery.autogrow.js"></script>
+
+<%= semantic_form_for user do |f| %>
+	<%= f.inputs "Admin Details" do %>
+	  <%= f.input :username, :input_html => {:disabled => true} %>
+	  <%= f.input :name, :input_html => {:disabled => true} %>
+	  <%= f.input :email %>
+	  <%= f.input :password, :label => "Password (leave blank if you plan not to change)" %>
+	  <%= f.input :about_me, :as => :text, :input_html => { :class => 'autogrow', :rows => 10 } %>
+	<% end %>
+	<%= f.buttons %>
+<% end %>

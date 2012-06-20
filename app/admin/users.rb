@@ -7,15 +7,7 @@ ActiveAdmin.register User do
     default_actions
   end
 
-  form do |f|
-    f.inputs "Admin Details" do
-      f.input :username, :input_html => {:disabled => true}
-      f.input :name, :input_html => {:disabled => true}
-      f.input :email
-      f.input :password
-    end
-    f.buttons
-  end
+  form :partial => "edit_user"
 
   show do |u|
     render :partial => "show_user", :locals => { :user => u, :user_items => User.find(u).products }
@@ -32,6 +24,16 @@ ActiveAdmin.register User do
   # ===================================================================
   controller do
     before_filter :authenticate_user!, :except => [:show]
+    
+    def update
+      user_info = params[:user] unless params[:user].blank?
+      if !user_info.blank? && user_info[:password].empty?
+        user_info.delete(:password) 
+      end
+      user = User.find(params[:id])
+      user.update_attributes!(user_info)
+      respond_with user
+    end
     
     def register_edit_info
       @user = User.find(params[:id])

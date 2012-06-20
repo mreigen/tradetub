@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   # To login with providers (facebook, twitter...)
   devise :omniauthable
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :facebook_avatar, :username, :last_name, :first_name, :gender, :location
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :facebook_avatar, :username, :last_name, :first_name, :gender, :location, :about_me
 
   def just_created?
     just_created
