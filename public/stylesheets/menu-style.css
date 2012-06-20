@@ -7,8 +7,9 @@ ul {
 */
 #menu-links-1 {
 	position: relative;
-	float: left;
-	width: 100%;
+	margin: 5px auto;
+	width: 980px;
+	height:40px;
 }
 
 #menu-links-1 a:link {
@@ -59,9 +60,9 @@ ul.dropdown li a.hover {
 */
 #menu-links-2 {
 	position: relative;
-	float: left;
-	padding: 15px 0 15px 0;
-	width: 100%;
+	margin: 0 auto 25px auto;
+	padding: 25px 0 15px 0;
+	width: 980px;
 }
 
 #menu-links-2 #site_title a:link {
