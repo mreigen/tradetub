@@ -387,13 +387,14 @@
 	width: 215px;
 	height: 46px;
 	text-align: center;
-	font-size: 30px;
-	color: 
-	white;
-	background-color: 
-	black;
+	background-color: black;
 	margin-left: 5px;
 	padding-top: 20px;
+}
+
+.item_wrapper .product-price a {
+	font-size: 30px;
+	color: white;
 }
 
 /**=================
