@@ -374,6 +374,26 @@
 #bazaar_wrapper .item_wrapper {
 	position: relative;
 	float: left;
+	width: 223px;
+}
+
+.item_wrapper .product-label {
+	padding: 7px;
+}
+
+.item_wrapper .product-price {
+	position: absolute;
+	top: 119px;
+	width: 215px;
+	height: 46px;
+	text-align: center;
+	font-size: 30px;
+	color: 
+	white;
+	background-color: 
+	black;
+	margin-left: 5px;
+	padding-top: 20px;
 }
 
 /**=================

@@ -18,20 +18,5 @@
 			<%= link_to "Edit", edit_user_path(user.id), :class => "red-button" %>
 		<% end %>
 	</div>
-	<div id="bazaar_wrapper">
-		<div id="inBazaar">
-			<div class="subtitle_bazaar">In Bazaar</div>
-			<% user_items.each do |i| %>
-				<div class="item_wrapper">
-					<div class="img_wrapper">
-						<%= link_to image_tag(i.image.url(:medium), :width => 220, :tooltip => i.title, :alt => i.title), item_path(i) %>
-					</div>
-					<!--
-					<div class="product-label"><%= link_to i.title, item_path(i) %></div>
-					<div class="product-price"><%= number_to_currency(i.price, :precision => 0) %></div>
-					-->
-				</div>
-			<% end %>
-			</div>
-	</div>
+	<%= render :partial => "in_bazaar", :locals => {:user_items => user_items} %>
 </div>
