@@ -14,6 +14,11 @@
 			<div id="fav_category">Favorite Categories:</div>
 		</div>
 	</div>
+	<div id="buttons">
+		<% if !current_user.blank? && user.id == current_user.id %>
+			<%= link_to "Edit", edit_user_path(user.id), :class => "red-button" %>
+		<% end %>
+	</div>
 	<div id="bazaar_wrapper">
 		<div id="inBazaar">
 			<div class="subtitle_bazaar">In Bazaar</div>
