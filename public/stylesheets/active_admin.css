@@ -208,6 +208,7 @@
 #item_content_wrapper #image {
 	margin: 10px 0 10px 0;
 	position:relative;
+	float: left;
 	width:580px;
 }
 
