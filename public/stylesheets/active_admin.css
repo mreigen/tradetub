@@ -381,8 +381,10 @@
 }
 
 .item_wrapper .product-label {
-	padding:10px 0px 5px 7px;
-	height: 270px;
+	padding: 10px 0px 5px 7px;
+	height: 45px;
+	position: relative;
+	float: left;
 }
 
 .product-label img {
