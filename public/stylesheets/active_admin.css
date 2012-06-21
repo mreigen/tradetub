@@ -382,8 +382,12 @@
 
 .item_wrapper .product-label {
 	padding:10px 0px 5px 7px;
+	height: 270px;
 }
 
+.product-label img {
+	margin: 0 0 10px 0;
+}
 
 .item_wrapper .product-price {
 	position: absolute;
