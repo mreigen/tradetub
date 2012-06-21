@@ -6,7 +6,7 @@
 				<div class="img_wrapper">
 					<%= link_to image_tag(i.image.url(:medium), :width => 220, :tooltip => i.title, :alt => i.title), item_path(i) %>
 				</div>
-				<div class="product-label"><%= link_to i.title, item_path(i) %></div>
+				<div class="product-label"><%= link_to truncate(i.title, :length => 57), item_path(i) %></div>
 				<div class="product-price"><%= link_to number_to_currency(i.price, :precision => 0), item_path(i) %></div>
 			</div>
 		<% end %>
