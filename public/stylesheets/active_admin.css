@@ -80,20 +80,32 @@
 
 }
 
+/** Through out application **/
+
+#content_wrapper {
+	font-family: 'FuturaMdBTMediumItalic';
+	font-size: 14px;
+	width: 1024px;
+	margin: 82px auto 0 auto;
+	color: #666;
+	position: absolute;
+}
+
+#front_page_wrapper {
+	margin: 0px 0 0 50px;
+	float: left;
+	width: 1143px;
+}
+
 /**=================
 * 		ITEM PAGE
 ** ================= */ 
-#item_content_wrapper, #user_content_wrapper {
-	font-family: 'FuturaMdBTMediumItalic';
-	font-size: 14px;
 
-	width: 1024px;
-	margin: 40px auto 0 auto;
-	color: #666;
-	position: relative;
+#item_page_wrapper, #user_content_wrapper {
+	margin: 0 0 0 50px;
 }
 
-#item_content_wrapper #item-main {
+#item_page_wrapper #item-main {
 	width:auto;
 	height:auto;
 	position:relative;
@@ -121,7 +133,7 @@
 	margin: 5px;
 }
 
-#item_content_wrapper #user-info {
+#item_page_wrapper #user-info {
 	width: 580px;
 	height: auto;
 	margin: 0 0 10px 0;
@@ -129,7 +141,7 @@
 	position: relative;
 }
 
-#item_content_wrapper #your-item {
+#item_page_wrapper #your-item {
 	position: relative;
 	float: left;
 	width: 100%;
@@ -152,7 +164,7 @@
 	font-size: 16px;
 }
 
-#item_content_wrapper #title {
+#item_page_wrapper #title {
 	font-size: 24px;
 	line-height: 28px;
 	font-family: 'FuturaMdBTMedium';
@@ -162,7 +174,7 @@
 	position: relative;
 }
 
-#item_content_wrapper #price {
+#item_page_wrapper #price {
 	width:580px;
 	height:auto;
 	float:left;
@@ -173,7 +185,7 @@
 	position:relative;
 }
 
-#item_content_wrapper #item-info {
+#item_page_wrapper #item-info {
 	width: 580px;
 	height: auto;
 	float: left;
@@ -181,24 +193,24 @@
 	border-bottom: solid #666 1px;
 }
 
-#item_content_wrapper #days-ago {
+#item_page_wrapper #days-ago {
 	font-style: italic;
 	color: #888;
 	position:relative;
 	padding: 0 0 5px 0;
 }
 
-#item_content_wrapper #trade-type {
+#item_page_wrapper #trade-type {
 	padding: 0 0 5px 0;
 }
 
-#item_content_wrapper #available {
+#item_page_wrapper #available {
 	position: relative;
 	float: left;
 	padding: 0 0 5px 0;
 }
 
-#item_content_wrapper #buttons {
+#item_page_wrapper #buttons {
 	float: right;
 	position: relative;
 	width: auto;
@@ -207,19 +219,19 @@
 	z-index: 500;
 }
 
-#item_content_wrapper #image {
+#item_page_wrapper #image {
 	margin: 10px 0 10px 0;
 	position:relative;
 	float: left;
 	width:580px;
 }
 
-#item_content_wrapper #image img {
+#item_page_wrapper #image img {
 	width: 580px;
 	margin:20px 0 20px 0;
 }
 
-#item_content_wrapper #description {
+#item_page_wrapper #description {
 	margin:5px 0px 25px 0px;
 	margin: 0 10px 0 10px;
 	width: 570px;
@@ -268,16 +280,9 @@
 * 		USER PAGE
 ** ================= */
 
-#user_content_wrapper {
-	position: relative;
-	float: right;
-	margin-right: 120px;
-}
-
 #user_content_wrapper #buttons {
 	position: relative;
 	float: right;
-	margin-right: 130px;
 }
 
 #user_wrapper {
@@ -990,6 +995,7 @@ h1 {
   font-family: futura;
     font-size: 28px;
     line-height: auto;
+		margin-bottom: 17px;
 	 }
 
 h2 {
@@ -1788,7 +1794,7 @@ form.filter_form a.clear_filters_btn {
     padding: 0;
     margin-top: 5px; }
 
-body.logged_in .flash {
+.flash {
   background: #f7f1d3;
   background: -webkit-gradient(linear, left top, left bottom, from(#f7f1d3), to(#f5edc5));
   background: -moz-linear-gradient(-90deg, #f7f1d3, #f5edc5);
@@ -1804,7 +1810,7 @@ body.logged_in .flash {
   padding: 13px 30px 11px;
   position: relative;
   top: -2px; }
-  body.logged_in .flash.flash_notice {
+  #flash_notice {
     background: #dce9dd;
     background: -webkit-gradient(linear, left top, left bottom, from(#dce9dd), to(#ccdfcd));
     background: -moz-linear-gradient(-90deg, #dce9dd, #ccdfcd);
@@ -1814,7 +1820,7 @@ body.logged_in .flash {
     color: #416347;
 		position: relative;
 		margin-top: 100px; }
-  body.logged_in .flash.flash_error {
+  .flash.flash_error {
     background: #f5e4e4;
     background: -webkit-gradient(linear, left top, left bottom, from(#f5e4e4), to(#f1dcdc));
     background: -moz-linear-gradient(-90deg, #f5e4e4, #f1dcdc);

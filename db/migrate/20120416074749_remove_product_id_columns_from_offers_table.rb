@@ -5,7 +5,7 @@ class RemoveProductIdColumnsFromOffersTable < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :offers, :sender_product_id, :string
-    add_column :offers, :offer_item_id, :string
+    add_column :offers, :sender_product_id, :integer
+    add_column :offers, :offer_item_id, :integer
   end
 end

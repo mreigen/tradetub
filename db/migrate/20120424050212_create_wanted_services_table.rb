@@ -1,8 +1,8 @@
 class CreateWantedServicesTable < ActiveRecord::Migration
   def self.up
     create_table :wanted_services do |t|
-      t.string :service_id
-      t.string :offer_id
+      t.integer :service_id
+      t.integer :offer_id
     end
   end
 

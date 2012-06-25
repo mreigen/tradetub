@@ -4,7 +4,7 @@ class AddResponsesToOffersTable < ActiveRecord::Migration
     # 1 : accept
     # 2 : rejected
     # 3 : counter-offer
-    add_column :offers, :response, :number, :default => 0
+    add_column :offers, :response, :integer, :default => 0
   end
 
   def self.down

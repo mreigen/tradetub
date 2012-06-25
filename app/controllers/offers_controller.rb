@@ -6,6 +6,7 @@ class OffersController < ApplicationController
   end
   
   def index
+    @offers = Offer.where("user_id = ? OR sender_id = ?", current_user, current_user)
   end
   
 end

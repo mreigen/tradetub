@@ -1,9 +1,9 @@
 class AddProductIdToImageUploadsTable < ActiveRecord::Migration
   def self.up
-    add_column :image_uploads, :product_id, :string, :null => false, :default => ""
+    add_column :image_uploads, :item_id, :integer, :null => false, :default => 0
   end
 
   def self.down
-    remove_column :image_uploads, :product_id
+    remove_column :image_uploads, :item_id
   end
 end

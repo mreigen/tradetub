@@ -1,6 +1,6 @@
 class AddUserIdToOffersTable < ActiveRecord::Migration
   def self.up
-    add_column :offers, :user_id, :string, :default => "", :null => false
+    add_column :offers, :user_id, :integer, :null => false, :default => 0
   end
 
   def self.down

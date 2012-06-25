@@ -2,8 +2,8 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-ActiveadminDepot::Application.initialize!
+Barzit::Application.initialize!
 
-ActiveadminDepot::Application.configure do
+Barzit::Application.configure do
   config.gem 'paperclip'
 end

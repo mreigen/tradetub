@@ -4,6 +4,6 @@ class RemoveProductWantedIdFromOffersItemTable < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :offer_items, :product_wanted_id, :string
+    add_column :offer_items, :product_wanted_id, :integer
   end
 end

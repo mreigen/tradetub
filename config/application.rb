@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module ActiveadminDepot
+module Barzit
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -40,20 +40,5 @@ module ActiveadminDepot
     config.filter_parameters += [:password]
     
     config.autoload_paths += Dir["#{Rails.root}/lib"]
-  end
-end
-
-module ActiveAdmin
-  module Views
-    class HeaderRenderer
-      def to_html
-        #title + global_navigation + profile_link + utility_navigation
-        render :partial => "/layouts/main_menu"
-      end
-
-      def profile_link
-        text_field_tag "search"
-      end
-    end
   end
 end

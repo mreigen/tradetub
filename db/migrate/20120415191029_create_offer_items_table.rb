@@ -1,8 +1,8 @@
 class CreateOfferItemsTable < ActiveRecord::Migration
   def self.up
     create_table :offer_items do |t|
-      t.string :product_id
-      t.string :product_wanted_id
+      t.integer :item_id
+      t.integer :product_wanted_id
     end
   end
 

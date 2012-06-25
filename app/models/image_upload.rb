@@ -1,5 +1,8 @@
 class ImageUpload < ActiveRecord::Base
-  belongs_to :product
+  belongs_to :item
+  attr_accessor :delete_image
+  attr_accessible :image
+  has_attached_file :image, :styles => { :medium => "238x238#", :thumb => "100x100#" }
   
-  has_attached_file :image, :styles => { :medium => "238x238>", :thumb => "100x100>" }
+  before_validation { :image.clear if delete_image == '1'}
 end

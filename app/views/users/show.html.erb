@@ -1,27 +1,22 @@
-<% title @product.title %>
-
-<%= image_tag @product.image.url(:medium), :id => "product-image" %>
-
-<div id="product-description">
-  <% if @product.description %>
-    <%= simple_format @product.description %>
-  <% else %>
-    <p><em>No Description</em></p>
-  <% end %>
-
-  <p>
-    <strong>Price:</strong>
-    <%= number_to_currency @product.price %> 
-    (<%= link_to "Add to Card", add_to_cart_path(@product.id) %>)
-  </p>
-
-  <p>
-    <strong>By:</strong>
-    <%= @product.author %>
-  </p>
-
-  <p> <%= link_to "Back to All Products", products_path %> </p>
+<h1>Trader's page</h1>
+<div id="user_content_wrapper">
+	<div id="user_wrapper">
+		<div id="avatar">
+			<%= image_tag @user.get_image %>
+		</div>
+		<div id="info">
+			<div id="one">
+				<div id="name"><%= @user.name %>:<div class="area">San Francisco</div></div>
+					<div id="ratings">RATE: ★★★★★ </div><div id="num-of-reviews">2760 reviews</div>
+			</div>
+			<div id="description"><%= @user.about_me %></div>
+			<div id="fav_category">Favorite Categories:</div>
+		</div>
+	</div>
+	<div id="buttons">
+		<% if !current_user.blank? && @user.id == current_user.id %>
+			<%= link_to "Edit", edit_user_path(@user.id), :class => "red-button" %>
+		<% end %>
+	</div>
+	<%= render :partial => "in_bazaar", :locals => {:user_items => @user_items} %>
 </div>
-
-<div style="clear:both;"></div>
-

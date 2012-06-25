@@ -1,9 +1,9 @@
 class AddColDeletedToProductsTable < ActiveRecord::Migration
   def self.up
-    add_column :products, :deleted, :boolean, :default => false
+    add_column :items, :deleted, :boolean, :default => false
   end
 
   def self.down
-    remove_column :products, :deleted
+    remove_column :items, :deleted
   end
 end

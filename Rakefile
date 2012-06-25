@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-ActiveadminDepot::Application.load_tasks
+Barzit::Application.load_tasks

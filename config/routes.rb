@@ -1,12 +1,12 @@
-ActiveadminDepot::Application.routes.draw do
-
-  ActiveAdmin.routes(self)
+Barzit::Application.routes.draw do
+  #ActiveAdmin.routes(self)
 
   get "cart" => "cart#show"
   get "cart/add/:id" => "cart#add", :as => :add_to_cart
   post "cart/remove/:id" => "cart#remove", :as => :remove_from_cart
   post "cart/checkout" => "cart#checkout", :as => :checkout
   
+  match "users" => "users#index"
   match 'signup' => 'users#new', :as => :signup
   match 'user/:id/register_edit_info' => 'users#register_edit_info', :as => :register_edit_info
   
@@ -39,5 +39,5 @@ ActiveadminDepot::Application.routes.draw do
   resources :comments
   #resources :transactions
   
-  root :to => "products#index"
+  root :to => "items#front_page"
 end
