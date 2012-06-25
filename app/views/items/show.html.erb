@@ -41,6 +41,11 @@
 		  </div>
 		</div>
 		<div id="image"><img alt="<%= @item.title %>" src="<%= @item.get_main_image(:original) %>"></div>
+		<div id="small_images">
+			<% @item.image_uploads.each do |i| %>
+				<%= image_tag i.image.url(:thumb) unless i.blank? %>
+			<% end %>
+		</div>
 		<div id="description"><%= @item.description %></div>
 		<div id="disqus_thread"></div>
 		<script type="text/javascript">

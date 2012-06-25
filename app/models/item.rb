@@ -26,6 +26,10 @@ class Item < ActiveRecord::Base
     (image_uploads[0].blank?) ? "/images/missing.jpg" : image_uploads[0].image.url(size.to_sym)
   end
   
+  def get_image(index, size)
+    (image_uploads[index].blank?) ? "/images/missing.jpg" : image_uploads[index].image.url(size.to_sym)
+  end
+  
   # return trade type in string
   def get_trade_type
     case trade_type

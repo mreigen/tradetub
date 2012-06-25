@@ -38,6 +38,8 @@ Thumbs.db
 Gemfile.lock
 
 public/system/products/
+public/system/image_uploads
+public/system/
 
 db/schema.rb
 
