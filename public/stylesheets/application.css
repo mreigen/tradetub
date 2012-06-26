@@ -93,8 +93,8 @@ h1 a {
 }
 
 #flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
+  background-color: none;
+  border: none;
 }
 
 #flash_error, #flash_alert {
