@@ -10,40 +10,25 @@
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 		-->
-		<div id="user-info">
-			<div id="your-item">
-				<% if !current_user.blank? && @item.belongs_to?(current_user) %>
-				(This is your item)
-				<% end %>
-				<div id="user-ratings">RATE:<%= @user.get_avg_ratings %></div>
-				<div id="user-name"><%= @user.get_link_to_user_page %></div>
-			</div>
+		
+		<div id="your-item">
+			<% if !current_user.blank? && @item.belongs_to?(current_user) %>
+			(This is your item)
+			<% end %>
 		</div>
 		<div id="title"><%= @item.title %></div>
-		<div id="price"><%= number_to_currency(@item.price.to_s) %></div>
+		
+		<div id="image"><img alt="<%= @item.title %>" src="<%= @item.get_main_image(:original) %>"></div>
+		<div id="small_images">
+			<% @item.image_uploads.each do |i| %>
+				<%= image_tag i.image.url(:thumb) unless i.blank? %>
+			<% end %>
+		</div>
 		<div id="item-info">
 			<div id="days-ago">Posted <%= (Time.now.to_i - Time.at(@item.created_at.to_i).to_i)  / (60*60*24) %> days ago</div>
 			<div id="trade-type">Trade type: <%= @item.get_trade_type %></div>
 			<% if !current_user.blank? && @item.belongs_to?(current_user) %>
 			<div id="available">This item is currently <%= @item.available ? "in bazaar" : "not in bazaar" %></div>
-			<% end %>
-		
-		  <div id="buttons" style="">
-			<% if !current_user.blank? && @item.belongs_to?(current_user) %>
-				<%= link_to (@item.available) ? "Take this off the shelf" : "Start selling this", set_visibility_path(:id => @item, :value => 'false'), :class => "red-button" %>
-				<%= link_to "Edit", edit_item_path(@item), :class => "red-button" %>
-				<%= link_to "Delete", delete_item_path(@item), :class => "red-button", :confirm => (@item.in_trade? ? "This item is being offered or wanted by others. Deleting this will affect those offers." : "The item will be permanently deleted.") + " This action is not undo-able. Are you sure?" %>
-			<% else %>
-				<%= link_to "Offer", add_to_cart_path(@item), :class => "button" %>
-				<%= link_to "Basket", add_to_cart_path(@item), :class => "button" %>
-				<%= link_to "Wish list", add_to_cart_path(@item), :class => "button" %>
-			<% end %>
-		  </div>
-		</div>
-		<div id="image"><img alt="<%= @item.title %>" src="<%= @item.get_main_image(:original) %>"></div>
-		<div id="small_images">
-			<% @item.image_uploads.each do |i| %>
-				<%= image_tag i.image.url(:thumb) unless i.blank? %>
 			<% end %>
 		</div>
 		<div id="description"><%= @item.description %></div>
@@ -66,6 +51,24 @@
 		<!--
 		<div class="fb-comments" data-href="http://localhost:3000/items/<%= @item.id %>" data-num-posts="3" data-width="470"></div>
 		-->
+	</div>
+	<div id="rightsidebar">
+		<div id="user-info">
+			<div id="user-name"><%= @user.get_link_to_user_page %></div>
+			<div id="user-ratings">RATE:<%= @user.get_avg_ratings %></div>
+		</div>
+	<div id="price"><%= number_to_currency(@item.price.to_s) %></div>
+	  <div id="buttons" style="">
+		<% if !current_user.blank? && @item.belongs_to?(current_user) %>
+			<%= link_to (@item.available) ? "Take this off the shelf" : "Start selling this", set_visibility_path(:id => @item, :value => 'false'), :class => "red-button" %>
+			<%= link_to "Edit", edit_item_path(@item), :class => "red-button" %>
+			<%= link_to "Delete", delete_item_path(@item), :class => "red-button", :confirm => (@item.in_trade? ? "This item is being offered or wanted by others. Deleting this will affect those offers." : "The item will be permanently deleted.") + " This action is not undo-able. Are you sure?" %>
+		<% else %>
+			<%= link_to "Offer", add_to_cart_path(@item), :class => "button" %>
+			<%= link_to "Basket", add_to_cart_path(@item), :class => "button" %>
+			<%= link_to "Wish list", add_to_cart_path(@item), :class => "button" %>
+		<% end %>
+	  </div>
 	</div>
 	<div id="item_offer_wrapper">
 		<div id="offer_history">
@@ -90,5 +93,6 @@
 		<% Item.other_items_by_user(@user.id, @item).limit(9).each do |i| %>
 			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.image.url(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
 		<% end %>
+	</div>
 	</div>
 </div>
