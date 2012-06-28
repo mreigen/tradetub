@@ -1,11 +1,11 @@
 <div id="front_page_wrapper">
 	<div class="sub_title">Featured Local Bazaar</div>
-	<% @items.each do |product| %>
+	<% @items.each do |item| %>
 	  <div class="product">
-	    <%= link_to image_tag(product.image.url(:medium)), item_path(product) %>
-			<div class="product-label"><%= link_to product.title, product_path(product) %></div>
-			<div class="product-price"><%= number_to_currency(product.price, :precision => 0) %></div>
-			<div class="product-desc"><%= truncate(product.description, :length => 42) %></div>
+	    <%= link_to image_tag(item.get_main_image(:medium)), item_path(item) %>
+			<div class="product-label"><%= link_to item.title, product_path(item) %></div>
+			<div class="product-price"><%= number_to_currency(item.price, :precision => 0) %></div>
+			<div class="product-desc"><%= truncate(item.description, :length => 42) %></div>
 			<div class="product-dist"></div>
 	  </div>
 	<% end %>
