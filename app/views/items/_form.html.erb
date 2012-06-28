@@ -1,21 +1,29 @@
-<%= semantic_form_for @item, :html => {:enctype => "multipart/form-data", :id => "fileupload", :method => "post"} do |f| %>
+<%= semantic_form_for @item, :html => {:enctype => "multipart/form-data", :id => "fileupload"} do |f| %>
 	<%= f.inputs "Details" do %>
 		<%= f.input :title %>
 		<%= f.input :description %>
-		<% f.semantic_fields_for :image_uploads do |i| %>
-	    <%= i.input :image, :as => :file %>
+		
+		<%= f.semantic_fields_for :image_uploads do |i| %>
+			<% if i.object.new_record? %>
+			<p>
+	    	<%= i.input :image, :as => :file %>
+			</p>
+			<% end %>
 	  <% end %>
+		<%f.semantic_fields_for :image_uploads do |i| %>
+			<% unless i.object.new_record? %>
+			<p>
+				<%= image_tag(i.object.image.url(:medium)) %>
+				<%= i.check_box :_destroy %>
+			</p>
+			<% end %>
+		<% end %>
+		
 	  <%= f.input :price %>
 	  <%= f.input :cat_id, :as => :select, :collection => Category.asc.map{|c| [c.fullname, c.nickname]}, :prompt => "Please select..." %>
 		<%= f.input :available, :label => "Available to be offered?" %>
 		<%= f.input :trade_type, :as => :select, :collection => {"Accept both trades and cash" => 0, "Trades only" => 2, "Cash only" => 1}, :prompt => "Please choose trade type..." %>
-	  <%= f.input :user_id, :input_html => { :value => f.template.current_user.id }, :as => :hidden %>
-<!--
-		<% @item.image_uploads.each do |iu| %>
-			<%= image_tag(iu.image.url(:medium)) %>
-			<input type="checkbox" class="select_delete"/>
-		<% end %>
--->
+	  <%= f.input :user_id, :input_html => { :value => f.template.current_user.id }, :as => :hidden %>		
 	<% end %>
-	<%= f.buttons %>
+	<%= f.actions %>
 <% end %>

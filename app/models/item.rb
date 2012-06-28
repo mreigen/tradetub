@@ -44,7 +44,7 @@ class Item < ActiveRecord::Base
   
   def belongs_to?(user)
     false if user.blank?
-    self.user_id == user.id.to_s
+    self.user_id == user.id
   end
   
   def in_trade?

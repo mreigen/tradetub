@@ -1,5 +1,4 @@
 Barzit::Application.routes.draw do
-  #ActiveAdmin.routes(self)
 
   get "cart" => "cart#show"
   get "cart/add/:id" => "cart#add", :as => :add_to_cart

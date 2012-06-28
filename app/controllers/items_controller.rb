@@ -36,7 +36,8 @@ class ItemsController < ApplicationController
   
   def update
     @item = Item.find(params[:id])
-    if @item.update_attributes(params[:item])
+    @item.update_attributes(params[:item])
+    if @item.save
       flash[:notice] = "Item successfully updated"
       redirect_to item_path
     else
