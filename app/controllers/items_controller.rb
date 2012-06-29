@@ -66,7 +66,7 @@ class ItemsController < ApplicationController
     # check if user is logged in
     # check if the item belongs to current user and if the value is not blank
     @item = Item.find(params[:id])
-    if @item.user_id == current_user.id
+    if @item.user_id != current_user.id
       flash[:error] = "Sorry but you can't just delete someone else's item!!"
     else
       if @item.in_trade?
