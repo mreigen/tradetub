@@ -3,12 +3,12 @@ $(document).ready(function() {
 	$("#small_images").find("img").each(function() {
 		var original_src = $(this).attr("src");
 		$(this).mouseenter(function() {
-			var new_src = $(this).attr("src").replace("thumb","original");
+			var new_src = $(this).attr("src").replace("thumb","large");
 			$("#image").find("img").animate({ // kinda fadeout
 				opacity: 0.95
 			}, 30, "swing", function() {
 				$("#image").find("img").attr("src", new_src) // set source of main image
-				.animate({ // facein
+				.animate({ // fadein
 					opacity: 1
 				}, 30);
 			});
@@ -37,7 +37,7 @@ $(document).ready(function() {
 		</div>
 		<div id="title"><%= @item.title %></div>
 		
-		<div id="image"><img alt="<%= @item.title %>" title="<%= @item.title %>" src="<%= @item.get_main_image(:original) %>"></div>
+		<div id="image"><img alt="<%= @item.title %>" title="<%= @item.title %>" src="<%= @item.get_main_image(:large) %>"></div>
 		<div id="small_images">
 			<% @item.image_uploads.each_with_index do |i, index| %>
 				<%= image_tag i.image.url(:thumb) unless i.blank? %>
