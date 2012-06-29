@@ -2,22 +2,18 @@
 	<%= f.inputs "Details" do %>
 		<%= f.input :title %>
 		<%= f.input :description %>
-		
-		<%= f.semantic_fields_for :image_uploads do |i| %>
+		<%= f.semantic_fields_for :image_uploads do |i| -%>
+			<p>
+				<% puts i.object.id %>
 			<% if i.object.new_record? %>
-			<p>
 	    	<%= i.input :image, :as => :file %>
-			</p>
-			<% end %>
-	  <% end %>
-		<%f.semantic_fields_for :image_uploads do |i| %>
-			<% unless i.object.new_record? %>
-			<p>
-				<%= image_tag(i.object.image.url(:medium)) %>
+			<% else %>
+				<%= image_tag i.object.image.url(:medium) %>
 				<%= i.check_box :_destroy %>
-			</p>
 			<% end %>
-		<% end %>
+			</p>
+	  <% end %>
+	
 		
 	  <%= f.input :price %>
 	  <%= f.input :cat_id, :as => :select, :collection => Category.asc.map{|c| [c.fullname, c.nickname]}, :prompt => "Please select..." %>

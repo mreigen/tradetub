@@ -32,6 +32,8 @@ class ItemsController < ApplicationController
   
   def edit
     @item = Item.find(params[:id])
+    count = @item.image_uploads.count
+    (5 - count).times { @item.image_uploads.build }
   end
   
   def update
