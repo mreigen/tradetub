@@ -226,10 +226,13 @@
 }
 
 #item_page_wrapper #image {
-	margin: 10px 0 0px 0;
+	margin: 10px 0 4px 0;
 	position: relative;
 	float: left;
 	width: 520px;
+	background-color: black;
+	height: 379px;
+	overflow: hidden;
 }
 
 #item_page_wrapper #image img {
