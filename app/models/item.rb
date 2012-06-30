@@ -18,10 +18,6 @@ class Item < ActiveRecord::Base
   validates_presence_of :price
   #validates_presence_of :image_file_name
   
-  has_attached_file :image, 
-                    :styles => { :original=> "", :medium => "238x238#", :thumb => "100x100#" },
-                    :processors => [:auto_orient, :thumbnail]
-  
   def get_main_image(size)
     (image_uploads[0].blank?) ? "/images/missing.jpg" : image_uploads[0].image.url(size.to_sym)
   end

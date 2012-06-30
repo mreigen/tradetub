@@ -1,10 +1,18 @@
 source 'http://rubygems.org'
 
+group :production do
+  gem "pg"
+  gem 'aws-s3'
+  gem 'aws-sdk'
+end
+
+group :development do
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'mechanize'
+end
+
 gem 'rails', '3.0.10'
-gem "pg", :group => :production
-gem 'sqlite3-ruby', :require => 'sqlite3', :group => :development
 gem 'nifty-generators'
-#gem "activeadmin", '0.4.0'
 gem "faker"
 gem "devise"
 gem "jquery-rails"
@@ -15,7 +23,3 @@ gem "paperclip", :git => "git@github.com:thoughtbot/paperclip.git"
 gem "omniauth-facebook"
 gem 'seed-fu', '~> 2.0.0'
 gem 'rmagick'
-
-group :development do
-  gem 'mechanize'
-end
