@@ -62,9 +62,15 @@ ul.dropdown li a.hover {
 
 #menu-links-2 {
 	position: relative;
-	margin: 0 auto 25px auto;
-	padding: 25px 0 15px 0;
+	margin: 12px auto 25px auto;
+	padding: 0px 0 15px 0;
 	width: 980px;
+	float: left;
+}
+
+#menu-links-2 form {
+	margin: 0 auto;
+	width: 780px;	
 }
 
 #menu-links-2 #site_title a:link {
@@ -102,6 +108,6 @@ ul.dropdown ul li a:hover {
 	width: 280px;
 	height: 25px;
 	line-height: 25px;
-	margin: 0 0 0 25px;
+	margin: -7px 13px 0 25px;
 	float: left;
 }
