@@ -23,3 +23,4 @@ gem "paperclip", :git => "git@github.com:thoughtbot/paperclip.git"
 gem "omniauth-facebook"
 gem 'seed-fu', '~> 2.0.0'
 gem 'rmagick'
+gem 'thinking-sphinx', '2.0.10'

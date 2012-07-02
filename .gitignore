@@ -46,3 +46,9 @@ db/schema.rb
 .DS_Store
 
 db/development.sqlite3-journal
+
+config/sunspot.yml
+
+sunspot-solr.pid
+
+log/searchd.development.pid

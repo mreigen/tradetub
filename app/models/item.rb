@@ -1,4 +1,8 @@
 class Item < ActiveRecord::Base
+  define_index do
+    indexes title
+    indexes description
+  end
   
   belongs_to :user
   has_many :categories
