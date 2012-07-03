@@ -2,7 +2,7 @@
 
 <div id="checkout_wrapper">
 	<% unless @cart.line_items.any? %>
-	  <p>You don't have any items in your cart. <%= link_to "Go Add Some", products_path %>
+	  <p>You don't have any items in your cart. <%= link_to "Go Add Some", items_path %>
 	<% end %>
 
 	<table width="100%">
@@ -12,7 +12,7 @@
 	  </tr>
 	  <% for line_item in @cart.line_items %>
 	    <tr>
-	      <td><%= line_item.product.title %></td>
+	      <td><%= line_item.item.title %></td>
 	      <td><%= number_to_currency line_item.price %></td>
 	      <td><%= link_to "Remove", remove_from_cart_path(line_item), :method => :post %></td>
 	    </tr>

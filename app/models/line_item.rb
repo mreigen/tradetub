@@ -1,8 +1,8 @@
 class LineItem < ActiveRecord::Base
   belongs_to :order
-  belongs_to :product
+  belongs_to :item
   
-  def get_product
-    Product.find(product_id)
+  def get_item
+    Item.find(item_id)
   end
 end
