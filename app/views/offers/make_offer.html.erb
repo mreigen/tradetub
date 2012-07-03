@@ -4,7 +4,7 @@
 
 <h2>Build your offer</h2>
 
-<% form_for :offer, :url => send_counter_offer_path(@offer, {:name => "new_offer"}) do |f| %>
+<% form_for :offer, :url => send_counter_offer_path(@offer, {:name => "new_offer"}), :html => {:class => "offer_form"} do |f| %>
 
 <div id="offer-wrapper">
 	<div id="offer-details">

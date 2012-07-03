@@ -493,6 +493,10 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 	clear: both;
 }
 
+/**=================
+* 	 OFFER PAGE
+** ================= */
+
 #offer-wrapper h3 {
 	text-align: center;
 }
@@ -592,10 +596,14 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 }
 
 #available-items, #offering-items {
-	width: 101%;
+	width: 110%;
 	position: relative;
 	float: left;
-	margin-top: 36px;
+}
+
+.offer_form {
+	margin: 0px !important;
+	width: 1024px !important;
 }
 
 #dropbox {
@@ -937,6 +945,10 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 #suggested-value-wrapper #send-button {
 	margin: 15px 10px;
 }
+
+/**=================
+* 		end OFFER PAGE
+** ================= */
 
 /* ORIGINAL ACTIVE ADMIN CSS FROM HERE DOWN */
 /* =============== */
