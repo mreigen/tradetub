@@ -93,7 +93,7 @@ $(document).ready(function() {
 		<div id="offer_history">
 			<%
 				WantedItem.find_all_by_item_id(@item.id).each do |wanted_item|
-					offer = Offer.find(wanted_@item.offer_id)
+					offer = Offer.find(wanted_item.offer_id)
 					sender = User.find(offer.sender_id)
 					offer_item_count = OfferItem.find_all_by_offer_id(offer.id).count
 			%>

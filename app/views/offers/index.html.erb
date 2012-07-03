@@ -2,13 +2,25 @@
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Sender</th>
+    <th>Offering</th>
+    <th>Wants</th>
+		<th>Actions</th>
   </tr>
 
 <% @offers.each do |offer| %>
   <tr>
+		<td><%= link_to offer.sender.name, user_path(offer.sender) %></td>
+		<td>
+			<% offer.offer_items.each do |i| %>
+				<%= link_to image_tag(i.get_main_image(:thumb), :width => 30), item_path(i.item_id) unless i.blank? %>
+			<% end %>
+		</td>
+		<td>
+		<% offer.wanted_items.each do |i| %>
+			<%= link_to image_tag(i.get_main_image(:thumb), :width => 30), item_path(i.item_id) unless i.blank? %>
+		<% end %>
+		</td>
     <td><%= link_to 'Show', offer %></td>
     <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
     <td><%= link_to 'Destroy', offer, :confirm => 'Are you sure?', :method => :delete %></td>

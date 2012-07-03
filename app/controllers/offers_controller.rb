@@ -54,8 +54,8 @@ class OffersController < ApplicationController
     old_offer_items.each { |item| item.destroy }
     # adds new records
     if !offering_item_ids.blank?
-      offering_item_ids.each do |product_id|
-        offer_item = OfferItem.new :offer_id => params[:id], :product_id => product_id
+      offering_item_ids.each do |item_id|
+        offer_item = OfferItem.new :offer_id => params[:id], :item_id => item_id
         offer_item.save!
       end
     end
@@ -72,8 +72,8 @@ class OffersController < ApplicationController
     old_wanted_items.each { |item| item.destroy }
     # adds new records
     if !wanted_item_ids.blank?
-      wanted_item_ids.each do |product_id|
-        wanted_item = WantedItem.new :offer_id => params[:id], :product_id => product_id
+      wanted_item_ids.each do |item_id|
+        wanted_item = WantedItem.new :offer_id => params[:id], :item_id => item_id
         wanted_item.save!
       end
     end

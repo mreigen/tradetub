@@ -14,7 +14,7 @@ class Offer < ActiveRecord::Base
     User.find(self.sender_id)
   end
   
-  def user
+  def receiver
     User.find(self.user_id)
   end
 end
