@@ -98,6 +98,20 @@
 	width: 1143px;
 }
 
+.table-scope {
+	position: relative;
+	float: left;
+}
+
+.table-scope-wrapper {
+	
+}
+
+.table-scope-wrapper form {
+	margin: 0px !important;
+	width: auto !important;
+}
+
 /**=================
 * 		ITEM PAGE
 ** ================= */ 

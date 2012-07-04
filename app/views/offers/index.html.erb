@@ -1,5 +1,13 @@
 <h1>Listing offers</h1>
 
+<div class="table-scope-wrapper">
+	<% form_tag (offers_path, :action => :index, :method => :get) do %>
+		<% @scopes.each do |s| %>
+			<div class="table-scope"><%= submit_tag s %></div>
+		<% end %>
+	<% end %>
+</div>
+
 <table>
   <tr>
     <th>Sender</th>
@@ -9,24 +17,34 @@
 		<th></th>
 		<th></th>
   </tr>
-
-<% @offers.each do |offer| %>
-  <tr>
-		<td><%= link_to offer.sender.name, user_path(offer.sender) %></td>
-		<td>
-			<% offer.offer_items.each do |i| %>
+<% if @offers.blank? %>
+	<tr>
+		<td>Couldn't find any offer</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+<% else %>
+	<% @offers.each do |offer| %>
+	  <tr>
+			<td><%= link_to offer.sender.name, user_path(offer.sender) %></td>
+			<td>
+				<% offer.offer_items.each do |i| %>
+					<%= link_to image_tag(i.get_main_image(:thumb), :width => 30), item_path(i.item_id) unless i.blank? %>
+				<% end %>
+			</td>
+			<td>
+			<% offer.wanted_items.each do |i| %>
 				<%= link_to image_tag(i.get_main_image(:thumb), :width => 30), item_path(i.item_id) unless i.blank? %>
 			<% end %>
-		</td>
-		<td>
-		<% offer.wanted_items.each do |i| %>
-			<%= link_to image_tag(i.get_main_image(:thumb), :width => 30), item_path(i.item_id) unless i.blank? %>
-		<% end %>
-		</td>
-    <td><%= link_to 'Show', offer %></td>
-    <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-    <td><%= link_to 'Destroy', offer, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+			</td>
+	    <td><%= link_to 'Show', offer %></td>
+	    <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
+	    <td><%= link_to 'Destroy', offer, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	<% end %>
 <% end %>
 </table>
 

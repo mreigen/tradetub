@@ -8,8 +8,16 @@ class OffersController < ApplicationController
   def show
   end
   
+  def create
+  end
+  
   def index
-    @offers = Offer.where("user_id = ? OR sender_id = ?", current_user, current_user)
+    @scopes = ['all', 'sent', 'received']
+    unless params[:commit].blank?
+      @offers = Offer.all_by_scope(params[:commit], current_user)
+    else
+      @offers = Offer.all_by_scope('all', current_user)
+    end
   end
   
   def make_offer      
