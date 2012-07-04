@@ -3,9 +3,11 @@ class ItemsController < ApplicationController
   helper :all
   
   def index
-    if params[:search].blank?
-      @items = Item.where("user_id = ?", current_user)
-    else
+    @items = Item.where("user_id = ?", current_user)
+  end
+  
+  def search_results
+    unless params[:search].blank?
       @items = Item.search params[:search]
     end
   end
