@@ -1137,7 +1137,9 @@ thead th {
   background: #c3d9ff; }
 
 th, td, caption {
-  padding: 4px 10px 4px 5px; }
+	padding: 4px 10px 0px 7px;
+	border-bottom: 1px solid #999;
+}
 
 .small {
   font-size: .8em;
@@ -1972,7 +1974,10 @@ body.logged_out .flash {
             background-color: #dbdddf; }
 
 table tr td {
-  vertical-align: top; }
+  vertical-align: top;
+	background-color: #FEFEFE;
+	border-bottom: 1px solid #DDD;
+}
 
 table.index_table {
   width: 100%;
