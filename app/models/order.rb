@@ -8,10 +8,10 @@ class Order < ActiveRecord::Base
   COMPLETE = "complete"
   IN_PROGRESS = "in_progress"
 
-  def self.find_with_product(product)
-    return [] unless product
+  def self.find_with_item(item)
+    return [] unless item
     complete.includes(:line_items).
-      where(["line_items.product_id = ?", product.id]).
+      where(["line_items.item_id = ?", item.id]).
       order("orders.checked_out_at DESC")
   end
 
