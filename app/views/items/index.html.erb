@@ -6,6 +6,7 @@
     <th>Name</th>
     <th>Price</th>
 		<th>Description</th>
+		<th>Actions</th>
 		<th></th>
   </tr>
 	
@@ -15,7 +16,6 @@
 		<td><%= item.title %></td>
 		<td><%= number_to_currency(item.price) %></td>
 		<td><%= truncate(item.description, :length => 250, :omission => "...") %></td>
-    <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

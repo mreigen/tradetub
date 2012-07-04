@@ -1131,12 +1131,17 @@ table {
   width: 100%; }
 
 th {
-  font-weight: bold; }
+  font-weight: bold; 
+	padding: 5px 10px 5px 7px;
+	border-bottom: 1px solid #999;
+	background-color: lightBlue;
+	color: white;
+}
 
 thead th {
   background: #c3d9ff; }
 
-th, td, caption {
+td, caption {
 	padding: 4px 10px 0px 7px;
 	border-bottom: 1px solid #999;
 }
