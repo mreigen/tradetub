@@ -12,7 +12,7 @@
 <% @items.each do |item| %>
   <tr>
 		<td><%= link_to image_tag(item.get_main_image(:thumb)), item %></td>
-		<td><%= item.title %></td>
+		<td><%= link_to item.title, item %></td>
 		<td><%= number_to_currency(item.price) %></td>
 		<td><%= truncate(item.description, :length => 250, :omission => "...") %></td>
     <td><%= link_to 'Trade/Offer', add_to_cart_path(item) %></td>

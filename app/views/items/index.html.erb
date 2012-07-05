@@ -2,18 +2,18 @@
 
 <table>
   <tr>
-    <th>Image</th>
-    <th>Name</th>
+    <th width="10%">Image</th>
+    <th width="20%">Name</th>
     <th>Price</th>
-		<th>Description</th>
+		<th width="40%">Description</th>
 		<th>Actions</th>
 		<th></th>
   </tr>
 	
 <% @items.each do |item| %>
   <tr>
-		<td><%= link_to image_tag(item.get_main_image(:thumb)), item %></td>
-		<td><%= item.title %></td>
+		<td><%= link_to image_tag(item.get_main_image(:thumb), :width => 40), item %></td>
+		<td><%= link_to item.title, item %></td>
 		<td><%= number_to_currency(item.price) %></td>
 		<td><%= truncate(item.description, :length => 250, :omission => "...") %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
