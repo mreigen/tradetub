@@ -20,7 +20,7 @@ class OffersController < ApplicationController
     end
   end
   
-  def make_offer      
+  def make_offer
     if params[:id]
       @offer = Offer.find(params[:id])
     else

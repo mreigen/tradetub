@@ -10,6 +10,7 @@
 
 <table>
   <tr>
+		<th></th>
     <th>Sender</th>
     <th>Offering</th>
     <th>Wants</th>
@@ -29,6 +30,7 @@
 <% else %>
 	<% @offers.each do |offer| %>
 	  <tr>
+			<td><%= (offer.sender_id == current_user.id) ? "Sent" : "Received"%></td>
 			<td><%= link_to offer.sender.name, user_path(offer.sender) %></td>
 			<td>
 				<% offer.offer_items.each do |i| %>
@@ -40,9 +42,17 @@
 				<%= link_to image_tag(i.get_main_image(:thumb), :width => 30), item_path(i.item_id) unless i.blank? %>
 			<% end %>
 			</td>
-	    <td><%= link_to 'Show', offer %></td>
-	    <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-	    <td><%= link_to 'Destroy', offer, :confirm => 'Are you sure?', :method => :delete %></td>
+			<% if offer.sender_id != current_user.id %>
+				<% unless offer.response == 1 %>
+					<td><%= link_to "Accept", 
+								make_offer_path(offer.sender_id, :accept => "", :id => offer.id),
+								:confirm => "Accept this offer?", 
+								:method => :put %></td>
+				<% else %>
+					<td><%= content_tag :label, "Accepted", :class => "unclickable"%></td>
+				<% end %>
+				<td><%= link_to "Counter Offer", "#" %></td>
+			<% end %>
 	  </tr>
 	<% end %>
 <% end %>
