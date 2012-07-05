@@ -57,6 +57,7 @@
 				<% unless offer.response == 1 %>
 					<td>Response pending</td>
 				<% else %>
+					<% # WILL NEED TO REPLACE THIS WITH SCHEDULING SYSTEM OR WHATEVER WE COME  UP WITH FOR COMMUNCATION %>
 					<td>Accepted! <br/> Contact: <%= link_to offer.sender.email, "mailto:" + offer.sender.email %> to pick up and pay / trade</td>
 				<% end %>
 			<% end %>
