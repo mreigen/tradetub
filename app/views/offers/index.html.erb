@@ -12,10 +12,9 @@
   <tr>
 		<th></th>
     <th>Sender</th>
-    <th>Offering</th>
-    <th>Wants</th>
-		<th>Actions</th>
-		<th></th>
+    <th width="20%">Offering</th>
+    <th width="20%">Wants</th>
+		<th width="30%">Actions</th>
 		<th></th>
   </tr>
 <% if @offers.blank? %>
@@ -42,7 +41,9 @@
 				<%= link_to image_tag(i.get_main_image(:thumb), :width => 30), item_path(i.item_id) unless i.blank? %>
 			<% end %>
 			</td>
+			<% # IF OFFER RECEIVED FROM SOMEONE ELSE %>
 			<% if offer.sender_id != current_user.id %>
+				<% # UNLESS ACCEPTED %>
 				<% unless offer.response == 1 %>
 					<td><%= link_to "Accept", 
 								make_offer_path(offer.sender_id, :accept => "", :id => offer.id),
@@ -52,6 +53,12 @@
 					<td><%= content_tag :label, "Accepted", :class => "unclickable"%></td>
 				<% end %>
 				<td><%= link_to "Counter Offer", "#" %></td>
+			<% else # ELSE IF OFFER SENT BY ME %>
+				<% unless offer.response == 1 %>
+					<td>Response pending</td>
+				<% else %>
+					<td>Accepted! <br/> Contact: <%= link_to offer.sender.email, "mailto:" + offer.sender.email %> to pick up and pay / trade</td>
+				<% end %>
 			<% end %>
 	  </tr>
 	<% end %>
