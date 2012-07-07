@@ -4,6 +4,7 @@ Barzit::Application.routes.draw do
   get "cart/add/:id" => "cart#add", :as => :add_to_cart
   get "cart/remove/:id" => "cart#remove", :as => :remove_from_cart
   post "cart/checkout" => "cart#checkout", :as => :checkout
+  get "cart/direct_checkout/:id" => "cart#direct_checkout", :as => :direct_checkout
   
   match "users" => "users#index"
   match 'signup' => 'users#new', :as => :signup

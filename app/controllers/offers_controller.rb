@@ -38,6 +38,7 @@ class OffersController < ApplicationController
       @sender = current_user
       @user = User.find(params[:receiver_id])
       @cart = Order.find(params[:cart])
+      
       @offer.user_id = params[:receiver_id]
       @offer.save!
     end
@@ -50,6 +51,8 @@ class OffersController < ApplicationController
     else
       @offer = Offer.find_by_user_id(current_user.id)
     end
+    
+    session.delete(:cart_id)
     
     # FOR OFFERING ITEMS
     offering_items = params[:offering]

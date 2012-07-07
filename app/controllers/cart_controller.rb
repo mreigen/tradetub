@@ -28,13 +28,21 @@ class CartController < ApplicationController
 
   def checkout
     @cart.checkout!
-    session.delete(:cart_id)
     flash[:notice] = "Your item(s) have been added to the offer page! Please make an offer to start trading!!"
     receiver_id = Item.find(@cart.line_items.first().item_id).user_id
     # TO DO: multiple receivers
     redirect_to make_offer_path :receiver_id => receiver_id, :name => "new_offer", :cart => @cart
   end
 
+  def direct_checkout
+    @cart.save if @cart.new_record?
+    session[:cart_id] = @cart.id
+    item = Item.find(params[:id])
+    
+    LineItem.create! :order => @cart, :item => item, :price => item.price    
+    send :checkout
+  end
+  
   protected
 
   def find_cart
