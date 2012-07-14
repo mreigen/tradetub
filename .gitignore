@@ -62,3 +62,5 @@ db/sphinx/development/item_core.sph
 db/sphinx/development/item_core.spi
 
 db/sphinx/development/item_core.spp
+
+config/database.yml
