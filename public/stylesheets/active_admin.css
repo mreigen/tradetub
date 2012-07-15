@@ -166,6 +166,29 @@ table.dashboard td { width: 33%; }
 	font-weight: bold;
 }
 
+.product .product-like {
+	width: 70px;
+	height: 23px;
+	position: absolute;
+	top: 9px;
+	left: 0px;
+	background: linear-gradient(to bottom, white 0%,#F1F1F1 50%,#E1E1E1 51%,#F6F6F6 100%);
+	margin: 3px;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 16px;
+	padding-top: 5px;
+	background: white;
+	cursor: pointer;
+	background: -moz-linear-gradient(top, white 0%, #F1F1F1 50%, #E1E1E1 51%, #F6F6F6 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,white), color-stop(50%,#F1F1F1), color-stop(51%,#E1E1E1), color-stop(100%,#F6F6F6));
+	background: -webkit-linear-gradient(top, white 0%,#F1F1F1 50%,#E1E1E1 51%,#F6F6F6 100%);
+	background: -o-linear-gradient(top, white 0%,#F1F1F1 50%,#E1E1E1 51%,#F6F6F6 100%);
+	background: -ms-linear-gradient(top, white 0%,#F1F1F1 50%,#E1E1E1 51%,#F6F6F6 100%);
+	background: linear-gradient(to bottom, white 0%,#F1F1F1 50%,#E1E1E1 51%,#F6F6F6 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 );
+}
+
 .product h2 { font-size: 0.8em; }
 .product .product-label {
 	width: 190px;
