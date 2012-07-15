@@ -3,7 +3,7 @@
 	<div class="sub_title">Featured Local Tradies</div>
 	<div id="product-container">
   	<% @items.each do |item| %>
-  	  <div class="item">
+  	  <div class="product">
   	    <%= link_to image_tag(item.get_main_image(:medium)), item_path(item) %>
   			<div class="product-label"><%= link_to item.title, product_path(item) %></div>
   			<div class="product-price"><%= number_to_currency(item.price, :precision => 0) %></div>
