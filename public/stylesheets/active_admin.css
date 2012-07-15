@@ -176,7 +176,7 @@ table.dashboard td { width: 33%; }
 .product-label a {
 	text-decoration: none;
 	padding: 3px;
-	font-family: helvetica;
+	font-family: helvetica !important;
 	font-weight:light;
 	color: #333;
 }
@@ -189,8 +189,9 @@ table.dashboard td { width: 33%; }
 	position: relative;
 	float: left;
 	width: 176px;
-	font-weight: lighter;
-	font-size: 14px;
+	font-weight: 400;
+	font-size: 11px;
+	font-family: helvetica;
 }
 
 .product-dist {
