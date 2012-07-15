@@ -140,12 +140,30 @@ table.dashboard td { width: 33%; }
 	box-shadow: 0px 1px 3px #888;
 	border-radius: 3px;
 	width: 228px;
+	font-size: 11px;
+	font-family: helvetica;
 }
 
 .product img { 
 	width: 233px;
 	padding: 9px 0px 5px 6px;
 	margin-left: -11px;
+}
+
+.product .offer_history {
+	padding: 11px 7px 10px 11px;
+	margin: 0 -3px 10px -5px;
+	position: relative;
+	float: left;
+	background-color: #F8F8F8;
+	width: 215px;
+	height: auto;
+}
+
+.product .offer_history a {
+	font-size: 11px !important;
+	font-family: helvetica !important;
+	font-weight: bold;
 }
 
 .product h2 { font-size: 0.8em; }
@@ -183,15 +201,12 @@ table.dashboard td { width: 33%; }
 
 .product-desc {
 	padding: 3px;
-	margin: 0 0 10px 5px;
+	margin: 0 10px 10px 5px;
 	color: #222;
 	overflow: hidden;
 	position: relative;
 	float: left;
-	width: 176px;
 	font-weight: 400;
-	font-size: 11px;
-	font-family: helvetica;
 }
 
 .product-dist {
