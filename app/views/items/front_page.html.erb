@@ -4,7 +4,12 @@
 	<div id="product-container">
   	<% @items.each do |item| %>
   	  <div class="product">
-  	    <div class="product-like">Like</div>
+  	    <div class="button-group">
+    	    <div class="product-like button">Like</div>
+    	    <div class="product-offer button">Offer</div>
+    	    <div class="product-basket button">Basket</div>
+    	    <div class="product-wishlist button">Wish</div>
+  	    </div>
   	    <%= link_to image_tag(item.get_main_image(:medium)), item_path(item) %>
   			<div class="product-label"><%= link_to item.title, item_path(item) %></div>
   			<div class="product-price"><%= number_to_currency(item.price, :precision => 0) %></div>
@@ -38,16 +43,16 @@
 	  });
 	  
 	  // hides like
-	  $(".product-like").css({opacity: 0});
+	  $(".button-group").css({opacity: 0});
 		// hides prices
 		$(".product-price").css({opacity: 0});
 
 		$(".product").hover(function() {
 			$(this).find(".product-price").animate({opacity: 0.7}, 100);
-  		$(this).find(".product-like").animate({opacity: 1}, 100);
+  		$(this).find(".button-group").animate({opacity: 1}, 100);
 		}).mouseleave(function() {
 			$(this).find(".product-price").animate({opacity: 0}, 100);
-			$(this).find(".product-like").animate({opacity: 0}, 100);
+			$(this).find(".button-group").animate({opacity: 0}, 100);
 		});
 	});
 
