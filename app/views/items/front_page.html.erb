@@ -5,7 +5,7 @@
   	<% @items.each do |item| %>
   	  <div class="product">
   	    <%= link_to image_tag(item.get_main_image(:medium)), item_path(item) %>
-  			<div class="product-label"><%= link_to item.title, product_path(item) %></div>
+  			<div class="product-label"><%= link_to item.title, item_path(item) %></div>
   			<div class="product-price"><%= number_to_currency(item.price, :precision => 0) %></div>
   			<div class="product-desc"><%= truncate(item.description, :length => 280) %></div>
   			<div class="product-dist"></div>
