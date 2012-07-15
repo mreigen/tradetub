@@ -21,4 +21,16 @@
       columnWidth: 250
     });
   };
+
+	$(document).ready(function() {
+		// hides prices
+		$(".product-price").css({opacity: 0});
+
+		$(".product").hover(function() {
+			$(this).find(".product-price").animate({opacity: 0.7}, 100);
+		}).mouseleave(function() {
+			$(this).find(".product-price").animate({opacity: 0}, 100);
+		});
+	});
+
 </script>
