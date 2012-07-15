@@ -92,12 +92,6 @@
 	float: left;
 }
 
-#front_page_wrapper {
-	margin: 0px 0 0 50px;
-	float: left;
-	width: 1143px;
-}
-
 .table-scope {
 	position: relative;
 	float: left;
@@ -111,6 +105,108 @@
 	margin: 0px !important;
 	width: auto !important;
 }
+
+/**=================
+* 		FRONT PAGE
+** ================= */
+
+#front_page_wrapper {
+	margin: 0px 0 0 50px;
+	float: left;
+	width: 1143px;
+}
+
+.sub_title {
+	font-family: 'FuturaMdBTMedium';
+	font-size: 24px;
+	margin: 17px 0 12px 0;
+	color: #999;
+	border-bottom: 1px solid #888;
+	padding-bottom: 9px;
+	width: 86%;
+}
+
+.icon {
+  display: none !important; 
+}
+
+table.dashboard td { width: 33%; }
+
+.item { 
+	float: left;
+	background-color: #EFEFEF;
+	padding: 0px 0px 5px 5px;
+	margin: 5px;
+	box-shadow: 0px 1px 3px #888;
+	border-radius: 3px;
+	width: 228px;
+}
+
+.item img { 
+	width: 233px;
+	padding: 9px 0px 5px 6px;
+	margin-left: -11px;
+}
+
+.item h2 { font-size: 0.8em; }
+.item .product-label {
+	width: 190px;
+	height: 14px;
+	overflow: hidden;
+	padding: 0px 5px 5px 5px;
+	font-size: 14px;
+}
+
+.item .product-price {
+	color: white;
+	background-color: black;
+	padding: 20px 0 0 3px;
+	margin: 0px 10px 0px 0px;
+	position: absolute;
+	font-size: 25px;
+	z-index: 99;
+	top: 190px;
+	opacity: 0.6;
+	height: 32px;
+	width: 230px;
+	text-align: center;
+	left: 0px;
+}
+
+.product-label a {
+	text-decoration: none;
+	padding: 3px;
+	font-family: helvetica;
+	font-weight:light;
+	color: #333;
+}
+
+.product-desc {
+	padding: 3px;
+	margin: 0 0 10px 5px;
+	color: #222;
+	overflow: hidden;
+	position: relative;
+	float: left;
+	width: 176px;
+	font-weight: lighter;
+	font-size: 14px;
+}
+
+.product-dist {
+  background-color: gray;
+  height: 0px;
+  margin-top: 42px;
+  width: 10px;  
+}
+
+#product-image { width: 150px; float: left; margin-right: 20px;  }
+#product-description { margin-left: 170px;  }
+
+/**=================
+* 		END OF FRONT PAGE
+** ================= */
+
 
 /**=================
 * 		ITEM PAGE

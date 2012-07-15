@@ -31,62 +31,6 @@ h1 a {
 
 #auth { float: right; }
 
-.product { 
-	float: left;
-	margin-right: 3px;
-	margin-bottom: 3px;
-	height: 286px;
-	background-color: #EEE;
-}
-
-.product img { width: 160px; height: 160px}
-.product h2 { font-size: 0.8em; }
-.product .product-label {
-	width: 160px;
-	height: 31px;
-	overflow: hidden;
-	padding-top: 3px;
-	background-color: white;
-	font-size: 17px;
-}
-
-.product .product-price {
-	color: black;
-	background-color: white;
-	height: 18px;
-	padding: 2px 0 0 3px;
-	position: relative;
-	width: 157px;
-	text-align: center;
-	font-weight: bold;
-	font-size: 15px;
-}
-
-.product-label a {
-	text-decoration: none;
-	padding: 3px;
-	font-family: helvetica;
-}
-
-.product-desc {
-  background-color: white;
-  padding: 4px;
-  width: 152px;
-  margin-bottom: 3px;
-  height: 40px;
-  overflow: hidden;
-}
-
-.product-dist {
-  background-color: gray;
-  height: 0px;
-  margin-top: 42px;
-  width: 10px;  
-}
-
-#product-image { width: 150px; float: left; margin-right: 20px;  }
-#product-description { margin-left: 170px;  }
-
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
