@@ -2026,7 +2026,7 @@ form.filter_form a.clear_filters_btn {
     border-bottom: 1px solid #666;
     color: #666;
 		position: relative;
-		margin-top: 100px;
+		margin-top: 0px;
 		margin-left:50px }
   .flash.flash_error {
     background: #f5e4e4;

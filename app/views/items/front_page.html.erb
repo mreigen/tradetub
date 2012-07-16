@@ -3,7 +3,7 @@
 	<div class="sub_title">Featured Local Tradies</div>
 	<div id="product-container">
   	<% @items.each do |item| %>
-    	<% if !current_user.blank? && !item.belongs_to?(current_user) %>
+    	<% if (!current_user.blank? && !item.belongs_to?(current_user)) || (current_user.blank?) %>
     	  <div class="product">
     	    <div class="button-group">
         	  <div class="product-like button">Like</div>
