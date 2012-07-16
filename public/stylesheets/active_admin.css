@@ -137,7 +137,9 @@ table.dashboard td { width: 33%; }
 	background-color: #EFEFEF;
 	padding: 0px 0px 5px 5px;
 	margin: 8px;
+	-moz-box-shadow: 0px 1px 3px #888;
 	box-shadow: 0px 1px 3px #888;
+	-moz-border-radius: 3px;
 	border-radius: 3px;
 	width: 228px;
 	font-size: 11px;
@@ -147,6 +149,7 @@ table.dashboard td { width: 33%; }
 .product img { 
 	width: 233px;
 	margin: 9px 0px 5px -5px;
+	-moz-box-shadow: 0px 1px 3px 0px #888;
 	box-shadow: 0px 1px 3px 0px #888;
 }
 
@@ -177,6 +180,7 @@ table.dashboard td { width: 33%; }
 	position: absolute;
 	background: linear-gradient(to bottom, white 0%,#F1F1F1 50%,#E1E1E1 51%,#F6F6F6 100%);
 	margin: 3px;
+	-moz-border-radius: 5px;
 	border-radius: 5px;
 	text-align: center;
 	font-size: 12px;
