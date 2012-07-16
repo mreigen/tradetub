@@ -3,28 +3,30 @@
 	<div class="sub_title">Featured Local Tradies</div>
 	<div id="product-container">
   	<% @items.each do |item| %>
-  	  <div class="product">
-  	    <div class="button-group">
-    	    <div class="product-like button">Like</div>
-    	    <div class="product-offer button">Offer</div>
-    	    <div class="product-basket button">Basket</div>
-    	    <div class="product-wishlist button">Wish</div>
-  	    </div>
-  	    <%= link_to image_tag(item.get_main_image(:medium)), item_path(item) %>
-  			<div class="product-label"><%= link_to item.title, item_path(item) %></div>
-  			<div class="product-price"><%= number_to_currency(item.price, :precision => 0) %></div>
-  			<div class="product-desc"><%= truncate(item.description, :length => 280) %></div>
+    	<% if !current_user.blank? && !item.belongs_to?(current_user) %>
+    	  <div class="product">
+    	    <div class="button-group">
+        	  <div class="product-like button">Like</div>
+      	    <div class="product-offer button" value="<%= item.id %>">Offer</div>
+      	    <div class="product-basket button">Basket</div>
+      	    <div class="product-wishlist button">Wish</div>
+    	    </div>
+    	    <%= link_to image_tag(item.get_main_image(:medium)), item_path(item) %>
+    			<div class="product-label"><%= link_to item.title, item_path(item) %></div>
+    			<div class="product-price"><%= number_to_currency(item.price, :precision => 0) %></div>
+    			<div class="product-desc"><%= truncate(item.description, :length => 280) %></div>
   			
-  			<%
-  				WantedItem.find_all_by_item_id(item.id).each do |wanted_item|
-  					offer = Offer.find(wanted_item.offer_id)
-  					sender = User.find(offer.sender_id)
-  					offer_item_count = OfferItem.find_all_by_offer_id(offer.id).count
-  			%>
-  			<div class="offer_history"><%= sender.get_link_to_user_page + ": " + offer_item_count.to_s + (offer_item_count > 1 ? " items" : " item") + " and " + number_to_currency(offer.cash_value) %></div>
-  			<% end %>
+    			<%
+    				WantedItem.find_all_by_item_id(item.id).each do |wanted_item|
+    					offer = Offer.find(wanted_item.offer_id)
+    					sender = User.find(offer.sender_id)
+    					offer_item_count = OfferItem.find_all_by_offer_id(offer.id).count
+    			%>
+    			<div class="offer_history"><%= sender.get_link_to_user_page + ": " + offer_item_count.to_s + (offer_item_count > 1 ? " items" : " item") + " and " + number_to_currency(offer.cash_value) %></div>
+    			<% end %>
   			
-  	  </div>
+    	  </div>
+  	  <% end %>
   	<% end %>
   </div>
 	<div style="clear:both"></div>
@@ -40,6 +42,10 @@
 	$(document).ready(function() {
 	  $(".product-like").click(function() {
       console.log("registering like");
+	  });
+	  
+	  $(".product-offer").click(function() {
+	    window.location = "/cart/direct_checkout/" + $(this).attr("value");
 	  });
 	  
 	  // hides like
