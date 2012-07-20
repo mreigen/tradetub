@@ -45,8 +45,9 @@ class OffersController < ApplicationController
   end
    
   def send_counter_offer
+    offer_id = params[:id]
+    
     if params[:name] == "new_offer"
-      offer_id = params[:id]
       @offer = Offer.find(offer_id)
     else
       @offer = Offer.find_by_user_id(current_user.id)

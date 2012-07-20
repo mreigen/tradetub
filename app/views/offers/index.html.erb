@@ -14,8 +14,9 @@
     <th>Sender</th>
     <th width="20%">Offering</th>
     <th width="20%">Wants</th>
-		<th width="30%">Actions</th>
-		<th></th>
+    <th widht="20%">Cash Amount</th>
+		<th width="20%">Actions</th>
+		<th width="20%"></th>
   </tr>
 <% if @offers.blank? %>
 	<tr>
@@ -41,6 +42,9 @@
 				<%= link_to image_tag(i.get_main_image(:thumb), :width => 30), item_path(i.item_id) unless i.blank? %>
 			<% end %>
 			</td>
+			<td>
+			  <%= number_to_currency(offer.cash_value) %>
+			</td>
 			<% # IF OFFER RECEIVED FROM SOMEONE ELSE %>
 			<% if offer.sender_id != current_user.id %>
 				<% # UNLESS ACCEPTED %>
@@ -52,7 +56,7 @@
 				<% else %>
 					<td><%= content_tag :label, "Accepted", :class => "unclickable"%></td>
 				<% end %>
-				<td><%= link_to "Counter Offer", "#" %></td>
+				<td><%= link_to "Counter Offer", counter_offer_path(offer, :name => "counter_offer") %></td>
 			<% else # ELSE IF OFFER SENT BY ME %>
 				<% unless offer.response == 1 %>
 					<td>Response pending</td>

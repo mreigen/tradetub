@@ -7,7 +7,7 @@
 <% if offer.wanted_items.empty? && @cart.line_items.empty? %>
 	<div id="no-item-wanted" class="no-item">No item</div>
 <% else %>
-	<% wanted_items = @cart.line_items.empty? ? offer.wanted_items : @cart.line_items %>
+	<% wanted_items = (!@cart.blank? && @cart.line_items.empty?) || @cart.blank? ? offer.wanted_items : @cart.line_items %>
 	<% wanted_items.each_with_index do |wanted_item, i| %>
 		<li class="their-item-list">
 			<% @item = wanted_item.item %>

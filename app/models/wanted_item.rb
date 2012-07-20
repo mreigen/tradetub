@@ -2,7 +2,7 @@ class WantedItem < ActiveRecord::Base
 	belongs_to :offer
 
   def item
-    Product.find(self.item_id)
+    Item.find(self.item_id)
   end
   
   def get_main_image(size)

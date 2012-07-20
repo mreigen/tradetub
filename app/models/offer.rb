@@ -9,7 +9,7 @@ class Offer < ActiveRecord::Base
   has_many :wanted_services
   
   scope :accepted, where(:response => 1)
-    
+  
   def self.all_by_scope(scope, c_user)
     if scope == "sent"
       Offer.find_all_by_sender_id(c_user)
