@@ -80,6 +80,19 @@
 
 }
 
+@font-face {
+    font-family: 'FuturaLtBTLight';
+    src: url('fonts/futura-lt-bt-light.eot');
+    src: url('fonts/futura-lt-bt-light.eot?#iefix') format('embedded-opentype'),
+         url('fonts/futura-lt-bt-light.woff') format('woff'),
+         url('fonts/futura-lt-bt-light.ttf') format('truetype'),
+         url('fonts/futura-lt-bt-light.svg#FuturaLtBTLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 /** Through out application **/
 
 #content_wrapper {
@@ -117,11 +130,11 @@
 }
 
 .sub_title {
-	font-family: 'FuturaMdBTMedium';
+	font-family: 'FuturaLtBTLight';
 	font-size: 24px;
 	margin: 17px 0 12px 0;
 	color: #999;
-	border-bottom: 1px solid #888;
+	border-bottom: 1px solid #999;
 	padding-bottom: 9px;
 	width: 86%;
 }
