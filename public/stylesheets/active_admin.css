@@ -661,7 +661,7 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 }
 
 .item-custom-list {
-	margin-bottom: 1em;
+	margin-bottom: 25px;
 	text-align: center;
 }
 
@@ -692,11 +692,13 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 
 .big-title {
 	font-size: 28px;
+	font-family: futuraltbtlight;
 	color: #AAA;
 	text-align: center;
-	border-bottom: #CCC solid 4px;
+	border-bottom: #CCC solid 1px;
 	padding-bottom: 12px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+	font-style: italic;
 }
 
 .unclickable {
@@ -806,7 +808,7 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 	padding: 0 12px 0 12px;
 	font-size: 32px;
 	line-height: 51px;
-	color: #EFEFEF;
+	color: #DDD;
 }
 
 #dropbox img {
@@ -2038,13 +2040,12 @@ form.filter_form a.clear_filters_btn {
   top: -2px; }
   #flash_notice {
     background: none;
-    background: none;
-   
-    border-bottom: 1px solid #666;
-    color: #666;
-		position: relative;
-		margin-top: 0px;
-		margin-left:50px }
+	border-bottom: 1px solid #666;
+	color: #666;
+	position: relative;
+	margin-top: 0px;
+	margin-left: 50px;
+	margin-bottom: 40px;
   .flash.flash_error {
     background: #f5e4e4;
     background: -webkit-gradient(linear, left top, left bottom, from(#f5e4e4), to(#f1dcdc));
