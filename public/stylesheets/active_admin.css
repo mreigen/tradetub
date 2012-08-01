@@ -666,9 +666,9 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 }
 
 .item-custom-list a {
-	background-color: orange;
+	background-color: none;
 	padding: 3px 8px 3px 8px;
-	color: white !important;
+	color: #66CCCC; !important;
 	text-decoration: none !important;
 }
 
@@ -799,7 +799,7 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 
 #dropbox {
 	position: relative;
-	top: 17px;
+	top: 75px;
 	height: 375px;
 	width: 142px;
 	text-align: center;
@@ -942,7 +942,7 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 	left: -39px;
 	top: 46px;
 	font-size: 39px;
-	color: #EFEFEF;
+	color: #DDD;
 }
 
 #offering-items .down-arrow {
