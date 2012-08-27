@@ -24,7 +24,7 @@ $(document).ready(function() {
 			(This is your item)
 			<% end %>
 		</div>
-		<div id="title"><%= @item.title %></div>
+		<div id="title"><%= link_to @item.title, item_path(@item) %></div>
 		
 		<div id="image"><img alt="<%= @item.title %>" title="<%= @item.title %>" src="<%= @item.get_main_image(:large) %>"></div>
 		<div id="small_images">
