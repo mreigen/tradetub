@@ -39,7 +39,7 @@ $(document).ready(function() {
 			<div id="available">This item is currently <%= @item.available ? "in bazaar" : "not in bazaar" %></div>
 			<% end %>
 		</div>
-		<div id="description"><%= @item.get_description(200) %></div>
+		<div id="description"><%= @item.get_description %></div>
 		<!--
 		<div class="fb-comments" data-href="http://localhost:3000/items/<%= @item.id %>" data-num-posts="3" data-width="470"></div>
 		-->
