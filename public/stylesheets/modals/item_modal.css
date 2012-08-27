@@ -1,0 +1,84 @@
+.modal{
+  width: 520px !important;
+  position: absolute !important;
+  margin-top: -280px !important;
+}
+
+#modal_item_page_wrapper {
+  color: #666;
+}
+
+#modal_item_page_wrapper #title {
+  font-size: 24px;
+  line-height: 28px;
+  font-family: 'FuturaMdBTMedium';
+  width: 520px;
+  height: auto;
+  float: left;
+  position: relative;
+  border-bottom: solid #666 1px;
+  padding: 0 0 15px 0;
+  margin: 0 0 15px 0;
+}
+
+#modal_item_page_wrapper #price {
+	width:180px;
+	height:auto;
+	float:left;
+	font-size: 30px;
+	margin: 10px 0 18px 15px;
+	color: #8CC;
+	font-family: 'FuturaMdBTMedium';
+	position:relative;
+}
+
+#modal_item_page_wrapper #item-info {
+	width: 500px;
+	height: 26px;
+	position:relative;
+}
+
+#modal_item_page_wrapper #days-ago {
+	font-style: italic;
+	color: #888;
+	position:relative;
+	padding: 0 0 5px 0;
+	float: left;
+}
+
+#modal_item_page_wrapper #trade-type {
+	padding: 0 0 5px 0;
+	float:right;
+}
+
+#modal_item_page_wrapper #user-info {
+	width: 200px;
+	height: 38px;
+	padding-top: 16px;
+	float: right;
+	margin: 0 15px 0 15px;
+}
+
+#modal_item_page_wrapper #user-info #user-name {
+	position: relative;
+	float:right;
+}
+
+#modal_item_page_wrapper #user-info #user-name a:link {
+	font-size: 22px;
+}
+
+#modal_item_page_wrapper #user-info #user-ratings {	
+	position: relative;
+	font-size: 18px;
+	float:right;
+}
+
+#modal_item_page_wrapper #buttons {
+	float: left;
+	position: relative;
+	width: auto;
+	margin: 10px 0 20px 15px;
+	vertical-align: center;
+	z-index: 500;
+}

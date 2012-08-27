@@ -23,6 +23,7 @@ Barzit::Application.routes.draw do
   get '/user/:user_id/item/:id' => 'items#show'
   get "item/:id/delete" => "items#delete", :as => :delete_item
   get "item/:id/set_visibility" => "items#set_visibility", :as => :set_visibility
+  get "items/:id/modal_view" => "items#modal_view", :as => :modal_view
   get 'search_results' => 'items#search_results', :as => :search_results
   
   match 'offer/:id/counter_offer', :to => 'offers#make_offer', :as => :counter_offer

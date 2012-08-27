@@ -11,7 +11,7 @@
       	    <div class="product-basket button">Basket</div>
       	    <div class="product-wishlist button">Wish</div>
     	    </div>
-    	    <%= link_to image_tag(item.get_main_image(:medium)), item_path(item) %>
+    	    <%= link_to image_tag(item.get_main_image(:medium)), modal_view_path(item), :class => "modal-item-link" %>
     			<div class="product-label"><%= link_to item.title, item_path(item) %></div>
     			<div class="product-price"><%= number_to_currency(item.price, :precision => 0) %></div>
     			<div class="product-desc"><%= truncate(item.description, :length => 280) %></div>
@@ -40,6 +40,11 @@
   };
 
 	$(document).ready(function() {
+	  $(".modal-item-link").click(function(e) {
+	    e.preventDefault();
+	    $(this).modal();
+	  });
+	  
 	  $(".product-like").click(function() {
       console.log("registering like");
 	  });

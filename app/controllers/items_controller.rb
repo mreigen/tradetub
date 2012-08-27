@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index, :front_page]
+  before_filter :authenticate_user!, :except => [:show, :index, :front_page, :modal_view]
   helper :all
   
   def index
@@ -14,6 +14,13 @@ class ItemsController < ApplicationController
   
   def front_page
     @items = Item.all
+  end
+  
+  def modal_view
+    @item = Item.find(params[:id])
+    @user = User.find(@item.user_id)
+    
+    render :partial => "modal_view"
   end
   
   def new

@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+  include ActionView::Helpers::TextHelper
+  
   define_index do
     indexes title
     indexes description
@@ -51,4 +53,9 @@ class Item < ActiveRecord::Base
     !WantedItem.find_by_item_id(self.id).nil? || !OfferItem.find_by_item_id(self.id).nil?
   end
   
+  def get_description(max = nil)
+    desc = self.description
+    return desc if max.blank?
+    truncate(desc, :length => max, :omission => "...")
+  end
 end

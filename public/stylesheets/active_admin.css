@@ -339,18 +339,17 @@ table.dashboard td { width: 33%; }
 	font-size:14px;
 }
 
-#user-info #user-name {
+#item_page_wrapper #user-info #user-name {
 	position: relative;
 	float:left;
 	margin: 0 15px 0 15px;
 }
 
-#user-info #user-name a:link {
+#item_page_wrapper #user-info #user-name a:link {
 	font-size: 22px;
 }
 
-#user-info #user-ratings {
-	
+#item_page_wrapper #user-info #user-ratings {	
 	position: relative;
 	font-size: 18px;
 	float:right;

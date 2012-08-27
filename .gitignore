@@ -64,3 +64,7 @@ db/sphinx/development/item_core.spi
 db/sphinx/development/item_core.spp
 
 config/database.yml
+
+*.lock
+
+Gemfile.lock

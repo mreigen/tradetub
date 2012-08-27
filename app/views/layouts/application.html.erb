@@ -5,8 +5,25 @@
     <%= stylesheet_link_tag "application" %>
 		<%= javascript_include_tag "/javascripts/jquery.js" %>
 		<%= javascript_include_tag "/javascripts/application.js" %>
+		<script src="/javascripts/jquery/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="/stylesheets/jquery.modal.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="/stylesheets/modals/item_modal.css" type="text/css" media="screen" />
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
+    <script>
+      $.modal.defaults = {
+        overlay: "#FFF",        // Overlay color
+        opacity: 0.75,          // Overlay opacity
+        zIndex: 1000,              // Overlay z-index.
+        escapeClose: true,      // Allows the user to close the modal by pressing `ESC`
+        clickClose: true,       // Allows the user to close the modal by clicking the overlay
+        closeText: 'Close',     // Text content for the close <a> tag.
+        showClose: true,        // Shows a (X) icon/link in the top-right corner
+        modalClass: "modal",    // CSS class added to the element being displayed in the modal.
+        spinnerHtml: null,      // HTML appended to the default spinner during AJAX requests.
+        showSpinner: true       // Enable/disable the default spinner during AJAX requests.
+      };
+    </script>
   </head>
   <body>
     <div id="container">
