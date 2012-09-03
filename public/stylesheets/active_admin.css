@@ -147,7 +147,7 @@ table.dashboard td { width: 33%; }
 
 .product { 
 	float: left;
-	background-color: #EFEFEF;
+	background-color: #FFF;
 	padding: 0px 0px 5px 5px;
 	margin: 8px;
 	-moz-box-shadow: 0px 1px 3px #888;
@@ -165,18 +165,18 @@ table.dashboard td { width: 33%; }
 }
 
 .product .offer_history {
-	background-color: #F8F8F8;
-	float: left;
-	height: auto;
-	margin: 5px auto;
-	position: relative;
-	width: 180px;
-	padding: 10px 5px;
+	background-color: #EEE;
+    float: left;
+    height: auto;
+    margin: 5px auto;
+    padding: 10px;
+    position: relative;
+    width: 170px;
 }
 
 .product .offer_history a {
 	font-size: 11px !important;
-	font-family: helvetica !important;
+	font-family: 'FuturaLtBTLight';
 	font-weight: bold;
 }
 
@@ -230,10 +230,11 @@ table.dashboard td { width: 33%; }
 .product h2 { font-size: 0.8em; }
 .product .product-label {
 	font-size: 14px;
-	height: 14px;
+	height: 21px;
 	overflow: hidden;
-	padding: 15px 0 5px;
+	margin: 15px 0px 15px 0px;
 	width: 185px;
+	border-bottom: solid 1px #CCC;
 	font-family: 'FuturaLtBTLight';
 }
 
@@ -255,7 +256,7 @@ table.dashboard td { width: 33%; }
 .product-label a {
 	text-decoration: none;
 	padding: 3px;
-	font-family: helvetica !important;
+	font-family: 'FuturaLtBTLight';
 	font-weight:light;
 	color: #333;
 }
@@ -2477,7 +2478,7 @@ a, a:link, a:visited {
 
 a:hover {
   text-decoration: none; 
-  color: #33CC00;}
+  color: #99CC00;}
 
 .paginated_collection_contents {
   clear: both; }
