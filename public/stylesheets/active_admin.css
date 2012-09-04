@@ -230,7 +230,7 @@ table.dashboard td { width: 33%; }
 .product h2 { font-size: 0.8em; }
 .product .product-label {
 	font-size: 14px;
-	height: 21px;
+	height: 20px;
 	overflow: hidden;
 	margin: 15px 0px 15px 0px;
 	width: 185px;
@@ -255,7 +255,7 @@ table.dashboard td { width: 33%; }
 
 .product-label a {
 	text-decoration: none;
-	padding: 3px;
+	padding: 5px;
 	font-family: 'FuturaLtBTLight';
 	font-weight:light;
 	color: #333;
@@ -278,8 +278,17 @@ table.dashboard td { width: 33%; }
   width: 10px;  
 }
 
-#product-image { width: 150px; float: left; margin-right: 20px;  }
-#product-description { margin-left: 170px;  }
+#product-image { 
+	width: 150px; 
+	float: left; 
+	margin-right: 20px;
+	position:relative;
+	  }
+#product-description { 
+	margin-left: 170px;
+	width:auto;
+	position:relative;
+	  }
 
 /**=================
 * 		END OF FRONT PAGE
@@ -387,29 +396,35 @@ table.dashboard td { width: 33%; }
 }
 
 #item_page_wrapper #item-info {
-	width: 580px;
-	height: auto;
-	float: right;
-	position:relative;
+	float: left;
+    height: auto;
+    position: relative;
+    width: 380px;
+	margin: 0 0 0 20px;
+
 }
 
 #item_page_wrapper #days-ago {
+	color: #333;
+	float:left;
 	font-style: italic;
-	color: #888;
-	position:relative;
-	padding: 0 0 5px 0;
-	float: right;
+	font-size: 16px;
+	margin: 5px 0 10px 0px;
+	width: 300px;
 }
 
 #item_page_wrapper #trade-type {
-	padding: 0 0 5px 0;
-	float:right;
+	margin: 0px 0 5px 0px;
+	float:left;
+	font-size:16px;
+	color:#99CC00;
 }
 
 #item_page_wrapper #available {
-	position: relative;
 	float: left;
-	padding: 0 0 5px 0;
+	font-size:16px;
+	color:#FF6633;
+	margin: 0px 0 5px 0px;
 }
 
 #item_page_wrapper #buttons {
@@ -433,6 +448,7 @@ table.dashboard td { width: 33%; }
 
 #item_page_wrapper #image img {
 	width: 520px;
+	position: relative;
 }
 
 #item_page_wrapper #small_images {
@@ -441,17 +457,18 @@ table.dashboard td { width: 33%; }
 	width: 580px;	
 }
 
-div id="item_page_wrapper" #item_user_wrapper #description {
-	margin:5px 0px 25px 0px;
-	width: 520px;
-	height:auto;
-	position:relative;
+#item_page_wrapper #rightsidebar #description {
+	    float: right;
+	    height: auto;
+	    margin: 5px 10px 25px;
+	    position: relative;
+	    width: 330px;
 }
 
 #item_page_wrapper #rightsidebar {
-	width:480px;
-	float:right;
-	
+	float: left;
+	    margin: 10px 10px 0 20px;
+	    width: 360px;
 }
 
 #related {
@@ -503,8 +520,9 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 }
 
 #user_wrapper {
-	position: relative;
 	height: 188px;
+    margin: 30px 0;
+    position: relative;
 }
 
 #user_wrapper #avatar {

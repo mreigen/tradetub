@@ -43,14 +43,6 @@ $(document).ready(function() {
 				<%= image_tag i.image.url(:thumb) unless i.blank? %>
 			<% end %>
 		</div>
-		<div id="item-info">
-			<div id="days-ago">Posted <%= (Time.now.to_i - Time.at(@item.created_at.to_i).to_i)  / (60*60*24) %> days ago</div>
-			<div id="trade-type">Trade type: <%= @item.get_trade_type %></div>
-			<% if !current_user.blank? && @item.belongs_to?(current_user) %>
-			<div id="available">This item is currently <%= @item.available ? "in bazaar" : "not in bazaar" %></div>
-			<% end %>
-		</div>
-		<div id="description"><%= @item.description %></div>
 		<div id="disqus_thread"></div>
 		<script type="text/javascript">
 			var disqus_developer = 1; // this would set it to developer mode
@@ -88,7 +80,16 @@ $(document).ready(function() {
 		<%= link_to "Wish list", add_to_cart_path(@item), :class => "button" %>
 	<% end %>
   </div>
+	<div id="item-info">
+		<% if !current_user.blank? && @item.belongs_to?(current_user) %>
+		<div id="days-ago">Posted <%= (Time.now.to_i - Time.at(@item.created_at.to_i).to_i)  / (60*60*24) %> days ago</div>
+		<div id="available">This item is currently <%= @item.available ? "in bazaar" : "not in bazaar" %></div>
+		<div id="trade-type">Trade type: <%= @item.get_trade_type %></div>
+		<% end %>
 	</div>
+	<div id="description"><%= @item.description %></div>
+	</div>
+	
 	<div id="item_offer_wrapper">
 		<div id="offer_history">
 			<%
