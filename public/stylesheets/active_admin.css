@@ -311,10 +311,10 @@ table.dashboard td { width: 33%; }
 }
 
 #item_offer_wrapper {
-	width: 215px;
-	position: relative;
-	float: right;
-	margin-top: 15px;
+    float: left;
+    margin: 15px;
+    position: relative;
+    width: auto;
 }
 
 #item_user_wrapper {
@@ -327,7 +327,7 @@ table.dashboard td { width: 33%; }
 
 #item_offer_wrapper #offer_history .offer_item {
 	width: 340px;
-	float:right;
+	float:left;
 	font-size: 18px;
 	margin: 5px;
 }
@@ -418,6 +418,7 @@ table.dashboard td { width: 33%; }
 	float:left;
 	font-size:16px;
 	color:#99CC00;
+	width: 300px;
 }
 
 #item_page_wrapper #available {
@@ -425,6 +426,7 @@ table.dashboard td { width: 33%; }
 	font-size:16px;
 	color:#FF6633;
 	margin: 0px 0 5px 0px;
+	width: 300px;
 }
 
 #item_page_wrapper #buttons {
@@ -460,9 +462,12 @@ table.dashboard td { width: 33%; }
 #item_page_wrapper #rightsidebar #description {
 	    float: right;
 	    height: auto;
-	    margin: 5px 10px 25px;
+	    margin: 15px 10px 25px;
+		padding: 10px 0px;
 	    position: relative;
 	    width: 330px;
+		border-top: solid 1px #333;
+		border-bottom: solid 1px #333;
 }
 
 #item_page_wrapper #rightsidebar {

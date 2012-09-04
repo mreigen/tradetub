@@ -88,8 +88,7 @@ $(document).ready(function() {
 		<% end %>
 	</div>
 	<div id="description"><%= @item.description %></div>
-	</div>
-	
+
 	<div id="item_offer_wrapper">
 		<div id="offer_history">
 			<%
@@ -114,5 +113,6 @@ $(document).ready(function() {
 			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.get_main_image(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
 		<% end %>
 	</div>
+		</div>
 	</div>
 </div>
