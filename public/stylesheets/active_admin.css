@@ -354,6 +354,14 @@ table.dashboard td { width: 33%; }
 	float:right;
 }
 
+#item_page_wrapper #user-info #rating-subs {	
+	position: relative;
+	font-size: 18px;
+	float:left;
+	height: 10px;
+	width: 580px;
+}
+
 #item_page_wrapper #title {
 	font-size: 24px;
 	line-height: 28px;
@@ -513,6 +521,30 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 	height:40px;
 	width:auto;
 	position: relative;
+}
+
+#user_wrapper #two {
+	vertical-align: bottom;
+	height:20px;
+	width:780px;
+	position: relative;
+}
+#user_wrapper #two #time {
+	width:180px;
+	position: relative;
+	float:left;
+}
+
+#user_wrapper #two #accuracy {
+	width:180px;
+	position: relative;
+	float:left;
+}
+
+#user_wrapper #two #respons {
+	width:180px;
+	position: relative;
+	float:left;
 }
 
 #user_wrapper #name {
