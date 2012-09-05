@@ -676,6 +676,35 @@ table.dashboard td { width: 33%; }
 	color: white;
 }
 
+
+#headers, #rows {
+    position: relative;
+    float: left;
+    width: 800px;
+}
+
+#headers {
+    border-bottom: 1px solid #888
+}
+
+#headers #ratings,#headers  #comment,#headers  #date,#headers  #deals {
+    position: relative;
+    float: left;
+    padding-right: 100px;
+    border-right: 1px solid #888;
+}
+
+#rows #ratings,#rows  #comment,#rows  #date,#rows  #deals {
+    position: relative;
+    float: left;
+    height: 40px;
+    padding-right: 20px;
+    overflow: hidden;
+    border-right: 1px solid #888;
+}
+
+
+
 /**=================
 * 		end USER PAGE
 ** ================= */
