@@ -156,11 +156,6 @@ table.dashboard td { width: 33%; }
     width: 195px;
 }
 
-#product-container .masonry-brick {
-	margin: 10px -5px 10px 0px;
-}
-
-
 .product img { 
 	margin: 5px auto;
     width: 190px;
