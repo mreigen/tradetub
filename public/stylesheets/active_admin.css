@@ -124,19 +124,19 @@
 ** ================= */
 
 #front_page_wrapper {
-	margin: 0px 0 0 50px;
 	float: left;
-	width: 1143px;
+    margin: 0 0 0 20px;
+    width: 1024px;
 }
 
 .sub_title {
 	font-family: 'FuturaLtBTLight';
 	font-size: 24px;
-	margin: 17px 0 12px 0;
-	color: #999;
+	margin: 20px 0 15px 0;
+	color: #333;
 	border-bottom: 1px solid #999;
-	padding-bottom: 9px;
-	width: 86%;
+	padding-bottom: 10px;
+	width: 1024px;
 }
 
 .icon {
@@ -146,18 +146,20 @@
 table.dashboard td { width: 33%; }
 
 .product { 
-	float: left;
-	background-color: #FFF;
-	padding: 0px 0px 5px 5px;
-	margin: 8px;
-	-moz-box-shadow: 0px 1px 3px #888;
-	box-shadow: 0px 1px 3px #888;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	width: 195px;
-	font-size: 11px;
-	font-family: helvetica;
+	background-color: #FFFFFF;
+    box-shadow: 0 1px 3px #888888;
+    float: left;
+    font-family: helvetica;
+    font-size: 11px;
+    margin: 10px 0;
+    padding: 0 0 5px 5px;
+    width: 195px;
 }
+
+#product-container .masonry-brick {
+	margin: 10px -5px 10px 0px;
+}
+
 
 .product img { 
 	margin: 5px auto;
@@ -165,10 +167,10 @@ table.dashboard td { width: 33%; }
 }
 
 .product .offer_history {
-	background-color: #EEE;
+	border-top: 1px solid #CCCCCC;
     float: left;
     height: auto;
-    margin: 5px auto;
+    margin: 0px auto;
     padding: 10px;
     position: relative;
     width: 170px;
@@ -178,6 +180,7 @@ table.dashboard td { width: 33%; }
 	font-size: 11px !important;
 	font-family: 'FuturaLtBTLight';
 	font-weight: bold;
+	color:#333;
 }
 
 .product .button-group {
@@ -229,13 +232,14 @@ table.dashboard td { width: 33%; }
 
 .product h2 { font-size: 0.8em; }
 .product .product-label {
-	font-size: 14px;
-	height: 20px;
-	overflow: hidden;
-	margin: 15px 0px 15px 0px;
-	width: 185px;
-	border-bottom: solid 1px #CCC;
-	font-family: 'FuturaLtBTLight';
+	border-bottom: 1px solid #CCCCCC;
+    font-family: 'FuturaLtBTLight';
+    font-size: 14px;
+    height: 23px;
+    line-height: 20px;
+    margin: 15px 0;
+    overflow: hidden;
+    width: 185px;
 }
 
 .product .product-price {
@@ -262,13 +266,14 @@ table.dashboard td { width: 33%; }
 }
 
 .product-desc {
-	padding: 3px;
-	margin: 0 10px 10px 5px;
-	color: #222;
-	overflow: hidden;
-	position: relative;
-	float: left;
-	font-weight: 400;
+    color: #666666;
+    float: left;
+    font-weight: 400;
+    margin: 0 10px 0px 5px;
+    overflow: hidden;
+    padding: 5px 5px 12px;
+    position: relative;
+	height: 60px;
 }
 
 .product-dist {
