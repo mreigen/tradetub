@@ -300,7 +300,7 @@ table.dashboard td { width: 33%; }
 ** ================= */ 
 
 #item_page_wrapper, #user_content_wrapper {
-	margin: 0 0 0 50px;
+	margin: 0 0 0 20px;
 	width:1024px;
 }
 
@@ -612,14 +612,13 @@ table.dashboard td { width: 33%; }
 }
 
 #bazaar_wrapper #inBazaar {
-	width: 940px;
+	width: 1024px;
 	height: auto;
 	position:relative;
 	float: left;
-	margin: 21px auto 0px auto;
-	border-top: solid 1px #666;
+	margin: 20px auto 70px auto;
 	border-bottom: solid 1px #666;
-	padding: 20px 0 50px 0;
+	padding: 20px 0;
 }
 
 #bazaar_wrapper #inBazaar img {
@@ -629,10 +628,12 @@ table.dashboard td { width: 33%; }
 
 #bazaar_wrapper .subtitle_bazaar {
 	font-size: 30px;
-	text-align: center;
-	width: 940px;
+	text-align: left;
+	width: 1024px;
 	margin: 30px auto 30px auto;
 	position:relative;
+	border-bottom: solid 1px #666;
+	padding: 0 0 20px 40px;
 }
 
 #bazaar_wrapper .img_wrapper {
@@ -676,32 +677,115 @@ table.dashboard td { width: 33%; }
 	color: white;
 }
 
-
-#headers, #rows {
-    position: relative;
-    float: left;
-    width: 800px;
+#offer_history {
+	position:relative;
+	width: 1024px;
+	height: auto;
 }
 
-#headers {
-    border-bottom: 1px solid #888
+#offer_history #subtitle {
+    font-size: 30px;
+    margin: 30px 0 30px 0px;
+    position: relative;
+    text-align: left;
+    width: 1024px;
+	border-bottom: solid 1px #666;
+	padding: 0 0 20px 40px;
 }
-
-#headers #ratings,#headers  #comment,#headers  #date,#headers  #deals {
+#offer_history #headers, #rows {
     position: relative;
     float: left;
-    padding-right: 100px;
-    border-right: 1px solid #888;
+    width: 1024px;
+	margin: 0 auto;
 }
 
-#rows #ratings,#rows  #comment,#rows  #date,#rows  #deals {
+#offer_history #headers {
+    border-bottom: 1px solid #888888;
+    margin: 40px auto 0px auto;
+    width: 1024px;
+}
+
+#offer_history #headers #ratings {
     position: relative;
     float: left;
-    height: 40px;
-    padding-right: 20px;
+    padding: 0 0 10px 20px;
+	width: 230px;
+}
+
+#offer_history #headers #comment {
+    position: relative;
+    float: left;
+    padding: 0 0 10px 0px;
+	width: 424px;
+}
+
+
+#offer_history #headers #date {
+    position: relative;
+    float: left;
+    padding: 0 0 10px 0px;
+	width: 100px;
+}
+
+#offer_history #headers #deals {
+    position: relative;
+    float: left;
+    padding: 0 0 10px 0px;
+	width: 250px;
+}
+
+#offer_history #rows {
+	border-bottom: 1px solid #888888;
+	height: auto;
+}
+
+
+#offer_history #rows #ratings{
+    position: relative;
+    float: left;
+	width: 230px;
+    padding: 20px 0px 0px 20px;
     overflow: hidden;
-    border-right: 1px solid #888;
+	font-size:36px;
+	line-height:36px;
+    
 }
+
+#offer_history #rows #comment {
+    position: relative;
+    float: left;
+	width: 424px;
+    
+    padding: 20px 0px;
+    overflow: hidden;
+}
+
+#offer_history #rows #comment #user {
+    color:#66CCCC;
+	font-size:16px;
+}
+
+
+#offer_history #rows #date {
+    position: relative;
+    float: left;
+    
+	width: 100px;
+    padding: 20px 0px;
+    overflow: hidden;
+  
+}
+
+#offer_history #rows #deals {
+    position: relative;
+    float: left;
+    
+	width: 250px;
+    padding: 20px 0px;
+    overflow: hidden;
+    
+}
+
 
 
 
