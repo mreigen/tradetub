@@ -228,28 +228,47 @@ table.dashboard td { width: 33%; }
 .product h2 { font-size: 0.8em; }
 .product .product-label {
 	border-bottom: 1px solid #CCCCCC;
-    font-family: 'FuturaLtBTLight';
-    font-size: 14px;
-    height: 23px;
-    line-height: 20px;
-    margin: 15px 0;
-    overflow: hidden;
-    width: 185px;
+  font-family: 'FuturaLtBTLight';
+  font-size: 14px;
+  height: 23px;
+  line-height: 20px;
+  margin: 15px 0;
+  overflow: hidden;
+  width: 185px;
 }
 
-.product .product-price {
+.product .product-price, .product .product-actions {
 	background-color: black;
-    color: white;
-    font-size: 25px;
-    height: 32px;
-    margin: 0 auto;
-    opacity: 0.6;
-    padding: 18px 0 0 3px;
-    position: absolute;
-    text-align: center;
-    top: 145px;
-    width: 187px;
-    z-index: 99;
+  color: white;
+  font-size: 25px;
+  height: 32px;
+  margin: 0 auto;
+  opacity: 0.6;
+  padding: 18px 0 0 3px;
+  position: absolute;
+  text-align: center;
+  top: 145px;
+  width: 187px;
+  z-index: 99;
+}
+
+.product-actions .like, .product-actions .comment {
+	font-size: 18px;
+	position: relative;
+	float: left;
+}
+
+.product-actions .comment {
+	width: 106px;
+}
+
+.product-actions .like a, .product-actions .comment a {
+	color: white !important;
+}
+
+.product-actions .like {
+	/* width: 71px; */
+	width: 100%;
 }
 
 .product-label a {

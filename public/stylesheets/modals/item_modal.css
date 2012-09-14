@@ -82,3 +82,11 @@
 	vertical-align: center;
 	z-index: 500;
 }
+
+#modal_item_user_wrapper #description {
+	line-height: 22px;
+}
+
+#modal_item_user_wrapper .fb-comments {
+	margin: 20px 0 20px 0;
+}
