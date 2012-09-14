@@ -124,19 +124,19 @@
 ** ================= */
 
 #front_page_wrapper {
-	margin: 0px 0 0 50px;
 	float: left;
-	width: 1143px;
+    margin: 0 0 0 20px;
+    width: 1024px;
 }
 
 .sub_title {
 	font-family: 'FuturaLtBTLight';
 	font-size: 24px;
-	margin: 17px 0 12px 0;
-	color: #999;
+	margin: 20px 0 15px 0;
+	color: #333;
 	border-bottom: 1px solid #999;
-	padding-bottom: 9px;
-	width: 86%;
+	padding-bottom: 10px;
+	width: 1024px;
 }
 
 .icon {
@@ -146,17 +146,14 @@
 table.dashboard td { width: 33%; }
 
 .product { 
-	float: left;
-	background-color: #FFF;
-	padding: 0px 0px 5px 5px;
-	margin: 8px;
-	-moz-box-shadow: 0px 1px 3px #888;
-	box-shadow: 0px 1px 3px #888;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	width: 195px;
-	font-size: 11px;
-	font-family: helvetica;
+	background-color: #FFFFFF;
+    box-shadow: 0 1px 3px #888888;
+    float: left;
+    font-family: helvetica;
+    font-size: 11px;
+    margin: 10px 0;
+    padding: 0 0 5px 5px;
+    width: 195px;
 }
 
 .product img { 
@@ -165,10 +162,10 @@ table.dashboard td { width: 33%; }
 }
 
 .product .offer_history {
-	background-color: #EEE;
+	border-top: 1px solid #CCCCCC;
     float: left;
     height: auto;
-    margin: 5px auto;
+    margin: 0px auto;
     padding: 10px;
     position: relative;
     width: 170px;
@@ -178,6 +175,7 @@ table.dashboard td { width: 33%; }
 	font-size: 11px !important;
 	font-family: 'FuturaLtBTLight';
 	font-weight: bold;
+	color:#333;
 }
 
 .product .button-group {
@@ -229,13 +227,14 @@ table.dashboard td { width: 33%; }
 
 .product h2 { font-size: 0.8em; }
 .product .product-label {
-	font-size: 14px;
-	height: 21px;
-	overflow: hidden;
-	margin: 15px 0px 15px 0px;
-	width: 185px;
-	border-bottom: solid 1px #CCC;
-	font-family: 'FuturaLtBTLight';
+	border-bottom: 1px solid #CCCCCC;
+    font-family: 'FuturaLtBTLight';
+    font-size: 14px;
+    height: 23px;
+    line-height: 20px;
+    margin: 15px 0;
+    overflow: hidden;
+    width: 185px;
 }
 
 .product .product-price {
@@ -255,20 +254,21 @@ table.dashboard td { width: 33%; }
 
 .product-label a {
 	text-decoration: none;
-	padding: 3px;
+	padding: 5px;
 	font-family: 'FuturaLtBTLight';
 	font-weight:light;
 	color: #333;
 }
 
 .product-desc {
-	padding: 3px;
-	margin: 0 10px 10px 5px;
-	color: #222;
-	overflow: hidden;
-	position: relative;
-	float: left;
-	font-weight: 400;
+    color: #666666;
+    float: left;
+    font-weight: 400;
+    margin: 0 10px 0px 5px;
+    overflow: hidden;
+    padding: 5px 5px 12px;
+    position: relative;
+	height: 60px;
 }
 
 .product-dist {
@@ -278,8 +278,17 @@ table.dashboard td { width: 33%; }
   width: 10px;  
 }
 
-#product-image { width: 150px; float: left; margin-right: 20px;  }
-#product-description { margin-left: 170px;  }
+#product-image { 
+	width: 150px; 
+	float: left; 
+	margin-right: 20px;
+	position:relative;
+	  }
+#product-description { 
+	margin-left: 170px;
+	width:auto;
+	position:relative;
+	  }
 
 /**=================
 * 		END OF FRONT PAGE
@@ -291,7 +300,7 @@ table.dashboard td { width: 33%; }
 ** ================= */ 
 
 #item_page_wrapper, #user_content_wrapper {
-	margin: 0 0 0 50px;
+	margin: 0 0 0 20px;
 	width:1024px;
 }
 
@@ -302,10 +311,10 @@ table.dashboard td { width: 33%; }
 }
 
 #item_offer_wrapper {
-	width: 215px;
-	position: relative;
-	float: right;
-	margin-top: 15px;
+    float: left;
+    margin: 15px;
+    position: relative;
+    width: auto;
 }
 
 #item_user_wrapper {
@@ -318,7 +327,7 @@ table.dashboard td { width: 33%; }
 
 #item_offer_wrapper #offer_history .offer_item {
 	width: 340px;
-	float:right;
+	float:left;
 	font-size: 18px;
 	margin: 5px;
 }
@@ -354,6 +363,14 @@ table.dashboard td { width: 33%; }
 	float:right;
 }
 
+#item_page_wrapper #user-info #rating-subs {	
+	position: relative;
+	font-size: 18px;
+	float:left;
+	height: 10px;
+	width: 580px;
+}
+
 #item_page_wrapper #title {
 	font-size: 24px;
 	line-height: 28px;
@@ -379,29 +396,37 @@ table.dashboard td { width: 33%; }
 }
 
 #item_page_wrapper #item-info {
-	width: 580px;
-	height: auto;
-	float: right;
-	position:relative;
+	float: left;
+    height: auto;
+    position: relative;
+    width: 380px;
+	margin: 0 0 0 20px;
+
 }
 
 #item_page_wrapper #days-ago {
+	color: #333;
+	float:left;
 	font-style: italic;
-	color: #888;
-	position:relative;
-	padding: 0 0 5px 0;
-	float: right;
+	font-size: 16px;
+	margin: 5px 0 10px 0px;
+	width: 300px;
 }
 
 #item_page_wrapper #trade-type {
-	padding: 0 0 5px 0;
-	float:right;
+	margin: 0px 0 5px 0px;
+	float:left;
+	font-size:16px;
+	color:#99CC00;
+	width: 300px;
 }
 
 #item_page_wrapper #available {
-	position: relative;
 	float: left;
-	padding: 0 0 5px 0;
+	font-size:16px;
+	color:#FF6633;
+	margin: 0px 0 5px 0px;
+	width: 300px;
 }
 
 #item_page_wrapper #buttons {
@@ -425,6 +450,7 @@ table.dashboard td { width: 33%; }
 
 #item_page_wrapper #image img {
 	width: 520px;
+	position: relative;
 }
 
 #item_page_wrapper #small_images {
@@ -433,17 +459,21 @@ table.dashboard td { width: 33%; }
 	width: 580px;	
 }
 
-div id="item_page_wrapper" #item_user_wrapper #description {
-	margin:5px 0px 25px 0px;
-	width: 520px;
-	height:auto;
-	position:relative;
+#item_page_wrapper #rightsidebar #description {
+	    float: right;
+	    height: auto;
+	    margin: 15px 10px 25px;
+		padding: 10px 0px;
+	    position: relative;
+	    width: 330px;
+		border-top: solid 1px #333;
+		border-bottom: solid 1px #333;
 }
 
 #item_page_wrapper #rightsidebar {
-	width:480px;
-	float:right;
-	
+	float: left;
+	    margin: 10px 10px 0 20px;
+	    width: 360px;
 }
 
 #related {
@@ -526,8 +556,9 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 }
 
 #user_wrapper {
-	position: relative;
 	height: 188px;
+    margin: 30px 0;
+    position: relative;
 }
 
 #user_wrapper #avatar {
@@ -544,6 +575,30 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 	height:40px;
 	width:auto;
 	position: relative;
+}
+
+#user_wrapper #two {
+	vertical-align: bottom;
+	height:20px;
+	width:780px;
+	position: relative;
+}
+#user_wrapper #two #time {
+	width:180px;
+	position: relative;
+	float:left;
+}
+
+#user_wrapper #two #accuracy {
+	width:180px;
+	position: relative;
+	float:left;
+}
+
+#user_wrapper #two #respons {
+	width:180px;
+	position: relative;
+	float:left;
 }
 
 #user_wrapper #name {
@@ -588,14 +643,13 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 }
 
 #bazaar_wrapper #inBazaar {
-	width: 940px;
+	width: 1024px;
 	height: auto;
 	position:relative;
 	float: left;
-	margin: 21px auto 0px auto;
-	border-top: solid 1px #666;
+	margin: 20px auto 70px auto;
 	border-bottom: solid 1px #666;
-	padding: 20px 0 50px 0;
+	padding: 20px 0;
 }
 
 #bazaar_wrapper #inBazaar img {
@@ -605,10 +659,12 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 
 #bazaar_wrapper .subtitle_bazaar {
 	font-size: 30px;
-	text-align: center;
-	width: 940px;
+	text-align: left;
+	width: 1024px;
 	margin: 30px auto 30px auto;
 	position:relative;
+	border-bottom: solid 1px #666;
+	padding: 0 0 20px 40px;
 }
 
 #bazaar_wrapper .img_wrapper {
@@ -651,6 +707,118 @@ div id="item_page_wrapper" #item_user_wrapper #description {
 	font-size: 30px;
 	color: white;
 }
+
+#offer_history {
+	position:relative;
+	width: 1024px;
+	height: auto;
+}
+
+#offer_history #subtitle {
+    font-size: 30px;
+    margin: 30px 0 30px 0px;
+    position: relative;
+    text-align: left;
+    width: 1024px;
+	border-bottom: solid 1px #666;
+	padding: 0 0 20px 40px;
+}
+#offer_history #headers, #rows {
+    position: relative;
+    float: left;
+    width: 1024px;
+	margin: 0 auto;
+}
+
+#offer_history #headers {
+    border-bottom: 1px solid #888888;
+    margin: 40px auto 0px auto;
+    width: 1024px;
+}
+
+#offer_history #headers #ratings {
+    position: relative;
+    float: left;
+    padding: 0 0 10px 20px;
+	width: 230px;
+}
+
+#offer_history #headers #comment {
+    position: relative;
+    float: left;
+    padding: 0 0 10px 0px;
+	width: 424px;
+}
+
+
+#offer_history #headers #date {
+    position: relative;
+    float: left;
+    padding: 0 0 10px 0px;
+	width: 100px;
+}
+
+#offer_history #headers #deals {
+    position: relative;
+    float: left;
+    padding: 0 0 10px 0px;
+	width: 250px;
+}
+
+#offer_history #rows {
+	border-bottom: 1px solid #888888;
+	height: auto;
+}
+
+
+#offer_history #rows #ratings{
+    position: relative;
+    float: left;
+	width: 230px;
+    padding: 20px 0px 0px 20px;
+    overflow: hidden;
+	font-size:36px;
+	line-height:36px;
+    
+}
+
+#offer_history #rows #comment {
+    position: relative;
+    float: left;
+	width: 424px;
+    
+    padding: 20px 0px;
+    overflow: hidden;
+}
+
+#offer_history #rows #comment #user {
+    color:#66CCCC;
+	font-size:16px;
+}
+
+
+#offer_history #rows #date {
+    position: relative;
+    float: left;
+    
+	width: 100px;
+    padding: 20px 0px;
+    overflow: hidden;
+  
+}
+
+#offer_history #rows #deals {
+    position: relative;
+    float: left;
+    
+	width: 250px;
+    padding: 20px 0px;
+    overflow: hidden;
+    
+}
+
+
+
 
 /**=================
 * 		end USER PAGE

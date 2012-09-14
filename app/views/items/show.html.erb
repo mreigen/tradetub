@@ -51,18 +51,6 @@ $(document).ready(function() {
 			<% end %>
 		</div>
 		<div id="description"><%= @item.description %></div>
-		
-		<div id="comments">
-		  <h2>Comments</h2>
-		  <div class="comment">
-		    <div class="user_image"><img src="/images/barzitLogo.png" width="60"/></div>
-		    <div class="user_name"><a href="/users/1">Minh</a></div>
-		    <div class="message">adf</div>
-		    <div class="reply"><a href="#" onclick="return false;">Reply</a></div>
-		  </div>
-		</div>
-		
-		<!--
 		<div id="disqus_thread"></div>
 		<script type="text/javascript">
 			var disqus_developer = 1; // this would set it to developer mode
@@ -78,7 +66,7 @@ $(document).ready(function() {
 		</script>
 		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-	  -->
+	
 		<!--
 		<div class="fb-comments" data-href="http://localhost:3000/items/<%= @item.id %>" data-num-posts="3" data-width="470"></div>
 		-->
@@ -88,43 +76,42 @@ $(document).ready(function() {
 			<div id="user-name"><%= @user.get_link_to_user_page %></div>
 			<div id="user-ratings">RATE:<%= @user.get_avg_ratings %></div>
 		</div>
-  	<div id="price"><%= number_to_currency(@item.price.to_s) %></div>
-    <div id="buttons" style="">
-  	<% if !current_user.blank? && @item.belongs_to?(current_user) %>
-  		<%= link_to (@item.available) ? "Take this off the shelf" : "Start selling this", set_visibility_path(:id => @item, :value => 'false'), :class => "red-button" %>
-  		<%= link_to "Edit", edit_item_path(@item), :class => "red-button" %>
-  		<%= link_to "Delete", delete_item_path(@item), :class => "red-button", :confirm => (@item.in_trade? ? "This item is being offered or wanted by others. Deleting this will affect those offers." : "The item will be permanently deleted.") + " This action is not undo-able. Are you sure?" %>
-  	<% else %>
-  		<%= link_to "Make Offer", direct_checkout_path(@item), :class => "button" %>
-  		<%= link_to "Add To Basket", add_to_cart_path(@item), :class => "button" %>
-  		<%= link_to "Wish list", add_to_cart_path(@item), :class => "button" %>
-  	<% end %>
-    </div>
-
-  	<div id="item_offer_wrapper">
-  		<div id="offer_history">
-  			<%
-  				WantedItem.find_all_by_item_id(@item.id).each do |wanted_item|
-  					offer = Offer.find(wanted_item.offer_id)
-  					sender = User.find(offer.sender_id)
-  					offer_item_count = OfferItem.find_all_by_offer_id(offer.id).count
-  			%>
-  			<div class="offer_item"><%= sender.get_link_to_user_page + " offered " + offer_item_count.to_s + (offer_item_count > 1 ? " items" : " item") + " and " + number_to_currency(offer.cash_value) %></div>
-  			<% end %>
-  		</div>
-  	</div>
-  	<div id="related">
-  		<div class="item_title">Related Items</div>
-  		<% Item.related(@item.cat_id, @item).limit(9).each do |i| %>
-  			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.get_main_image(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
-  		<% end %>
-  	</div>
-  	<div id="more">	
-  		<div class="item_title">More Items From User</div>
-  		<% Item.other_items_by_user(@user.id, @item).limit(9).each do |i| %>
-  			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.get_main_image(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
-  		<% end %>
-  	</div>
-  	</div>
+	<div id="price"><%= number_to_currency(@item.price.to_s) %></div>
+  <div id="buttons" style="">
+	<% if !current_user.blank? && @item.belongs_to?(current_user) %>
+		<%= link_to (@item.available) ? "Take this off the shelf" : "Start selling this", set_visibility_path(:id => @item, :value => 'false'), :class => "red-button" %>
+		<%= link_to "Edit", edit_item_path(@item), :class => "red-button" %>
+		<%= link_to "Delete", delete_item_path(@item), :class => "red-button", :confirm => (@item.in_trade? ? "This item is being offered or wanted by others. Deleting this will affect those offers." : "The item will be permanently deleted.") + " This action is not undo-able. Are you sure?" %>
+	<% else %>
+		<%= link_to "Make Offer", direct_checkout_path(@item), :class => "button" %>
+		<%= link_to "Add To Basket", add_to_cart_path(@item), :class => "button" %>
+		<%= link_to "Wish list", add_to_cart_path(@item), :class => "button" %>
+	<% end %>
+  </div>
+	</div>
+	<div id="item_offer_wrapper">
+		<div id="offer_history">
+			<%
+				WantedItem.find_all_by_item_id(@item.id).each do |wanted_item|
+					offer = Offer.find(wanted_item.offer_id)
+					sender = User.find(offer.sender_id)
+					offer_item_count = OfferItem.find_all_by_offer_id(offer.id).count
+			%>
+			<div class="offer_item"><%= sender.get_link_to_user_page + " offered " + offer_item_count.to_s + (offer_item_count > 1 ? " items" : " item") + " and " + number_to_currency(offer.cash_value) %></div>
+			<% end %>
+		</div>
+	</div>
+	<div id="related">
+		<div class="item_title">Related Items</div>
+		<% Item.related(@item.cat_id, @item).limit(9).each do |i| %>
+			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.get_main_image(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
+		<% end %>
+		</div>
+	<div id="more">	
+		<div class="item_title">More Items From User</div>
+		<% Item.other_items_by_user(@user.id, @item).limit(9).each do |i| %>
+			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.get_main_image(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
+		<% end %>
+	</div>
 	</div>
 </div>
