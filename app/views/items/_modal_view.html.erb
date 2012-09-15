@@ -19,20 +19,34 @@ $(document).ready(function() {
 
 <div id="modal_item_page_wrapper">
 	<div id="modal_item_user_wrapper">
+	  
+	  <div id="user-info">
+			<div id="user-name">
+    		<button id="follow-user" class="btn btn-success follow_button">Follow</button>
+			  <%= @user.get_link_to_user_page %>
+			</div>
+			<!--
+			<div id="user-ratings">RATE:<%= @user.get_avg_ratings %></div>
+			-->
+		</div>
+		
 		<div id="your-item">
 			<% if !current_user.blank? && @item.belongs_to?(current_user) %>
 			(This is your item)
 			<% end %>
 		</div>
-		<div id="title"><%= link_to @item.title, item_path(@item) %></div>
-		
-		<div id="image"><img alt="<%= @item.title %>" title="<%= @item.title %>" src="<%= @item.get_main_image(:large) %>"></div>
-		<div id="small_images">
-			<% @item.image_uploads.each_with_index do |i, index| %>
-				<%= image_tag i.image.url(:thumb) unless i.blank? %>
-			<% end %>
-		</div>
-		<div id="item-info">
+    
+      <div id="image-block">
+        
+    		<div id="item-info">
+    		<div id="image"><img alt="<%= @item.title %>" title="<%= @item.title %>" src="<%= @item.get_main_image(:large) %>"></div>
+    		<div id="small_images">
+    			<% @item.image_uploads.each_with_index do |i, index| %>
+    				<%= image_tag i.image.url(:thumb) unless i.blank? %>
+    			<% end %>
+    		</div>
+  		</div> <!-- end of item info -->
+  		
 			<div id="days-ago">Posted <%= (Time.now.to_i - Time.at(@item.created_at.to_i).to_i)  / (60*60*24) %> days ago</div>
 			<!--
 			<div id="trade-type">Trade type: <%= @item.get_trade_type %></div>
@@ -40,25 +54,43 @@ $(document).ready(function() {
 			<% if !current_user.blank? && @item.belongs_to?(current_user) %>
 			<div id="available">This item is currently <%= @item.available ? "in bazaar" : "not in bazaar" %></div>
 			<% end %>
-		</div>
-		<div id="description"><%= @item.get_description %></div>
+      
+  		<div id="comments">
+  		  <div id="fb-root"></div>
+    		<script>(function(d, s, id) {
+    		  var js, fjs = d.getElementsByTagName(s)[0];
+    		  if (d.getElementById(id)) return;
+    		  js = d.createElement(s); js.id = id;
+    		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=332586653480711";
+    		  fjs.parentNode.insertBefore(js, fjs);
+    		}(document, 'script', 'facebook-jssdk'));</script>
+    		<div class="fb-comments" data-href="http://localhost:3000/items/<%= @item.id %>" data-num-posts="3" data-width="520"></div>
+  		</div>
+  	</div> <!-- end of left column -->
 		
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=332586653480711";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-		<div class="fb-comments" data-href="http://localhost:3000/items/<%= @item.id %>" data-num-posts="3" data-width="520"></div>
+		<div id="user-item-relation">
+  		<div id="description"><%= @item.get_description %></div>
+  		
+  		<div id="related-items">
+    		<div id="related">
+      		<div class="item_title">Related items</div>
+      		<% Item.related(@item.cat_id, @item).limit(9).each do |i| %>
+      			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.get_main_image(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
+      		<% end %>
+      	</div>
+    		<div id="more">	
+      		<div class="item_title">More items from <%= @user.first_name %></div>
+      		<% Item.other_items_by_user(@user.id, @item).limit(9).each do |i| %>
+      			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.get_main_image(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
+      		<% end %>
+      	</div>
+    	</div>
+    	
+		</div><!-- end of user-item-relation -->
+		
 	</div>
 	
 	<div id="action-info">
-		<div id="user-info">
-			<div id="user-name"><%= @user.get_link_to_user_page %></div>
-			<div id="user-ratings">RATE:<%= @user.get_avg_ratings %></div>
-		</div>
 		<!--
   	<div id="price"><%= number_to_currency(@item.price.to_s) %></div>
     <div id="buttons" style="">

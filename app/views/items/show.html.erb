@@ -106,7 +106,7 @@ $(document).ready(function() {
 		<% Item.related(@item.cat_id, @item).limit(9).each do |i| %>
 			<a href='<%= item_path(i) %>'><img alt="<%= i.title %>" src="<%= i.get_main_image(:thumb) %>" title="<%= i.title %>/ <%= number_to_currency(i.price) %>"></a>
 		<% end %>
-		</div>
+	</div>
 	<div id="more">	
 		<div class="item_title">More Items From User</div>
 		<% Item.other_items_by_user(@user.id, @item).limit(9).each do |i| %>

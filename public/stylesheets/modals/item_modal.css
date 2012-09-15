@@ -1,11 +1,11 @@
 .modal{
-  width: 520px !important;
+  width: 820px !important;
   position: absolute !important;
   margin-top: -280px !important;
 }
 
 #modal_item_page_wrapper {
-  color: #666;
+  color: #333;
 }
 
 #modal_item_page_wrapper #title {
@@ -34,7 +34,6 @@
 
 #modal_item_page_wrapper #item-info {
 	width: 500px;
-	height: 26px;
 	position:relative;
 }
 
@@ -68,6 +67,13 @@
 	font-size: 22px;
 }
 
+#modal_item_page_wrapper #user-info {
+	width: 100%;
+	border-bottom: 1px #888 solid;
+	height: 40px;
+	margin-bottom: 25px;
+}
+
 #modal_item_page_wrapper #user-info #user-ratings {	
 	position: relative;
 	font-size: 18px;
@@ -83,10 +89,55 @@
 	z-index: 500;
 }
 
-#modal_item_user_wrapper #description {
+#modal_item_page_wrapper #image-block {
+	width: 524px;
+	position: relative;
+	float: left;
+	padding-right: 20px;
+}
+
+#modal_item_page_wrapper #user-item-relation {
+	width: 270px;
+	position: relative;
+	float: left;
+}
+
+#modal_item_page_wrapper #description {
 	line-height: 22px;
 }
 
-#modal_item_user_wrapper .fb-comments {
+#modal_item_page_wrapper #related, #modal_item_page_wrapper #more {
+	width: 276px !important;
+	height: auto !important;
+	padding: 0px !important;
+}
+
+#modal_item_page_wrapper #related .item_title, #modal_item_page_wrapper #more .item_title {
+	width: 250px;
+}
+
+#modal_item_page_wrapper #related img, #modal_item_page_wrapper #more img {
+	width: 70px;
+	height: 70px;
+}
+
+#modal_item_page_wrapper #comments {
+	width: 540px;
+	position: relative;
+	float: left;
+}
+
+#modal_item_page_wrapper #related-items {
+	position: relative;
+	float: left;
+	width: 278px;
+}
+
+#modal_item_page_wrapper .fb-comments {
 	margin: 20px 0 20px 0;
+}
+
+#modal_item_page_wrapper .follow_button {
+	margin-bottom: 10px;
+	margin-right: 28px;
 }

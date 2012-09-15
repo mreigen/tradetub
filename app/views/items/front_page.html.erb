@@ -49,7 +49,14 @@
 	$(document).ready(function() {
 	  $(".modal-item-link").click(function(e) {
 	    e.preventDefault();
+	    $("#container").css({
+	      "position":"fixed",
+	      "marginLeft":"30px",
+	    });
 	    $(this).modal();
+	    $(document).on($.modal.BEFORE_CLOSE, function(event, modal) {
+        $("#container").css("position", "");
+      });
 	  });
 	  
 	  $(".product-like").click(function() {

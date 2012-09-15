@@ -8,12 +8,14 @@
 		<script src="/javascripts/jquery/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
 		<link rel="stylesheet" href="/stylesheets/jquery.modal.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="/stylesheets/modals/item_modal.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css" media="screen"/>
+		
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
     <script>
       $.modal.defaults = {
-        overlay: "#FFF",        // Overlay color
-        opacity: 0.75,          // Overlay opacity
+        overlay: "#000",        // Overlay color
+        opacity: 0.55,          // Overlay opacity
         zIndex: 1000,              // Overlay z-index.
         escapeClose: true,      // Allows the user to close the modal by pressing `ESC`
         clickClose: true,       // Allows the user to close the modal by clicking the overlay

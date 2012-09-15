@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   end
   
   def get_link_to_user_page
-    ActionController::Base.helpers.link_to name, user_path(id)
+    ActionController::Base.helpers.link_to name, user_path(id), :class => "username_link"
   end
   
   def get_avg_ratings
