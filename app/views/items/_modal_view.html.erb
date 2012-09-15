@@ -20,14 +20,16 @@ $(document).ready(function() {
 <div id="modal_item_page_wrapper">
 	<div id="modal_item_user_wrapper">
 	  
-	  <div id="user-info">
-			<div id="user-name">
-    		<button id="follow-user" class="btn btn-success follow_button">Follow</button>
-			  <%= @user.get_link_to_user_page %>
+	  <div id="user_info">
+			<div id="user_wrapper">
+			  <div id="user_name">
+      		<button id="follow_user" class="btn btn-success follow_button">Follow</button>
+  			  <%= @user.get_link_to_user_page %>
+  			</div>
+			  <!--
+			  <div id="user_ratings">RATE:<%= @user.get_avg_ratings %></div>
+			  -->
 			</div>
-			<!--
-			<div id="user-ratings">RATE:<%= @user.get_avg_ratings %></div>
-			-->
 		</div>
 		
 		<div id="your-item">
@@ -36,7 +38,7 @@ $(document).ready(function() {
 			<% end %>
 		</div>
     
-      <div id="image-block">
+      <div id="image_block">
         
     		<div id="item-info">
     		<div id="image"><img alt="<%= @item.title %>" title="<%= @item.title %>" src="<%= @item.get_main_image(:large) %>"></div>
