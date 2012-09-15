@@ -49,13 +49,13 @@
 	$(document).ready(function() {
 	  $(".modal-item-link").click(function(e) {
 	    e.preventDefault();
-	    $("#container").css({
+	    $("#body_wrapper").css({
 	      "position":"fixed",
-	      "marginLeft":"30px",
+	      "width":"100%",
 	    });
 	    $(this).modal();
 	    $(document).on($.modal.BEFORE_CLOSE, function(event, modal) {
-        $("#container").css("position", "");
+        $("#body_wrapper").css("position", "");
       });
 	  });
 	  

@@ -28,23 +28,27 @@
     </script>
   </head>
   <body>
-    <div id="container">
-	      <link href="/stylesheets/active_admin.css?1334730858" media="all" rel="stylesheet" type="text/css">
-				<link href="/stylesheets/admin.css?1334207530" media="screen" rel="stylesheet" type="text/css">
+    <div id="body_wrapper">
+      
+      <div id="header">
+  			<%= render :partial => "/layouts/menu_links_1" %>
+  			<%= render :partial => "/layouts/menu_links_2" %>
+  		</div>
+      <div id="container">
+  	      <link href="/stylesheets/active_admin.css?1334730858" media="all" rel="stylesheet" type="text/css">
+  				<link href="/stylesheets/admin.css?1334207530" media="screen" rel="stylesheet" type="text/css">
 			
-				<link rel="stylesheet" href="/stylesheets/menu-style.css" type="text/css" media="screen, projection"/>
-				<script type="text/javascript" language="javascript" src="/javascripts/jquery/jquery.dropdown.js"></script>
-			<div id="header">
-				<%= render :partial => "/layouts/menu_links_1" %>
-				<%= render :partial => "/layouts/menu_links_2" %>
-			</div>
-			<div id="content_wrapper">
-	      <% flash.each do |name, msg| %>
-	        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-	      <% end %>
-	      <%= content_tag :h2, yield(:title) if show_title? %>
-	      <%= yield %>
-			</div>
+  				<link rel="stylesheet" href="/stylesheets/menu-style.css" type="text/css" media="screen, projection"/>
+  				<script type="text/javascript" language="javascript" src="/javascripts/jquery/jquery.dropdown.js"></script>
+  			<div id="content_wrapper">
+  	      <% flash.each do |name, msg| %>
+  	        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  	      <% end %>
+  	      <%= content_tag :h2, yield(:title) if show_title? %>
+  	      <%= yield %>
+  			</div>
+      </div>
+    
     </div>
   </body>
 </html>

@@ -6,10 +6,6 @@ ul {
 	LEVEL ONE
 */
 #menu-links-1 {
-	position: relative;
-	margin: 5px auto;
-	width: 980px;
-	height:auto;
 }
 
 #menu-links-1 a:link {
@@ -18,9 +14,8 @@ ul {
 
 ul.dropdown { 
 	position: relative;
-	width: auto;
-	height: auto;
-	float:right;
+	float: right;
+	padding-top: 14px;
 }
 
 
@@ -62,19 +57,23 @@ ul.dropdown li a.hover {
 
 #menu-links-2 {
 	position: relative;
-	margin: 12px auto 0px auto;
-	padding: 0px 0 15px 0;
 	width: 980px;
 	float: left;
 }
 
 #menu-links-2 form {
-	margin: 0 auto;
-	width: 780px;	
+	width: 424px;
+	position: absolute;
+	top: -50px;
+	left: 220px;
 }
 
 #menu-links-2 #site_title a:link {
 	font-size:32px;
+}
+
+#search_button {
+	margin-top: -2px;
 }
 
 ul.dropdown ul { 
@@ -106,8 +105,9 @@ ul.dropdown ul li a:hover {
 
 #search {
 	width: 280px;
-	height: 25px;
-	line-height: 25px;
-	margin: -7px 13px 0 25px;
-	float: left;
+	height: 24px;
+	line-height: 38px;
+	margin: -2px 13px 0 25px;
+	font-size: 20px;
+	font-family: helvetica;
 }

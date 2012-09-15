@@ -851,17 +851,24 @@ table.dashboard td { width: 33%; }
 	width: 60%;
 	margin: 16px auto;
 	box-shadow: none;
-	padding: 26px 0 30px 86px;
+	padding: 6px 0 30px 86px;
 	border-radius: 5px;
-	background-color: white;
 	color: #555;
+}
+
+#login_wrapper #buttons {
+	margin-top: 20px;
 }
 
 #register_wrapper img{
 	padding-bottom: 25px;
 }
 
-.logo {
+#logo_wrapper {
+	margin-top: 20px;
+}
+
+#login_wrapper .logo {
 	width:200px;
 	height:25px;
 	background:#003366;
@@ -1604,25 +1611,23 @@ td, caption {
   padding-bottom: 0; }
 
 #header {
-	background: none repeat scroll 0 0 
-	transparent;
-	box-shadow: none;
-	height: 20px;
+	background: none repeat scroll 0 0 transparent;
+	height: 60px;
 	margin: 0px auto;
 	overflow: visible;
-	padding: 0px 30px;
+	padding: 2px 30px;
 	position: relative;
 	z-index: 900;
+	border-bottom: 1px #CCC solid;
+	box-shadow: 0px 0px 9px #DDD;
 }
   #header h1 {
-    display: inline-block;
-    color: #000;
-    float: left;
-    margin-right: 20px;
-    margin-bottom: 0px;
-    padding-top: 3px;
-    font-size: 34px;
-    font-weight: normal; }
+		display: inline-block;
+		color: black;
+		float: left;
+		margin: -54px 20px 0 10px;
+		font-size: 34px;
+		font-weight: normal; }
     #header h1 a {
       text-decoration: none; }
       #header h1 a:hover {
@@ -1736,8 +1741,6 @@ td, caption {
       color: #000; }
 
 form {
-	margin: 70px auto;
-	width: 780px;
   /* Reset margins & Padding */
   /* Nested Fieldsets and Legends */
   /* Text Fields */
