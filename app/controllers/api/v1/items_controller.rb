@@ -15,7 +15,7 @@ class Api::V1::ItemsController < ApplicationController
         :user => @user,
         :link => link
       }
-      get_cl_info(options)
+      @ret = get_cl_info(options)
     when "oodle"
       @ret = {}
     when "etsy"
@@ -58,22 +58,9 @@ class Api::V1::ItemsController < ApplicationController
       
       feed.entries.each do |e|
         url = e.url
-        #doc = Nokogiri::HTML(open(url.to_s))
-        # see if this posting "has been flagged for removal"
-        #next if (/has been flagged for removal/.match(doc.at_css("#userbody")))
-        
-        # main image
-        #image_tag = doc.at_css("div.iw img")
-        #image = image_tag.blank? ? "" : image_tag["src"]
-        
-        # phone number
-        #text_body = doc.css("#userbody").text
-        #phone = /\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})/.match(text_body)
-        
         @ret_array.push({
           :title => e.title,
           :description => e.summary,
-          #:image => image,
           :posted_at => e.published,
           :url => e.url,
           :source => "cl"
