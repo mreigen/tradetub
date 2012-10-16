@@ -22,5 +22,7 @@ gem 'hoptoad_notifier', '2.4.11'
 gem "paperclip", :git => "git@github.com:thoughtbot/paperclip.git"
 gem "omniauth-facebook"
 gem 'seed-fu', '~> 2.0.0'
-gem 'rmagick'
+gem 'rmagick', :require => false
 gem 'thinking-sphinx', '2.0.10'
+gem 'feedzirra'
+gem 'nokogiri'

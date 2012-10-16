@@ -41,5 +41,14 @@ Barzit::Application.routes.draw do
   resources :comments
   #resources :transactions
   
+  namespace :api do
+    namespace :v1 do
+      match "items/list" => "items#list"
+      resources :items
+      
+      resources :users
+    end
+  end
+  
   root :to => "items#front_page"
 end
