@@ -44,6 +44,7 @@ Barzit::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       match "items/list" => "items#list"
+      match "items/test" => "items#test"
       resources :items
       
       resources :users
