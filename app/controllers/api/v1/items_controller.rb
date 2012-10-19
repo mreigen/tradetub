@@ -103,6 +103,8 @@ class Api::V1::ItemsController < ApplicationController
     lng = params[:lng]
     zip = params[:zip]
     query = params[:query] || ""
+    query = CGI::escape(query)
+    
     # craigslist only
     sub_area = params[:sub_area] || ""
     page = params[:page]
@@ -113,16 +115,25 @@ class Api::V1::ItemsController < ApplicationController
     elsif !zip.blank?
       geo_query = zip
     end
-  
+    
+    res = Geokit::Geocoders::GoogleGeocoder.reverse_geocode(geo_query)
+    country_name_code = res.country
+    state_code = res.state
+=begin    
     geo_parsed_json = ActiveSupport::JSON.decode(open("http://maps.googleapis.com/maps/geo?q=#{geo_query}&output=json&sensor=false").read)
     country_name_code = geo_parsed_json["Placemark"][0]["AddressDetails"]["Country"]["CountryNameCode"].to_s
     state_code = geo_parsed_json["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["AdministrativeAreaName"].to_s
-    
+=end
     if !zip.blank?
+=begin
       lat_lng = geo_parsed_json["Placemark"][0]["Point"]["coordinates"]
       lng = lat_lng[0].to_s
       lat = lat_lng[1].to_s
+=end
+      lat = res.lat
+      lng = res.lng
     end
+    
     @all_item = Item.all
     @ret_array = []
     
@@ -131,6 +142,7 @@ class Api::V1::ItemsController < ApplicationController
       @ret_array.push({})
     when "cl"
       # getting the city code of the closest city supported by CL
+      # HARD CODED USA FOR NOW
       country_info = cl_city_site_info("usa")
       city_info = country_info.collect {|city| { :city_code => city["city_code"], :location => city["location"] } }
       
@@ -151,7 +163,7 @@ class Api::V1::ItemsController < ApplicationController
       
       return {} if closest_city_code.blank?
       
-      cl_search_url = "http://#{closest_city_code}.craigslist.org/search/sss#{sub_area.blank? ? '' : '/' + sub_area}?query=#{query}&minAsk=&maxAsk=&hasPic=1&format=rss&http://orangecounty.craigslist.org/search/sss?query=scooter&minAsk=&maxAsk=&hasPic=1&format=rss&srchType=A&s=#{15*page}"
+      cl_search_url = "http://#{closest_city_code}.craigslist.org/search/sss#{sub_area.blank? ? '' : '/' + sub_area}?query=#{query}&minAsk=&maxAsk=&hasPic=1&format=rss&srchType=A&s=#{15*page}"
       feed = Feedzirra::Feed.fetch_and_parse(cl_search_url)
       
       feed.entries.each do |e|
@@ -219,6 +231,8 @@ class Api::V1::ItemsController < ApplicationController
       :title => title,
       :description => description,
       :image => image,
+      :thumb => image.gsub(/craigslist\.org\//, "craigslist.org/thumb/"),
+      :medium => image.gsub(/craigslist\.org\//, "craigslist.org/medium/"),
       :price => price,
       :lat => nil,
       :long => nil,
