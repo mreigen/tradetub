@@ -26,3 +26,4 @@ gem 'rmagick', :require => false
 gem 'thinking-sphinx', '2.0.10'
 gem 'feedzirra'
 gem 'nokogiri'
+gem 'geocoder'
