@@ -9,8 +9,10 @@ class CachingItemThread
     ret_data[:zip] = zip unless zip.blank?
     # getting price
     # title has price in the format of $xxxx
+    #ret_data[:price] = parse_cl_price(ret_data[:title])
+    new_cached_item = CachedItem.create(ret_data)
     
-    #raise ret_data.inspect
+    raise new_cached_item.url.inspect
   end
   
   def self.parse_cl_location(title, state_code)
@@ -24,6 +26,10 @@ class CachingItemThread
     return nil, nil, nil
   end
   
+  def self.parse_cl_price(title)
+    price = /\$[\d]+/.match(title).to_s
+    price.gsub!("$", "")
+  end
 end
 
 class Api::V1::ItemsController < ApplicationController
@@ -214,7 +220,6 @@ class Api::V1::ItemsController < ApplicationController
       feed.entries.each do |e|
         url = e.url
         @ret = {
-          :guid => Digest::MD5.hexdigest(url + "-cl"),
           :title => e.title,
           :description => e.summary,
           :posted_at => e.published,
@@ -225,9 +230,9 @@ class Api::V1::ItemsController < ApplicationController
           :zip => nil
         }
         ret_array.push(@ret)
-      
-        #CachingItemThread.push_item(@ret, state_code)
-        Thread.new { CachingItemThread.push_item(@ret, state_code) }
+        
+        CachingItemThread.push_item(parse_item({ :source => "cl", :link => e.url }), state_code)
+        #Thread.new { CachingItemThread.push_item(@ret, state_code) }
       end
     end #end case
     
@@ -238,7 +243,13 @@ class Api::V1::ItemsController < ApplicationController
     source = parse_options[:source]
     case source
     when "cl"
-      get_cl_info(parse_options)
+      guid = Digest::MD5.hexdigest(parse_options[:link] + "-cl")
+      already_cached_item = CachedItem.find_by_guid(guid)
+      if already_cached_item.blank?
+        get_cl_info(parse_options)
+      else
+        already_cached_item
+      end
     end # end case
   end
   
@@ -311,17 +322,20 @@ class Api::V1::ItemsController < ApplicationController
     
     @ret = {
       :id => nil,
+      :guid => Digest::MD5.hexdigest(link + "-cl"),
       :title => title,
       :description => description,
-      :image => image,
-      :thumb => image.gsub(/craigslist\.org\//, "craigslist.org/thumb/"),
-      :medium => image.gsub(/craigslist\.org\//, "craigslist.org/medium/"),
+      :url => link,
+      :image_original => image,
+      :image_thumb => image.gsub(/craigslist\.org\//, "craigslist.org/thumb/"),
+      :image_medium => image.gsub(/craigslist\.org\//, "craigslist.org/medium/"),
       :price => price,
       :lat => nil,
-      :long => nil,
+      :lng => nil,
       :zip => nil,
-      :posted_at => posted_at,
-      :user_id => user.id,
+      :posted_at => posted_at.to_s,
+      #:user_id => user.blank? ? nil : user.id,
+      :source => "cl",
       :phone => phone,
       :email => email,
       :text => phone

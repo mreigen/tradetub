@@ -11,7 +11,12 @@ class CreateCachedItemsTable < ActiveRecord::Migration
       t.float :lat, :default => 0
       t.float :lng, :default => 0
       t.string :zip, :default => "00000"
-      t.string :image_url
+      t.string :image_original
+      t.string :image_thumb
+      t.string :image_medium
+      t.string :email
+      t.string :phone
+      t.string :text
       
       t.timestamps
     end
