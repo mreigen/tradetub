@@ -1,3 +1,31 @@
+class CachingItemThread
+  
+  def self.push_item(ret_data, state_code)
+    # getting lat / long
+    # title has location inside (...)
+    lat, lng, zip = parse_cl_location(ret_data[:title], state_code)
+    ret_data[:lat] = lat unless lat.blank?
+    ret_data[:lng] = lng unless lng.blank?
+    ret_data[:zip] = zip unless zip.blank?
+    # getting price
+    # title has price in the format of $xxxx
+    
+    #raise ret_data.inspect
+  end
+  
+  def self.parse_cl_location(title, state_code)
+    location = /\(.*\)/.match(title).to_s
+    unless location.blank?
+      location.gsub!("(", "").gsub!(")", "")
+      location += (", " + state_code) unless location.include?(",")
+      parsed_location = Geokit::Geocoders::GoogleGeocoder.reverse_geocode(location)
+      return parsed_location.lat, parsed_location.lng, parsed_location.zip
+    end
+    return nil, nil, nil
+  end
+  
+end
+
 class Api::V1::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
@@ -5,21 +33,20 @@ class Api::V1::ItemsController < ApplicationController
     @ret = {}
     
     render :json => {:error => "missing url"}, :status => 500 and return if params[:url].blank?
-    link = params[:url]
     
+    parse_options = {
+      :user => @user,
+      :link => params[:url]
+    }
     case params[:source]
     when "ebay"
-      @ret = {}
+      parse_options[:source] = "ebay"
     when "cl"
-      options = {
-        :user => @user,
-        :link => link
-      }
-      @ret = get_cl_info(options)
+      parse_options[:source] = "cl"
     when "oodle"
-      @ret = {}
+      parse_options[:source] = "oodle"
     when "etsy"
-      @ret = {}
+      parse_options[:source] = "etsy"
     else
       # our items are priority
       @ret = {
@@ -40,6 +67,8 @@ class Api::V1::ItemsController < ApplicationController
         :text => nil
       }
     end
+       
+    @ret = parse_item(parse_options) if @ret.blank?
     
     if params[:key] == "123"
       render :status => 200, :json => @ret
@@ -72,8 +101,7 @@ class Api::V1::ItemsController < ApplicationController
         
         a = CGI.escape(a)
         url = URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{a}&sensor=false")
-        puts "http://maps.googleapis.com/maps/api/geocode/json?address=#{a}&sensor=false"
-
+        
         res = Net::HTTP.get(url)
         parsed_json = ActiveSupport::JSON.decode(res)
         location_results = parsed_json["results"]
@@ -98,6 +126,15 @@ class Api::V1::ItemsController < ApplicationController
     render :json => @ret.to_json
   end
   
+  def string_difference_percent
+    a = params[:a]
+    b = params[:b]
+    
+    longer = [a.size, b.size].max
+    same = a.each_char.zip(b.each_char).select { |a,b| a == b }.size
+    render :json => ((longer - same) / a.size.to_f).to_json
+  end
+  
   def list
     lat = params[:lat]
     lng = params[:lng]
@@ -116,36 +153,106 @@ class Api::V1::ItemsController < ApplicationController
       geo_query = zip
     end
     
+    @ret_array = []
+    
     res = Geokit::Geocoders::GoogleGeocoder.reverse_geocode(geo_query)
     country_name_code = res.country
     state_code = res.state
-=begin    
-    geo_parsed_json = ActiveSupport::JSON.decode(open("http://maps.googleapis.com/maps/geo?q=#{geo_query}&output=json&sensor=false").read)
-    country_name_code = geo_parsed_json["Placemark"][0]["AddressDetails"]["Country"]["CountryNameCode"].to_s
-    state_code = geo_parsed_json["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["AdministrativeAreaName"].to_s
-=end
+    
     if !zip.blank?
-=begin
-      lat_lng = geo_parsed_json["Placemark"][0]["Point"]["coordinates"]
-      lng = lat_lng[0].to_s
-      lat = lat_lng[1].to_s
-=end
       lat = res.lat
       lng = res.lng
     end
     
-    @all_item = Item.all
-    @ret_array = []
-    
+    parse_options = {
+      :sub_area => "",
+      :page => page,
+      :query => query,
+      :lat => lat,
+      :lng => lng,
+      :zip => zip,
+      :state_code => state_code,
+      :country_name_code => country_name_code
+    }
     case params[:source]
     when "ebay"
-      @ret_array.push({})
+      parse_options[:source] = "ebay"
+    when "cl"
+      parse_options[:source] = "cl"
+    when "oodle"
+      parse_options[:source] = "oodle"
+    when "etsy"
+      parse_options[:source] = "etsy"
+    end
+    
+    @ret_array = parse_item_list(parse_options)
+    if params[:key] == "123"
+      render :status => 200, :json => @ret_array
+    end
+  end
+  
+  def parse_item_list(options)
+    closest_city_code = options[:closest_city_code]
+    sub_area = options[:sub_area]
+    page = options[:page]
+    query = options[:query]
+    source = options[:source]
+    state_code = options[:state_code]
+    country_name_code = options[:country_name_code]
+    
+    ret_array = []
+    
+    case source
     when "cl"
       # getting the city code of the closest city supported by CL
+      closest_city_code = get_closest_city_code({ :source => source, :lat => options[:lat], :lng => options[:lng] })
+      return [] if closest_city_code.blank?
+    
+      cl_search_url = "http://#{closest_city_code}.craigslist.org/search/sss#{sub_area.blank? ? '' : '/' + sub_area}?query=#{query}&minAsk=&maxAsk=&hasPic=1&format=rss&srchType=A&s=#{15*page}"
+      feed = Feedzirra::Feed.fetch_and_parse(cl_search_url)
+    
+      feed.entries.each do |e|
+        url = e.url
+        @ret = {
+          :guid => Digest::MD5.hexdigest(url + "-cl"),
+          :title => e.title,
+          :description => e.summary,
+          :posted_at => e.published,
+          :url => e.url,
+          :source => "cl",
+          :lat => nil,
+          :lng => nil,
+          :zip => nil
+        }
+        ret_array.push(@ret)
+      
+        #CachingItemThread.push_item(@ret, state_code)
+        Thread.new { CachingItemThread.push_item(@ret, state_code) }
+      end
+    end #end case
+    
+    ret_array
+  end
+  
+  def parse_item(parse_options)
+    source = parse_options[:source]
+    case source
+    when "cl"
+      get_cl_info(parse_options)
+    end # end case
+  end
+  
+  def get_closest_city_code(options)
+    source = options[:source]
+    lat = options[:lat]
+    lng = options[:lng]
+    
+    case source
+    when "cl"
       # HARD CODED USA FOR NOW
       country_info = cl_city_site_info("usa")
       city_info = country_info.collect {|city| { :city_code => city["city_code"], :location => city["location"] } }
-      
+    
       min_distance = 999999.99
       closest_city_code = ""
       city_info.each do |c|
@@ -153,39 +260,15 @@ class Api::V1::ItemsController < ApplicationController
         city_lat = ll["lat"]
         city_lng = ll["lng"]
         curr_distance = distance(city_lat, city_lng, lat, lng)
-        puts curr_distance
+      
         if min_distance > curr_distance
           min_distance = curr_distance
           closest_city_code = c[:city_code]
         end
       end
-      # should get closest city code after this
-      
-      return {} if closest_city_code.blank?
-      
-      cl_search_url = "http://#{closest_city_code}.craigslist.org/search/sss#{sub_area.blank? ? '' : '/' + sub_area}?query=#{query}&minAsk=&maxAsk=&hasPic=1&format=rss&srchType=A&s=#{15*page}"
-      feed = Feedzirra::Feed.fetch_and_parse(cl_search_url)
-      
-      feed.entries.each do |e|
-        url = e.url
-        @ret_array.push({
-          :title => e.title,
-          :description => e.summary,
-          :posted_at => e.published,
-          :url => e.url,
-          :source => "cl"
-        })
-      end
-      
-    when "oodle"
-      @ret_array.push({})
-    when "etsy"
-      @ret_array.push({})
     end
     
-    if params[:key] == "123"
-      render :status => 200, :json => @ret_array
-    end
+    closest_city_code
   end
   
   def get_cl_info(options)
@@ -223,7 +306,7 @@ class Api::V1::ItemsController < ApplicationController
     email = email_tag["href"].gsub!("mailto:","").to_s unless email_tag.blank?
     
     # phone number
-    phone = /\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})/.match(description).to_s
+    phone = /\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9|zero]{4})/.match(description).to_s
     phone.gsub!(/[-. ]/, "")
     
     @ret = {

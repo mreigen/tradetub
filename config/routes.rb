@@ -45,6 +45,8 @@ Barzit::Application.routes.draw do
     namespace :v1 do
       match "items/list" => "items#list"
       match "items/test" => "items#test"
+      match "items/compare_strings" => "items#string_difference_percent"
+      
       resources :items
       
       resources :users
