@@ -1,38 +1,8 @@
-class CachingItemThread
-  
-  def self.push_item(ret_data, state_code)
-    # getting lat / long
-    # title has location inside (...)
-    lat, lng, zip = parse_cl_location(ret_data[:title], state_code)
-    ret_data[:lat] = lat unless lat.blank?
-    ret_data[:lng] = lng unless lng.blank?
-    ret_data[:zip] = zip unless zip.blank?
-    # getting price
-    # title has price in the format of $xxxx
-    #ret_data[:price] = parse_cl_price(ret_data[:title])
-    new_cached_item = CachedItem.create(ret_data)
-    
-    raise new_cached_item.url.inspect
-  end
-  
-  def self.parse_cl_location(title, state_code)
-    location = /\(.*\)/.match(title).to_s
-    unless location.blank?
-      location.gsub!("(", "").gsub!(")", "")
-      location += (", " + state_code) unless location.include?(",")
-      parsed_location = Geokit::Geocoders::GoogleGeocoder.reverse_geocode(location)
-      return parsed_location.lat, parsed_location.lng, parsed_location.zip
-    end
-    return nil, nil, nil
-  end
-  
-  def self.parse_cl_price(title)
-    price = /\$[\d]+/.match(title).to_s
-    price.gsub!("$", "")
-  end
-end
-
 class Api::V1::ItemsController < ApplicationController
+  
+  caches_page :show
+  caches_page :list
+  
   def show
     @item = Item.find(params[:id])
     @user = User.find(@item.user_id)
@@ -231,8 +201,13 @@ class Api::V1::ItemsController < ApplicationController
         }
         ret_array.push(@ret)
         
-        CachingItemThread.push_item(parse_item({ :source => "cl", :link => e.url }), state_code)
-        #Thread.new { CachingItemThread.push_item(@ret, state_code) }
+        #CachingItemThread.push_item(parse_item({ :source => "cl", :link => e.url }), state_code)
+        parsed_item = parse_item({ :source => "cl", :link => e.url })
+        unless parsed_item.is_a?(CachedItem)
+          Thread.new {
+            Resque.enqueue(CacheItemsJob, parsed_item, state_code)
+          }
+        end
       end
     end #end case
     
@@ -302,7 +277,7 @@ class Api::V1::ItemsController < ApplicationController
     # scrape price
     price = /\$[\d]+/.match(title).to_s
     price ||= /\$[\d]+/.match(description).to_s
-    price.gsub!(/\$/,"")
+    price = price.blank? ? -1 : price.gsub!(/\$/,"")
     
     # scrape posted time
     posted_at_tag = doc.at_css(".postingdate")
