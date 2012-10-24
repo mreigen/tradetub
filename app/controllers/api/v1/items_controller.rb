@@ -200,15 +200,17 @@ class Api::V1::ItemsController < ApplicationController
           :zip => nil
         }
         ret_array.push(@ret)
-        
-        #CachingItemThread.push_item(parse_item({ :source => "cl", :link => e.url }), state_code)
-        parsed_item = parse_item({ :source => "cl", :link => e.url })
-        unless parsed_item.is_a?(CachedItem)
-          Thread.new {
+      end # end for
+      
+      # create a new thread, run the caching inside this thread
+      Thread.new {
+        ret_array.each do |ra|
+          parsed_item = parse_item({ :source => "cl", :link => ra.url })
+          unless parsed_item.is_a?(CachedItem)
             Resque.enqueue(CacheItemsJob, parsed_item, state_code)
-          }
+          end
         end
-      end
+      }
     end #end case
     
     ret_array
