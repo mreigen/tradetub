@@ -29,6 +29,20 @@ module Craigslist
     closest_city_code
   end
   
+  def self.parse_image(url, options = {})
+    thumb = options[:thumb] || false
+    medium = options[:medium] || false
+    
+    doc = Nokogiri::HTML(open(url))
+    # see if this posting "has been flagged for removal"
+    render :json => {:error => "item has been removed"}, :status => 500 and return if (/has been flagged for removal/.match(doc.at_css("#userbody")))
+    
+    image = get_image(doc)
+    return build_medium_image(image) if medium
+    return build_thumb(image) if thumb
+    return image
+  end
+  
   def self.parse(options = {})
     #user = options[:user]
     link = options[:link]
@@ -66,8 +80,8 @@ module Craigslist
       :description => description,
       :url => link,
       :image_original => image,
-      :image_thumb => build_cl_thumb(image),
-      :image_medium => build_cl_medium_image(image),
+      :image_thumb => build_thumb(image),
+      :image_medium => build_medium_image(image),
       :price => price,
       :lat => nil,
       :lng => nil,
@@ -81,12 +95,12 @@ module Craigslist
     }
   end
   
-  def self.build_cl_thumb(image_url)
+  def self.build_thumb(image_url)
     return nil if image_url.blank?
     image_url.gsub(/craigslist\.org\//, "craigslist.org/thumb/")
   end
   
-  def self.build_cl_medium_image(image_url)
+  def self.build_medium_image(image_url)
     return nil if image_url.blank?
     image_url.gsub(/craigslist\.org\//, "craigslist.org/medium/")
   end

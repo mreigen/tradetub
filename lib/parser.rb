@@ -1,4 +1,4 @@
-require "parsers/craigslist"
+load "parsers/craigslist.rb"
 
 module Parser
   
