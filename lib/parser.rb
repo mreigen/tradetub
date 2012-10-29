@@ -26,23 +26,8 @@ module Parser
 
       counter = 0
       feed.entries.each do |e|
-        url = e.url
-        @ret = parse_item(options.merge({:link => url, :fields => %w(price image)}))
-=begin
-        @ret = {
-          :title => e.title,
-          :description => e.summary,
-          :posted_at => e.published,
-          :url => e.url,
-          :image => get_cl_image({:link => e.url}),
-          :source => "cl",
-          :lat => nil,
-          :lng => nil,
-          :zip => nil
-        }
-=end
-        ret_array.push(@ret)
-
+        @ret = parse_item(options.merge({:link => e.url, :fields => %w(price image)}))
+        ret_array.push(@ret) unless @ret.blank?
       end # end for
 
       # create a new thread, run the caching inside this thread

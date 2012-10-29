@@ -1,34 +1,5 @@
 module Craigslist
   
-  def self.get_closest_city_code(options)
-    source = options[:source]
-    lat = options[:lat]
-    lng = options[:lng]
-    
-    case source
-    when "cl"
-      # HARD CODED USA FOR NOW
-      country_info = cl_city_site_info("usa")
-      city_info = country_info.collect {|city| { :city_code => city["city_code"], :location => city["location"] } }
-    
-      min_distance = 999999.99
-      closest_city_code = ""
-      city_info.each do |c|
-        ll = c[:location]
-        city_lat = ll["lat"]
-        city_lng = ll["lng"]
-        curr_distance = distance(city_lat, city_lng, lat, lng)
-      
-        if min_distance > curr_distance
-          min_distance = curr_distance
-          closest_city_code = c[:city_code]
-        end
-      end
-    end
-    
-    closest_city_code
-  end
-  
   def self.parse_image(url, options = {})
     thumb = options[:thumb] || false
     medium = options[:medium] || false
@@ -94,6 +65,37 @@ module Craigslist
       :text => phone
     }
   end
+  
+  def self.get_closest_city_code(options)
+    source = options[:source]
+    lat = options[:lat]
+    lng = options[:lng]
+    
+    case source
+    when "cl"
+      # HARD CODED USA FOR NOW
+      country_info = cl_city_site_info("usa")
+      city_info = country_info.collect {|city| { :city_code => city["city_code"], :location => city["location"] } }
+    
+      min_distance = 999999.99
+      closest_city_code = ""
+      city_info.each do |c|
+        ll = c[:location]
+        city_lat = ll["lat"]
+        city_lng = ll["lng"]
+        curr_distance = distance(city_lat, city_lng, lat, lng)
+      
+        if min_distance > curr_distance
+          min_distance = curr_distance
+          closest_city_code = c[:city_code]
+        end
+      end
+    end
+    
+    closest_city_code
+  end
+  
+  private
   
   def self.build_thumb(image_url)
     return nil if image_url.blank?
